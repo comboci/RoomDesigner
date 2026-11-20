@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V389-R",
+  "current_source_release": "V390-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1839,6 +1839,12 @@
       "version": "V389-R",
       "date": "2026-11-20",
       "change": "اصلاح ترتیب بررسی نسخه محلی و checksum آینه در شروع برنامه، جلوگیری از پیام بازیابی گمراه‌کننده با LocalStorage سالم؛ چهار تست رگرسیون ایستا افزوده شد، بدون اجرای تست.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V390-R",
+      "date": "2026-11-20",
+      "change": "پس از شکست ذخیره جایگزینی دستی rd_last نامعتبر، نمای موقت به بایت‌های اولیه بازمی‌گردد تا خروجی بازیابی محتوای ردشده را به‌جای نسخه اصلی صادر نکند؛ دو آزمون رگرسیون منبع اضافه شد (اجرا نشده).",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8269,6 +8275,26 @@
         "در V389-R فقط ترتیب بررسی مرجع و checksum اصلاح شد و نوشتن/حذف جدید در storage انجام نمی‌شود.",
         "سناریوهای سالم/خراب بودن نسخه محلی و متادیتای آینه در tests/mirror-startup-precedence.test.cjs ثبت شد؛ اجرا نشد."
       ]
+    },
+    {
+      "id": "RD390-INVALID-LAST-ROLLBACK",
+      "record_type": "source_remediation",
+      "module": "persistence_invalid_last_recovery",
+      "source": "RoomDesigner source audit continuation; user request, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "target_version": "V390-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "چت (ممیزی room deaigner) رو برسی و ادامه بده",
+      "assistant_interpretation": "حفظ داده خام نامعتبر اولیه در نمای موقت پس از شکست ذخیره جایگزینی تأییدشده، بدون بازنویسی نسخه پایدار.",
+      "implementation_status": "در شاخه شکست resolveInvalidLast مقدار pre-attempt rd_last در fallbackStore بازگردانده و به‌صورت volatile نگه داشته می‌شود تا بسته بازیابی بعدی نسخه اصلی را بخواند؛ دو سناریوی رگرسیون برای انتخاب نقشه فعلی و نسخه آینه افزوده شد.",
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "در V389-R، failed saveAuto می‌توانست safeStorage fallback را با محتوای ردشده shadow کند و resolveInvalidLast آن را برنمی‌گرداند.",
+        "در V390-R فقط نمای موقت fallbackStore ترمیم شد، بدون ذخیره یا حذف دیگری در LocalStorage.",
+        "دو سناریوی regression VM ثبت شدند؛ اجرا نشدند."
+      ]
     }
   ],
   "analyses": [
@@ -9834,6 +9860,20 @@
         "The added regression is source-only, not executed; real browser verification remains pending.",
         "No automatic overwrite or removal of either store is introduced."
       ]
+    },
+    {
+      "id": "RD390-INVALID-LAST-ANALYSIS",
+      "record_id": "RD390-INVALID-LAST-ROLLBACK",
+      "created_at": "2026-11-20",
+      "module": "persistence_invalid_last_recovery",
+      "problem": "A failed confirmed replacement of invalid rd_last leaves rejected data shadowing original bytes in safeStorage's fallback, contaminating subsequent recovery export.",
+      "decision": "Restore captured raw rd_last only in the volatile read-through view; leave browser storage untouched, keep invalid-last block active, and restore editor document.",
+      "remaining_risks": [
+        "IndexedDB mirror may still settle independently of denied LocalStorage write.",
+        "A download request cannot prove the recovery file was physically saved.",
+        "Two new tests NOT_RUN; browser acceptance pending.",
+        "OPEN-CROSS-STORE remains unresolved."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11246,17 +11286,24 @@
       "date": "2026-11-20",
       "change": "اصلاح ترتیب بررسی نسخه محلی و checksum آینه در شروع برنامه، جلوگیری از پیام بازیابی گمراه‌کننده با LocalStorage سالم؛ چهار تست رگرسیون ایستا افزوده شد، بدون اجرای تست.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V390-R",
+      "date": "2026-11-20",
+      "change": "پس از شکست ذخیره جایگزینی دستی rd_last نامعتبر، نمای موقت به بایت‌های اولیه بازمی‌گردد تا خروجی بازیابی محتوای ردشده را به‌جای نسخه اصلی صادر نکند؛ دو آزمون رگرسیون منبع اضافه شد (اجرا نشده).",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V389-R",
+    "release": "V390-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "V389-R focuses exclusively on startup LocalStorage authority before IndexedDB mirror checksum. Four regression cases added; tests, builds and browser runtime NOT_RUN. OPEN-CROSS-STORE remains unresolved; prior V385 audit signoff remains pending."
+    "audit": "V390-R fixes read-through view contamination after rejected invalid rd_last replacement; two regression cases added, NOT_RUN. Tests/build/browser runtime NOT_RUN; OPEN-CROSS-STORE still open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "Verify V390-R in Safari and Chromium with invalid rd_last, confirmed replacement, denied LocalStorage write; the recovery export must retain original raw damaged bytes. Back up first; tests NOT_RUN.",
       "Validate V389-R startup with real browser: valid local/corrupt mirror; corrupt local/valid mirror; no local/valid or corrupt mirror. Export backups first. Cross-store arbitration remains open.",
       "Divergent valid LocalStorage and IndexedDB snapshots need safe explicit export-and-select recovery; preserve both, no automatic authority switch.",
       "Run installed Chromium smoke/browser regression and triage failing tests; tests and user acceptance pending.",

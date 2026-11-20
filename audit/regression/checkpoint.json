@@ -1,17 +1,17 @@
 {
   "format": 1,
-  "repository": "salesnspelectronics-create/RoomDesigner",
+  "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N_MANUAL_STATIC_REMEDIATION",
+  "execution_source": "USER_CONTINUATION_MANUAL_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "8976825e637b50c8c05cf58ffef4acb10354e3c0",
+  "source_head": "bac80b09b5e73a6b2cc34d58583f5ad3a1d034a2",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V389-R",
+  "product_release": "V390-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "e92fa08a820532b675a4bfecb978fc6ebe803de3",
+  "inventory_blob_sha": "4cf2b5797fdf0213cb7288a1b1f8a89c5590fd2a",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V389-R focused static review reordered authoritative LocalStorage validation before IndexedDB mirror metadata/checksum in recoverMirrorOnStartup. It prevents a false import/recovery warning while valid local data exists; malformed local data remains untouched, absent-local recovery still checks the mirror. Four Node test cases were added but NOT_RUN. No broad source review or actual runtime acceptance was credited.",
+  "coverage_note": "V390-R focused static review of resolveInvalidLast failed-save branch. Rejected rd_last writes shadow the intact malformed source in safeStorage's volatile view. Restore captured raw bytes only in read-through memory after failure; retain the recovery block and editor original. Two VM regression scenarios added but NOT_RUN. No broad review or actual runtime acceptance credited.",
   "segments": [
     {
       "path": "index.html",
@@ -399,6 +399,22 @@
       "reviewed_at": "2026-11-09T04:14:59Z",
       "source_head": "b3a07a9373981774c142878340891d20c6512273",
       "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "fc2e5faa8152842dfb2144c7655a4af900621f8e",
+      "actual_read_start_line": 350,
+      "actual_read_end_line": 376,
+      "reviewed_start_line": 350,
+      "reviewed_end_line": 376,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD390-INVALID-LAST-ROLLBACK"
+      ],
+      "reviewed_at": "2026-11-20T03:13:34.246Z",
+      "source_head": "bac80b09b5e73a6b2cc34d58583f5ad3a1d034a2",
+      "review_basis": "Exact bounded candidate read of resolveInvalidLast; no truncation, tests/build NOT_RUN.",
+      "truncated": false
     }
   ],
   "findings": [
@@ -631,6 +647,14 @@
       "root_cause": "recoverMirrorOnStartup validated IndexedDB checksum before checking an intact authoritative LocalStorage document, producing a misleading recovery/import error even though the local drawing is valid.",
       "correction": "Check present LocalStorage first, return silently for valid local data; preserve invalid-but-present local data and warn, and only then inspect mirror checksum/restore when local data is absent.",
       "source_recheck": "Focused source review and four Node VM regression scenarios added. Tests/build/browser NOT_RUN; valid-divergent snapshot authority OPEN."
+    },
+    {
+      "id": "RD390-INVALID-LAST-ROLLBACK",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Failed explicit replacement of invalid local rd_last can shadow the preserved damaged raw original with a rejected candidate in safeStorage fallback and corrupt the next recovery export's source.",
+      "correction": "After a failed saveAuto, restore the captured original raw rd_last in volatile read-through memory only; retain rdLastBlocked and previous in-memory editor doc.",
+      "source_recheck": "Exact candidate branch reviewed. Two new VM regression cases authored for replacing with current editor or IndexedDB mirror; NOT_RUN, cross-store authority remains open."
     }
   ],
   "last_completed_segment": {
@@ -642,11 +666,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "40afa07315a4adbdb7332afa782f17e6a3c91407",
+    "blob_sha": "fc2e5faa8152842dfb2144c7655a4af900621f8e",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "V389-R source modification invalidates previous index blob coverage; full bounded source review not performed."
+    "reason": "Index changed in V390-R; full sequential source audit coverage still starts at first uncovered line."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -655,7 +679,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V389-R source inspection of recoverMirrorOnStartup and regression cases confirms no new storage writes or deletes. Tests NOT_RUN.",
+    "static_diff": "V390-R focused branch inspection; only invalid-last read-through shadow restored after rejected write; 2 VM tests authored NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -672,11 +696,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Exact pinned Git tree and draft Git blob metadata; source code not executed",
-    "baseline_head": "8976825e637b50c8c05cf58ffef4acb10354e3c0",
-    "entries": 577,
+    "method": "Exact pinned Git tree and draft Git blob metadata; no product source execution",
+    "baseline_head": "bac80b09b5e73a6b2cc34d58583f5ad3a1d034a2",
+    "entries": 578,
     "no_product_execution": true,
-    "notes": "V389-R index and version files updated, one new static source regression, inventory/checkpoint refreshed; no product tests/build."
+    "notes": "V390-R source fix, two source-level regression cases, version and audit checkpoint synced."
   },
   "branch_review": {
     "branches": [
@@ -696,7 +720,7 @@
     "potential_static": [
       "Non-atomic LocalStorage and IndexedDB authority remains OPEN-CROSS-STORE",
       "Storage denial, missing prior snapshot, compensation interruption and browser download retention remain runtime risks",
-      "Hard-coded Windows Edge executable paths remain in many browser-test launch configurations; NOT_RUN and not included in V386-R scope.",
+      "V387-R removed fixed Edge paths; Chromium browser runtime still NOT_RUN.",
       "Divergent valid LocalStorage and IndexedDB snapshots still require explicit export-and-select reconciliation."
     ],
     "console_paths": "Existing SVG fallback, DXF safety-limit/save-picker and SVG migration console.warn call sites are potential diagnostics, not observed runtime warnings"

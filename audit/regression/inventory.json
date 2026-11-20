@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "repository": "salesnspelectronics-create/RoomDesigner",
+  "repository": "comboci/RoomDesigner",
   "branch": "main",
   "order": "path Unicode code-point ascending",
   "entries": [
@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "275f243414163c83017dcc220f794f1138a113d0",
+      "blob_sha": "4c323bc211796d38eb240ed294d276ca57554868",
       "mode": "100644",
-      "bytes": 13316,
-      "lines": 169,
+      "bytes": 13711,
+      "lines": 171,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3939,10 +3939,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "40afa07315a4adbdb7332afa782f17e6a3c91407",
+      "blob_sha": "fc2e5faa8152842dfb2144c7655a4af900621f8e",
       "mode": "100644",
-      "bytes": 551886,
-      "lines": 2964,
+      "bytes": 552191,
+      "lines": 2971,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3957,7 +3957,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "6d91a0599f916b5313b7105f147e6a3f597dbe07",
+      "blob_sha": "080debad987e8e9005a5430c704b7e97941da4e8",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "644530f7b5e9fdba221e4a7e57cea98b38b69d4a",
+      "blob_sha": "edd9c33d6a001517e52a4c3f569e75bd5cd106d0",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3984,10 +3984,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "c4cda6526adee0905bb5bc728b718c4fb6fffdb6",
+      "blob_sha": "72efb4fa30e503013a1709d396735f97b8f1f8e5",
       "mode": "100644",
-      "bytes": 753474,
-      "lines": 11273,
+      "bytes": 757163,
+      "lines": 11320,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4537,6 +4537,15 @@
       "mode": "100644",
       "bytes": 4320,
       "lines": 23,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/invalid-last-resolution-rollback.test.cjs",
+      "blob_sha": "f90befdc731ca9422045514c517e9ca7f1650225",
+      "mode": "100644",
+      "bytes": 2533,
+      "lines": 55,
       "category": "test_source_static_only",
       "binary": false
     },
