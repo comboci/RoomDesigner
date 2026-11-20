@@ -96,10 +96,10 @@
     },
     {
       "path": "PDF-IMPORT.md",
-      "blob_sha": "7be245240ad90d710dbc13a4f459b5b3c5866a80",
+      "blob_sha": "dc9a2aa2a48b62080b1e113a46d370b3fd2af6e2",
       "mode": "100644",
-      "bytes": 2634,
-      "lines": 14,
+      "bytes": 4462,
+      "lines": 22,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -189,7 +189,7 @@
       "blob_sha": "bb819f888736d5a7d8306ecc6105e61e68852b77",
       "mode": "100644",
       "bytes": 890,
-      "lines": null,
+      "lines": 0,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -222,10 +222,10 @@
     },
     {
       "path": "assets/pdf-import.js",
-      "blob_sha": "f5e8a57e13ada99409aebe0330c474a75a7e16b3",
+      "blob_sha": "a25907597879677de53fd5e17540f470a6fd43b5",
       "mode": "100644",
-      "bytes": 12132,
-      "lines": 58,
+      "bytes": 13008,
+      "lines": 65,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -477,7 +477,7 @@
       "blob_sha": "800c83c87b499a5f7b9a692076e8c76c728b5801",
       "mode": "100644",
       "bytes": 208994,
-      "lines": null,
+      "lines": 0,
       "category": "reference_or_binary",
       "binary": true
     },
@@ -486,7 +486,7 @@
       "blob_sha": "83d03e93bc68f775b400126b15aabf72f6f3768c",
       "mode": "100644",
       "bytes": 318364,
-      "lines": null,
+      "lines": 0,
       "category": "reference_or_binary",
       "binary": true
     },
@@ -2007,7 +2007,7 @@
       "blob_sha": "695dd1fa06afdc3cee521470de305f5e9834c363",
       "mode": "100644",
       "bytes": 821610,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2034,7 +2034,7 @@
       "blob_sha": "2655fc70ae706c7ba52a5d647cbfdfad6072c697",
       "mode": "100644",
       "bytes": 2404,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2043,7 +2043,7 @@
       "blob_sha": "f1ed8538287499647d923d7d8f517a00cdac4e3a",
       "mode": "100644",
       "bytes": 173,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2052,7 +2052,7 @@
       "blob_sha": "39e89d3339c74cbe06e7e4f76d60bf3556b0d4b6",
       "mode": "100644",
       "bytes": 2379,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2061,7 +2061,7 @@
       "blob_sha": "e4167cb51f66c60ef7d9500b450303b5da175574",
       "mode": "100644",
       "bytes": 2398,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2070,7 +2070,7 @@
       "blob_sha": "50b1646e94bba61b3242a680fe3023337e191123",
       "mode": "100644",
       "bytes": 173,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2079,7 +2079,7 @@
       "blob_sha": "d7af99b5e2ae9a21d534f1965c35a2b572143322",
       "mode": "100644",
       "bytes": 169,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2088,7 +2088,7 @@
       "blob_sha": "37077d01e26f9ee2427592f6deebb145d628e731",
       "mode": "100644",
       "bytes": 2651,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2097,7 +2097,7 @@
       "blob_sha": "acf23231aea22e1a95761f7eafd35f1d42ea6b84",
       "mode": "100644",
       "bytes": 290,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2106,7 +2106,7 @@
       "blob_sha": "2359bc529d160857cce4c1d1bfca1322290205c1",
       "mode": "100644",
       "bytes": 905,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2115,7 +2115,7 @@
       "blob_sha": "af8293829c90ce63cc4c5eda0318003785ffcba1",
       "mode": "100644",
       "bytes": 721,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2124,7 +2124,7 @@
       "blob_sha": "780549de19de05b6cbea4ccd4737351bc9ff6104",
       "mode": "100644",
       "bytes": 290,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2133,7 +2133,7 @@
       "blob_sha": "bfd3119c62d9976dde9b1e59c572c678cf5811a0",
       "mode": "100644",
       "bytes": 715,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2142,7 +2142,7 @@
       "blob_sha": "25ef14ab4af42f4b70ccac76cddac8f3b22d8813",
       "mode": "100644",
       "bytes": 291,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2151,7 +2151,7 @@
       "blob_sha": "02f713bb838a8cd46f5b262c934d0edc8c6e8fe9",
       "mode": "100644",
       "bytes": 982,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2160,7 +2160,7 @@
       "blob_sha": "d08e0cc5d98b2d933ab848c69dd6c504fbf1787d",
       "mode": "100644",
       "bytes": 260,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2169,7 +2169,7 @@
       "blob_sha": "59442acafb613b0c090314379f9f4c2fa134a1a1",
       "mode": "100644",
       "bytes": 2419,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2178,7 +2178,7 @@
       "blob_sha": "a3065e441a0e1f1a65e9109ec9bc4f826fccac24",
       "mode": "100644",
       "bytes": 2413,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2187,7 +2187,7 @@
       "blob_sha": "040014cfc0880371c20a89212942727c5dc30a78",
       "mode": "100644",
       "bytes": 287,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2196,7 +2196,7 @@
       "blob_sha": "2f816d320f08b8671498299c4d00e4564d2ece6c",
       "mode": "100644",
       "bytes": 282,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2205,7 +2205,7 @@
       "blob_sha": "88ec04af49d1e8ab6038e3b36dd28daf4dcf0119",
       "mode": "100644",
       "bytes": 317,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2214,7 +2214,7 @@
       "blob_sha": "03a501477c91d8156723f0c274a37d397ed65bad",
       "mode": "100644",
       "bytes": 371,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2223,7 +2223,7 @@
       "blob_sha": "2aa95141f9f5802818e34b0aa626e34e7cfee805",
       "mode": "100644",
       "bytes": 376,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2232,7 +2232,7 @@
       "blob_sha": "86d8b8c79cfa3907281aa3f25a46f178b87aedfa",
       "mode": "100644",
       "bytes": 401,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2241,7 +2241,7 @@
       "blob_sha": "f50fc6c14e67a228c4ba9a61b1357c16410e8228",
       "mode": "100644",
       "bytes": 405,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2250,7 +2250,7 @@
       "blob_sha": "6caf4a83146a60a2db652647b9cfed5fb71bd97c",
       "mode": "100644",
       "bytes": 406,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2259,7 +2259,7 @@
       "blob_sha": "b77fb0705c28d647d0bf7b25246af566a791b2ec",
       "mode": "100644",
       "bytes": 406,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2268,7 +2268,7 @@
       "blob_sha": "69d79a2c2c2b00207ab27b68ebf4404aa17c6f2c",
       "mode": "100644",
       "bytes": 41193,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2277,7 +2277,7 @@
       "blob_sha": "36101083fa8fd22399728ccf533c48e830781de0",
       "mode": "100644",
       "bytes": 217,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2286,7 +2286,7 @@
       "blob_sha": "707bb1065c76d69551c287141cb258519132ef8e",
       "mode": "100644",
       "bytes": 250,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2295,7 +2295,7 @@
       "blob_sha": "f7648cc3ff02c44e9594ccbd71deec742e253c2f",
       "mode": "100644",
       "bytes": 465,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2304,7 +2304,7 @@
       "blob_sha": "852145890ede3dc04339de284993da270d62311d",
       "mode": "100644",
       "bytes": 470,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2313,7 +2313,7 @@
       "blob_sha": "e40c63ab1e5c240841f3b465ade920d60be6328f",
       "mode": "100644",
       "bytes": 601,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2322,7 +2322,7 @@
       "blob_sha": "d7623b500232b6e62f29c2c232e6c2469a527314",
       "mode": "100644",
       "bytes": 625,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2331,7 +2331,7 @@
       "blob_sha": "7586525936cc5398b86d3752a4eb45b15825b25c",
       "mode": "100644",
       "bytes": 33974,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2340,7 +2340,7 @@
       "blob_sha": "f0e94ec196757e8660b567d8ece7f99869927913",
       "mode": "100644",
       "bytes": 225,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2349,7 +2349,7 @@
       "blob_sha": "dad42c5ad7dad57954fc9a051ee7e222e83bee45",
       "mode": "100644",
       "bytes": 226,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2358,7 +2358,7 @@
       "blob_sha": "090819a064533f20aa68f562275556397683ae81",
       "mode": "100644",
       "bytes": 233,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2367,7 +2367,7 @@
       "blob_sha": "087dfc155860e65d2dc828dd432ffe88239fde23",
       "mode": "100644",
       "bytes": 242,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2376,7 +2376,7 @@
       "blob_sha": "46aa9bffe576e9a8b714646aed7f9e1a4e99dfe2",
       "mode": "100644",
       "bytes": 337,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2385,7 +2385,7 @@
       "blob_sha": "5b4b65cc6292a5ba7d89e976565bf08814bb88b6",
       "mode": "100644",
       "bytes": 430,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2394,7 +2394,7 @@
       "blob_sha": "e77d699ab6a1bfd1e3eab6db428222e108342aec",
       "mode": "100644",
       "bytes": 485,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2403,7 +2403,7 @@
       "blob_sha": "128a14107750da2939d920c3e0802798c36f2e18",
       "mode": "100644",
       "bytes": 40951,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2412,7 +2412,7 @@
       "blob_sha": "cef1a9985191f53c4a8a35811d1caeecdd1a1820",
       "mode": "100644",
       "bytes": 241,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2421,7 +2421,7 @@
       "blob_sha": "11ffa36df8404ab970df2a24b2d80b1dc6348436",
       "mode": "100644",
       "bytes": 386,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2430,7 +2430,7 @@
       "blob_sha": "3172308c79d57147cdbe05930228043faa48ca54",
       "mode": "100644",
       "bytes": 391,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2439,7 +2439,7 @@
       "blob_sha": "f3371c0cbd14c89a7d2b5a72e4e4f9cdc6d6017e",
       "mode": "100644",
       "bytes": 23293,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2448,7 +2448,7 @@
       "blob_sha": "beb4d228104cd985130e6eed7ccabdb63e94ce27",
       "mode": "100644",
       "bytes": 1086,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2457,7 +2457,7 @@
       "blob_sha": "2d4f87d5035f03485616d4986b6373fa0820d0af",
       "mode": "100644",
       "bytes": 142,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2466,7 +2466,7 @@
       "blob_sha": "ce0013167f852a873b639e301088c094d468a750",
       "mode": "100644",
       "bytes": 1099,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2475,7 +2475,7 @@
       "blob_sha": "73b99ff2fbca40e7ca5501f61e3f2f29c1fc1af6",
       "mode": "100644",
       "bytes": 144,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2484,7 +2484,7 @@
       "blob_sha": "61d1d0cb001dd484630e52eb7e47eaabbdee62cd",
       "mode": "100644",
       "bytes": 1780,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2493,7 +2493,7 @@
       "blob_sha": "1a393a51e079d1b5e7898423463fac5e87170da2",
       "mode": "100644",
       "bytes": 1920,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2502,7 +2502,7 @@
       "blob_sha": "f738e218ae2b4e9c33a1833a49fe20027e869aa1",
       "mode": "100644",
       "bytes": 706,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2511,7 +2511,7 @@
       "blob_sha": "9c3169f0d9a083b462427bf4e46a25296ebbd862",
       "mode": "100644",
       "bytes": 143,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2520,7 +2520,7 @@
       "blob_sha": "c89b3527fe57ad3b32061f36b73c756ead3fb071",
       "mode": "100644",
       "bytes": 504,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2538,7 +2538,7 @@
       "blob_sha": "cb29415de4f5a669c1b47e34ab889b5fdee6e428",
       "mode": "100644",
       "bytes": 4426,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2547,7 +2547,7 @@
       "blob_sha": "f09aec6318dbec88491e3e488526882eaa930f37",
       "mode": "100644",
       "bytes": 158,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2556,7 +2556,7 @@
       "blob_sha": "c2d77462d298cdb261f5e2eed5218fcba35cbe4e",
       "mode": "100644",
       "bytes": 1125,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2565,7 +2565,7 @@
       "blob_sha": "89bff159ec62cc86b7c4a3258ee0455cab10b76a",
       "mode": "100644",
       "bytes": 158,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2583,7 +2583,7 @@
       "blob_sha": "adc5d618d6912cb3a67e4745b63764120f93d17f",
       "mode": "100644",
       "bytes": 172,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2592,7 +2592,7 @@
       "blob_sha": "e92ea5b3b99b1f20d31c9760481de0472e72685b",
       "mode": "100644",
       "bytes": 578,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2601,7 +2601,7 @@
       "blob_sha": "7a7c183228dfdc5c236b7914ca68298520ac60a1",
       "mode": "100644",
       "bytes": 170,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2610,7 +2610,7 @@
       "blob_sha": "3b5cde44dbaf7f78c716c3705590ae28e9bed265",
       "mode": "100644",
       "bytes": 2536,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2619,7 +2619,7 @@
       "blob_sha": "ea4d2d97b8bc1df2abebce0d4f8c58789f723eb1",
       "mode": "100644",
       "bytes": 2542,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2628,7 +2628,7 @@
       "blob_sha": "3457c2770913963731993654c838df133deabbb3",
       "mode": "100644",
       "bytes": 218,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2637,7 +2637,7 @@
       "blob_sha": "4999ca40412b66e87c56870c80cff32212483ee8",
       "mode": "100644",
       "bytes": 215,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2646,7 +2646,7 @@
       "blob_sha": "e39908b9844939a3c6d6baccced5771b8c1b1b2d",
       "mode": "100644",
       "bytes": 549,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2655,7 +2655,7 @@
       "blob_sha": "d5be5446aa40898742183202ce0624b8acee5234",
       "mode": "100644",
       "bytes": 179,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2673,7 +2673,7 @@
       "blob_sha": "310834512ffe49cbb7ca903abc2dc1aaa934e6f4",
       "mode": "100644",
       "bytes": 175,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2682,7 +2682,7 @@
       "blob_sha": "05fff7e8254c995031783fb3b4892d58a6b176ac",
       "mode": "100644",
       "bytes": 14692,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2691,7 +2691,7 @@
       "blob_sha": "0cdf6bed6d450473f92e691e9015e4028113607e",
       "mode": "100644",
       "bytes": 180,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2700,7 +2700,7 @@
       "blob_sha": "46f6ba5967cdfb381f001eb1193f17b43d943962",
       "mode": "100644",
       "bytes": 19662,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2709,7 +2709,7 @@
       "blob_sha": "d9a9479843eda25fb0a8fd69fb302740813d925f",
       "mode": "100644",
       "bytes": 219,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2718,7 +2718,7 @@
       "blob_sha": "5cb0af687ee20a10ecc367892ae49d7b1e74acd1",
       "mode": "100644",
       "bytes": 14686,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2727,7 +2727,7 @@
       "blob_sha": "bca93b8efbb18a13e15025ad41d23db8267d2577",
       "mode": "100644",
       "bytes": 181,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2736,7 +2736,7 @@
       "blob_sha": "4b4e2d32294538b5093ed3870bb9de37abf21599",
       "mode": "100644",
       "bytes": 7290,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2745,7 +2745,7 @@
       "blob_sha": "38f706699f395dcdad5c6ad93d1a9b6fe9f66c78",
       "mode": "100644",
       "bytes": 180,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2754,7 +2754,7 @@
       "blob_sha": "8437ac33771536813228e3f9c1cb6c35af3acc72",
       "mode": "100644",
       "bytes": 7269,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2763,7 +2763,7 @@
       "blob_sha": "697ab4a8e756204de9d089c8c136579973c9c0c6",
       "mode": "100644",
       "bytes": 176,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2772,7 +2772,7 @@
       "blob_sha": "f6e50e89363483070b25106b94f729ae38587d28",
       "mode": "100644",
       "bytes": 7298,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2781,7 +2781,7 @@
       "blob_sha": "6c0d71a2d04473870c60dc59342400fe1b4ccc48",
       "mode": "100644",
       "bytes": 182,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2790,7 +2790,7 @@
       "blob_sha": "c9edf67cf6d640607080ad2775c14760df77dd96",
       "mode": "100644",
       "bytes": 557,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2799,7 +2799,7 @@
       "blob_sha": "31450c97f640ff40bd79677cd3e97f4485453d9b",
       "mode": "100644",
       "bytes": 181,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2808,7 +2808,7 @@
       "blob_sha": "7b24ea4629d0d4cc9f0cd5852edde324156ef0b1",
       "mode": "100644",
       "bytes": 553,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2817,7 +2817,7 @@
       "blob_sha": "7d30c0500520d563d0e5891c8f4781c61ddcca5e",
       "mode": "100644",
       "bytes": 2654,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2826,7 +2826,7 @@
       "blob_sha": "78946940d68cdd2ea1bec1230b1eb0b19b8d5deb",
       "mode": "100644",
       "bytes": 148,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2835,7 +2835,7 @@
       "blob_sha": "d829a231015161e107123e211d4a78110daab6bf",
       "mode": "100644",
       "bytes": 2414,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2844,7 +2844,7 @@
       "blob_sha": "2b572b50a47f09a51c777efabcaf6a9e3faa26c2",
       "mode": "100644",
       "bytes": 148,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2853,7 +2853,7 @@
       "blob_sha": "971a4f23f791f75d4e604ad717735ee55529eda5",
       "mode": "100644",
       "bytes": 2292,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2862,7 +2862,7 @@
       "blob_sha": "d353ca256b54236a4acefafdbc08e5b719892014",
       "mode": "100644",
       "bytes": 149,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2871,7 +2871,7 @@
       "blob_sha": "576dc01112bd7f28c30804661f546ece203c53d8",
       "mode": "100644",
       "bytes": 1772,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2880,7 +2880,7 @@
       "blob_sha": "0e96d0e228e0608f77f035655140c6a235d4ea56",
       "mode": "100644",
       "bytes": 149,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2889,7 +2889,7 @@
       "blob_sha": "11d170c75ed8696f0705f9fb9f5afcf3b0aff4c9",
       "mode": "100644",
       "bytes": 2171,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2898,7 +2898,7 @@
       "blob_sha": "54959bf9e776c990460f2582adee80d317062d20",
       "mode": "100644",
       "bytes": 149,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2907,7 +2907,7 @@
       "blob_sha": "6ef7857ad17cefc4ab714d209716002317c23baa",
       "mode": "100644",
       "bytes": 4437,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2916,7 +2916,7 @@
       "blob_sha": "1fb2fa2a2ecdf5abd6b7cbf2cb5f2ee4f0b11fe2",
       "mode": "100644",
       "bytes": 159,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2925,7 +2925,7 @@
       "blob_sha": "4b8ec7fcef466bc4090dc13c8edb354cb94d0b67",
       "mode": "100644",
       "bytes": 132,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2934,7 +2934,7 @@
       "blob_sha": "17e983e77264c62ee149d1c8ec576a23e8f90eda",
       "mode": "100644",
       "bytes": 124,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2943,7 +2943,7 @@
       "blob_sha": "a45c65f008e7d6ff34edaf53af15ea471d4f6d90",
       "mode": "100644",
       "bytes": 1848,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2952,7 +2952,7 @@
       "blob_sha": "0e7b21f0a612b1acc41c1b23ad0060da539eaf2b",
       "mode": "100644",
       "bytes": 164,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2961,7 +2961,7 @@
       "blob_sha": "b9b22b67879d4043c75b617a24f96b0bd47cf4ca",
       "mode": "100644",
       "bytes": 1831,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2970,7 +2970,7 @@
       "blob_sha": "2531ffcf41acc01338f781c845c7f50f62fcc84a",
       "mode": "100644",
       "bytes": 16791,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2979,7 +2979,7 @@
       "blob_sha": "367ceb226ab1e33624b30512716a3b65feb5a100",
       "mode": "100644",
       "bytes": 166,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2988,7 +2988,7 @@
       "blob_sha": "6ae2f0b6b7238adc67bd9231668d9853ea3c8e1e",
       "mode": "100644",
       "bytes": 160,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -2997,7 +2997,7 @@
       "blob_sha": "a8d4240e6adb3ac1db859085b769a0715be03c72",
       "mode": "100644",
       "bytes": 2787,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3006,7 +3006,7 @@
       "blob_sha": "8b4ae18fd3efdbe020e4e1407d2f65125085a71a",
       "mode": "100644",
       "bytes": 2789,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3015,7 +3015,7 @@
       "blob_sha": "b655dbcfb123ed06c7eeb87dfc96ecf6759363dd",
       "mode": "100644",
       "bytes": 169,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3024,7 +3024,7 @@
       "blob_sha": "21f97f65b4a61adfa13f55d5a096ceab45eb485b",
       "mode": "100644",
       "bytes": 166,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3033,7 +3033,7 @@
       "blob_sha": "e06f361eb6d429290806b9f9cd7a0aebce22be4d",
       "mode": "100644",
       "bytes": 2024,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3042,7 +3042,7 @@
       "blob_sha": "f3c9113fcf0b02e1deea8246bfd27408becc8401",
       "mode": "100644",
       "bytes": 166,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3051,7 +3051,7 @@
       "blob_sha": "524303c4f0c20e6cd19aa1d35805e98c2c05cb7c",
       "mode": "100644",
       "bytes": 100,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3069,7 +3069,7 @@
       "blob_sha": "afc5e4b05ee6f4be4f17eb616742b59aee4c5ac1",
       "mode": "100644",
       "bytes": 2765,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3078,7 +3078,7 @@
       "blob_sha": "bb5785e3278ab7a24b3080cf22ea0f609aab4595",
       "mode": "100644",
       "bytes": 252,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3087,7 +3087,7 @@
       "blob_sha": "fb8d298e9bb8e090139bbc5e958f11a237672825",
       "mode": "100644",
       "bytes": 534,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3096,7 +3096,7 @@
       "blob_sha": "a2555a6c048de98d68f534fbba18baf4b4311e50",
       "mode": "100644",
       "bytes": 170,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3105,7 +3105,7 @@
       "blob_sha": "f896dcf1c7fb118fc491094edd6244e16856d586",
       "mode": "100644",
       "bytes": 96,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3114,7 +3114,7 @@
       "blob_sha": "d5db27c5cf1f5b0e66e16f6314d042a4ef707222",
       "mode": "100644",
       "bytes": 48280,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3123,7 +3123,7 @@
       "blob_sha": "1dc9b7a21bc59b6540d55b3d8933e5a6ba9f8947",
       "mode": "100644",
       "bytes": 156,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3132,7 +3132,7 @@
       "blob_sha": "961afefb66cb70ea2f10784029572e5f68ae4740",
       "mode": "100644",
       "bytes": 50419,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3141,7 +3141,7 @@
       "blob_sha": "df0cffe86b5e9f154c5ef6207120d6bd43706631",
       "mode": "100644",
       "bytes": 156,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3150,7 +3150,7 @@
       "blob_sha": "1ab18a14367cf31113eddf5ae15d9fb3549f39ab",
       "mode": "100644",
       "bytes": 52679,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3159,7 +3159,7 @@
       "blob_sha": "ad14662e25e7a4e3bd7f543c126ac24417bc3665",
       "mode": "100644",
       "bytes": 160,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3168,7 +3168,7 @@
       "blob_sha": "83c6bd7c4ff0abf4634765312b8a3026942d2b35",
       "mode": "100644",
       "bytes": 53629,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3177,7 +3177,7 @@
       "blob_sha": "22a27e4ddbe26664c57f778a864b6872f6c2ba03",
       "mode": "100644",
       "bytes": 157,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3186,7 +3186,7 @@
       "blob_sha": "5bd6228ce62ec10f00316b136663ed6b60ebf9e5",
       "mode": "100644",
       "bytes": 43366,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3195,7 +3195,7 @@
       "blob_sha": "53c534b7fecfd84e465c8943fe3adf500a4444f4",
       "mode": "100644",
       "bytes": 193,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3204,7 +3204,7 @@
       "blob_sha": "b95045b400a77419292cab245f9f66f6298dbb5d",
       "mode": "100644",
       "bytes": 44086,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3213,7 +3213,7 @@
       "blob_sha": "51f023e0d609798e72d46bf41309e092d72ccb07",
       "mode": "100644",
       "bytes": 178,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3222,7 +3222,7 @@
       "blob_sha": "f0dbd14f3795a40b23cbe5b826f776f4ea7cba4c",
       "mode": "100644",
       "bytes": 45738,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3231,7 +3231,7 @@
       "blob_sha": "ce9c30a98541e23244876fef9dc67c2639fdd746",
       "mode": "100644",
       "bytes": 182,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3240,7 +3240,7 @@
       "blob_sha": "982ca462b1b047c945d3b7b0123eb42dfd8d48cd",
       "mode": "100644",
       "bytes": 46837,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3249,7 +3249,7 @@
       "blob_sha": "f78020dd4028d56497c44b7afa94985f0d18f8ce",
       "mode": "100644",
       "bytes": 181,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3258,7 +3258,7 @@
       "blob_sha": "7daf56afabf65a4707d7bb06d829f56b247c9e80",
       "mode": "100644",
       "bytes": 25439,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3267,7 +3267,7 @@
       "blob_sha": "ac9975c585ede6958758980ade161f687d40d58b",
       "mode": "100644",
       "bytes": 119,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3276,7 +3276,7 @@
       "blob_sha": "3da0a1c62f19f720590b54fc1de7b027af100945",
       "mode": "100644",
       "bytes": 680,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3285,7 +3285,7 @@
       "blob_sha": "c50b9ddfde9da7ebb2f67eba68d58fa2cdee902a",
       "mode": "100644",
       "bytes": 664,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3294,7 +3294,7 @@
       "blob_sha": "6761344639bcde069cf7133d52e127536dcdd037",
       "mode": "100644",
       "bytes": 39443,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3303,7 +3303,7 @@
       "blob_sha": "70bf90c0efb66da2a7aa19a820d766cfe3ef3183",
       "mode": "100644",
       "bytes": 643,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3312,7 +3312,7 @@
       "blob_sha": "7a83d53ae70ca3d81cda827cc224ec8c5efa4f17",
       "mode": "100644",
       "bytes": 40539,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3321,7 +3321,7 @@
       "blob_sha": "7a8713539491f51c52ba3a1525d181efd32c1f0f",
       "mode": "100644",
       "bytes": 677,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3330,7 +3330,7 @@
       "blob_sha": "9f0334cac7f3852b4d06dc9e5cf0f9646ba21a5e",
       "mode": "100644",
       "bytes": 41695,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3339,7 +3339,7 @@
       "blob_sha": "808a94f0fd9c3b3cb0267e5cfe4dced2e65ecb1c",
       "mode": "100644",
       "bytes": 678,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3348,7 +3348,7 @@
       "blob_sha": "d768bf811ffeb0d794b732a82940fa1442af499f",
       "mode": "100644",
       "bytes": 39534,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3357,7 +3357,7 @@
       "blob_sha": "3d5bf6fb4ef94b452ed1ef0df926fc2bee55e973",
       "mode": "100644",
       "bytes": 647,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3366,7 +3366,7 @@
       "blob_sha": "09eee10d4fb4b9fe1e70a1ee56825a207ae8034a",
       "mode": "100644",
       "bytes": 40630,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3375,7 +3375,7 @@
       "blob_sha": "6c546001331cf4f2f68563229f994b55730dfdb1",
       "mode": "100644",
       "bytes": 681,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3384,7 +3384,7 @@
       "blob_sha": "1b1a64f50d204b03ef0c5575233687830a1b053a",
       "mode": "100644",
       "bytes": 41779,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3393,7 +3393,7 @@
       "blob_sha": "994aa9ef9f50495a3ac558630b0234680be23c2f",
       "mode": "100644",
       "bytes": 682,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3402,7 +3402,7 @@
       "blob_sha": "643f921b65819c9e8c80a97c51fc68a89053bd51",
       "mode": "100644",
       "bytes": 705,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3411,7 +3411,7 @@
       "blob_sha": "c148f67f5e9fe4a108519eeaace89e708a51f8f5",
       "mode": "100644",
       "bytes": 689,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3420,7 +3420,7 @@
       "blob_sha": "1849d809a679e56414f4e18dce8ca3c41109e84e",
       "mode": "100644",
       "bytes": 726,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3429,7 +3429,7 @@
       "blob_sha": "a83a677c56df6f1ac395d2ba71e60a08b0985e97",
       "mode": "100644",
       "bytes": 40517,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3438,7 +3438,7 @@
       "blob_sha": "f527248ad547015ad8af1181e646da3b235de08f",
       "mode": "100644",
       "bytes": 684,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3447,7 +3447,7 @@
       "blob_sha": "e1a988dc9e80be9a0803e22d021b1e81fdcc5b94",
       "mode": "100644",
       "bytes": 40608,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3456,7 +3456,7 @@
       "blob_sha": "47e054a961adb3d97caaa31c854d9b8ef4555bf9",
       "mode": "100644",
       "bytes": 688,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3465,7 +3465,7 @@
       "blob_sha": "b5b94852a57b19bcb357a6cae2cae2e7910e05a1",
       "mode": "100644",
       "bytes": 25783,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3474,7 +3474,7 @@
       "blob_sha": "026adcaad4c56cb1989bd31cbcf3ad21f3965a17",
       "mode": "100644",
       "bytes": 178,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3483,7 +3483,7 @@
       "blob_sha": "fd4e66e81f3507b190fb2986a26a45c1c380e302",
       "mode": "100644",
       "bytes": 26327,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3492,7 +3492,7 @@
       "blob_sha": "075efb7054901b1022af68e723647769cbe1d556",
       "mode": "100644",
       "bytes": 164,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3501,7 +3501,7 @@
       "blob_sha": "769d2142c03b10680800b3b6ae883e27fe04c5a2",
       "mode": "100644",
       "bytes": 26451,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3510,7 +3510,7 @@
       "blob_sha": "bdab208b69d287128195eccbd084c8cf4ca658c3",
       "mode": "100644",
       "bytes": 168,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3519,7 +3519,7 @@
       "blob_sha": "6ff8674af772af896d7d33c7addc37c57822f8a2",
       "mode": "100644",
       "bytes": 27790,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3528,7 +3528,7 @@
       "blob_sha": "8dfa76a58eb720dd1992c2cc9abf1dd4b39c5a66",
       "mode": "100644",
       "bytes": 169,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3537,7 +3537,7 @@
       "blob_sha": "fdec9906621904180f42bd5c91f377397fd6cf95",
       "mode": "100644",
       "bytes": 166,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3546,7 +3546,7 @@
       "blob_sha": "46729bbf30f3b2f176492d907fb8ca3f6a1e3026",
       "mode": "100644",
       "bytes": 179,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3573,7 +3573,7 @@
       "blob_sha": "30d52963e281dcd7e6dd70555340fc987d3568ef",
       "mode": "100644",
       "bytes": 29513,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3582,7 +3582,7 @@
       "blob_sha": "f12dcbce52babb40fb61765aa46ddf47e3846511",
       "mode": "100644",
       "bytes": 17597,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3591,7 +3591,7 @@
       "blob_sha": "cf8e24aee5962ebcf7e4d58d932cc3321f3cdd38",
       "mode": "100644",
       "bytes": 18055,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3600,7 +3600,7 @@
       "blob_sha": "d2880017c25716417f837a1c26044a0342fa3f9a",
       "mode": "100644",
       "bytes": 19151,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3609,7 +3609,7 @@
       "blob_sha": "d71697d4b638737a5545dd0cb28cba8f613e4eec",
       "mode": "100644",
       "bytes": 18746,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3618,7 +3618,7 @@
       "blob_sha": "3fa682efbb4b1d1941194a5dd8b78f39b33b72b0",
       "mode": "100644",
       "bytes": 19469,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3627,7 +3627,7 @@
       "blob_sha": "ff7c6ddecf6b689d93823c4c2a8c41e6e058de46",
       "mode": "100644",
       "bytes": 19395,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3636,7 +3636,7 @@
       "blob_sha": "460231fb88a0083e577ed534760307d7779fd82f",
       "mode": "100644",
       "bytes": 20733,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3645,7 +3645,7 @@
       "blob_sha": "d03a7c781e1a2b91481103dc3227a6bdca4a461c",
       "mode": "100644",
       "bytes": 21227,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3654,7 +3654,7 @@
       "blob_sha": "c8f9bca78c2f89ce40dff0afe6cdd7068061b3e6",
       "mode": "100644",
       "bytes": 16729,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3681,7 +3681,7 @@
       "blob_sha": "ee2371540417ffbc652745b059effa260430179f",
       "mode": "100644",
       "bytes": 137052,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3690,7 +3690,7 @@
       "blob_sha": "42b5717ddb92dc6e85edc72fb5c3a798b380902e",
       "mode": "100644",
       "bytes": 135124,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3699,7 +3699,7 @@
       "blob_sha": "0cf61263494608cbf1fccecce606bc01a247d1e4",
       "mode": "100644",
       "bytes": 162036,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3708,7 +3708,7 @@
       "blob_sha": "366d1489cdde3523e488ed1ee85583618fb0c120",
       "mode": "100644",
       "bytes": 139512,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3771,7 +3771,7 @@
       "blob_sha": "254e1e48c86f51e103ee5a7f1fe0ee09e17af80c",
       "mode": "100644",
       "bytes": 104852,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3780,7 +3780,7 @@
       "blob_sha": "378df79b58557910c291d1e2bca0707bfa003dd5",
       "mode": "100644",
       "bytes": 250009,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
@@ -3798,16 +3798,16 @@
       "blob_sha": "6ed10d7108259d0c47c58b8158b4653efc03555c",
       "mode": "100644",
       "bytes": 94519,
-      "lines": null,
+      "lines": 0,
       "category": "excluded_vendor",
       "binary": true
     },
     {
       "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
-      "blob_sha": "26a746b5f3d7ec87142c7e52f2feaf596c8f5ed8",
+      "blob_sha": "72ee4b9997d4057abde01b8fa7fc887db271b0b9",
       "mode": "100644",
-      "bytes": 21550,
-      "lines": 168,
+      "bytes": 23253,
+      "lines": 177,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3816,7 +3816,7 @@
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
       "bytes": 4049,
-      "lines": null,
+      "lines": 0,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3948,10 +3948,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
+      "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
       "mode": "100644",
-      "bytes": 562690,
-      "lines": 3126,
+      "bytes": 566942,
+      "lines": 3189,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "35b5fae72d4baf90af15a5effde7c9d3fff820f7",
+      "blob_sha": "49da8f353d7091e8e80328f67e6792879ced97d5",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3975,7 +3975,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "5ecad3411a7fd5fa72e9124f13a5d951d6669c6f",
+      "blob_sha": "4703bc093025f569a223598ceda51d6d71827467",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3993,10 +3993,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "b3aee598de024adbfebefc05cac3804929996e29",
+      "blob_sha": "749e1375dcdb1d1436a8e753d0b038b3fb520673",
       "mode": "100644",
-      "bytes": 784206,
-      "lines": 11664,
+      "bytes": 790501,
+      "lines": 11720,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4780,6 +4780,15 @@
       "mode": "100644",
       "bytes": 9660,
       "lines": 33,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/pdf-resource-budget.test.cjs",
+      "blob_sha": "c3f651d66583fe5c0538e151ae8c35ca905effd1",
+      "mode": "100644",
+      "bytes": 5045,
+      "lines": 64,
       "category": "test_source_static_only",
       "binary": false
     },

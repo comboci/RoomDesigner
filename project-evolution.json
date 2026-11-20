@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V394-R",
+  "current_source_release": "V395-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1869,6 +1869,12 @@
       "version": "V394-R",
       "date": "2026-11-20",
       "change": "اصلاح خروجی DXF برای آبجکت‌های CAD دارای dxfGeometry با حفظ مختصات و دوران/وارونگی و لایه اصلی؛ حذف جایگزین جعلی تصاویر PDF/Raster و الزام تأیید آگاهانه قبل از خروجی؛ هشت سناریوی رگرسیون منبع اضافه شد؛ Test و Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V395-R",
+      "date": "2026-11-20",
+      "change": "افزودن سقف تجمیعی صفحات و تصاویر PDF، آماده‌سازی سند مستقل و الزام موفقیت ذخیره اصلی پیش از اعمال، و تولید تدریجی JPEG/PDF بدون نگهداری آرایه دوم تصاویر؛ ۱۰ سناریوی رگرسیون منبع افزوده شد، بدون اجرای Test یا Build.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8529,6 +8535,33 @@
         "هشت آزمون منبع بدون اجرا؛ Browser/CAD/Build/Node همگی NOT_RUN.",
         "سایر ریسک‌های PDF quota، DWG hard-cap و تراکنش LocalStorage/IndexedDB هنوز باز هستند."
       ]
+    },
+    {
+      "id": "RD395-PDF-RESOURCE-STORAGE-BOUNDARY",
+      "record_type": "source_remediation",
+      "module": "pdf_import_export_memory_and_storage",
+      "source": "درخواست ادامه ممیزی و اصلاح، گام N3 پرونده RD-IE-02/08",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+      "target_version": "V395-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "چت (ادامه ممیزی و اصلاح) رو ادامه بده",
+      "assistant_interpretation": "بازکردن گام بعدی ممیزی با کنترل حجم Base64/حافظه و کاهش احتمال شکستن ذخیره در Import/Export PDF، بدون اجرای تست و Build مطابق POLICY.",
+      "implementation_status": "ورود PDF: سقف ۱۶ صفحه و ۳٬۰۰۰٬۰۰۰ نویسه تصویر در هر batch، سقف ۵۰۰ صفحه PDF مبدأ، validation و staging مستقل، بودجه ۳٬۲۰۰٬۰۰۰ نویسه برای سند و پیش‌شرط موفقیت نوشتن واقعی rd_last پیش از انتشار Undo/تغییر. خروجی مستقیم PDF: یک تصویر JPEG در هر دور از طریق canvas.toBlob، سقف ۲۰ صفحه و ۳۲MiB. افزودن ده سناریوی رگرسیون به سورس.",
+      "related_audit_findings": [
+        "RD-IE-02",
+        "RD-IE-08"
+      ],
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "در V394-R هر تصویر PDF جداگانه تا ۱۲M نویسه مجاز بود و به فهرست کامل result اضافه می‌شد؛ اندازه تجمیعی کنترل نمی‌شد.",
+        "در V395-R enforcePdfImportBudget و preparePdfPageRecords پیش از جهش سند و تاریخچه ارزیابی می‌شوند؛ write واقعی rd_last پیش از انتشار انجام می‌شود و رندر/رد quota مسیر بازگردانی دارند.",
+        "در V394-R خروجی مستقیم PDF JPEG همه صفحات را در images[] جمع می‌کرد؛ در V395-R تبدیل Blob و stream page objects جایگزین می‌شود و سقف تجمیعی بایت دارد.",
+        "ده آزمون رگرسیون به متن سورس افزوده شده‌اند و اجرا نشده‌اند؛ سازگاری عملی Safari/Chromium و بار حافظه اندازه‌گیری نشده است.",
+        "ریسک معماری باقی‌مانده: تصاویر همچنان داخل JSON/LocalStorage هستند؛ انتقال به IndexedDB با تراکنش جامع و تفکیک دارایی‌های باینری انجام نشده است."
+      ]
     }
   ],
   "analyses": [
@@ -10184,6 +10217,22 @@
         "DXF codepage, PDF quota and DWG limits remain open.",
         "Cross-store LocalStorage/IndexedDB crash recovery is not atomic."
       ]
+    },
+    {
+      "id": "RD395-PDF-RESOURCE-STORAGE-AUDIT",
+      "record_id": "RD395-PDF-RESOURCE-STORAGE-BOUNDARY",
+      "created_at": "2026-11-20",
+      "module": "pdf_resource_governance",
+      "problem": "ورود بی‌سقف مجموع Base64 و ذخیره فایل بزرگ در rd_last می‌تواند باعث quota-denied و تغییر نیمه‌کاره سند شود؛ خروجی PDF با نگهداری همزمان JPEGهای همه صفحات فشار حافظه ایجاد می‌کرد.",
+      "decision": "رد پیشگیرانه تعداد/حجم نامتعارف با پیغام کاربر، staging/validation مستقل، آزمون write واقعی primary پیش از commit و جابجایی خروجی PDF به ساخت صفحه‌ای با بودجه بایت و تعداد صفحات.",
+      "remaining_risks": [
+        "Runtime acceptance و تست تحت سهمیه واقعی iPhone Safari، Chromium و Node/Playwright هنوز NOT_RUN است.",
+        "نگهداری دارایی‌های تصویر در JSON و LocalStorage همچنان با محدودیت سهمیه و کپی‌های اضافی ساختاری همراه است.",
+        "IndexedDB mirror و LocalStorage هنوز تراکنش اتمیک مشترک ندارند؛ جابه‌جایی به object store و crash journal در مرحله مستقلی لازم است.",
+        "سقف بودجه محلی محافظه‌کارانه ممکن است برخی پروژه‌های بزرگ یا PDFهای باکیفیت بالا را رد کند؛ مسیر جایگزین کیفیت پایین‌تر و دسته کوچک‌تر است.",
+        "ساخت PDF همچنان تصویرمحور است و آرایه قطعات PDF را تا ساخت Blob نهایی نگه می‌دارد؛ مصرف حافظه به صفر نمی‌رسد.",
+        "تأیید ذخیره فیزیکی PDF در مسیر دانلود anchor قابل تضمین نیست."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11626,24 +11675,31 @@
       "date": "2026-11-20",
       "change": "اصلاح خروجی DXF برای آبجکت‌های CAD دارای dxfGeometry با حفظ مختصات و دوران/وارونگی و لایه اصلی؛ حذف جایگزین جعلی تصاویر PDF/Raster و الزام تأیید آگاهانه قبل از خروجی؛ هشت سناریوی رگرسیون منبع اضافه شد؛ Test و Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V395-R",
+      "date": "2026-11-20",
+      "change": "افزودن سقف تجمیعی صفحات و تصاویر PDF، آماده‌سازی سند مستقل و الزام موفقیت ذخیره اصلی پیش از اعمال، و تولید تدریجی JPEG/PDF بدون نگهداری آرایه دوم تصاویر؛ ۱۰ سناریوی رگرسیون منبع افزوده شد، بدون اجرای Test یا Build.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V394-R",
+    "release": "V395-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-IE-03/04 source-only: native CAD segments exported with rotation/mirror/layer, raster/PDF explicitly omitted after user confirmation. Eight source tests authored NOT_RUN; other P1 issues and cross-store persistence unresolved."
+    "audit": "RD-IE-02/08 source-only: PDF intake memory/LocalStorage guards, staged candidate and progressive PDF generation; ten regression cases authored NOT_RUN. V395 audit multiple-of-five milestone DUE: full source/Browser regression NOT_RUN under POLICY. Cross-store atomicity remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "NEXT N4: RD-IE-05 (P1) — محدودیت واقعی ورودی/خروجی DWG و همگام‌سازی مستندات؛ طبق POLICY تست/Build اجرا نشود.",
+      "V395-R پذیرش اجرا نشده: PDF واردشده با quota-denied، ۱/۱۰/۲۰+ صفحه، کیفیت‌های مختلف، خطای رندر، محاسبه peak memory، ذخیره/بازگشایی و تست Safari/Chromium. Test/Build NOT_RUN.",
+      "V395 milestone audit: بررسی کامل source و مرورگر در انتظار است؛ قوانین POLICY همچنان بدون اجرای تست و Build در این چرخه رعایت می‌شود.",
       "V394-R source change pending runtime/user acceptance; eight test scenarios authored NOT_RUN.",
       "V393-R acceptance pending: export NRD with custom and published SVG referenced by equipment and revisions, import on clean Chromium/iPhone Safari profile, verify exact visible SVG, deliberate duplicate IDs, malformed checksums, quota-denied writes and rollback. Tests NOT_RUN.",
-      "NEXT N: RD-IE-02/08 (P1) — PDF image/base64 quota and memory budgets, fail-safe before commit; author regressions but do not execute Test/Build.",
       "V392-R runtime acceptance needed: test in browser active drag rejected, render fault rolls back and leaves prior document; Node/jsdom tests NOT_RUN.",
       "Verify V391-R staged DXF import with forced validation/render failures, repeated Import and Cancel while callback is pending, 1 Undo and save/reopen on Chromium and iPhone Safari. Six tests currently NOT_RUN.",
       "V394-R acceptance pending: real CAD round-trip with source vector rotations/mirroring; raster loss notice and Cancel must be verified in browser.",
-      "N3 · RD-IE-02/08: محدودیت منابع و ذخیره fail-safe تصاویر PDF و page export",
       "N4 · RD-IE-05: سقف سخت DWG و همگام‌سازی IMPORT-FORMATS.md",
       "N5 · RD-IE-06/07: واحد DXF و اعمال تراکنشی DXF/PDF",
       "Verify V390-R in Safari and Chromium with invalid rd_last, confirmed replacement, denied LocalStorage write; the recovery export must retain original raw damaged bytes. Back up first; tests NOT_RUN.",

@@ -12,3 +12,11 @@ Validation: tests/pdf-import.browser.test.cjs uses ROOM_PDF_FIXTURE if set, othe
 
 
 RD-278 supersedes the numeric crop UI: percentage fields are removed. Crop-body movement preserves dimensions and stays inside the page. Edge/corner resizing anchors the opposite edge/corner, with a small minimum size. Pointer cancellation restores the previous crop. Keyboard arrows adjust a focused crop/handle by one display pixel; Shift uses ten pixels. Independent page crops, reset and raster import remain unchanged.
+
+## V395-R — مدیریت منابع PDF و ذخیره پیش از اعمال (فقط سورس)
+
+- ورود PDF در هر مرحله حداکثر ۱۶ صفحه انتخاب‌شده و حداکثر ۳٬۰۰۰٬۰۰۰ نویسه Base64 می‌پذیرد؛ فایل‌هایی با بیش از ۵۰۰ صفحه پیش از ساخت فهرست رد می‌شوند. کیفیت‌های تصویر موجود حفظ شده‌اند و در تجاوز از بودجه باید صفحات یا کیفیت کاهش یابد.
+- تمام تصاویر ابتدا در یک سند موقت آماده، اعتبارسنجی و در آن ثبت می‌شوند؛ سقف محافظه‌کارانه JSON سند هنگام این ورود ۳٬۲۰۰٬۰۰۰ نویسه است. در صورت خطای رندر یا رد نوشتن واقعی rd_last در LocalStorage، سند و تاریخچه فعال قبلی حفظ می‌شوند. این پیش‌شرط، تضمین سهمیه واقعی ذخیره برای تمام مرورگرها نیست.
+- خروجی مستقیم PDF صفحات را یک‌به‌یک با canvas.toBlob() تبدیل و پس از رهاکردن Canvas می‌نویسد؛ دیگر JPEG تمام صفحات در آرایه دوم تجمیع نمی‌شود. سقف خروجی مستقیم ۲۰ صفحه و ۳۲ MiB است؛ برای نقشه‌های بیشتر مسیر چاپ توصیه می‌شود.
+- معامله LocalStorage و IndexedDB اتمیک نشده؛ انتقال تصاویر به مخزن binary جداگانه و crash recovery بین مخزن‌ها همچنان کار معماری مستقل است.
+- موارد رگرسیونِ منبع افزوده شده‌اند ولی اجرای Node/Playwright/Build/PDF واقعی/iOS هنوز NOT_RUN و تأیید کاربر PENDING_USER است.

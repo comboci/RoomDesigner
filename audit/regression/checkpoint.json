@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_CONTINUE_N2_DXF_EXPORT_FIDELITY_SOURCE_REMEDIATION",
+  "execution_source": "USER_CONTINUE_ROOMDESIGNER_AUDIT_N3_PDF_RESOURCE_GUARDS",
   "execution_timestamp": "2026-11-20",
-  "source_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
+  "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V394-R",
+  "product_release": "V395-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "b7ccdabcf7a0dec7c7afd6de310e56967034e355",
+  "inventory_blob_sha": "21222b8cc656a851480dd9f1e110237fc8ddea5f",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V394-R source-only correction of RD-IE-03/04: export native dxfGeometry with transforms and preserved CAD layer; fail closed on malformed CAD segments. Exclude visible raster/PDF images and require explicit user confirmation before saving a lossy vector-only DXF. Eight regression scenarios authored NOT_RUN. Build/Browser/CAD runtime NOT_RUN; user acceptance PENDING. Remaining deep-audit findings and IndexedDB/LocalStorage cross-store atomicity unresolved.",
+  "coverage_note": "V395-R focused source-only PDF budget, staging and export memory safeguards; ten regression cases authored NOT_RUN. Prior index/pdf importer coverage invalidated on changed blobs, earliest uncovered cursor preserved. Cross-store and runtime acceptance remain open.",
   "segments": [
     {
       "path": "index.html",
@@ -324,7 +324,7 @@
       "actual_read_end_line": 58,
       "reviewed_start_line": 1,
       "reviewed_end_line": 58,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD333-01"
       ],
@@ -332,7 +332,10 @@
       "source_head": "c63e2bea236a0c0d48d9064526e09dcb96918537",
       "review_basis": "Complete 58-line pinned source read; patch statically inspected; no product execution.",
       "truncated": false,
-      "coverage_valid": true
+      "coverage_valid": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "invalidation_reason": "V395-R changed source blob; old focused or broad review is historical only."
     },
     {
       "path": "assets/dwg-import.js",
@@ -563,14 +566,18 @@
       "actual_read_end_line": 2258,
       "reviewed_start_line": 2247,
       "reviewed_end_line": 2258,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD394-DXF-ROUNDTRIP-RASTER-DISCLOSURE"
       ],
       "reviewed_at": "2026-11-20T04:30:00.000Z",
       "source_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
       "review_basis": "Focused authored source read statically; no tests/build/browser/CAD execution.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V395-R changed source blob; old focused or broad review is historical only."
     },
     {
       "path": "index.html",
@@ -579,13 +586,81 @@
       "actual_read_end_line": 2282,
       "reviewed_start_line": 2274,
       "reviewed_end_line": 2282,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD394-DXF-ROUNDTRIP-RASTER-DISCLOSURE"
       ],
       "reviewed_at": "2026-11-20T04:30:00.000Z",
       "source_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
       "review_basis": "Focused authored source read statically; no tests/build/browser/CAD execution.",
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V395-R changed source blob; old focused or broad review is historical only."
+    },
+    {
+      "path": "assets/pdf-import.js",
+      "blob_sha": "a25907597879677de53fd5e17540f470a6fd43b5",
+      "actual_read_start_line": 6,
+      "actual_read_end_line": 63,
+      "reviewed_start_line": 6,
+      "reviewed_end_line": 63,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD395-PDF-RESOURCE-GUARDS"
+      ],
+      "reviewed_at": "2026-11-20",
+      "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+      "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
+      "actual_read_start_line": 696,
+      "actual_read_end_line": 755,
+      "reviewed_start_line": 696,
+      "reviewed_end_line": 755,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD395-PDF-RESOURCE-GUARDS"
+      ],
+      "reviewed_at": "2026-11-20",
+      "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+      "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
+      "actual_read_start_line": 2163,
+      "actual_read_end_line": 2210,
+      "reviewed_start_line": 2163,
+      "reviewed_end_line": 2210,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD395-PDF-RESOURCE-GUARDS"
+      ],
+      "reviewed_at": "2026-11-20",
+      "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+      "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
+      "truncated": false
+    },
+    {
+      "path": "tests/pdf-resource-budget.test.cjs",
+      "blob_sha": "c3f651d66583fe5c0538e151ae8c35ca905effd1",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 64,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 64,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD395-PDF-RESOURCE-GUARDS"
+      ],
+      "reviewed_at": "2026-11-20",
+      "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+      "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
       "truncated": false
     }
   ],
@@ -841,11 +916,12 @@
     {
       "id": "RD-IE-02",
       "priority": "P1",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_MITIGATED_RUNTIME_PENDING",
       "path": "index.html;assets/pdf-import.js",
       "root_cause": "PNG data URLs embedded in doc imageAssets can exceed LocalStorage primary quota, cross-store authority remains unresolved.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V395-R bounded, staged source mitigation; Node/Browser/Build NOT_RUN, primary quota still browser-dependent. Large binary assets in LocalStorage and non-atomic IndexedDB mirror are not fixed.",
+      "correction": "Bound current PDF import document JSON at 3.2m characters; validate detached candidate and require successful LocalStorage rd_last write before publishing Undo changes."
     },
     {
       "id": "RD-IE-03",
@@ -897,11 +973,12 @@
     {
       "id": "RD-IE-08",
       "priority": "P1",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_MITIGATED_RUNTIME_PENDING",
       "path": "assets/pdf-import.js;index.html",
       "root_cause": "PDF input/output accumulate all rendered images in memory with no aggregate cap.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V395-R bounded, staged source mitigation; Node/Browser/Build NOT_RUN, primary quota still browser-dependent. Large binary assets in LocalStorage and non-atomic IndexedDB mirror are not fixed.",
+      "correction": "Bound selected import batch to 16 pages and 3m encoded characters; export JPEG/PDF page-wise with a 20-page and 32MiB cap; avoid retaining second per-page JPEG array."
     },
     {
       "id": "RD-IE-09",
@@ -993,22 +1070,35 @@
       "root_cause": "Native DXF geometry discarded by exporter and raster PDFs misrepresented as generic SVG placeholders.",
       "correction": "CAD-native source LINE geometry preserved with transforms/layers, unsafe segments rejected, raster omitted with cancellation guard; 8 tests authored.",
       "source_recheck": "Source was statically examined; Node/Playwright/Build/real CAD test NOT_RUN."
+    },
+    {
+      "id": "RD395-PDF-RESOURCE-GUARDS",
+      "priority": "P1",
+      "status": "SOURCE_MITIGATED_RUNTIME_PENDING",
+      "path": "index.html;assets/pdf-import.js;tests/pdf-resource-budget.test.cjs",
+      "related_audit_findings": [
+        "RD-IE-02",
+        "RD-IE-08"
+      ],
+      "root_cause": "PDF images grew without an aggregate budget and export retained separate all-pages JPEG images, exposing quota and peak-memory failures.",
+      "correction": "Guard aggregate PDF page counts and Base64 bytes, candidate-stage and validate before durable LocalStorage write and live history commit; stream JPEG page objects into bounded PDF parts and release canvas.",
+      "source_recheck": "10 regression tests authored NOT_RUN. Remaining Base64 JSON/LocalStorage storage and IndexedDB cross-store atomicity unresolved."
     }
   ],
   "last_completed_segment": {
     "path": "index.html",
-    "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
-    "start_line": 2274,
-    "end_line": 2282,
+    "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
+    "start_line": 2163,
+    "end_line": 2210,
     "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
+    "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Index changed in V394-R, other code is not credited as reviewed by focused CAD patch inspection."
+    "reason": "Index changed in V395-R; focused PDF segments do not cover unrelated lines."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1017,7 +1107,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V394-R source-only fix of native DXF geometry and raster-loss confirmation; eight regressions authored, NOT_RUN.",
+    "static_diff": "V395-R source-only: PDF importer page/aggregate budget and staged primary write; PDF exporter toBlob per-page and 20-page/32MiB limits; 10 regressions authored NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1034,11 +1124,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned main Git tree plus exact staged Git blob metadata; no execution",
-    "baseline_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
-    "entries": 583,
+    "method": "Pinned main Git tree plus exact staged Git blobs; source and test code not executed",
+    "baseline_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+    "entries": 584,
     "no_product_execution": true,
-    "notes": "V394-R candidate source, 8 regression cases, version, docs, project-evolution, exact inventory and checkpoint included in one atomic commit."
+    "notes": "V395-R 8 changed/new files with exact staged blob IDs, inventory and checkpoint in one candidate commit. Full milestone source audit due, NOT_RUN."
   },
   "branch_review": {
     "branches": [
