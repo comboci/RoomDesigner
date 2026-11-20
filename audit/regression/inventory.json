@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "3778643b22c6f2010b8ef337ddce735bed0ad439",
+      "blob_sha": "275f243414163c83017dcc220f794f1138a113d0",
       "mode": "100644",
-      "bytes": 12962,
-      "lines": 167,
+      "bytes": 13316,
+      "lines": 169,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3939,10 +3939,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "b530b36b10ec70b3b3954a975e73252025f55de9",
+      "blob_sha": "40afa07315a4adbdb7332afa782f17e6a3c91407",
       "mode": "100644",
-      "bytes": 551808,
-      "lines": 2963,
+      "bytes": 551886,
+      "lines": 2964,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3957,7 +3957,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "0e0cf038314b3a2b26483a6611223e50e9e68937",
+      "blob_sha": "6d91a0599f916b5313b7105f147e6a3f597dbe07",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "21f4a1a7745a2184eacf4f06bfeee697602e0ce1",
+      "blob_sha": "644530f7b5e9fdba221e4a7e57cea98b38b69d4a",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3984,10 +3984,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "ccfaf8979c709d84c0d3c02f868464e498f20de0",
+      "blob_sha": "c4cda6526adee0905bb5bc728b718c4fb6fffdb6",
       "mode": "100644",
-      "bytes": 749550,
-      "lines": 11227,
+      "bytes": 753474,
+      "lines": 11273,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4636,6 +4636,15 @@
       "mode": "100644",
       "bytes": 4873,
       "lines": 18,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/mirror-startup-precedence.test.cjs",
+      "blob_sha": "3288eae60a9089147c2e2244911b2b25b3f4361c",
+      "mode": "100644",
+      "bytes": 3384,
+      "lines": 63,
       "category": "test_source_static_only",
       "binary": false
     },

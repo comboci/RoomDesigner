@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V388-R",
+  "current_source_release": "V389-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1833,6 +1833,12 @@
       "version": "V388-R",
       "date": "2026-11-20",
       "change": "رفع اعلام موفقیت کاذب پس از شکست LocalStorage و موفقیت IndexedDB با نمایش هشدار و خروجی اضطراری؛ سه تست رگرسیون اضافه شد، بدون اجرای تست یا تغییر سیاست بازیابی.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V389-R",
+      "date": "2026-11-20",
+      "change": "اصلاح ترتیب بررسی نسخه محلی و checksum آینه در شروع برنامه، جلوگیری از پیام بازیابی گمراه‌کننده با LocalStorage سالم؛ چهار تست رگرسیون ایستا افزوده شد، بدون اجرای تست.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8243,6 +8249,26 @@
         "اصلاح کد و سه سناریوی regression در tests/storage-primary-failure.test.cjs ثبت شد؛ اجرا نشد.",
         "اولویت داده معتبر LocalStorage نسبت به IndexedDB و فرمت‌های موجود تغییر نکردند."
       ]
+    },
+    {
+      "id": "RD389-RECOVERY-LOCAL-AUTHORITY",
+      "record_type": "source_remediation",
+      "module": "persistence_recovery_startup",
+      "source": "RoomDesigner cross-store audit; user N, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "target_version": "V389-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — رسیدگی به ریسک بعدی ذخیره‌سازی و بازیابی داده RoomDesigner",
+      "assistant_interpretation": "جلوگیری از هشدار گمراه‌کننده خراب بودن آینه IndexedDB، وقتی فایل سالم LocalStorage طبق سیاست برنامه مرجع است.",
+      "implementation_status": "اعتبارسنجی و اولویت نسخه محلی قبل از ارزیابی checksum آینه قرار گرفت؛ نسخه محلی خراب بدون بازنویسی حفظ می‌شود؛ فقط در نبود نسخه محلی معتبر فرایند اعتبارسنجی آینه انجام می‌شود؛ چهار تست رگرسیون جدید اضافه شد.",
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "بازبینی ایستای ترتیب عملیات recoverMirrorOnStartup در V388-R نشان می‌داد checksum آینه قبل از بررسی نسخه سالم محلی اجرا می‌شد.",
+        "در V389-R فقط ترتیب بررسی مرجع و checksum اصلاح شد و نوشتن/حذف جدید در storage انجام نمی‌شود.",
+        "سناریوهای سالم/خراب بودن نسخه محلی و متادیتای آینه در tests/mirror-startup-precedence.test.cjs ثبت شد؛ اجرا نشد."
+      ]
     }
   ],
   "analyses": [
@@ -9795,6 +9821,19 @@
         "Crash or unavailable previous snapshot may leave ambiguous recovery state.",
         "Tests/build/browser acceptance remain NOT_RUN."
       ]
+    },
+    {
+      "id": "RD389-RECOVERY-LOCAL-AUTHORITY-ANALYSIS",
+      "record_id": "RD389-RECOVERY-LOCAL-AUTHORITY",
+      "created_at": "2026-11-20",
+      "module": "cross_store_recovery",
+      "problem": "Mirror checksum validation preceded an authoritative valid LocalStorage check, so a damaged IndexedDB sidecar incorrectly warned the user to import another drawing.",
+      "decision": "Check and preserve any present local snapshot first; if valid return without requiring an intact mirror; if invalid warn and block automatic override; only recover/verify mirror when local is absent.",
+      "remaining_risks": [
+        "Cross-store writes remain non-atomic and two divergent valid documents are not automatically arbitrated.",
+        "The added regression is source-only, not executed; real browser verification remains pending.",
+        "No automatic overwrite or removal of either store is introduced."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11201,17 +11240,24 @@
       "date": "2026-11-20",
       "change": "رفع اعلام موفقیت کاذب پس از شکست LocalStorage و موفقیت IndexedDB با نمایش هشدار و خروجی اضطراری؛ سه تست رگرسیون اضافه شد، بدون اجرای تست یا تغییر سیاست بازیابی.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V389-R",
+      "date": "2026-11-20",
+      "change": "اصلاح ترتیب بررسی نسخه محلی و checksum آینه در شروع برنامه، جلوگیری از پیام بازیابی گمراه‌کننده با LocalStorage سالم؛ چهار تست رگرسیون ایستا افزوده شد، بدون اجرای تست.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V388-R",
+    "release": "V389-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Static source review of rd_last/write and mirror status; three focused test cases added but not executed. No claim of cross-store atomicity or runtime acceptance."
+    "audit": "V389-R focuses exclusively on startup LocalStorage authority before IndexedDB mirror checksum. Four regression cases added; tests, builds and browser runtime NOT_RUN. OPEN-CROSS-STORE remains unresolved; prior V385 audit signoff remains pending."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "Validate V389-R startup with real browser: valid local/corrupt mirror; corrupt local/valid mirror; no local/valid or corrupt mirror. Export backups first. Cross-store arbitration remains open.",
       "Divergent valid LocalStorage and IndexedDB snapshots need safe explicit export-and-select recovery; preserve both, no automatic authority switch.",
       "Run installed Chromium smoke/browser regression and triage failing tests; tests and user acceptance pending.",
       "Verify RD-074 mobile startup on iPhone Safari and storage-restricted previews; runtime acceptance pending.",

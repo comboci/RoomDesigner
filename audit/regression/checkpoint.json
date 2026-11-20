@@ -4,14 +4,14 @@
   "branch": "main",
   "execution_source": "USER_N_MANUAL_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "420d8b7cb0b01e816749147d7a2f784074f281b2",
+  "source_head": "8976825e637b50c8c05cf58ffef4acb10354e3c0",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V388-R",
+  "product_release": "V389-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "c5327dc797f3778b68cd4599b2845d169110c2b7",
+  "inventory_blob_sha": "e92fa08a820532b675a4bfecb978fc6ebe803de3",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V388-R: focused static review of saveAuto and persistenceStatus in index.html identified false-safe emergency export after primary LocalStorage failure with successful IndexedDB mirror. Source correction and three regression scenarios added; tests/build/browser NOT_RUN. Historical source review credited only for exact matching blobs; full repository-wide review remains open.",
+  "coverage_note": "V389-R focused static review reordered authoritative LocalStorage validation before IndexedDB mirror metadata/checksum in recoverMirrorOnStartup. It prevents a false import/recovery warning while valid local data exists; malformed local data remains untouched, absent-local recovery still checks the mirror. Four Node test cases were added but NOT_RUN. No broad source review or actual runtime acceptance was credited.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -108,7 +108,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -160,7 +160,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited."
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
     },
     {
       "path": "index.html",
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited.",
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
       "stale": true
     },
     {
@@ -300,7 +300,7 @@
       "coverage_valid": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "stale": true,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited."
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
     },
     {
       "path": "assets/pdf-import.css",
@@ -349,7 +349,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited."
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
     },
     {
       "path": "assets/dwg-worker.mjs",
@@ -366,7 +366,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited."
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
     },
     {
       "path": "storage-safety.js",
@@ -385,7 +385,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V388-R exact Git blob mismatch; historical review retained but not credited."
+      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
     },
     {
       "path": "storage-safety.js",
@@ -623,6 +623,14 @@
       "root_cause": "A failed rd_last localStorage write could be followed by a successful IndexedDB mirror, hiding the emergency export button because manualSaveFailed stayed false and persistenceStatus trusted the mirror as sufficient; on restart valid old LocalStorage takes precedence.",
       "correction": "Mark failed primary snapshot writes as manualSaveFailed, warn about a potentially older snapshot on reopening, and never hide the export action or use a success tooltip when save state is unsafe.",
       "source_recheck": "Focused code inspection plus three added Node regression scenarios (NOT_RUN). Cross-store valid-divergent snapshot authority remains OPEN."
+    },
+    {
+      "id": "RD389-RECOVERY-LOCAL-AUTHORITY",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "recoverMirrorOnStartup validated IndexedDB checksum before checking an intact authoritative LocalStorage document, producing a misleading recovery/import error even though the local drawing is valid.",
+      "correction": "Check present LocalStorage first, return silently for valid local data; preserve invalid-but-present local data and warn, and only then inspect mirror checksum/restore when local data is absent.",
+      "source_recheck": "Focused source review and four Node VM regression scenarios added. Tests/build/browser NOT_RUN; valid-divergent snapshot authority OPEN."
     }
   ],
   "last_completed_segment": {
@@ -634,11 +642,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "b530b36b10ec70b3b3954a975e73252025f55de9",
+    "blob_sha": "40afa07315a4adbdb7332afa782f17e6a3c91407",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Source status fix + release marker updated index blob. Full bounded review from line 1 remains pending."
+    "reason": "V389-R source modification invalidates previous index blob coverage; full bounded source review not performed."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -647,7 +655,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V388-R: reviewed saveAuto and persistenceStatus changes; local write failure now keeps manual warning/export even on mirror success. No tests/build executed.",
+    "static_diff": "V389-R source inspection of recoverMirrorOnStartup and regression cases confirms no new storage writes or deletes. Tests NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -664,11 +672,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned Git tree SHA plus exact staged Git blob metadata; no tests/build",
-    "baseline_head": "420d8b7cb0b01e816749147d7a2f784074f281b2",
-    "entries": 576,
+    "method": "Exact pinned Git tree and draft Git blob metadata; source code not executed",
+    "baseline_head": "8976825e637b50c8c05cf58ffef4acb10354e3c0",
+    "entries": 577,
     "no_product_execution": true,
-    "notes": "New focused primary-save failure regression test, V388-R source/release metadata and refreshed manifest."
+    "notes": "V389-R index and version files updated, one new static source regression, inventory/checkpoint refreshed; no product tests/build."
   },
   "branch_review": {
     "branches": [
