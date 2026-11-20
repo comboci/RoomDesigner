@@ -58,3 +58,9 @@ These limits do not constrain the converter's **peak internal WASM memory alloca
 DXF requires explicit unit-scale confirmation even if INSUNITS matches the default centimeter factor. The panel displays source/selected factors and before/after dimensions, and any unit edit invalidates prior approval. Imported layers preserve scale provenance.
 
 PDF source import now uses a recovery journal and matching transaction-ID marker before publishing Undo, and writes its IndexedDB mirror asynchronously. Failed writes attempt a prior-snapshot rollback; incomplete recovery is retained for explicit review. Source-only correction; Test/Build/browser NOT_RUN. Cross-store atomicity remains open.
+
+## V398-R — import/export clarity
+
+DXF text now inspects $DWGCODEPAGE and UTF-8 BOM before decoding. An explicit encoding selector is available for ambiguous or unsupported non-ASCII data, and decoding is fail-closed rather than silently replacing characters. Crop rendering defers expensive vector re-selection until drag release. Mandatory unit confirmation from V397 remains.
+
+PDF imports permit manual two-point centimeter calibration per selected page; uncalibrated raster references retain a clearly marked legacy 480-unit visual width rather than claiming physical accuracy. Direct PDF export now paints designer/revision/title/date/page title block and writes Unicode Info metadata. Browser anchor downloads report requested, not physically saved; File System Access write+close can be reported as saved. Build, Node, browser, performance and real-file tests NOT_RUN; cross-store atomicity OPEN.

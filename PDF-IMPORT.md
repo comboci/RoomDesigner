@@ -28,3 +28,13 @@ PDF raster import builds and validates a detached document and renders it before
 Synchronous failures attempt rollback of primary bytes, marker, editor drawing and undo history. Failed restoration retains the journal and blocks unsafe persistence. Startup recovery requires a matching txId and checksum for PDF: staged bytes alone do not prove commit. Exact unmarked staged content is treated as rollback eligible, while ambiguous changed data is preserved for manual recovery.
 
 LocalStorage and IndexedDB are not a joint atomic transaction; this is a protective journal rather than guaranteed crash-consistent storage. Tests, Build, real PDF quota failures and Safari acceptance are NOT_RUN / PENDING_USER.
+
+## V398-R — دو نقطه برای کالیبراسیون فیزیکی و Title Block مستقیم
+
+پیش از ورود تصویر PDF، در پیش‌نمایش هر صفحه مقدار فاصلهٔ واقعی به سانتی‌متر را وارد کرده، «تعیین مقیاس با دو نقطه» را فعال کنید و دو نقطه متناظر را روی همان صفحه انتخاب کنید. فاصله در پیکسل‌های رندر همان صفحه و نسبت cm/pixel محاسبه می‌شود و ابعاد عرض/ارتفاع آبجکت از خروجی واقعی با لحاظ Crop استخراج می‌گردد. داده‌های کالیبراسیون همان صفحه در pdfSource.calibration ذخیره می‌شوند؛ تغییر فاصله واقعی یا حذف کالیبراسیون آن را باطل می‌کند. هر صفحه مستقل کالیبره می‌شود.
+
+بدون دو نقطه معتبر، تصویر غیرکالیبره است و برای سازگاری قدیمی با عرض نمایشی ۴۸۰ واحد اضافه می‌شود؛ این عرض مقیاس واقعی CAD نیست. رابط کاربر و سند خروجی، وضعیت mode: uncalibrated را روشن ثبت می‌کنند. MediaBox، DPI و مقیاس چاپ درج‌شده در PDF به‌تنهایی اعتبار طول فیزیکی پلان ندارند. این قابلیت، کالیبراسیون دستی مرجع Raster است نه بازیابی خودکار هندسه Vector.
+
+خروجی مستقیم PDF اکنون، مانند نسخه چاپی، نام نقشه، نام طراح، Revision، تاریخ و شماره صفحه را داخل کادر عنوان به‌صورت Raster قرار می‌دهد و فراداده PDF Info شامل Title/Author/Subject را در UTF-16BE می‌نویسد. جدول ارتباطات همچنان فقط در مسیر چاپ پشتیبانی می‌شود. محدودیت ۲۰ صفحه / ۳۲ MiB نسخه قبلی حفظ می‌شود.
+
+برای ذخیره با File System Access تنها پس از نوشتن و بستن handle پیام «نوشته شد» نمایش داده می‌شود؛ Anchor fallback فقط یک درخواست دانلود است و ذخیره‌شدن فیزیکی آن قابل تأیید توسط نرم‌افزار نیست. تست‌های Node، Playwright، PDF حقیقی، Windows/iOS و Build NOT_RUN هستند و پذیرش کاربر باز است.

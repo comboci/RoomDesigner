@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N5_DXF_UNITS_PDF_JOURNAL_STATIC",
+  "execution_source": "USER_N6_DXF_ENCODING_CROP_PDF_EXPORT_CALIBRATION_STATIC",
   "execution_timestamp": "2026-11-20",
-  "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
+  "source_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V397-R",
+  "product_release": "V398-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "dfc72418f94fad61e3fd01616c637e19d67f1466",
+  "inventory_blob_sha": "b259ae9837f90bb0c25b6605c21f828e5bb46c47",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V397-R focused source-only RD-IE-06 DXF unit approval + PDF half RD-IE-07: explicit scale checkbox, provenance, journal format3/scope pdf/txId, primary write and marker before Undo commit, synchronous rollback and startup marker validation, generation-guarded IndexedDB mirror. Six DXF and fifteen PDF regression scenarios authored; existing related tests updated, all NOT_RUN. Global sequential review remains at first unread index line; LocalStorage/IndexedDB atomicity remains OPEN.",
+  "coverage_note": "V398-R N6 focused RD-IE-09–13 corrections: explicit DXF encoding via HEADER $DWGCODEPAGE/BOM and fatal decode; crop pointermove overlay only; confirmed file writing versus unverified downloads; direct PDF title/author/revision/date and Info; manual two-point per-page raster calibration. 21 test scenarios authored, NOT_RUN; browser and build NOT_RUN. OPEN-CROSS-STORE unresolved.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical.",
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
       "stale": true
     },
     {
@@ -300,7 +300,7 @@
       "coverage_valid": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "stale": true,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "assets/pdf-import.css",
@@ -309,13 +309,16 @@
       "actual_read_end_line": 4,
       "reviewed_start_line": 1,
       "reviewed_end_line": 4,
-      "status": "REVIEWED_NO_FINDING",
+      "status": "STALE_BLOB",
       "findings": [],
       "reviewed_at": "2026-11-07T05:20:00Z",
       "source_head": "f34f6cb9a9a2ff3797a84fd62d65b5e44ab55887",
       "review_basis": "Exact complete 4386-byte pinned CSS source read including all four physical lines; no truncation or product execution. No independently evidenced source defect in this CSS segment. Open persistence findings remain unresolved.",
       "truncated": false,
-      "coverage_valid": true
+      "coverage_valid": false,
+      "historical_status": "REVIEWED_NO_FINDING",
+      "stale": true,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "assets/pdf-import.js",
@@ -335,7 +338,7 @@
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
-      "invalidation_reason": "V395-R changed source blob; old focused or broad review is historical only."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "assets/dwg-import.js",
@@ -423,7 +426,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "assets/dxf-import.js",
@@ -443,7 +446,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -463,7 +466,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -483,7 +486,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -503,7 +506,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -523,7 +526,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -543,7 +546,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -563,7 +566,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -583,7 +586,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -603,7 +606,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "assets/pdf-import.js",
@@ -612,14 +615,18 @@
       "actual_read_end_line": 63,
       "reviewed_start_line": 6,
       "reviewed_end_line": 63,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD395-PDF-RESOURCE-GUARDS"
       ],
       "reviewed_at": "2026-11-20",
       "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
       "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -639,7 +646,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -659,7 +666,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V397-R changed exact source blob; earlier segment is historical."
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "tests/pdf-resource-budget.test.cjs",
@@ -720,14 +727,18 @@
       "actual_read_end_line": 100,
       "reviewed_start_line": 65,
       "reviewed_end_line": 100,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD397-DXF-PDF-TRANSACTION-REMEDIATION"
       ],
       "reviewed_at": "2026-11-20T07:50:00+03:30",
       "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
       "review_basis": "Authored candidate static inspection; no product, tests or build execution. No full-source sequential credit.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -736,14 +747,18 @@
       "actual_read_end_line": 788,
       "reviewed_start_line": 717,
       "reviewed_end_line": 788,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD397-DXF-PDF-TRANSACTION-REMEDIATION"
       ],
       "reviewed_at": "2026-11-20T07:50:00+03:30",
       "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
       "review_basis": "Authored candidate static inspection; no product, tests or build execution. No full-source sequential credit.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -752,14 +767,18 @@
       "actual_read_end_line": 2636,
       "reviewed_start_line": 2610,
       "reviewed_end_line": 2636,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD397-DXF-PDF-TRANSACTION-REMEDIATION"
       ],
       "reviewed_at": "2026-11-20T07:50:00+03:30",
       "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
       "review_basis": "Authored candidate static inspection; no product, tests or build execution. No full-source sequential credit.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -768,14 +787,18 @@
       "actual_read_end_line": 2777,
       "reviewed_start_line": 2758,
       "reviewed_end_line": 2777,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD397-DXF-PDF-TRANSACTION-REMEDIATION"
       ],
       "reviewed_at": "2026-11-20T07:50:00+03:30",
       "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
       "review_basis": "Authored candidate static inspection; no product, tests or build execution. No full-source sequential credit.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
     },
     {
       "path": "index.html",
@@ -784,13 +807,65 @@
       "actual_read_end_line": 2110,
       "reviewed_start_line": 2095,
       "reviewed_end_line": 2110,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD397-DXF-PDF-TRANSACTION-REMEDIATION"
       ],
       "reviewed_at": "2026-11-20T07:50:00+03:30",
       "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
       "review_basis": "Authored candidate static inspection; no product, tests or build execution. No full-source sequential credit.",
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+    },
+    {
+      "path": "assets/dxf-encoding.js",
+      "blob_sha": "31b1abc10fc10f755b8da8fb85f63f6cf12eacdd",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 37,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 37,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD398-N6-IMPORT-EXPORT-TRUST"
+      ],
+      "reviewed_at": "2026-11-20T05:39:18.284Z",
+      "source_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
+      "review_basis": "Fully authored and statically inspected focused code file; tests/build not executed. Index minified source not credited as fully read.",
+      "truncated": false
+    },
+    {
+      "path": "assets/dxf-import.js",
+      "blob_sha": "9127af960716bea9f7df632667bef1309a593abb",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 124,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 124,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD398-N6-IMPORT-EXPORT-TRUST"
+      ],
+      "reviewed_at": "2026-11-20T05:39:18.289Z",
+      "source_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
+      "review_basis": "Fully authored and statically inspected focused code file; tests/build not executed. Index minified source not credited as fully read.",
+      "truncated": false
+    },
+    {
+      "path": "assets/pdf-import.js",
+      "blob_sha": "2f672370331976706ebfe8d3f1679f2213db12e0",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 106,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 106,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD398-N6-IMPORT-EXPORT-TRUST"
+      ],
+      "reviewed_at": "2026-11-20T05:39:18.289Z",
+      "source_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
+      "review_basis": "Fully authored and statically inspected focused code file; tests/build not executed. Index minified source not credited as fully read.",
       "truncated": false
     }
   ],
@@ -1116,47 +1191,52 @@
     {
       "id": "RD-IE-09",
       "priority": "P2",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "assets/dxf-import.js",
       "root_cause": "DXF decoding relies on file.text UTF-8 default, without DWGCODEPAGE handling for legacy text.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V398-R candidate source-only review; 21 test cases authored NOT_RUN; runtime/visual/performance acceptance pending. Inherent legacy/unknown encoding, browser download completion, physical calibration accuracy and cross-store limitations remain open.",
+      "correction": "DXF bytes scanned for bounded HEADER codepage and BOM, explicit user encoding choice when ambiguous, fatal UTF-8 and legacy decoder; source names only trusted after decode."
     },
     {
       "id": "RD-IE-10",
       "priority": "P2",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "assets/dxf-import.js",
       "root_cause": "Crop pointermove rescans/clips all chosen segments; high-volume responsiveness risk.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V398-R candidate source-only review; 21 test cases authored NOT_RUN; runtime/visual/performance acceptance pending. Inherent legacy/unknown encoding, browser download completion, physical calibration accuracy and cross-store limitations remain open.",
+      "correction": "DXF crop pointermove now only updates overlay; selectedSegments clipping and recognition refresh on release/cancel."
     },
     {
       "id": "RD-IE-11",
       "priority": "P2",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "Browser-download fallback reports success after anchor.click without proof of saved file.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V398-R candidate source-only review; 21 test cases authored NOT_RUN; runtime/visual/performance acceptance pending. Inherent legacy/unknown encoding, browser download completion, physical calibration accuracy and cross-store limitations remain open.",
+      "correction": "Download request distinct from confirmed File System Access write+close; fallback returns requested and UI avoids physical save claim."
     },
     {
       "id": "RD-IE-12",
       "priority": "P2",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "Direct PDF export omits print-only designer/revision title block inputs.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V398-R candidate source-only review; 21 test cases authored NOT_RUN; runtime/visual/performance acceptance pending. Inherent legacy/unknown encoding, browser download completion, physical calibration accuracy and cross-store limitations remain open.",
+      "correction": "Direct PDF paints title/designer/revision/date/page footer and includes UTF-16BE Info dictionary while retaining raster and memory limits."
     },
     {
       "id": "RD-IE-13",
       "priority": "P2",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "Raster PDF imports use arbitrary 480-unit width without physical plan calibration.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V398-R candidate source-only review; 21 test cases authored NOT_RUN; runtime/visual/performance acceptance pending. Inherent legacy/unknown encoding, browser download completion, physical calibration accuracy and cross-store limitations remain open.",
+      "correction": "Manual per-page two-point centimeter calibration computes cm/pixel for cropped PDF rasters, records pdfSource.calibration; uncalibrated fallback is explicitly labeled as visual-only."
     },
     {
       "id": "RD391-DXF-IMPORT-ATOMIC-STAGING",
@@ -1241,22 +1321,38 @@
       "root_cause": "DXF input allowed silent cm default on INSUNITS mismatch; PDF import lacked durable transaction intent and distinction between staged and committed bytes after a crash.",
       "correction": "User-approved DXF scale and source provenance; PDF import journal with txId, commit marker, rollback of primary/editor/Undo, IndexedDB mirror generation and startup committed-vs-unmarked logic.",
       "source_recheck": "Static authored code and tests only. Browser/Node/Build/real CAD/PDF not run; OPEN-CROSS-STORE remains unresolved."
+    },
+    {
+      "id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "priority": "P2",
+      "path": "assets/dxf-encoding.js;assets/dxf-import.js;assets/pdf-import.js;index.html;tests/dxf-codepage-crop.test.cjs;tests/pdf-calibration-regression.test.cjs;tests/pdf-direct-titleblock.test.cjs;tests/save-outcome.test.cjs",
+      "related_audit_findings": [
+        "RD-IE-09",
+        "RD-IE-10",
+        "RD-IE-11",
+        "RD-IE-12",
+        "RD-IE-13"
+      ],
+      "root_cause": "Legacy DXF names, slow crop drag, misleading download result, PDF direct metadata parity and uncalibrated raster width.",
+      "correction": "See five corrected RD-IE-09 through RD-IE-13 findings and V398-R audit report.",
+      "source_recheck": "Static source authoring and focused review only. Node, Playwright, build, physical files and mobile acceptance NOT_RUN."
     }
   ],
   "last_completed_segment": {
-    "path": "index.html",
-    "blob_sha": "072e184593317502cbfbb31fb49989f3c0ece85b",
-    "start_line": 2758,
-    "end_line": 2777,
+    "path": "assets/pdf-import.js",
+    "blob_sha": "2f672370331976706ebfe8d3f1679f2213db12e0",
+    "start_line": 1,
+    "end_line": 106,
     "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "072e184593317502cbfbb31fb49989f3c0ece85b",
+    "blob_sha": "63d22a13467ca58fb19a9401a7211e7dee203373",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "V397-R index has a new exact blob; focused PDF/DXF reads cannot be credited toward broad earlier source segments."
+    "reason": "Changed index blob in V398-R; no full sequential index credit was inferred from targeted patches."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1265,7 +1361,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V397-R DXF approval and layer provenance plus PDF journal/marker/rollback/startup recovery. Six DXF and fifteen PDF regression scenarios authored; existing browser/concurrency tests adapted; no tests/build/browser run.",
+    "static_diff": "V398-R source-only N6 remedial changes, 21 new authored test scenarios, one existing DXF test harness adapted. Node/Playwright/Build/CAD/PDF/iOS NOT_RUN; cross-store atomicity still open.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1282,11 +1378,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Exact pinned main plus candidate blob SHA/UTF-8 sizes and LF counts, no product execution",
-    "baseline_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
-    "entries": 586,
+    "method": "Pinned Git base HEAD plus exact staged blob metadata; no product/test code execution",
+    "baseline_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
+    "entries": 591,
     "no_product_execution": true,
-    "notes": "V397-R source DXF/PDF corrections, twenty-one regression scenarios authored and three related test files adjusted, versions/docs/evolution/inventory/checkpoint staged as one Git tree."
+    "notes": "V398-R N6 source, 21 authored regression scenarios, HTML/package, docs, Project Evolution and exact inventory/checkpoint delivered as one fast-forward commit."
   },
   "branch_review": {
     "branches": [

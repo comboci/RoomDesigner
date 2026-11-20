@@ -12,11 +12,11 @@ function enforcePdfImportBudget(pages,usedChars,nextChars=0){
 async function open(file,onImport){
  if(active&&!active.close())return;
  const dialog=document.createElement('dialog');dialog.id='pdfImportDialog';dialog.dir='rtl';
- dialog.innerHTML=`<div class="pdf-shell"><header><strong>واردکردن صفحات PDF</strong><button type="button" data-pdf-close aria-label="بستن">×</button></header><p data-pdf-name></p><p role="status" data-pdf-status>در حال خواندن فایل…</p><div class="pdf-toolbar"><button data-pdf-all disabled>انتخاب همه</button><button data-pdf-none disabled>پاک‌کردن انتخاب‌ها</button><label>کیفیت عکس <select data-pdf-quality><option value="1500">معمولی</option><option value="2400" selected>بالا</option><option value="3200">بسیار بالا</option></select></label></div><div class="pdf-workspace"><div class="pdf-pages" aria-label="صفحات PDF"></div><section class="pdf-editor"><div class="pdf-editor-heading"><strong data-pdf-page-title>پیش‌نمایش صفحه</strong><button data-pdf-reset disabled>حذف برش این صفحه</button></div><p class="pdf-instruction">روی تصویر کادر بکشید؛ داخل کادر را برای جابه‌جایی و دستگیره‌ها را برای تغییر اندازه بگیرید.</p><div class="pdf-preview"><div class="pdf-stage"><div class="pdf-crop" hidden></div></div></div></section></div><footer><span data-pdf-count>صفحه‌ای انتخاب نشده</span><button data-pdf-close>انصراف</button><button class="primary" data-pdf-import disabled>افزودن به بوم</button></footer></div>`;
+ dialog.innerHTML=`<div class="pdf-shell"><header><strong>واردکردن صفحات PDF</strong><button type="button" data-pdf-close aria-label="بستن">×</button></header><p data-pdf-name></p><p role="status" data-pdf-status>در حال خواندن فایل…</p><div class="pdf-toolbar"><button data-pdf-all disabled>انتخاب همه</button><button data-pdf-none disabled>پاک‌کردن انتخاب‌ها</button><label>کیفیت عکس <select data-pdf-quality><option value="1500">معمولی</option><option value="2400" selected>بالا</option><option value="3200">بسیار بالا</option></select></label></div><div class="pdf-workspace"><div class="pdf-pages" aria-label="صفحات PDF"></div><section class="pdf-editor"><div class="pdf-editor-heading"><strong data-pdf-page-title>پیش‌نمایش صفحه</strong><button data-pdf-reset disabled>حذف برش این صفحه</button></div><p class="pdf-instruction">روی تصویر کادر برش بکشید. برای تعیین مقیاس، فاصلهٔ واقعی دو نقطه را وارد و همان دو نقطه را روی تصویر مشخص کنید.</p><div class="pdf-calibration"><button type="button" data-pdf-calibrate>تعیین مقیاس با دو نقطه</button><label>فاصله واقعی (cm) <input data-pdf-known-cm type="number" min="0.001" max="100000" step="any" placeholder="مثلاً 300"></label><button type="button" data-pdf-calibration-reset>حذف کالیبراسیون</button><small data-pdf-calibration-status role="status">این صفحه کالیبره نیست؛ تصویر فقط مرجع بصری است.</small></div><div class="pdf-preview"><div class="pdf-stage"><div class="pdf-crop" hidden></div></div></div></section></div><footer><span data-pdf-count>صفحه‌ای انتخاب نشده</span><button data-pdf-close>انصراف</button><button class="primary" data-pdf-import disabled>افزودن به بوم</button></footer></div>`;
  document.body.append(dialog);dialog.showModal();
- const $=q=>dialog.querySelector(q),status=$('[data-pdf-status]'),pages=$('.pdf-pages'),stage=$('.pdf-stage'),overlay=$('.pdf-crop'),crops=new Map(),selected=new Set([1]);
+ const $=q=>dialog.querySelector(q),status=$('[data-pdf-status]'),pages=$('.pdf-pages'),stage=$('.pdf-stage'),overlay=$('.pdf-crop'),crops=new Map(),calibrations=new Map(),selected=new Set([1]),knownCm=$('[data-pdf-known-cm]');
  let resizeObserver=null;
- let pdf=null,loading=null,closed=false,busy=false,current=1,previewToken=0,gesture=null,observer=null,thumbQueue=Promise.resolve();
+ let pdf=null,loading=null,closed=false,busy=false,current=1,previewToken=0,gesture=null,observer=null,thumbQueue=Promise.resolve(),calibrationMode=false,calibrationPoints=[];
  const errorText=e=>e?.name==='PasswordException'?'این PDF رمز دارد؛ ابتدا نسخهٔ بدون رمز آن را انتخاب کنید.':e?.name==='InvalidPDFException'?'فایل PDF معتبر یا قابل خواندن نیست.':'خواندن PDF انجام نشد. فایل دیگری انتخاب کنید.';
  const close=(force=false)=>{if(closed)return true;if(busy&&!force)return false;closed=true;previewToken++;observer?.disconnect();resizeObserver?.disconnect();if(loading)loading.destroy().catch(()=>{});dialog.close();dialog.remove();if(active?.dialog===dialog)active=null;return true};
  active={dialog,close};
@@ -25,17 +25,48 @@ async function open(file,onImport){
  function fitPreview(){const canvas=stage.querySelector('canvas'),box=$('.pdf-preview');if(canvas)stage.style.width=Math.max(1,Math.min(box.clientWidth-20,(box.clientHeight-20)*canvas.width/canvas.height))+'px'}
  resizeObserver=new ResizeObserver(fitPreview);resizeObserver.observe($('.pdf-preview'));
  function crop(){return crops.get(current)||{x:0,y:0,w:1,h:1}}
+ function syncCalibration(){
+  const existing=calibrations.get(current),points=calibrationMode?calibrationPoints:existing?[existing.start,existing.end]:[];
+  stage.querySelectorAll('[data-pdf-calibration-marker]').forEach(el=>el.remove());
+  for(let i=0;i<points.length;i++){
+   const dot=document.createElement('span');dot.dataset.pdfCalibrationMarker=String(i+1);dot.textContent=String(i+1);
+   dot.style.cssText='position:absolute;pointer-events:none;z-index:8;transform:translate(-50%,-50%);border-radius:50%;border:2px solid white;background:#0369a1;color:white;font:bold 12px Tahoma;min-width:23px;min-height:23px;display:grid;place-items:center';
+   dot.style.left=(points[i].x*100)+'%';dot.style.top=(points[i].y*100)+'%';stage.append(dot);
+  }
+  $('[data-pdf-calibration-status]').textContent=calibrationMode?'نقطهٔ '+(calibrationPoints.length+1)+' از ۲ را روی تصویر انتخاب کنید.':existing?'کالیبره: فاصله واقعی '+existing.knownCm+' سانتی‌متر بین دو نقطه.':'این صفحه کالیبره نیست؛ هنگام ورود فقط اندازه پیش‌فرض مرجع بصری استفاده می‌شود.';
+  $('[data-pdf-calibrate]').setAttribute('aria-pressed',String(calibrationMode));
+ }
+ $('[data-pdf-calibrate]').onclick=()=>{
+  if(busy||closed)return;
+  const cm=Number(knownCm.value);
+  if(!Number.isFinite(cm)||cm<.001||cm>100000){status.textContent='ابتدا فاصله واقعی معتبر (۰٫۰۰۱ تا ۱۰۰٬۰۰۰ سانتی‌متر) وارد کنید.';return}
+  calibrationMode=true;calibrationPoints=[];syncCalibration();
+ };
+ $('[data-pdf-calibration-reset]').onclick=()=>{if(busy)return;calibrationMode=false;calibrationPoints=[];calibrations.delete(current);knownCm.value='';syncCalibration()};
+ knownCm.oninput=()=>{if(busy)return;calibrationMode=false;calibrationPoints=[];calibrations.delete(current);syncCalibration()};
  function syncCrop(){const c=crop();overlay.hidden=!crops.has(current);Object.assign(overlay.style,{left:c.x*100+'%',top:c.y*100+'%',width:c.w*100+'%',height:c.h*100+'%'});$('[data-pdf-reset]').disabled=busy||!crops.has(current);pages.querySelector('[data-pdf-page="'+current+'"] .pdf-cropped').hidden=!crops.has(current)}
  function update(){for(const card of pages.children){const n=+card.dataset.pdfPage;card.classList.toggle('active',n===current);card.querySelector('input').checked=selected.has(n)}$('[data-pdf-count]').textContent=selected.size+' صفحه انتخاب شده';$('[data-pdf-import]').disabled=busy||!selected.size;}
  async function renderCanvas(n,maxSize){const page=await pdf.getPage(n),original=page.getViewport({scale:1}),viewport=page.getViewport({scale:maxSize/Math.max(original.width,original.height)}),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(viewport.width));canvas.height=Math.max(1,Math.round(viewport.height));await page.render({canvasContext:canvas.getContext('2d'),viewport,background:'rgb(255,255,255)',annotationMode:0}).promise;return canvas}
- async function showPage(n){if(busy||closed)return;current=n;const token=++previewToken;update();$('[data-pdf-page-title]').textContent='صفحهٔ '+n;stage.style.visibility='hidden';try{const canvas=await renderCanvas(n,1200);if(closed||token!==previewToken){canvas.width=canvas.height=1;return}stage.querySelector('canvas')?.remove();stage.prepend(canvas);stage.style.aspectRatio=canvas.width+'/'+canvas.height;fitPreview();stage.style.visibility='visible';$('[data-pdf-reset]').disabled=false;syncCrop();status.textContent='صفحات موردنظر را تیک بزنید و در صورت نیاز برش دهید.'}catch(e){if(!closed&&token===previewToken)status.textContent=errorText(e)}}
+ async function showPage(n){if(busy||closed)return;current=n;calibrationMode=false;calibrationPoints=[];knownCm.value=calibrations.get(n)?.knownCm??'';const token=++previewToken;update();syncCalibration();$('[data-pdf-page-title]').textContent='صفحهٔ '+n;stage.style.visibility='hidden';try{const canvas=await renderCanvas(n,1200);if(closed||token!==previewToken){canvas.width=canvas.height=1;return}stage.querySelector('canvas')?.remove();stage.prepend(canvas);stage.style.aspectRatio=canvas.width+'/'+canvas.height;fitPreview();stage.style.visibility='visible';$('[data-pdf-reset]').disabled=false;syncCrop();status.textContent='صفحات موردنظر را تیک بزنید و در صورت نیاز برش دهید.'}catch(e){if(!closed&&token===previewToken)status.textContent=errorText(e)}}
  function at(e){const b=stage.getBoundingClientRect();return {x:Math.max(0,Math.min(1,(e.clientX-b.left)/b.width)),y:Math.max(0,Math.min(1,(e.clientY-b.top)/b.height))}}
 
  const handleNames={nw:'گوشهٔ بالا چپ',n:'لبهٔ بالا',ne:'گوشهٔ بالا راست',e:'لبهٔ راست',se:'گوشهٔ پایین راست',s:'لبهٔ پایین',sw:'گوشهٔ پایین چپ',w:'لبهٔ چپ'};
  overlay.tabIndex=0;overlay.setAttribute('role','group');overlay.setAttribute('aria-label','کادر برش؛ برای جابه‌جایی بکشید یا از کلیدهای جهت استفاده کنید');
  for(const [key,name]of Object.entries(handleNames)){const handle=document.createElement('button');handle.type='button';handle.className='pdf-crop-handle';handle.dataset.pdfCropHandle=key;handle.setAttribute('aria-label','تغییر اندازه از '+name);overlay.append(handle)}
  function transformCrop(original,mode,dx,dy){const rect=stage.getBoundingClientRect(),minW=Math.min(1,Math.max(.005,4/rect.width)),minH=Math.min(1,Math.max(.005,4/rect.height)),clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));if(mode==='move')return {...original,x:clamp(original.x+dx,0,1-original.w),y:clamp(original.y+dy,0,1-original.h)};let left=original.x,right=left+original.w,top=original.y,bottom=top+original.h;if(mode.includes('w'))left=clamp(left+dx,0,right-minW);if(mode.includes('e'))right=clamp(right+dx,left+minW,1);if(mode.includes('n'))top=clamp(top+dy,0,bottom-minH);if(mode.includes('s'))bottom=clamp(bottom+dy,top+minH,1);return {x:left,y:top,w:right-left,h:bottom-top}}
- stage.addEventListener('pointerdown',e=>{if(busy||gesture||e.button!==0||!stage.querySelector('canvas'))return;e.preventDefault();const handle=e.target.closest('[data-pdf-crop-handle]'),inside=e.target.closest('.pdf-crop');gesture={id:e.pointerId,page:current,start:at(e),previous:crops.get(current),original:{...crop()},mode:handle?handle.dataset.pdfCropHandle:inside?'move':'draw'};stage.setPointerCapture(e.pointerId)});
+ stage.addEventListener('pointerdown',e=>{if(busy||gesture||e.button!==0||!stage.querySelector('canvas'))return;
+ e.preventDefault();
+ if(calibrationMode){
+  const p=at(e);calibrationPoints.push(p);
+  if(calibrationPoints.length===2){
+   const canvas=stage.querySelector('canvas'),[a,b]=calibrationPoints,dist=Math.hypot((a.x-b.x)*canvas.width,(a.y-b.y)*canvas.height);
+   const cm=Number(knownCm.value);
+   if(!Number.isFinite(dist)||dist<2||!Number.isFinite(cm)||cm<.001||cm>100000){calibrationPoints=[];status.textContent='دو نقطه متمایز و فاصله واقعی معتبر لازم است.';}
+   else{calibrations.set(current,{mode:'two-point',start:{...a},end:{...b},knownCm:cm});calibrationMode=false;calibrationPoints=[]}
+  }
+  syncCalibration();return;
+ }
+ const handle=e.target.closest('[data-pdf-crop-handle]'),inside=e.target.closest('.pdf-crop');gesture={id:e.pointerId,page:current,start:at(e),previous:crops.get(current),original:{...crop()},mode:handle?handle.dataset.pdfCropHandle:inside?'move':'draw'};stage.setPointerCapture(e.pointerId)});
  stage.addEventListener('pointermove',e=>{if(!gesture||gesture.id!==e.pointerId||gesture.page!==current)return;const p=at(e),a=gesture.start;crops.set(current,gesture.mode==='draw'?{x:Math.min(a.x,p.x),y:Math.min(a.y,p.y),w:Math.abs(a.x-p.x),h:Math.abs(a.y-p.y)}:transformCrop(gesture.original,gesture.mode,p.x-a.x,p.y-a.y));syncCrop()});
  function finishCrop(e){if(!gesture||gesture.id!==e.pointerId)return;const c=crop();if(e.type!=='pointerup'||c.w<.005||c.h<.005){if(gesture.previous)crops.set(gesture.page,gesture.previous);else crops.delete(gesture.page)}gesture=null;syncCrop()}
  stage.addEventListener('pointerup',finishCrop);stage.addEventListener('pointercancel',finishCrop);stage.addEventListener('lostpointercapture',finishCrop);
@@ -43,9 +74,19 @@ async function open(file,onImport){
  $('[data-pdf-reset]').onclick=()=>{crops.delete(current);syncCrop()};
  $('[data-pdf-all]').onclick=()=>{for(let i=1;i<=pdf.numPages;i++)selected.add(i);update()};$('[data-pdf-none]').onclick=()=>{selected.clear();update()};
  $('[data-pdf-import]').onclick=async()=>{
-  if(busy||!selected.size||closed)return;busy=true;previewToken++;dialog.querySelectorAll('input,select,[data-pdf-all],[data-pdf-none],[data-pdf-reset]').forEach(x=>x.disabled=true);update();
+  if(busy||!selected.size||closed)return;busy=true;previewToken++;dialog.querySelectorAll('input,select,[data-pdf-all],[data-pdf-none],[data-pdf-reset],[data-pdf-calibrate],[data-pdf-calibration-reset]').forEach(x=>x.disabled=true);update();
   try{const result=[],order=[...selected].sort((a,b)=>a-b),quality=+$('[data-pdf-quality]').value;let usedChars=enforcePdfImportBudget(order.length,0);
-   for(const n of order){if(closed)return;status.textContent='آماده‌سازی صفحهٔ '+n+' ('+(result.length+1)+' از '+order.length+')…';const source=await renderCanvas(n,quality);if(closed)return;const c=crops.get(n)||{x:0,y:0,w:1,h:1},sx=Math.floor(c.x*source.width),sy=Math.floor(c.y*source.height),w=Math.max(1,Math.min(source.width-sx,Math.round(c.w*source.width))),h=Math.max(1,Math.min(source.height-sy,Math.round(c.h*source.height))),out=document.createElement('canvas');out.width=w;out.height=h;out.getContext('2d').drawImage(source,sx,sy,w,h,0,0,w,h);const data=out.toDataURL('image/png');source.width=source.height=out.width=out.height=1;usedChars=enforcePdfImportBudget(order.length,usedChars,data.length);result.push({data,width:w,height:h,page:n,crop:{...c},fileName:file.name})}
+   for(const n of order){if(closed)return;status.textContent='آماده‌سازی صفحهٔ '+n+' ('+(result.length+1)+' از '+order.length+')…';const source=await renderCanvas(n,quality);if(closed)return;const c=crops.get(n)||{x:0,y:0,w:1,h:1},sx=Math.floor(c.x*source.width),sy=Math.floor(c.y*source.height),w=Math.max(1,Math.min(source.width-sx,Math.round(c.w*source.width))),h=Math.max(1,Math.min(source.height-sy,Math.round(c.h*source.height))),out=document.createElement('canvas');out.width=w;out.height=h;out.getContext('2d').drawImage(source,sx,sy,w,h,0,0,w,h);const data=out.toDataURL('image/png');
+   let calibration=null;const ref=calibrations.get(n);
+   if(ref){
+    const dist=Math.hypot((ref.start.x-ref.end.x)*source.width,(ref.start.y-ref.end.y)*source.height);
+    const cmPerPixel=ref.knownCm/dist;
+    if(!Number.isFinite(cmPerPixel)||cmPerPixel<=0||w*cmPerPixel>1000000||h*cmPerPixel>1000000)throw Error('مقیاس صفحهٔ '+n+' معتبر نیست؛ دوباره دو نقطه را تعیین کنید.');
+    calibration={mode:'two-point',start:{...ref.start},end:{...ref.end},knownCm:ref.knownCm,sourceWidth:source.width,sourceHeight:source.height,cmPerPixel};
+   }
+   source.width=source.height=out.width=out.height=1;
+   usedChars=enforcePdfImportBudget(order.length,usedChars,data.length);
+   result.push({data,width:w,height:h,page:n,crop:{...c},fileName:file.name,calibration})}
    if(closed)return;await onImport(result);close(true);
   }catch(e){if(!closed){status.textContent=e.message||errorText(e);busy=false;dialog.querySelectorAll('input,select,[data-pdf-all],[data-pdf-none]').forEach(x=>x.disabled=false);syncCrop();update()}}
  };

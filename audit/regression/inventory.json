@@ -51,10 +51,10 @@
     },
     {
       "path": "DXF-IMPORT.md",
-      "blob_sha": "744b49116cbab2753b1d7cef1f3ba01450ae7b72",
+      "blob_sha": "9163e3d0d1cf4a5857578c09b7b8a940b4abf2cc",
       "mode": "100644",
-      "bytes": 8402,
-      "lines": 50,
+      "bytes": 9664,
+      "lines": 56,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -78,10 +78,10 @@
     },
     {
       "path": "IMPORT-FORMATS.md",
-      "blob_sha": "330228c8bb02cf19950ac309295279a2c48b8c7e",
+      "blob_sha": "1dc4934976bfe39e9d2076de9c083d945556ffd2",
       "mode": "100644",
-      "bytes": 5640,
-      "lines": 60,
+      "bytes": 6547,
+      "lines": 66,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -96,10 +96,10 @@
     },
     {
       "path": "PDF-IMPORT.md",
-      "blob_sha": "1feeeeda74ba2bcf3010a3c57e85ad3de2a20acf",
+      "blob_sha": "201605ff9f98dee418f32783152b35c23501d1bb",
       "mode": "100644",
-      "bytes": 5704,
-      "lines": 30,
+      "bytes": 8198,
+      "lines": 40,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -194,6 +194,15 @@
       "binary": false
     },
     {
+      "path": "assets/dxf-encoding.js",
+      "mode": "100644",
+      "category": "source_or_configuration",
+      "binary": false,
+      "blob_sha": "31b1abc10fc10f755b8da8fb85f63f6cf12eacdd",
+      "bytes": 2925,
+      "lines": 37
+    },
+    {
       "path": "assets/dxf-import.css",
       "blob_sha": "719cd6e25a4f443fb33c89eaa5209ee4efeec2e5",
       "mode": "100644",
@@ -204,28 +213,28 @@
     },
     {
       "path": "assets/dxf-import.js",
-      "blob_sha": "5c0e89fa72f8e69510ed15bbc214af67b619f9a6",
+      "blob_sha": "9127af960716bea9f7df632667bef1309a593abb",
       "mode": "100644",
-      "bytes": 21428,
-      "lines": 100,
+      "bytes": 23654,
+      "lines": 124,
       "category": "source_or_configuration",
       "binary": false
     },
     {
       "path": "assets/pdf-import.css",
-      "blob_sha": "3db6f6a35478878e27d41c3c8eee09425ea66e11",
+      "blob_sha": "2377d57b01cc0bef754bf57b8cef7bb91d56e98e",
       "mode": "100644",
-      "bytes": 4386,
-      "lines": 4,
+      "bytes": 5225,
+      "lines": 13,
       "category": "source_or_configuration",
       "binary": false
     },
     {
       "path": "assets/pdf-import.js",
-      "blob_sha": "a25907597879677de53fd5e17540f470a6fd43b5",
+      "blob_sha": "2f672370331976706ebfe8d3f1679f2213db12e0",
       "mode": "100644",
-      "bytes": 13008,
-      "lines": 65,
+      "bytes": 16975,
+      "lines": 106,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3804,10 +3813,10 @@
     },
     {
       "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
-      "blob_sha": "905a9005feceb7bd7b9aabf161c6b9e5a92eac36",
+      "blob_sha": "2a405ef5592209fe7a9fec8b119ffd047b3519e0",
       "mode": "100644",
-      "bytes": 25341,
-      "lines": 191,
+      "bytes": 26920,
+      "lines": 201,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3948,10 +3957,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "072e184593317502cbfbb31fb49989f3c0ece85b",
+      "blob_sha": "63d22a13467ca58fb19a9401a7211e7dee203373",
       "mode": "100644",
-      "bytes": 572147,
-      "lines": 3238,
+      "bytes": 576251,
+      "lines": 3273,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3966,7 +3975,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "b6cb80fe5b6b12cc26c50d750a60180608087fbb",
+      "blob_sha": "7fe5c01e40d5afa80c8e6ba96975ed64755ddbce",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3975,7 +3984,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "206dcab3ee2f885f3689095091224cbef3690b5c",
+      "blob_sha": "d5d67b08590940f13d689f81ff54d0f040ba5087",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3993,10 +4002,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "4a652cbe2b6dbd864d3a65cfd4e915f37627e7b3",
+      "blob_sha": "50e98b661aff6b187202c3ed0ef9b5573f320c43",
       "mode": "100644",
-      "bytes": 801260,
-      "lines": 11830,
+      "bytes": 809682,
+      "lines": 11939,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4388,6 +4397,15 @@
       "binary": false
     },
     {
+      "path": "tests/dxf-codepage-crop.test.cjs",
+      "mode": "100644",
+      "category": "test_source_static_only",
+      "binary": false,
+      "blob_sha": "da6b7719da681b7b729dd4cc92659b9687225104",
+      "bytes": 2890,
+      "lines": 52
+    },
+    {
       "path": "tests/dxf-engine.test.cjs",
       "blob_sha": "0243b176e9f0d26d2970861f8663e5ae1074c105",
       "mode": "100644",
@@ -4407,10 +4425,10 @@
     },
     {
       "path": "tests/dxf-import-concurrency.test.cjs",
-      "blob_sha": "38cb42c0f23c0b7e805c3ca0757c023542115c3a",
+      "blob_sha": "0ad6da58c5eccea3ac4c492a53855301fbac117c",
       "mode": "100644",
-      "bytes": 3085,
-      "lines": 64,
+      "bytes": 3198,
+      "lines": 65,
       "category": "test_source_static_only",
       "binary": false
     },
@@ -4793,6 +4811,24 @@
       "binary": false
     },
     {
+      "path": "tests/pdf-calibration-regression.test.cjs",
+      "mode": "100644",
+      "category": "test_source_static_only",
+      "binary": false,
+      "blob_sha": "61a9c7acde996283004c94ae5e6e40e94763c4bf",
+      "bytes": 2824,
+      "lines": 42
+    },
+    {
+      "path": "tests/pdf-direct-titleblock.test.cjs",
+      "mode": "100644",
+      "category": "test_source_static_only",
+      "binary": false,
+      "blob_sha": "ec1a3e58207d295c65d889429d069cc5c38f01de",
+      "bytes": 1352,
+      "lines": 24
+    },
+    {
       "path": "tests/pdf-import.browser.test.cjs",
       "blob_sha": "f2358698e8f368e4239da4c4e2433f65dd22676e",
       "mode": "100644",
@@ -5043,6 +5079,15 @@
       "lines": 31,
       "category": "test_source_static_only",
       "binary": false
+    },
+    {
+      "path": "tests/save-outcome.test.cjs",
+      "mode": "100644",
+      "category": "test_source_static_only",
+      "binary": false,
+      "blob_sha": "d040212839d454b3c17ddbd1a37a6bb43ebc282b",
+      "bytes": 1896,
+      "lines": 35
     },
     {
       "path": "tests/selection-geometry.test.cjs",

@@ -189,3 +189,13 @@ DXF Import retains centimeter factor 1 as its initial option but requires a sepa
 PDF Import retains V395 bounded detached staging, and adds a format-3 rd_pending_import journal scoped to PDF with txId, expected payload checksum, and original rd_last. It persists the image-bearing payload to primary LocalStorage, then a matching rd_import_committed marker, before publishing Undo and scheduling the generation-guarded IndexedDB mirror. Synchronous errors roll back editor, prior bytes and marker where possible. On failed rollback, the journal is retained and writes blocked. Startup treats unmarked staged PDF bytes as uncommitted rather than as proof of success; divergent valid content is preserved for manual review. Later autosaves preserve txId until cleanup.
 
 RD-IE-06: SOURCE_FIXED_RUNTIME_PENDING. RD-IE-07 PDF portion: SOURCE_FIXED_RUNTIME_PENDING. All unit, PDF, quota/failure, Chromium, iOS Safari, Node/Playwright/Build tests NOT_RUN; full cross-store atomicity still OPEN.
+
+## V398-R — N6 source remediation RD-IE-09/10/11/12/13 (NOT_RUN)
+
+- RD-IE-09: byte-level HEADER $DWGCODEPAGE/BOM detection with supported Windows/Asian aliases and manual selector; fatal decoding and U+FFFD refusal for ambiguous legacy bytes. No automatic confidence is claimed for undocumented encodings.
+- RD-IE-10: DXF crop pointermove updates only overlay; clipping/recognition occurs after release/cancel. No performance benchmark or real 200k-segment profile was performed.
+- RD-IE-11: browser anchor fallback returns requested, never a physical-save acknowledgement; DXF/PDF and recovery messages distinguish it from a successfully closed file handle. User confirmation remains necessary before destructive action.
+- RD-IE-12: direct JPEG-based PDF now includes title, designer, revision, date, page number and PDF Info Title/Author/Subject UTF-16BE. The connection report remains print-only and is explicitly disclosed.
+- RD-IE-13: each PDF page can be manually calibrated using two points and a known centimeter distance, saved in pdfSource.calibration; uncalibrated legacy width 480 is labeled nonphysical. PDF MediaBox alone is not presumed to define drawing scale.
+
+All five findings are SOURCE_FIXED_RUNTIME_PENDING, not runtime DONE. 21 new source regression scenarios were authored, the existing jsdom DXF concurrency harness was updated, tests/build/Chromium/iOS/real CAD/PDF/performance profiling NOT_RUN. Limits of DXF entity fidelity, browser download confirmation, raster export, font fidelity and cross-store LocalStorage/IndexedDB atomicity remain open.

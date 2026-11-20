@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V397-R",
+  "current_source_release": "V398-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1887,6 +1887,12 @@
       "version": "V397-R",
       "date": "2026-11-20",
       "change": "الزام تأیید صریح مقیاس DXF و ثبت منشأ واحدها در لایه‌های واردشده؛ تقویت ورود PDF با Journal فرمت ۳ دارای txId و نشانگر Commit، بازگردانی داده و Undo در شکست هم‌زمان، کنترل آینه IndexedDB و بازیابی مشروط در راه‌اندازی؛ سورس و سناریوهای رگرسیون ثبت شد اما Test/Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V398-R",
+      "date": "2026-11-20",
+      "change": "N6: خواندن DXF با تشخیص DWGCODEPAGE/UTF-8 BOM و انتخاب دستی و شکست امن decoding، حذف محاسبه برش در هر pointermove، تفکیک درخواست دانلود از ذخیره قطعی، افزودن Title Block و متادیتای UTF-16BE به PDF مستقیم، و کالیبراسیون دو نقطه‌ای سانتی‌متری برای هر صفحه PDF؛ ۲۱ رگرسیون سورسی اضافه شد ولی تست/Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8628,6 +8634,37 @@
         "Startup recovery برای PDF بدون marker txId معتبر، صرف تطبیق checksum سند آماده را Commit حساب نمی‌کند؛ Mirror async و saveAuto شناسه تراکنش را حفظ می‌کنند.",
         "تست‌های جدید تأیید واحد، quota/journal/marker، failure injection و رفتار قدیمی به سورس افزوده یا سازگار شدند، اما هیچ‌کدام اجرا نشده‌اند."
       ]
+    },
+    {
+      "id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "record_type": "source_remediation",
+      "module": "dxf_decoding_crop_and_pdf_export_import",
+      "source": "User N6 request for RD-IE-09/10/11/12/13, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
+      "target_version": "V398-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — مرحله N6 ممیزی RoomDesigner یعنی RD-IE-09/10/11/12/13 را از آخرین main شروع کن. Encoding فایل DXF، عملکرد برش هندسه، صحت پیام‌های ذخیره‌سازی و یکسان‌سازی خروجی PDF را اصلاح کن. طبق POLICY هیچ Test یا Build اجرا نکن. نسخه را افزایش بده، Project Evolution و Checkpoint را ثبت کن، Commit و Push کن و نتیجه را بده.",
+      "assistant_interpretation": "رفع پنج مورد باز ممیزی Import/Export با حفظ سازگاری و صداقت وضعیت ذخیره، و افزودن مسیر دستی کالیبراسیون PDF به جای ادعای مقیاس حقیقی خودکار.",
+      "implementation_status": "N6: خواندن DXF با تشخیص DWGCODEPAGE/UTF-8 BOM و انتخاب دستی و شکست امن decoding، حذف محاسبه برش در هر pointermove، تفکیک درخواست دانلود از ذخیره قطعی، افزودن Title Block و متادیتای UTF-16BE به PDF مستقیم، و کالیبراسیون دو نقطه‌ای سانتی‌متری برای هر صفحه PDF؛ ۲۱ رگرسیون سورسی اضافه شد ولی تست/Build اجرا نشد.",
+      "related_audit_findings": [
+        "RD-IE-09",
+        "RD-IE-10",
+        "RD-IE-11",
+        "RD-IE-12",
+        "RD-IE-13"
+      ],
+      "runtime_status": "PENDING_USER; UNIT=NOT_RUN; PLAYWRIGHT=NOT_RUN; BUILD=NOT_RUN; REAL_CAD_PDF=NOT_RUN",
+      "verification_evidence": [
+        "V397-R DXF بر اساس file.text() همیشه UTF-8 خوانده می‌شد؛ V398-R source byte reader، BOM/Header codepage detection و انتخاب دستی با decode fatal را اضافه می‌کند.",
+        "در V397-R drag crop هر بار selectedSegments را clip می‌کرد؛ V398-R pointermove به‌روزرسانی overlay-only و release به‌روزرسانی نهایی را انجام می‌دهد.",
+        "file()/savePdfBlob() نتیجه درخواست Anchor را از نوشتن File System Access جدا می‌کنند؛ هیچ تأیید ذخیره فیزیکی Anchor ادعا نمی‌شود.",
+        "خروجی PDF مستقیم از فیلدهای Title/Designer/Revision/Date استفاده می‌کند و کادر عنوان Raster و PDF Info Unicode دارد.",
+        "PDF Import کالیبراسیون دو نقطه‌ای و فاصله واقعی per-page را در pdfSource ذخیره می‌کند؛ بدون کالیبراسیون width=480 صرفاً مرجع بصری است.",
+        "۲۱ سناریوی جدید و سازگاری harness قدیمی نوشته شده ولی هیچ Test یا Build یا پذیرش مرورگر اجرا نشده است."
+      ]
     }
   ],
   "analyses": [
@@ -10329,6 +10366,71 @@
         "Existing legacy direct DXF adapter uses an explicit prompt and is not re-routed into the new modal.",
         "Persistent SVG normalization, session storage limits and prior large PDF images require separate end-to-end review."
       ]
+    },
+    {
+      "id": "RD398-DXF-ENCODING",
+      "record_id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "created_at": "2026-11-20",
+      "module": "RD-IE-09",
+      "problem": "Legacy text DXF names may be corrupted by file.text UTF-8 replacement.",
+      "decision": "Inspect bounded header DWGCODEPAGE and UTF-8 BOM, decode bytes with fatal TextDecoder, provide manual selector for undocumented non-ASCII, record encoding in source provenance.",
+      "remaining_risks": [
+        "Unsupported legacy codepages need manual CAD conversion; user must verify non-ASCII names and actual files.",
+        "Source tests/Build/Playwright/real device acceptance NOT_RUN.",
+        "OPEN-CROSS-STORE LocalStorage/IndexedDB atomicity is not addressed in this release."
+      ]
+    },
+    {
+      "id": "RD398-DXF-CROP-RESPONSIVENESS",
+      "record_id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "created_at": "2026-11-20",
+      "module": "RD-IE-10",
+      "problem": "Crop pointermove repeatedly clips up to 200k segments, degrading responsiveness.",
+      "decision": "Update rectangle overlay only during movement; do expensive segment re-selection when gesture ends.",
+      "remaining_risks": [
+        "20k/200k profiling and iOS Safari/Chromium responsiveness unverified.",
+        "Source tests/Build/Playwright/real device acceptance NOT_RUN.",
+        "OPEN-CROSS-STORE LocalStorage/IndexedDB atomicity is not addressed in this release."
+      ]
+    },
+    {
+      "id": "RD398-SAVE-OUTCOME",
+      "record_id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "created_at": "2026-11-20",
+      "module": "RD-IE-11",
+      "problem": "Anchor click request had been treated as physical file save.",
+      "decision": "Differentiate successful File System Access write+close from unconfirmed browser-download request; preserve human confirmation before destructive changes.",
+      "remaining_risks": [
+        "Browser download completion cannot be inspected by the application; user must verify.",
+        "Source tests/Build/Playwright/real device acceptance NOT_RUN.",
+        "OPEN-CROSS-STORE LocalStorage/IndexedDB atomicity is not addressed in this release."
+      ]
+    },
+    {
+      "id": "RD398-PDF-DIRECT-METADATA",
+      "record_id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "created_at": "2026-11-20",
+      "module": "RD-IE-12",
+      "problem": "Direct PDF omits designer/revision printed title block.",
+      "decision": "Rasterize title, designer, revision, date and page number into each direct JPEG PDF page and add UTF-16BE PDF Info metadata.",
+      "remaining_risks": [
+        "Connection report remains print-only; font rendering and visual layout need browser acceptance.",
+        "Source tests/Build/Playwright/real device acceptance NOT_RUN.",
+        "OPEN-CROSS-STORE LocalStorage/IndexedDB atomicity is not addressed in this release."
+      ]
+    },
+    {
+      "id": "RD398-PDF-PHYSICAL-CALIBRATION",
+      "record_id": "RD398-N6-IMPORT-EXPORT-TRUST",
+      "created_at": "2026-11-20",
+      "module": "RD-IE-13",
+      "problem": "PDF raster pages use arbitrary 480-width not physical CAD scale.",
+      "decision": "Add explicit per-page two-point known-centimeter calibration, apply cm/pixel to cropped output size, store provenance; label uncalibrated 480-unit fallback.",
+      "remaining_risks": [
+        "Accurate calibration depends on correctly chosen landmarks; no automatic MediaBox scale deduction or vector reconstruction.",
+        "Source tests/Build/Playwright/real device acceptance NOT_RUN.",
+        "OPEN-CROSS-STORE LocalStorage/IndexedDB atomicity is not addressed in this release."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11789,19 +11891,26 @@
       "date": "2026-11-20",
       "change": "الزام تأیید صریح مقیاس DXF و ثبت منشأ واحدها در لایه‌های واردشده؛ تقویت ورود PDF با Journal فرمت ۳ دارای txId و نشانگر Commit، بازگردانی داده و Undo در شکست هم‌زمان، کنترل آینه IndexedDB و بازیابی مشروط در راه‌اندازی؛ سورس و سناریوهای رگرسیون ثبت شد اما Test/Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V398-R",
+      "date": "2026-11-20",
+      "change": "N6: خواندن DXF با تشخیص DWGCODEPAGE/UTF-8 BOM و انتخاب دستی و شکست امن decoding، حذف محاسبه برش در هر pointermove، تفکیک درخواست دانلود از ذخیره قطعی، افزودن Title Block و متادیتای UTF-16BE به PDF مستقیم، و کالیبراسیون دو نقطه‌ای سانتی‌متری برای هر صفحه PDF؛ ۲۱ رگرسیون سورسی اضافه شد ولی تست/Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V397-R",
+    "release": "V398-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-IE-06 explicit DXF scale confirmation plus RD-IE-07 PDF import journal/rollback; tests/build NOT_RUN; LocalStorage/IndexedDB cross-store atomicity remains open."
+    "audit": "RD-IE-09–13 source remediation; decoding, crop responsiveness, download status, PDF direct title/Info, two-point raster calibration. 21 tests authored NOT_RUN, Build NOT_RUN; OPEN-CROSS-STORE remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V398-R acceptance: DXF cp1256/cp1252/UTF-8/BOM unknown encoding, 200k crop dragging; savepicker versus anchor request; direct PDF titleblock/Unicode metadata; two-point page scaling and uncalibrated warning. Node, Build, browser NOT_RUN.",
+      "NEXT: ممیزی معماری OPEN-CROSS-STORE و تست پذیرش واقعی DXF/PDF/DWG در Chromium/Safari؛ اجرای تست/Build فقط با مجوز تغییر POLICY.",
       "V397-R acceptance pending: unknown/mm/m DXF unit acknowledgment, changed custom factor reset, layer provenance, PDF failure of journal/rd_last/commit marker, reload before/after marker, Undo and mirror storage on Chromium/iPhone Safari. Node/browser/build NOT_RUN.",
-      "NEXT N6 · RD-IE-09/10/11/12/13 — encoding DXF، کارایی برش، صداقت تأیید دانلود، فرا‌داده PDF و کالیبراسیون، با اولویت‌بندی و بدون Test/Build طبق POLICY.",
       "V396-R browser acceptance: >25 MiB DWG thumbnail only, <=25 MiB conversion, >80 MiB DXF rejection, cancel/retry and diagnostics. Tests authored, NOT_RUN.",
       "V395-R پذیرش اجرا نشده: PDF واردشده با quota-denied، ۱/۱۰/۲۰+ صفحه، کیفیت‌های مختلف، خطای رندر، محاسبه peak memory، ذخیره/بازگشایی و تست Safari/Chromium. Test/Build NOT_RUN.",
       "V395 milestone audit: بررسی کامل source و مرورگر در انتظار است؛ قوانین POLICY همچنان بدون اجرای تست و Build در این چرخه رعایت می‌شود.",

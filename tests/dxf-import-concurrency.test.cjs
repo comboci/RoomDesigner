@@ -20,6 +20,7 @@ function harness(){
   select:()=>lines,
   architectural:()=>true
  };
+ w.TextDecoder=TextDecoder;w.eval(fs.readFileSync(path.join(__dirname,'..','assets','dxf-encoding.js'),'utf8'));
  w.eval(script);
  const file={name:'sample.dxf',size:32,text:async()=>'DXF'};
  const dialog=()=>w.document.querySelector('#dxfImportDialog');
