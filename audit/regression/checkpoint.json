@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_CONTINUE_ROOMDESIGNER_AUDIT_N3_PDF_RESOURCE_GUARDS",
+  "execution_source": "USER_CONTINUE_N4_DWG_HARD_CAPS_STATIC",
   "execution_timestamp": "2026-11-20",
-  "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
+  "source_head": "410704a65e4d40611e2e81f6bd655e0ecc48f628",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V395-R",
+  "product_release": "V396-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "21222b8cc656a851480dd9f1e110237fc8ddea5f",
+  "inventory_blob_sha": "af8ccfb4d455ea6facf69f3e21c85dce12c28680",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V395-R focused source-only PDF budget, staging and export memory safeguards; ten regression cases authored NOT_RUN. Prior index/pdf importer coverage invalidated on changed blobs, earliest uncovered cursor preserved. Cross-store and runtime acceptance remain open.",
+  "coverage_note": "V396-R focused RD-IE-05 source remediation: DWG >25 MiB preview-only, full conversion capped 25 MiB input and 80 MiB output in caller and Worker; four regression scenarios authored NOT_RUN; WASM internal peak allocation unresolved.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
       "stale": true
     },
     {
@@ -352,7 +352,8 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
+      "historical_status": "STALE_BLOB"
     },
     {
       "path": "assets/dwg-worker.mjs",
@@ -369,7 +370,8 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical.",
+      "historical_status": "STALE_BLOB"
     },
     {
       "path": "storage-safety.js",
@@ -421,7 +423,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V391-R new exact blob; historical review retained."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "assets/dxf-import.js",
@@ -457,7 +459,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V392-R source/test blob changed; historical review retained."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -477,7 +479,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V393-R changed source blob; prior focused index review is historical."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -497,7 +499,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -517,7 +519,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -537,7 +539,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -557,7 +559,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -577,7 +579,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V395-R changed source blob; old focused or broad review is historical only."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -597,7 +599,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V395-R changed source blob; old focused or broad review is historical only."
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "assets/pdf-import.js",
@@ -622,14 +624,18 @@
       "actual_read_end_line": 755,
       "reviewed_start_line": 696,
       "reviewed_end_line": 755,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD395-PDF-RESOURCE-GUARDS"
       ],
       "reviewed_at": "2026-11-20",
       "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
       "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "index.html",
@@ -638,14 +644,18 @@
       "actual_read_end_line": 2210,
       "reviewed_start_line": 2163,
       "reviewed_end_line": 2210,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD395-PDF-RESOURCE-GUARDS"
       ],
       "reviewed_at": "2026-11-20",
       "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
       "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V396-R source blob updated, prior coverage is historical."
     },
     {
       "path": "tests/pdf-resource-budget.test.cjs",
@@ -661,6 +671,38 @@
       "reviewed_at": "2026-11-20",
       "source_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
       "review_basis": "Focused source candidate inspected without product/test execution; no runtime behavior confirmed.",
+      "truncated": false
+    },
+    {
+      "path": "assets/dwg-import.js",
+      "blob_sha": "3caa85ff32981df969a95dbc7f8a93ced5f2758a",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 68,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 68,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD396-DWG-HARD-LIMITS"
+      ],
+      "reviewed_at": "2026-11-20T04:57:25.618Z",
+      "source_head": "410704a65e4d40611e2e81f6bd655e0ecc48f628",
+      "review_basis": "Focused static source authoring; no build/tests/browser",
+      "truncated": false
+    },
+    {
+      "path": "assets/dwg-worker.mjs",
+      "blob_sha": "a72720f04e746d79186c46db314e444cd039f1ba",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 19,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 19,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD396-DWG-HARD-LIMITS"
+      ],
+      "reviewed_at": "2026-11-20T04:57:25.621Z",
+      "source_head": "410704a65e4d40611e2e81f6bd655e0ecc48f628",
+      "review_basis": "Focused static source authoring; no build/tests/browser",
       "truncated": false
     }
   ],
@@ -946,11 +988,12 @@
     {
       "id": "RD-IE-05",
       "priority": "P1",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "assets/dwg-import.js;assets/dwg-worker.mjs",
       "root_cause": "Full DWG conversion has no hard input/output cap matching docs; large files can exhaust resources.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V396-R source guards implemented, no tests or build executed; WASM intermediate peak memory unbounded",
+      "correction": "25 MiB input and 80 MiB output caps in UI and worker; large file thumbnail preview retained."
     },
     {
       "id": "RD-IE-06",
@@ -1083,22 +1126,34 @@
       "root_cause": "PDF images grew without an aggregate budget and export retained separate all-pages JPEG images, exposing quota and peak-memory failures.",
       "correction": "Guard aggregate PDF page counts and Base64 bytes, candidate-stage and validate before durable LocalStorage write and live history commit; stream JPEG page objects into bounded PDF parts and release canvas.",
       "source_recheck": "10 regression tests authored NOT_RUN. Remaining Base64 JSON/LocalStorage storage and IndexedDB cross-store atomicity unresolved."
+    },
+    {
+      "id": "RD396-DWG-HARD-LIMITS",
+      "priority": "P1",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "assets/dwg-import.js;assets/dwg-worker.mjs;tests/dwg-hard-limits.test.cjs",
+      "related_audit_findings": [
+        "RD-IE-05"
+      ],
+      "root_cause": "DWG converter had only a soft >80 MiB confirmation and no hard output size check, despite a documented 25/80 MiB policy.",
+      "correction": "Caller and worker enforce 25 MiB input and 80 MiB returned output with no bypass. Large DWG thumbnail remains available; four tests authored.",
+      "source_recheck": "Static source only, tests/build/real CAD NOT_RUN; internal WASM allocation still unbounded."
     }
   ],
   "last_completed_segment": {
-    "path": "index.html",
-    "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
-    "start_line": 2163,
-    "end_line": 2210,
+    "path": "assets/dwg-worker.mjs",
+    "blob_sha": "a72720f04e746d79186c46db314e444cd039f1ba",
+    "start_line": 1,
+    "end_line": 19,
     "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
+    "blob_sha": "04bfaf44e16be35897e1e6ac113ae73dda9aba45",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Index changed in V395-R; focused PDF segments do not cover unrelated lines."
+    "reason": "Index blob changed in V396-R; sequential audit coverage remains at first unread lines."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1107,7 +1162,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V395-R source-only: PDF importer page/aggregate budget and staged primary write; PDF exporter toBlob per-page and 20-page/32MiB limits; 10 regressions authored NOT_RUN.",
+    "static_diff": "V396-R hard DWG input/output caps and preservation of thumbnail preview; four authored regressions, Node/Playwright/build/real DWG NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1124,11 +1179,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned main Git tree plus exact staged Git blobs; source and test code not executed",
-    "baseline_head": "34ddae07840216e2c92b9675a0bb6d61c787b472",
-    "entries": 584,
+    "method": "Pinned main plus exact candidate Git blob metadata; no code executed",
+    "baseline_head": "410704a65e4d40611e2e81f6bd655e0ecc48f628",
+    "entries": 585,
     "no_product_execution": true,
-    "notes": "V395-R 8 changed/new files with exact staged blob IDs, inventory and checkpoint in one candidate commit. Full milestone source audit due, NOT_RUN."
+    "notes": "V396-R DWG guards and four authored regressions, docs, versions, Evolution and checkpoint/inventory committed together."
   },
   "branch_review": {
     "branches": [

@@ -42,10 +42,10 @@
     },
     {
       "path": "DWG-IMPORT-V347.md",
-      "blob_sha": "d750258e2655eb4bf2f7a5f43446269c5f1b93bb",
+      "blob_sha": "96bddf2643bfe28f41ed788c11708b4814d84ad9",
       "mode": "100644",
-      "bytes": 2658,
-      "lines": 21,
+      "bytes": 3017,
+      "lines": 25,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -78,10 +78,10 @@
     },
     {
       "path": "IMPORT-FORMATS.md",
-      "blob_sha": "74b9b288aa32edafe0a4899a3a37d534ad2f21ba",
+      "blob_sha": "8c9f7fe616728fbe6a7541ee0b9178be991b5096",
       "mode": "100644",
-      "bytes": 4047,
-      "lines": 48,
+      "bytes": 4981,
+      "lines": 54,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -168,10 +168,10 @@
     },
     {
       "path": "assets/dwg-import.js",
-      "blob_sha": "c087f04474548ee5b52ce35025bb2ca07fccae57",
+      "blob_sha": "3caa85ff32981df969a95dbc7f8a93ced5f2758a",
       "mode": "100644",
-      "bytes": 7134,
-      "lines": 65,
+      "bytes": 7860,
+      "lines": 68,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -186,10 +186,10 @@
     },
     {
       "path": "assets/dwg-worker.mjs",
-      "blob_sha": "bb819f888736d5a7d8306ecc6105e61e68852b77",
+      "blob_sha": "a72720f04e746d79186c46db314e444cd039f1ba",
       "mode": "100644",
-      "bytes": 890,
-      "lines": 0,
+      "bytes": 1244,
+      "lines": 19,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3804,10 +3804,10 @@
     },
     {
       "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
-      "blob_sha": "72ee4b9997d4057abde01b8fa7fc887db271b0b9",
+      "blob_sha": "9fef2428b732f032230ed5ae98d8dad6605f000d",
       "mode": "100644",
-      "bytes": 23253,
-      "lines": 177,
+      "bytes": 23975,
+      "lines": 183,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3948,7 +3948,7 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "92d3297d046f35f055c893b331bee30db4cd086e",
+      "blob_sha": "04bfaf44e16be35897e1e6ac113ae73dda9aba45",
       "mode": "100644",
       "bytes": 566942,
       "lines": 3189,
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "49da8f353d7091e8e80328f67e6792879ced97d5",
+      "blob_sha": "ecf6df005bb3aaaff342e78dd2526ca9bdd7d0b0",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3975,7 +3975,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "4703bc093025f569a223598ceda51d6d71827467",
+      "blob_sha": "205ee3b304d06d8a1150fbd76e2021a089f8a630",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3993,10 +3993,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "749e1375dcdb1d1436a8e753d0b038b3fb520673",
+      "blob_sha": "6864fa1ac7131a3f7f544c52cd13809a6c775bc7",
       "mode": "100644",
-      "bytes": 790501,
-      "lines": 11720,
+      "bytes": 794271,
+      "lines": 11773,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4350,6 +4350,15 @@
       "lines": 32,
       "category": "test_source_static_only",
       "binary": false
+    },
+    {
+      "path": "tests/dwg-hard-limits.test.cjs",
+      "mode": "100644",
+      "category": "test_source_static_only",
+      "binary": false,
+      "blob_sha": "144386715e57c419c1669f988729f6accff7a0f4",
+      "bytes": 3551,
+      "lines": 52
     },
     {
       "path": "tests/dwg-import.browser.test.cjs",

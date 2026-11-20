@@ -175,3 +175,9 @@
 - وضعیت هر دو مورد: SOURCE_FIXED_RUNTIME_PENDING فقط برای این کنترل‌های سورسی؛ معماری نگهداری تصاویر Base64 در rd_last، تراکنش مستقل IndexedDB/LocalStorage و محدودیت حافظه واقعی موبایل **باز** هستند.
 - milestone نسخه V395-R: ممیزی دوره‌ای سورس due است؛ اجرا و پذیرش مرورگری عمداً انجام نشده است (NOT_RUN / PENDING_USER).
 
+
+## V396-R — RD-IE-05 source remediation (NOT_RUN)
+
+The main DWG dialog now preserves large-file thumbnail preview but blocks full conversion for files over 25 MiB, without user override. Worker guards input size before WASM initialization, output size before its second copy/transfer, and the main thread rejects oversized worker responses before creating File. Both guide and historical preview document are updated.
+
+**RD-IE-05: SOURCE_FIXED_RUNTIME_PENDING.** Native conversion can still allocate excess WASM memory before returning bytes; input/output caps do not impose a hard process-memory limit. Four source regression cases are authored, Node/Playwright/Build/real DWG NOT_RUN, and other open findings remain.

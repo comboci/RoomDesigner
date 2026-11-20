@@ -1,4 +1,4 @@
-# Import formats — V393
+# Import formats — V396
 
 Source implementation only; runtime acceptance belongs to the user.
 
@@ -46,3 +46,9 @@ NRD exports now use `format: "roomdesigner-portable/v1"` alongside the existing 
 When importing, the SVG package is checked for unique/safe IDs, schema, length, checksum, sanitization, and a bounded total (1,000 items, 250,000 characters per asset, 12,000,000 total characters). Referenced SVG resources missing from a portable package cause a failure **before** writing the drawing. A pre-existing unrelated symbol under the same ID is preserved; the incoming symbol receives a distinct `portable-svg-*` ID and imported drawing/revision/catalog references are remapped. Only changed draft assets are persisted, through the same `rd_pending_import` journal as `rd_last`, with the original `rd_svg_drafts` restored on failed writes/rollback. The old bare document and legacy `{doc,types,catalog}` envelopes remain readable, but cannot recreate any resource that the old file never contained.
 
 Import/export source has been updated, but Node, Playwright, real-file/mobile, cross-store IndexedDB durability and end-user acceptance are still **NOT_RUN / PENDING**. Non-atomic LocalStorage/IndexedDB mirror reconciliation remains a separate open risk.
+
+## V396-R — enforceable DWG conversion limits
+
+Full DWG-to-DXF conversion is **hard-limited** to a 25 MiB (26,214,400-byte) input and an 80 MiB (83,886,080-byte) returned DXF. The dialog remains available for larger DWG files and reads only the bounded embedded-thumbnail preview; the full conversion button is disabled and its handler refuses a whole-file read. The module Worker also rejects excessive input before WASM initialization, and checks the converted output before allocating the transferable copy. The caller checks returned output again before constructing File. No confirmation bypass exists.
+
+These limits do not constrain the converter's **peak internal WASM memory allocation before return**. Cancel, two-minute timeout and diagnostic behavior are retained. Static source updates and regression tests have been authored; Node, Playwright, build and real DWG conversion are NOT_RUN and user acceptance is PENDING.

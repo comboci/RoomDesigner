@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V395-R",
+  "current_source_release": "V396-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1875,6 +1875,12 @@
       "version": "V395-R",
       "date": "2026-11-20",
       "change": "افزودن سقف تجمیعی صفحات و تصاویر PDF، آماده‌سازی سند مستقل و الزام موفقیت ذخیره اصلی پیش از اعمال، و تولید تدریجی JPEG/PDF بدون نگهداری آرایه دوم تصاویر؛ ۱۰ سناریوی رگرسیون منبع افزوده شد، بدون اجرای Test یا Build.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V396-R",
+      "date": "2026-11-20",
+      "change": "اعمال سقف سخت ۲۵ MiB ورودی و ۸۰ MiB خروجی در تبدیل DWG، جلوگیری از خواندن کامل DWG بزرگ و حفظ پیش‌نمایش بندانگشتی؛ کنترل مستقل Worker و رابط اصلی، چهار سناریوی تست فقط نوشته شدند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8562,6 +8568,32 @@
         "ده آزمون رگرسیون به متن سورس افزوده شده‌اند و اجرا نشده‌اند؛ سازگاری عملی Safari/Chromium و بار حافظه اندازه‌گیری نشده است.",
         "ریسک معماری باقی‌مانده: تصاویر همچنان داخل JSON/LocalStorage هستند؛ انتقال به IndexedDB با تراکنش جامع و تفکیک دارایی‌های باینری انجام نشده است."
       ]
+    },
+    {
+      "id": "RD396-DWG-HARD-LIMITS",
+      "record_type": "source_remediation",
+      "module": "dwg_conversion_resource_caps",
+      "source": "RoomDesigner deep import/export audit RD-IE-05 N4 continuation 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "410704a65e4d40611e2e81f6bd655e0ecc48f628",
+      "target_version": "V396-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "چت «ادامه ممیزی و اصلاح» را ادامه بده.",
+      "assistant_interpretation": "پس از ثبت V395-R، مرحله N4: سقف واقعی حجم DWG ورودی و DXF خروجی را بدون از دست‌دادن قابلیت تصویر کوچک فایل بزرگ اجرا کن.",
+      "implementation_status": "اعمال سقف سخت ۲۵ MiB ورودی و ۸۰ MiB خروجی در تبدیل DWG، جلوگیری از خواندن کامل DWG بزرگ و حفظ پیش‌نمایش بندانگشتی؛ کنترل مستقل Worker و رابط اصلی، چهار سناریوی تست فقط نوشته شدند.",
+      "related_audit_findings": [
+        "RD-IE-05"
+      ],
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN; REAL_DWG=NOT_RUN",
+      "verification_evidence": [
+        "V395-R برای DWG بیش از ۸۰ MiB صرفاً confirm می‌گرفت و سقف خروجی DXF اجرا نمی‌شد.",
+        "V396-R تبدیل کامل را برای ورودی بزرگ‌تر از ۲۵ MiB رد می‌کند اما استخراج محدود تصویر کوچک را نگه می‌دارد.",
+        "worker ورودی را پیش از WASM init و خروجی را پیش از کپی bytes کنترل می‌کند؛ caller نیز DXF برگشتی را پیش از File کنترل می‌کند.",
+        "چهار رگرسیون سورس تهیه شده‌اند، Test و Build اجرا نشده‌اند.",
+        "حافظه پیک داخلی تبدیل WASM پیش از برگشت bytes تضمین نشده است."
+      ]
     }
   ],
   "analyses": [
@@ -10233,6 +10265,20 @@
         "ساخت PDF همچنان تصویرمحور است و آرایه قطعات PDF را تا ساخت Blob نهایی نگه می‌دارد؛ مصرف حافظه به صفر نمی‌رسد.",
         "تأیید ذخیره فیزیکی PDF در مسیر دانلود anchor قابل تضمین نیست."
       ]
+    },
+    {
+      "id": "RD396-DWG-RESOURCE-AUDIT",
+      "record_id": "RD396-DWG-HARD-LIMITS",
+      "created_at": "2026-11-20",
+      "module": "dwg_import",
+      "problem": "DWG 25/80 MiB policy documented but not enforced; oversized conversion could be approved and copied.",
+      "decision": "Keep thumbnail-only preview for larger files; reject full conversion over 25 MiB, reject DXF over 80 MiB in worker and caller, with no user override.",
+      "remaining_risks": [
+        "Node, Playwright, build and real DWG tests NOT_RUN.",
+        "WASM internal peak memory may grow before the returned-view size guard.",
+        "Complex DWG semantic fidelity and 3D/proxy entities are unsupported.",
+        "RD-IE-06/07 DXF units and PDF transaction boundaries still require work."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11681,18 +11727,25 @@
       "date": "2026-11-20",
       "change": "افزودن سقف تجمیعی صفحات و تصاویر PDF، آماده‌سازی سند مستقل و الزام موفقیت ذخیره اصلی پیش از اعمال، و تولید تدریجی JPEG/PDF بدون نگهداری آرایه دوم تصاویر؛ ۱۰ سناریوی رگرسیون منبع افزوده شد، بدون اجرای Test یا Build.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V396-R",
+      "date": "2026-11-20",
+      "change": "اعمال سقف سخت ۲۵ MiB ورودی و ۸۰ MiB خروجی در تبدیل DWG، جلوگیری از خواندن کامل DWG بزرگ و حفظ پیش‌نمایش بندانگشتی؛ کنترل مستقل Worker و رابط اصلی، چهار سناریوی تست فقط نوشته شدند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V395-R",
+    "release": "V396-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-IE-02/08 source-only: PDF intake memory/LocalStorage guards, staged candidate and progressive PDF generation; ten regression cases authored NOT_RUN. V395 audit multiple-of-five milestone DUE: full source/Browser regression NOT_RUN under POLICY. Cross-store atomicity remains open."
+    "audit": "RD-IE-05 DWG 25/80 MiB hard conversion caps; oversized thumbnail-only preview; test/build NOT_RUN; internal WASM peak memory still unbounded."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
-      "NEXT N4: RD-IE-05 (P1) — محدودیت واقعی ورودی/خروجی DWG و همگام‌سازی مستندات؛ طبق POLICY تست/Build اجرا نشود.",
+      "V396-R browser acceptance: >25 MiB DWG thumbnail only, <=25 MiB conversion, >80 MiB DXF rejection, cancel/retry and diagnostics. Tests authored, NOT_RUN.",
+      "NEXT N5 · RD-IE-06/07: explicit DXF unit confirmation and PDF staged import/rollback; no Test or Build.",
       "V395-R پذیرش اجرا نشده: PDF واردشده با quota-denied، ۱/۱۰/۲۰+ صفحه، کیفیت‌های مختلف، خطای رندر، محاسبه peak memory، ذخیره/بازگشایی و تست Safari/Chromium. Test/Build NOT_RUN.",
       "V395 milestone audit: بررسی کامل source و مرورگر در انتظار است؛ قوانین POLICY همچنان بدون اجرای تست و Build در این چرخه رعایت می‌شود.",
       "V394-R source change pending runtime/user acceptance; eight test scenarios authored NOT_RUN.",

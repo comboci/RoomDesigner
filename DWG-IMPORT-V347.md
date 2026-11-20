@@ -19,3 +19,7 @@ Desktop cancellation is now visible and terminates the conversion worker. Origin
 ## User test
 
 Open File > Import > DWG and choose the large file. Check that the saved thumbnail appears before any conversion, and that Cancel is visible. Full conversion is optional and remains expected to fail for the supplied large file; report the diagnostic if trying it. Accurate regional import remains an open requirement, not a completed feature.
+
+## V396-R safety follow-up
+
+Historical V347 thumbnail preview behavior remains. Starting in V396-R, DWGs larger than 25 MiB are preview-only, regardless of user confirmation. Worker and caller reject converted DXF larger than 80 MiB. This update has NOT_RUN build, Node, browser or real DWG conversion; peak WASM allocation is not bounded by the output cap.
