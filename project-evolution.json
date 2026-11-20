@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V387-R",
+  "current_source_release": "V388-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1827,6 +1827,12 @@
       "version": "V387-R",
       "date": "2026-11-20",
       "change": "حذف مسیر ثابت Edge ویندوز از ۸۵ تست مرورگری؛ استفاده از Chromium استاندارد Playwright و TEST_BROWSER_PATH اختیاری؛ افزودن کنترل ایستا و هماهنگی نسخه/ممیزی.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V388-R",
+      "date": "2026-11-20",
+      "change": "رفع اعلام موفقیت کاذب پس از شکست LocalStorage و موفقیت IndexedDB با نمایش هشدار و خروجی اضطراری؛ سه تست رگرسیون اضافه شد، بدون اجرای تست یا تغییر سیاست بازیابی.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8217,6 +8223,26 @@
         "در پیش‌نویس Git tree تنها ۸۵ فایل browser.test تغییر کرده‌اند؛ تفاوت‌ها صرفاً launch executablePath است.",
         "اجرای Playwright/مرورگر انجام نشده و پیش‌نیاز نصب Chromium جداست."
       ]
+    },
+    {
+      "id": "RD388-PRIMARY-FAILURE-STATUS",
+      "record_type": "source_remediation",
+      "module": "persistence_localstorage_indexeddb",
+      "source": "RoomDesigner storage audit; user N, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "target_version": "V388-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — رفع مورد بعدی ممیزی RoomDesigner",
+      "assistant_interpretation": "رفع اعلام موفقیت گمراه‌کننده هنگام ردشدن ذخیره rd_last ولی موفقیت آینه IndexedDB؛ پرهیز از تغییر سیاست انتخاب نسخه مرجع.",
+      "implementation_status": "پس از شکست ذخیره اصلی، manualSaveFailed حفظ می‌شود؛ هشدار صریح و دکمه خروجی اضطراری حتی پس از موفقیت IndexedDB نمایش داده می‌شوند؛ tooltip وضعیت عدم اطمینان را نشان می‌دهد.",
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "کد پایه: saveAuto primarySaveOk=false را بدون علامت‌گذاری manualSaveFailed می‌گذاشت و persistenceStatus با mirrorSaveOk=true دکمه خروجی را مخفی می‌کرد.",
+        "اصلاح کد و سه سناریوی regression در tests/storage-primary-failure.test.cjs ثبت شد؛ اجرا نشد.",
+        "اولویت داده معتبر LocalStorage نسبت به IndexedDB و فرمت‌های موجود تغییر نکردند."
+      ]
     }
   ],
   "analyses": [
@@ -9756,6 +9782,19 @@
         "Existing SVG test also accepts the historical BROWSER_EXECUTABLE variable; not altered.",
         "No automated tests, build, or mobile acceptance performed."
       ]
+    },
+    {
+      "id": "RD388-PRIMARY-FAILURE-ANALYSIS",
+      "record_id": "RD388-PRIMARY-FAILURE-STATUS",
+      "created_at": "2026-11-20",
+      "module": "persistence",
+      "problem": "A failed primary rd_last write followed by successful mirror save could hide the export action and imply durable current data, but a valid older LocalStorage snapshot wins on restart.",
+      "decision": "Mark primary failure as manualSaveFailed immediately and treat mirror-only state as unsafe in the export UI; do not auto select diverging mirrors.",
+      "remaining_risks": [
+        "Diverging valid LocalStorage/IndexedDB snapshots still require an explicit recovery choice.",
+        "Crash or unavailable previous snapshot may leave ambiguous recovery state.",
+        "Tests/build/browser acceptance remain NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11156,17 +11195,24 @@
       "date": "2026-11-20",
       "change": "حذف مسیر ثابت Edge ویندوز از ۸۵ تست مرورگری؛ استفاده از Chromium استاندارد Playwright و TEST_BROWSER_PATH اختیاری؛ افزودن کنترل ایستا و هماهنگی نسخه/ممیزی.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V388-R",
+      "date": "2026-11-20",
+      "change": "رفع اعلام موفقیت کاذب پس از شکست LocalStorage و موفقیت IndexedDB با نمایش هشدار و خروجی اضطراری؛ سه تست رگرسیون اضافه شد، بدون اجرای تست یا تغییر سیاست بازیابی.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V387-R",
+    "release": "V388-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Static source inspection: 85/93 browser scripts normalized to portable Playwright chromium launch. Contract source test added but no tests/build/browser executed; V385 audit acceptance pending."
+    "audit": "Static source review of rd_last/write and mirror status; three focused test cases added but not executed. No claim of cross-store atomicity or runtime acceptance."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "Divergent valid LocalStorage and IndexedDB snapshots need safe explicit export-and-select recovery; preserve both, no automatic authority switch.",
       "Run installed Chromium smoke/browser regression and triage failing tests; tests and user acceptance pending.",
       "Verify RD-074 mobile startup on iPhone Safari and storage-restricted previews; runtime acceptance pending.",
       "User acceptance: crop drag, Auto Trim, port rotation/flip/resize, save/reopen, mobile Safari and SVG/DXF/PDF exports.",

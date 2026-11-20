@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "ee42d766c579311bd6f9a51398620fb71e1faa55",
+      "blob_sha": "3778643b22c6f2010b8ef337ddce735bed0ad439",
       "mode": "100644",
-      "bytes": 12670,
-      "lines": 165,
+      "bytes": 12962,
+      "lines": 167,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3939,10 +3939,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "db89487ccda5fe505d3613a33f12d83d8960d243",
+      "blob_sha": "b530b36b10ec70b3b3954a975e73252025f55de9",
       "mode": "100644",
-      "bytes": 551206,
-      "lines": 2955,
+      "bytes": 551808,
+      "lines": 2963,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3957,7 +3957,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "2bef8e04cf3138f49df58ceb1b741eedd34cb021",
+      "blob_sha": "0e0cf038314b3a2b26483a6611223e50e9e68937",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "a21bde7e2ebe61f12ebe6418c846ae2c5289af1b",
+      "blob_sha": "21f4a1a7745a2184eacf4f06bfeee697602e0ce1",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3984,10 +3984,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "9e99d1064615c03612d821471e4030bd0e14e50d",
+      "blob_sha": "ccfaf8979c709d84c0d3c02f868464e498f20de0",
       "mode": "100644",
-      "bytes": 746092,
-      "lines": 11181,
+      "bytes": 749550,
+      "lines": 11227,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -5032,6 +5032,15 @@
       "mode": "100644",
       "bytes": 5810,
       "lines": 27,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/storage-primary-failure.test.cjs",
+      "blob_sha": "cd7bcf99c7a6419baeaedd75bd2ddcacc070bd1e",
+      "mode": "100644",
+      "bytes": 2570,
+      "lines": 61,
       "category": "test_source_static_only",
       "binary": false
     },

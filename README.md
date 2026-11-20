@@ -1,12 +1,14 @@
 # RoomDesigner
 
+V388-R (2026-11-20): Failed LocalStorage primary writes now keep emergency export visible even when IndexedDB mirroring succeeds. The UI warns that a valid older LocalStorage snapshot may win on reopening. Focused regression source added, not executed; cross-store atomicity remains open.
+
 V387-R (2026-11-20): Replaced Windows Edge executable paths in 85 browser regression scripts with Playwright Chromium defaults and optional TEST_BROWSER_PATH override. Added a source contract test; automated/browser execution and user acceptance remain pending.
 
 V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scripts to match the current async application startup. Added a static selector contract test. Browser launch portability and actual test execution remain pending.
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V387-R** (runtime acceptance pending user).
+Current source release: **V388-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 
