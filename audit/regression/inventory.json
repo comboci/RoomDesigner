@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "14fb5b320f062edfcc99a85fbd7112101ca08bd7",
+      "blob_sha": "ee42d766c579311bd6f9a51398620fb71e1faa55",
       "mode": "100644",
-      "bytes": 12405,
-      "lines": 163,
+      "bytes": 12670,
+      "lines": 165,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -189,6 +189,7 @@
       "blob_sha": "bb819f888736d5a7d8306ecc6105e61e68852b77",
       "mode": "100644",
       "bytes": 890,
+      "lines": null,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3806,6 +3807,7 @@
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
       "bytes": 4049,
+      "lines": null,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3937,7 +3939,7 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "d323a853ba113548bf096e696c69b645a7aced2c",
+      "blob_sha": "db89487ccda5fe505d3613a33f12d83d8960d243",
       "mode": "100644",
       "bytes": 551206,
       "lines": 2955,
@@ -3955,7 +3957,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "60835f15753238623aac0834fcee02d4dca38609",
+      "blob_sha": "2bef8e04cf3138f49df58ceb1b741eedd34cb021",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3964,7 +3966,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "47426b45d9ca075197ff29b5447ad66151e088eb",
+      "blob_sha": "a21bde7e2ebe61f12ebe6418c846ae2c5289af1b",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3982,10 +3984,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "6affb0a7378b32e67886bd3806bcd55c680c5994",
+      "blob_sha": "9e99d1064615c03612d821471e4030bd0e14e50d",
       "mode": "100644",
-      "bytes": 742891,
-      "lines": 11136,
+      "bytes": 746092,
+      "lines": 11181,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4018,9 +4020,9 @@
     },
     {
       "path": "tests/actuator-catalog.browser.test.cjs",
-      "blob_sha": "5d40fa605d43fe6297641319e1936d2062c1426d",
+      "blob_sha": "fc9d1e0b63872386f6bd9699acaa7e976f685a17",
       "mode": "100644",
-      "bytes": 5063,
+      "bytes": 5070,
       "lines": 25,
       "category": "test_source_static_only",
       "binary": false
@@ -4036,63 +4038,63 @@
     },
     {
       "path": "tests/actuator-hardware.browser.test.cjs",
-      "blob_sha": "ae1c5af2d8c7f15c3c1b58d823f1114e05bb885e",
+      "blob_sha": "23e794c2c1b26440a5ff4793f3669c3b9f9bf556",
       "mode": "100644",
-      "bytes": 6288,
+      "bytes": 6295,
       "lines": 22,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/additive-selection.browser.test.cjs",
-      "blob_sha": "f02e8fa34d0440c9694fb97cda4a803b07a0df0e",
+      "blob_sha": "b1cf9615d5d6bf7913cd9f921b7b9163dd261ec9",
       "mode": "100644",
-      "bytes": 4285,
+      "bytes": 4292,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/appearance-applicability.browser.test.cjs",
-      "blob_sha": "e2b021c200f82dcb1ecd19b82b1f4e0401025c54",
+      "blob_sha": "74c3932486ed5d5a66a96a27cfeb8ac691d251e2",
       "mode": "100644",
-      "bytes": 6428,
+      "bytes": 6435,
       "lines": 34,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/atlas-18l.browser.test.cjs",
-      "blob_sha": "f30eb546906b562925fb5e0ef3afcf298f56aa5d",
+      "blob_sha": "2ef6a79a72c044aa0f78b056ae2c4774447ac27f",
       "mode": "100644",
-      "bytes": 6036,
+      "bytes": 6043,
       "lines": 25,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/automatic-iconic-frame.browser.test.cjs",
-      "blob_sha": "9e8fb65bfa9cf4f25ae44f0c5ac08eb2e09adecc",
+      "blob_sha": "a921565969b65eb1b0a5300967dbe6bbe45d7521",
       "mode": "100644",
-      "bytes": 5967,
+      "bytes": 5974,
       "lines": 28,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/bedside.browser.test.cjs",
-      "blob_sha": "f4fc4032605e081ec00a258f352a4b64d68a780a",
+      "blob_sha": "cf868de2408501ae6f0d2bc6fc695c1dcda0fb90",
       "mode": "100644",
-      "bytes": 6480,
+      "bytes": 6487,
       "lines": 28,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/border-cursors.browser.test.cjs",
-      "blob_sha": "b49de59625f75bf3eb38d9e7b8363aa2c27d750a",
+      "blob_sha": "2f19f6293badb00c3aabe907615215fc0d4865c2",
       "mode": "100644",
-      "bytes": 6657,
+      "bytes": 6664,
       "lines": 29,
       "category": "test_source_static_only",
       "binary": false
@@ -4107,55 +4109,64 @@
       "binary": false
     },
     {
-      "path": "tests/cable-bend-insertion.browser.test.cjs",
-      "blob_sha": "f7cbe008687b4467168570f27822a08c4593b32f",
+      "path": "tests/browser-launch-contract.test.cjs",
+      "blob_sha": "f097f54b5d36cf10985fee906222893c30949c80",
       "mode": "100644",
-      "bytes": 9734,
+      "bytes": 985,
+      "lines": 22,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/cable-bend-insertion.browser.test.cjs",
+      "blob_sha": "4910e2d4855c3592c1886c7db0d3178fb3cd18bb",
+      "mode": "100644",
+      "bytes": 9710,
       "lines": 50,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/cable-draft-port-list.browser.test.cjs",
-      "blob_sha": "d7145c1d859642a02293bcf1cfeaa6684a94f57a",
+      "blob_sha": "160d46a10b829a8172e2edf7bb1ee91a24c46528",
       "mode": "100644",
-      "bytes": 9678,
+      "bytes": 9685,
       "lines": 33,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/cable-flow-shift.browser.test.cjs",
-      "blob_sha": "8ad9962ea489ff806144c00d6dd5cd27d2df8c4a",
+      "blob_sha": "687b3766f3735438ae3942d6671a73375820a013",
       "mode": "100644",
-      "bytes": 10400,
+      "bytes": 10407,
       "lines": 39,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/cable-label-rotation.browser.test.cjs",
-      "blob_sha": "0601171bcb9b04f1d9f06258ea363ee1eba7c7fd",
+      "blob_sha": "07ea7bea1db60c06b23774ac02f3049512ff2449",
       "mode": "100644",
-      "bytes": 6517,
+      "bytes": 6524,
       "lines": 31,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/cable-line-editing.browser.test.cjs",
-      "blob_sha": "d3ad47fd2d514a584b02bfa1cc3076c31851ba2e",
+      "blob_sha": "c4504db581f88d0c0bfe187412d4b8004cf7e1ac",
       "mode": "100644",
-      "bytes": 9180,
+      "bytes": 9187,
       "lines": 30,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/cable-routing.browser.test.cjs",
-      "blob_sha": "7b8ee96358cc96f17f23c9c99ea4bb0c0ca2f073",
+      "blob_sha": "0161d532852cf1a5a4dbe4a9e855465f7bf48e68",
       "mode": "100644",
-      "bytes": 12318,
+      "bytes": 12294,
       "lines": 66,
       "category": "test_source_static_only",
       "binary": false
@@ -4171,36 +4182,36 @@
     },
     {
       "path": "tests/cable-strands.browser.test.cjs",
-      "blob_sha": "f2dead37e826708294f787b0efc85bb4bc8b6a9f",
+      "blob_sha": "22dc4c6334e3e081915b876356421caa6c119f5f",
       "mode": "100644",
-      "bytes": 8322,
+      "bytes": 8329,
       "lines": 35,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/canvas-shortcuts.browser.test.cjs",
-      "blob_sha": "97db3fac8801a71a71a23fac04f3ab3a52e689a2",
+      "blob_sha": "69699b1de8333af390928f6a6372d4345fa2a6a4",
       "mode": "100644",
-      "bytes": 9776,
+      "bytes": 9752,
       "lines": 71,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/caption-font.browser.test.cjs",
-      "blob_sha": "6ef54dd3fa847839b88e6bb4ab905a52f1cf677f",
+      "blob_sha": "d218929f8e87d0e9c96865b5e92759f3dbac7082",
       "mode": "100644",
-      "bytes": 4090,
+      "bytes": 4097,
       "lines": 18,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/caption-position.browser.test.cjs",
-      "blob_sha": "4a43607d51e2d34c7f7f4b7f02c795b48fdfd6a3",
+      "blob_sha": "a0120137b9a6dacbd56297e962d11aa52f912b7f",
       "mode": "100644",
-      "bytes": 5885,
+      "bytes": 5861,
       "lines": 40,
       "category": "test_source_static_only",
       "binary": false
@@ -4216,45 +4227,45 @@
     },
     {
       "path": "tests/code-font-wheel.browser.test.cjs",
-      "blob_sha": "d2933731a13a9cc396ee0195b02514595693e644",
+      "blob_sha": "0890cea26e8730a2f2cf52fee1adf5a37f6bfdee",
       "mode": "100644",
-      "bytes": 5277,
+      "bytes": 5284,
       "lines": 22,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/color-picker-performance.browser.test.cjs",
-      "blob_sha": "b3fa6eaf46961efc06981ab73c7b0b6dadf38191",
+      "blob_sha": "dea1bd54d344251afad2b9b2b532f6fbf08e6cca",
       "mode": "100644",
-      "bytes": 5191,
+      "bytes": 5198,
       "lines": 18,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/compact-properties.browser.test.cjs",
-      "blob_sha": "bddf6a824d56885ff9e09cac95f06830eb9226bb",
+      "blob_sha": "1abfb332cad8ca8d2075da966f43558f15ccb266",
       "mode": "100644",
-      "bytes": 8895,
+      "bytes": 8902,
       "lines": 29,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/compact-toolbox.browser.test.cjs",
-      "blob_sha": "ff6b411484bd3e7c52fb9882f2e75008998dedf3",
+      "blob_sha": "65a92bababc6d641a0bd1a1e9c9152b5d8c7305f",
       "mode": "100644",
-      "bytes": 5715,
+      "bytes": 5722,
       "lines": 35,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/connection-model.browser.test.cjs",
-      "blob_sha": "a35b51ba114a98b914b4786276f6bfe9d54eb4fc",
+      "blob_sha": "fd9b68ee82c7328af3444b4891060d0c515baae9",
       "mode": "100644",
-      "bytes": 10456,
+      "bytes": 10432,
       "lines": 42,
       "category": "test_source_static_only",
       "binary": false
@@ -4297,36 +4308,36 @@
     },
     {
       "path": "tests/door-selection.browser.test.cjs",
-      "blob_sha": "8baf1aa7312128c3fa9fb301c8f860ed3af6fc52",
+      "blob_sha": "06931fb2d419b76279ffac8796fc37ee4b989c79",
       "mode": "100644",
-      "bytes": 4569,
+      "bytes": 4576,
       "lines": 19,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/doorbell-edit-isolation.browser.test.cjs",
-      "blob_sha": "a109f9888ad40dc29b7ed1a8d3a1207de1acb269",
+      "blob_sha": "516dd5f50b88f4d68d7d352cd7922f24062015ab",
       "mode": "100644",
-      "bytes": 4973,
+      "bytes": 4980,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/doorbell-models.browser.test.cjs",
-      "blob_sha": "b00172f911a1214e7f13d29de3c8d63a05edf463",
+      "blob_sha": "0de80126a176766ee6e4b76d7fdb65cd4e4647c5",
       "mode": "100644",
-      "bytes": 7927,
+      "bytes": 7934,
       "lines": 36,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/doorbell.browser.test.cjs",
-      "blob_sha": "adf536ac9b138d0331f765927cdb54ced8263124",
+      "blob_sha": "c69044e6f70cf279d1c8fa8c1679458291bd1bcd",
       "mode": "100644",
-      "bytes": 6505,
+      "bytes": 6512,
       "lines": 32,
       "category": "test_source_static_only",
       "binary": false
@@ -4405,27 +4416,27 @@
     },
     {
       "path": "tests/electrical-panel.browser.test.cjs",
-      "blob_sha": "ab77ea622783d9bc40c30fdf5893a93f824a263a",
+      "blob_sha": "9afbc85027baa6a958d813646e7550b2d154e602",
       "mode": "100644",
-      "bytes": 10412,
+      "bytes": 10419,
       "lines": 41,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/equipment-menu.browser.test.cjs",
-      "blob_sha": "9eccfe551372cd9d6c582852dd3139f0e23ef248",
+      "blob_sha": "cd0f77991ad7649d7fc4ad0eb6f82b99289bcdac",
       "mode": "100644",
-      "bytes": 10952,
+      "bytes": 10928,
       "lines": 35,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/equipment-ports.browser.test.cjs",
-      "blob_sha": "e947cb2a16f4fba3388073656ae14dcea605b499",
+      "blob_sha": "fce32aec5300cb9df8eb1276661195089f83dfbc",
       "mode": "100644",
-      "bytes": 8369,
+      "bytes": 8376,
       "lines": 29,
       "category": "test_source_static_only",
       "binary": false
@@ -4441,9 +4452,9 @@
     },
     {
       "path": "tests/field-devices.browser.test.cjs",
-      "blob_sha": "e782044c03ca3f18cd7f7288789d8aa11dbd1ee1",
+      "blob_sha": "144ea56acf1695c003729d340f90bee9e0625457",
       "mode": "100644",
-      "bytes": 9416,
+      "bytes": 9392,
       "lines": 39,
       "category": "test_source_static_only",
       "binary": false
@@ -4459,45 +4470,45 @@
     },
     {
       "path": "tests/fixed-variant-palette.browser.test.cjs",
-      "blob_sha": "d953ac68c340d192202c87c9ca83eff6b88bf748",
+      "blob_sha": "fb0670eaa6a94d00aaad48719c3e20eb8e333a9d",
       "mode": "100644",
-      "bytes": 6590,
+      "bytes": 6597,
       "lines": 31,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/general-image.browser.test.cjs",
-      "blob_sha": "4b12fe676c359c248592a57b84748629b072f847",
+      "blob_sha": "fa7098a4a8c148199e2204ea1a88079ce8ef842b",
       "mode": "100644",
-      "bytes": 7118,
+      "bytes": 7125,
       "lines": 35,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/general-shape-resize.browser.test.cjs",
-      "blob_sha": "e002acd83cd52b25b2438f0614479ff10ff722cc",
+      "blob_sha": "89091ca2cb5fdec44d143f97efde1558882ff787",
       "mode": "100644",
-      "bytes": 5131,
+      "bytes": 5138,
       "lines": 30,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/global-display.browser.test.cjs",
-      "blob_sha": "263f7cab17291ca2351572aa3bd21076b6b7730d",
+      "blob_sha": "fed07d3dc153ecc9049e2369c968153391fdf5a1",
       "mode": "100644",
-      "bytes": 9233,
+      "bytes": 9240,
       "lines": 33,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/hotel-svg.browser.test.cjs",
-      "blob_sha": "5b63691d3e548af59c59df810c744276acd63cee",
+      "blob_sha": "b6036da19cc5a4222759d2ba6385cf9cbdc4adc3",
       "mode": "100644",
-      "bytes": 5330,
+      "bytes": 5306,
       "lines": 46,
       "category": "test_source_static_only",
       "binary": false
@@ -4513,9 +4524,9 @@
     },
     {
       "path": "tests/installation-direction.browser.test.cjs",
-      "blob_sha": "546efcecd85f7354a41700742b20e9e0bfaa55b6",
+      "blob_sha": "ca7f8e7292fcc180112f6bb1ec185d6080da6eb5",
       "mode": "100644",
-      "bytes": 6120,
+      "bytes": 6127,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
@@ -4531,18 +4542,18 @@
     },
     {
       "path": "tests/item-top-left.browser.test.cjs",
-      "blob_sha": "963922416d851afde7406a49b8c0b492b44c0ed1",
+      "blob_sha": "b6071c82d67392c8825021bf6f6dd9b0078916f4",
       "mode": "100644",
-      "bytes": 4572,
+      "bytes": 4579,
       "lines": 21,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/keyboard-hold.browser.test.cjs",
-      "blob_sha": "83d193a43fe5e7a452dbda61fe04be034046e283",
+      "blob_sha": "1532913b1763ebb7534728edc93f89b48699422c",
       "mode": "100644",
-      "bytes": 5579,
+      "bytes": 5555,
       "lines": 35,
       "category": "test_source_static_only",
       "binary": false
@@ -4558,18 +4569,18 @@
     },
     {
       "path": "tests/lighting-display-modes.browser.test.cjs",
-      "blob_sha": "6b55fa63d6f6bf608fe4d78031786f2cb4f4862d",
+      "blob_sha": "1ed58166cc4d5f056120ce23dbe92d6c0b61383a",
       "mode": "100644",
-      "bytes": 8425,
+      "bytes": 8432,
       "lines": 56,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/lighting-model-variants.browser.test.cjs",
-      "blob_sha": "be9bc97b39f941ebcff78388a9ff85fbde563473",
+      "blob_sha": "f40cfb7525f8ccb2bd35543b7079196b72a8f69f",
       "mode": "100644",
-      "bytes": 7593,
+      "bytes": 7600,
       "lines": 49,
       "category": "test_source_static_only",
       "binary": false
@@ -4594,45 +4605,45 @@
     },
     {
       "path": "tests/line-handles.browser.test.cjs",
-      "blob_sha": "3c5cb092729a7ed233a8cf5297aa9f654fc0e3bf",
+      "blob_sha": "8a6bbcc5d807310fd645653e8f01ae5084b4ad7b",
       "mode": "100644",
-      "bytes": 5739,
+      "bytes": 5746,
       "lines": 28,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/line-length-integer-font.browser.test.cjs",
-      "blob_sha": "0642a411f1e5deb2546761337814eacf262373f4",
+      "blob_sha": "46f25066a08e3474f5e89f35108be6049a6e0a99",
       "mode": "100644",
-      "bytes": 4835,
+      "bytes": 4842,
       "lines": 18,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/live-workspace.browser.test.cjs",
-      "blob_sha": "ad6056045e08caea4d46dc59d32b20a5d5023e70",
+      "blob_sha": "d2d92469945e7226a76bcd57f43c8ca6a1b07865",
       "mode": "100644",
-      "bytes": 12711,
+      "bytes": 12718,
       "lines": 51,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/main-integration.browser.test.cjs",
-      "blob_sha": "517845d9026b43c9196353eafd679aa5aa967f51",
+      "blob_sha": "b49423f7109e67169238da0217682fb4fc403173",
       "mode": "100644",
-      "bytes": 4897,
+      "bytes": 4873,
       "lines": 18,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/mode-style-names.browser.test.cjs",
-      "blob_sha": "80c4ecdceef34b6b645031613f5681dfd17db64b",
+      "blob_sha": "db14c5b4d22e19c8cbc1b9745170d4003f8383d8",
       "mode": "100644",
-      "bytes": 5682,
+      "bytes": 5689,
       "lines": 23,
       "category": "test_source_static_only",
       "binary": false
@@ -4648,72 +4659,72 @@
     },
     {
       "path": "tests/model-iconic-border.browser.test.cjs",
-      "blob_sha": "9731197f598b489cadf53da087f288a16c6227f0",
+      "blob_sha": "1703f67478f3e8c7232f014d4dace6e817996abb",
       "mode": "100644",
-      "bytes": 5021,
+      "bytes": 5028,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/orientation-fields.browser.test.cjs",
-      "blob_sha": "3a4198e83a4bb8b85c8fd628c32355e1dbd72d46",
+      "blob_sha": "5a4e988349cd0aea847a72491df2c619aec1f8a0",
       "mode": "100644",
-      "bytes": 4980,
+      "bytes": 4987,
       "lines": 23,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/origin-multiselection.browser.test.cjs",
-      "blob_sha": "507cb7fbeee06e95b7f5262e5a0213ae38de2fd7",
+      "blob_sha": "e335fd724192a2dd28a0707a80f3e3a3dae1710b",
       "mode": "100644",
-      "bytes": 5211,
+      "bytes": 5218,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/page-allocation.browser.test.cjs",
-      "blob_sha": "d1db6b97a82954245c67c0b78195c41ac4bfa0a2",
+      "blob_sha": "f13167fd9434d1f39fac9dc36b04af27f80d64be",
       "mode": "100644",
-      "bytes": 5854,
+      "bytes": 5861,
       "lines": 31,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/paged-canvas.browser.test.cjs",
-      "blob_sha": "ce5f47ba24529ea57af13deeddde1ebb3d0f2d3f",
+      "blob_sha": "fc181c28c502bd7033df0662af9dc9991e06b4a1",
       "mode": "100644",
-      "bytes": 7808,
+      "bytes": 7815,
       "lines": 40,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/palette-caption-footprint.browser.test.cjs",
-      "blob_sha": "e0fa40d72b0f13665faedbf833ea8c6c2b173e0b",
+      "blob_sha": "443ffd2675ba5965ae258ae4fdc4b827b765d567",
       "mode": "100644",
-      "bytes": 5015,
+      "bytes": 5022,
       "lines": 21,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/pdf-import.browser.test.cjs",
-      "blob_sha": "70d233ad6e36d8c9336ba1f051e4887ed26883a5",
+      "blob_sha": "f2358698e8f368e4239da4c4e2433f65dd22676e",
       "mode": "100644",
-      "bytes": 9653,
+      "bytes": 9660,
       "lines": 33,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/polyline-cleanup.browser.test.cjs",
-      "blob_sha": "fcd9f0f8ed58c07869a45b494f749afceef09706",
+      "blob_sha": "8a12fc74dd7a2ed039a18623aa814f36f810e276",
       "mode": "100644",
-      "bytes": 9314,
+      "bytes": 9321,
       "lines": 37,
       "category": "test_source_static_only",
       "binary": false
@@ -4738,18 +4749,18 @@
     },
     {
       "path": "tests/polyline-workflows.browser.test.cjs",
-      "blob_sha": "a49d768b405e70d5761f6eb6d7c6f5cba6f4c622",
+      "blob_sha": "224bc0019edcd058db9a8e337974bae72dc90de4",
       "mode": "100644",
-      "bytes": 11758,
+      "bytes": 11765,
       "lines": 39,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/power-supply-fan-coil.browser.test.cjs",
-      "blob_sha": "2dcf9880bc7b78f7aa212eb240710072f254065a",
+      "blob_sha": "ba4236e54293846b6429091c67ef1e167a2b1f64",
       "mode": "100644",
-      "bytes": 8172,
+      "bytes": 8148,
       "lines": 33,
       "category": "test_source_static_only",
       "binary": false
@@ -4765,45 +4776,45 @@
     },
     {
       "path": "tests/power-switch-additions.browser.test.cjs",
-      "blob_sha": "8e216d5249c3b81948a32d0f201b25fef0481ba2",
+      "blob_sha": "2f923336c9945aa05f3ec6e5a9287d98717d7ddb",
       "mode": "100644",
-      "bytes": 6144,
+      "bytes": 6151,
       "lines": 40,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/power-switch-atlas.browser.test.cjs",
-      "blob_sha": "2e70a683a8074ae3807413f3d57957eaadd9c3a0",
+      "blob_sha": "01d8ecc9f9d8de632bdcdd23fcdf3bdd215a0d23",
       "mode": "100644",
-      "bytes": 4907,
+      "bytes": 4914,
       "lines": 20,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/power-switch-azin.browser.test.cjs",
-      "blob_sha": "cc4ef6d607488dc669f24006a14e52160709039f",
+      "blob_sha": "c1eabec43e0a848e59d26576bb2342eb114abdaf",
       "mode": "100644",
-      "bytes": 6717,
+      "bytes": 6724,
       "lines": 19,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/power-switch.browser.test.cjs",
-      "blob_sha": "01e320a8f2141de179eb4a15ee7362ff10216650",
+      "blob_sha": "5b51493cc3235f2df3f26e3e0e0488a37a26f947",
       "mode": "100644",
-      "bytes": 6207,
+      "bytes": 6214,
       "lines": 19,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/power-terminal.browser.test.cjs",
-      "blob_sha": "d7efd860dc12d741abeaa9e84a7916e1e8441691",
+      "blob_sha": "fc3666f62c2b6abf4a57cb13d8acc31af661f367",
       "mode": "100644",
-      "bytes": 4279,
+      "bytes": 4255,
       "lines": 23,
       "category": "test_source_static_only",
       "binary": false
@@ -4828,54 +4839,54 @@
     },
     {
       "path": "tests/print-font.browser.test.cjs",
-      "blob_sha": "23cc119c9b1e9730728d21e0a3309dc05275a653",
+      "blob_sha": "042302a404e80aabea02b2122d35a60f9edeb014",
       "mode": "100644",
-      "bytes": 5606,
+      "bytes": 5613,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/product-detail-crop.browser.test.cjs",
-      "blob_sha": "c52e1ba3a810dbd1714848ee677354c1f540427e",
+      "blob_sha": "7763cc96515577906eeac47e49d9aabf7475b74d",
       "mode": "100644",
-      "bytes": 7016,
+      "bytes": 7023,
       "lines": 23,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/product-detail.browser.test.cjs",
-      "blob_sha": "00fd24a3c124ca898f4146dc38e2eb10d755ef5b",
+      "blob_sha": "51ee99d5b2fb4c41bef4f57ee53d1bf398b62a37",
       "mode": "100644",
-      "bytes": 8517,
+      "bytes": 8524,
       "lines": 39,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/property-size-precision.browser.test.cjs",
-      "blob_sha": "36c11f4493d7f106b1ee87122dfcece70f25b0bf",
+      "blob_sha": "bed36e7c39d113b207f3fb282ef9072eefbd15d8",
       "mode": "100644",
-      "bytes": 5266,
+      "bytes": 5273,
       "lines": 28,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/quick-connect-routing.browser.test.cjs",
-      "blob_sha": "d94d09819eae3f2a7b07806c699f6bd3d9fc89ae",
+      "blob_sha": "4c3ef4a7d0a9b1e60aac8c5c2e27d8440067416c",
       "mode": "100644",
-      "bytes": 5247,
+      "bytes": 5223,
       "lines": 27,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/real-image-proportional-resize.browser.test.cjs",
-      "blob_sha": "4f48352f59d785193a4add7cda90849844781d4e",
+      "blob_sha": "3543d506dfed3ee609f1678ddd8471d7d990bb68",
       "mode": "100644",
-      "bytes": 5408,
+      "bytes": 5415,
       "lines": 24,
       "category": "test_source_static_only",
       "binary": false
@@ -4900,45 +4911,45 @@
     },
     {
       "path": "tests/request-8r.browser.test.cjs",
-      "blob_sha": "dc9e8346739859734332d4d2595a803f6a13ab61",
+      "blob_sha": "ca70829ea98a0ac07f7296d4db709f769b674bb3",
       "mode": "100644",
-      "bytes": 7726,
+      "bytes": 7733,
       "lines": 38,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/request-azin.browser.test.cjs",
-      "blob_sha": "4fe07b786c6089a19c479f40c8f9adb09b19bea6",
+      "blob_sha": "c40bc1943dc112b603963ebe92d7ccdf8483405b",
       "mode": "100644",
-      "bytes": 5707,
+      "bytes": 5714,
       "lines": 29,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/request-switches.browser.test.cjs",
-      "blob_sha": "01f8d8b2c855a05df1a10d62ddc94567377ec51e",
+      "blob_sha": "630124fad55ea5ae4a4a53f77860cd243d927675",
       "mode": "100644",
-      "bytes": 5846,
+      "bytes": 5853,
       "lines": 29,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/rotation-and-cable-mode.browser.test.cjs",
-      "blob_sha": "4d04e50dd2f15ad51eda3bb886c131c530d0ef9c",
+      "blob_sha": "d8adaf92fb9565ea9b350175ac61850866db2af5",
       "mode": "100644",
-      "bytes": 11398,
+      "bytes": 11374,
       "lines": 66,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/rotation-submenu.browser.test.cjs",
-      "blob_sha": "a5f6ac9cb75cec82769fbf45fc5e45ef1b0c0daa",
+      "blob_sha": "f55011b33a71953e2a3f9e09bf3b5942f93f9b5b",
       "mode": "100644",
-      "bytes": 5488,
+      "bytes": 5495,
       "lines": 31,
       "category": "test_source_static_only",
       "binary": false
@@ -4954,54 +4965,54 @@
     },
     {
       "path": "tests/selection-handles.browser.test.cjs",
-      "blob_sha": "927215674a8966e4966a6d7a9b029fd494b8d819",
+      "blob_sha": "028b6f9a52a24600ef2cecff96f01bec32bf73ed",
       "mode": "100644",
-      "bytes": 9189,
+      "bytes": 9196,
       "lines": 34,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/seven-gang.browser.test.cjs",
-      "blob_sha": "5ad2048a65d84dc8d3840e19ed44f2fae8e5fd62",
+      "blob_sha": "11a4ebfde8ec8af622755ce2b0a35745cb4779dc",
       "mode": "100644",
-      "bytes": 5844,
+      "bytes": 5851,
       "lines": 32,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/shape-properties-placement.browser.test.cjs",
-      "blob_sha": "d2e5765debd42ce2e60dbe68e31e3c33f90ddc71",
+      "blob_sha": "fdc75015de984d7d4f73fbf1eb042549f050030f",
       "mode": "100644",
-      "bytes": 7209,
+      "bytes": 7216,
       "lines": 28,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/shift-fixed-anchors.browser.test.cjs",
-      "blob_sha": "54c9d3bda71aea87d621764ba17d5b80c310b9cd",
+      "blob_sha": "c218ea497615d45b451db2f2649d99d38ea71517",
       "mode": "100644",
-      "bytes": 8799,
+      "bytes": 8806,
       "lines": 41,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/shift-overlap.browser.test.cjs",
-      "blob_sha": "db7040222fa267bfadbbc03fe42b5462488efa1b",
+      "blob_sha": "ee9f2d5a9ac2fe755463ffb5f5adb062bf24eb89",
       "mode": "100644",
-      "bytes": 7776,
+      "bytes": 7783,
       "lines": 30,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/shift-single-bend.browser.test.cjs",
-      "blob_sha": "487e40cda9d249a5ba82ebb9db06788e2924a3e5",
+      "blob_sha": "2d831c6b234b2038808104620fd77adac6a26b48",
       "mode": "100644",
-      "bytes": 9349,
+      "bytes": 9356,
       "lines": 30,
       "category": "test_source_static_only",
       "binary": false
@@ -5017,9 +5028,9 @@
     },
     {
       "path": "tests/startup-view-captions.browser.test.cjs",
-      "blob_sha": "0255e7e6bfbb5925aa235f570a835bbb33807d79",
+      "blob_sha": "60da745d8a597cf2544bdc89f15ebdb264c6e208",
       "mode": "100644",
-      "bytes": 5803,
+      "bytes": 5810,
       "lines": 27,
       "category": "test_source_static_only",
       "binary": false
@@ -5044,9 +5055,9 @@
     },
     {
       "path": "tests/supplied-service-icons.browser.test.cjs",
-      "blob_sha": "e248f8589fcb4efa19a8193eadd10d889041e162",
+      "blob_sha": "6463ea9a34a998abb0a8595681bbd74cc2a83454",
       "mode": "100644",
-      "bytes": 5934,
+      "bytes": 5941,
       "lines": 26,
       "category": "test_source_static_only",
       "binary": false
@@ -5089,45 +5100,45 @@
     },
     {
       "path": "tests/thermostat-azin-integer-rotation.browser.test.cjs",
-      "blob_sha": "c364a0b27697898f13e2502b264e427ebc970395",
+      "blob_sha": "2c4df01d09a0d9c4d3d7d35e759eee233df48900",
       "mode": "100644",
-      "bytes": 5973,
+      "bytes": 5980,
       "lines": 27,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/thermostat-display-modes.browser.test.cjs",
-      "blob_sha": "92fa53a6ff04a9c889a083f9a13a004420551523",
+      "blob_sha": "0cc7ecce14cff657ccf77fbcd53c4775f81c7f3d",
       "mode": "100644",
-      "bytes": 4673,
+      "bytes": 4680,
       "lines": 19,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/thermostats.browser.test.cjs",
-      "blob_sha": "e8d83dbdc670f8d4c724f49d00238b0778ed5d73",
+      "blob_sha": "d3f8a3608fb651d7c4993a839b450eef473d1111",
       "mode": "100644",
-      "bytes": 5441,
+      "bytes": 5448,
       "lines": 26,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/toolbox-drag-drop.browser.test.cjs",
-      "blob_sha": "0eeaacd9c8c1167cd8f3f7097cf4071381dcef4f",
+      "blob_sha": "6a9732a2af936d451900790559aa10474a8c2d16",
       "mode": "100644",
-      "bytes": 7825,
+      "bytes": 7832,
       "lines": 33,
       "category": "test_source_static_only",
       "binary": false
     },
     {
       "path": "tests/workspace-navigation.browser.test.cjs",
-      "blob_sha": "4cfc58a647c9a1d2b9383b88e9df5ce8f3550c50",
+      "blob_sha": "357cda7a9a18663a334e7b672584720e615ad6ae",
       "mode": "100644",
-      "bytes": 8737,
+      "bytes": 8713,
       "lines": 55,
       "category": "test_source_static_only",
       "binary": false

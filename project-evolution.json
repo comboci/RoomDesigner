@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V386-R",
+  "current_source_release": "V387-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1821,6 +1821,12 @@
       "version": "V386-R",
       "date": "2026-11-20",
       "change": "رفع شناسه راه‌اندازی منسوخ در ۸۷ تست مرورگری، افزودن کنترل ایستای سازگاری و ثبت نسخه و ممیزی؛ بدون ادعای اجرای تست.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V387-R",
+      "date": "2026-11-20",
+      "change": "حذف مسیر ثابت Edge ویندوز از ۸۵ تست مرورگری؛ استفاده از Chromium استاندارد Playwright و TEST_BROWSER_PATH اختیاری؛ افزودن کنترل ایستا و هماهنگی نسخه/ممیزی.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8191,6 +8197,26 @@
         "درخت پیشنهادی فقط marker فعلی `(async()=>{'use strict';` را در ۸۷ فایل جایگزین نشان می‌دهد؛ اجرای واقعی آزمون مرورگر انجام نشده است.",
         "مسیر Edge در تعدادی از تست‌ها هنوز hard-code است و جداگانه نیازمند اصلاح است."
       ]
+    },
+    {
+      "id": "RD387-BROWSER-PATH",
+      "record_type": "source_remediation",
+      "module": "browser_regression_launch",
+      "source": "RoomDesigner static audit; user N, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "target_version": "V387-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — اصلاح مورد بعدی ممیزی RoomDesigner",
+      "assistant_interpretation": "حذف وابستگی تست‌های مرورگری به مسیر ثابت نصب Microsoft Edge ویندوز و حفظ سازگاری با Chromium استاندارد Playwright و مسیر سفارشی TEST_BROWSER_PATH.",
+      "implementation_status": "۸۵ تست مرورگری از مسیر ثابت Edge به گزینه executablePath مشروط به TEST_BROWSER_PATH تغییر کردند؛ در نبود آن Playwright Chromium اجرا می‌شود. تست ایستای مستقل اضافه و نسخه‌ها/ممیزی هماهنگ شدند؛ تست‌ها اجرا نشده‌اند.",
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BROWSER_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN",
+      "verification_evidence": [
+        "منبع ثابت ۹۳ تست مرورگری در Commit 7c3c3f5 بررسی شد؛ دقیقاً ۸۵ مورد Windows Edge path داشتند.",
+        "در پیش‌نویس Git tree تنها ۸۵ فایل browser.test تغییر کرده‌اند؛ تفاوت‌ها صرفاً launch executablePath است.",
+        "اجرای Playwright/مرورگر انجام نشده و پیش‌نیاز نصب Chromium جداست."
+      ]
     }
   ],
   "analyses": [
@@ -9717,6 +9743,19 @@
         "Many suites still hardcode a Windows Edge executable path; cross-platform Playwright support remains a separate follow-up.",
         "Even after fixing bootstrap extraction, assertions may expose additional outdated expectations or product regressions."
       ]
+    },
+    {
+      "id": "RD387-BROWSER-PATH-ANALYSIS",
+      "record_id": "RD387-BROWSER-PATH",
+      "created_at": "2026-11-20",
+      "module": "test_infrastructure",
+      "problem": "Eighty-five browser suites hardcoded C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe; test:browser:install installs Playwright Chromium instead.",
+      "decision": "Use native Playwright chromium.launch default unless TEST_BROWSER_PATH is set. Keep all assertions and test scenarios unchanged.",
+      "remaining_risks": [
+        "Browser binaries/dependencies may be absent in a runner.",
+        "Existing SVG test also accepts the historical BROWSER_EXECUTABLE variable; not altered.",
+        "No automated tests, build, or mobile acceptance performed."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11111,18 +11150,24 @@
       "date": "2026-11-20",
       "change": "رفع شناسه راه‌اندازی منسوخ در ۸۷ تست مرورگری، افزودن کنترل ایستای سازگاری و ثبت نسخه و ممیزی؛ بدون ادعای اجرای تست.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V387-R",
+      "date": "2026-11-20",
+      "change": "حذف مسیر ثابت Edge ویندوز از ۸۵ تست مرورگری؛ استفاده از Chromium استاندارد Playwright و TEST_BROWSER_PATH اختیاری؛ افزودن کنترل ایستا و هماهنگی نسخه/ممیزی.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V386-R",
+    "release": "V387-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Static change: 87/93 browser-test source selectors updated and compatibility contract added; TESTS/BUILD/BROWSER NOT_RUN. Previous multiple-of-five audit boundary V385 remains without runtime signoff."
+    "audit": "Static source inspection: 85/93 browser scripts normalized to portable Playwright chromium launch. Contract source test added but no tests/build/browser executed; V385 audit acceptance pending."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
-      "Next: remove hardcoded Windows Edge executable paths from browser tests and run full regression only when testing is authorized.",
+      "Run installed Chromium smoke/browser regression and triage failing tests; tests and user acceptance pending.",
       "Verify RD-074 mobile startup on iPhone Safari and storage-restricted previews; runtime acceptance pending.",
       "User acceptance: crop drag, Auto Trim, port rotation/flip/resize, save/reopen, mobile Safari and SVG/DXF/PDF exports.",
       "V140 source audit boundary.",

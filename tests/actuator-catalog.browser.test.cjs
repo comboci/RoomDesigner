@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),vm=require('vm'),{chromium}=require('playwright');
 (async()=>{
- const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+ const browser=await chromium.launch({...(process.env.TEST_BROWSER_PATH?{executablePath:process.env.TEST_BROWSER_PATH}:{}),headless:true});
  try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  let html=fs.readFileSync('index.html','utf8');const match=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].find(m=>m[1].includes("(async()=>{'use strict';"));

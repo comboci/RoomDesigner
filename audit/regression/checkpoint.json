@@ -4,14 +4,14 @@
   "branch": "main",
   "execution_source": "USER_N_MANUAL_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "4745fdac1fc73c82c8373baead9936d994778bc8",
+  "source_head": "7c3c3f590846059f5addf498806af97489b726f2",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V386-R",
+  "product_release": "V387-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "86b2f5d17848298231e36935c0ee293f005c35c0",
+  "inventory_blob_sha": "273a6e498ee00298b924ecf254476b267edbf4eb",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V386-R: focused static review of 87 outdated browser-test bootstrap markers; each replaced with the current async initializer. A source-only contract regression was staged but not run. No complete browser, build, unit or application audit coverage claimed; unchanged exact-blob historical segments remain historical and unread portions UNREAD.",
+  "coverage_note": "V387-R: focused static review identified and removed Windows Edge hardcoded executable from 85 browser tests (93 browser suites examined). The 85 launch configurations now use Playwright Chromium default with TEST_BROWSER_PATH override; a source contract test was added. No tests, builds, browser launches or runtime acceptance performed. No earlier incomplete source review credited.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -108,7 +108,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -160,7 +160,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate"
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only."
     },
     {
       "path": "index.html",
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Exact blob differs from current V386-R candidate",
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only.",
       "stale": true
     },
     {
@@ -300,7 +300,7 @@
       "coverage_valid": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "stale": true,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate"
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only."
     },
     {
       "path": "assets/pdf-import.css",
@@ -349,7 +349,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate"
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only."
     },
     {
       "path": "assets/dwg-worker.mjs",
@@ -366,7 +366,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate"
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only."
     },
     {
       "path": "storage-safety.js",
@@ -385,7 +385,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Exact blob differs from current V386-R candidate"
+      "invalidation_reason": "V387-R current blob mismatch; previous review is historical only."
     },
     {
       "path": "storage-safety.js",
@@ -607,6 +607,14 @@
       "root_cause": "87 browser regression scripts still searched for the removed synchronous IIFE prefix, causing failed test source extraction before browser assertions could run.",
       "correction": "Replace the 87 obsolete search markers with the current async bootstrap prefix without changing test logic; add a non-browser static contract test.",
       "source_recheck": "Draft tree shows 87 one-marker-only replacements (+5 bytes each); no unit, browser, build or device tests executed. Windows Edge hard-coded launch paths remain open."
+    },
+    {
+      "id": "RD387-BROWSER-PATH",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "tests/*.browser.test.cjs",
+      "root_cause": "85 Playwright browser suites hardcoded Windows Edge executablePath; this prevents default use of bundled Chromium on nonmatching hosts.",
+      "correction": "Replace fixed paths with optional TEST_BROWSER_PATH spread while retaining existing headless/options and test assertions. Add static browser launcher contract.",
+      "source_recheck": "Draft tree shows exactly 85 modified browser test blobs, all other browser tests untouched; tests/browser-launch-contract.test.cjs added. Tests/browser runtime NOT_RUN."
     }
   ],
   "last_completed_segment": {
@@ -618,11 +626,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "d323a853ba113548bf096e696c69b645a7aced2c",
+    "blob_sha": "db89487ccda5fe505d3613a33f12d83d8960d243",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "V386-R version marker changes invalidated earlier index blob coverage; segmented full source review remains pending."
+    "reason": "V387-R version marker change invalidated prior index.html read; complete bounded source review remains pending."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -631,7 +639,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "87 current-bootstrap source references corrected; one static regression source added; actual execution NOT_RUN.",
+    "static_diff": "V387-R changed 85 hardcoded chromium.launch executablePath options, left test logic intact, added static contract; test execution and user runtime acceptance NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -648,11 +656,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Deterministic pinned Git tree and blob bytes; no product execution",
-    "baseline_head": "4745fdac1fc73c82c8373baead9936d994778bc8",
-    "entries": 574,
+    "method": "Pinned Git blob metadata (baseline plus staged draft); no product execution",
+    "baseline_head": "7c3c3f590846059f5addf498806af97489b726f2",
+    "entries": 575,
     "no_product_execution": true,
-    "notes": "Manifest refreshed with 87 edited browser tests, one new static contract test, and synchronized release files."
+    "notes": "85 browser test blobs updated; release metadata, one contract test, and refreshed inventory included in one planned commit."
   },
   "branch_review": {
     "branches": [
