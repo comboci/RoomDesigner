@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_CONTINUATION_MANUAL_STATIC_REMEDIATION",
+  "execution_source": "USER_REQUESTED_STATIC_IMPORT_EXPORT_AUDIT",
   "execution_timestamp": "2026-11-20",
-  "source_head": "bac80b09b5e73a6b2cc34d58583f5ad3a1d034a2",
+  "source_head": "c2fcfa617f942c5ea592e61589b234c11b29ce8c",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
   "product_release": "V390-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "4cf2b5797fdf0213cb7288a1b1f8a89c5590fd2a",
+  "inventory_blob_sha": "31ac94595c1599a37aed46a5259732059d933e47",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V390-R focused static review of resolveInvalidLast failed-save branch. Rejected rd_last writes shadow the intact malformed source in safeStorage's volatile view. Restore captured raw bytes only in read-through memory after failure; retain the recovery block and editor original. Two VM regression scenarios added but NOT_RUN. No broad review or actual runtime acceptance credited.",
+  "coverage_note": "V390-R focused static review of resolveInvalidLast failed-save branch. Rejected rd_last writes shadow the intact malformed source in safeStorage's volatile view. Restore captured raw bytes only in read-through memory after failure; retain the recovery block and editor original. Two VM regression scenarios added but NOT_RUN. No broad review or actual runtime acceptance credited. Follow-up 2026-11-20 targeted static import/export/DXF/DWG/PDF/SVG audit documented 13 open findings and one known limitation at audit/import-export-dxf-dwg-deep-audit-2026-11-20.md. No sequential source coverage credited; no tests/build/browser run; no product source changes or release increment.",
   "segments": [
     {
       "path": "index.html",
@@ -655,6 +655,123 @@
       "root_cause": "Failed explicit replacement of invalid local rd_last can shadow the preserved damaged raw original with a rejected candidate in safeStorage fallback and corrupt the next recovery export's source.",
       "correction": "After a failed saveAuto, restore the captured original raw rd_last in volatile read-through memory only; retain rdLastBlocked and previous in-memory editor doc.",
       "source_recheck": "Exact candidate branch reviewed. Two new VM regression cases authored for replacing with current editor or IndexedDB mirror; NOT_RUN, cross-store authority remains open."
+    },
+    {
+      "id": "RD-IE-01",
+      "priority": "P0",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "Portable NRD references local svgDrafts not bundled; custom SVG may be unavailable after cross-device import.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-02",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "index.html;assets/pdf-import.js",
+      "root_cause": "PNG data URLs embedded in doc imageAssets can exceed LocalStorage primary quota, cross-store authority remains unresolved.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-03",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "DXF export ignores native dxfGeometry and can substitute generic symbols/rectangles.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-04",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "DXF export substitutes placeholder for images imported from PDF and does not preserve raster bytes.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-05",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "assets/dwg-import.js;assets/dwg-worker.mjs",
+      "root_cause": "Full DWG conversion has no hard input/output cap matching docs; large files can exhaust resources.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-06",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "assets/dxf-import.js",
+      "root_cause": "Known $INSUNITS mismatch starts at centimeters without mandatory user confirmation.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-07",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "Native DXF/PDF import commit paths lack complete model rollback after partial mutation errors.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-08",
+      "priority": "P1",
+      "status": "OPEN_AUDIT",
+      "path": "assets/pdf-import.js;index.html",
+      "root_cause": "PDF input/output accumulate all rendered images in memory with no aggregate cap.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-09",
+      "priority": "P2",
+      "status": "OPEN_AUDIT",
+      "path": "assets/dxf-import.js",
+      "root_cause": "DXF decoding relies on file.text UTF-8 default, without DWGCODEPAGE handling for legacy text.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-10",
+      "priority": "P2",
+      "status": "OPEN_AUDIT",
+      "path": "assets/dxf-import.js",
+      "root_cause": "Crop pointermove rescans/clips all chosen segments; high-volume responsiveness risk.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-11",
+      "priority": "P2",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "Browser-download fallback reports success after anchor.click without proof of saved file.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-12",
+      "priority": "P2",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "Direct PDF export omits print-only designer/revision title block inputs.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD-IE-13",
+      "priority": "P2",
+      "status": "OPEN_AUDIT",
+      "path": "index.html",
+      "root_cause": "Raster PDF imports use arbitrary 480-unit width without physical plan calibration.",
+      "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
+      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
     }
   ],
   "last_completed_segment": {
@@ -679,7 +796,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V390-R focused branch inspection; only invalid-last read-through shadow restored after rejected write; 2 VM tests authored NOT_RUN.",
+    "static_diff": "Import/export/DXF/DWG/PDF/SVG source audit only; report and metadata, no product code modifications or runtime checks.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -696,11 +813,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Exact pinned Git tree and draft Git blob metadata; no product source execution",
-    "baseline_head": "bac80b09b5e73a6b2cc34d58583f5ad3a1d034a2",
-    "entries": 578,
+    "method": "Pinned Git tree + new Git blobs, no product execution",
+    "baseline_head": "c2fcfa617f942c5ea592e61589b234c11b29ce8c",
+    "entries": 579,
     "no_product_execution": true,
-    "notes": "V390-R source fix, two source-level regression cases, version and audit checkpoint synced."
+    "notes": "Report and Project Evolution audit records added only; product V390-R unchanged, 13 open findings plus known limitation."
   },
   "branch_review": {
     "branches": [
@@ -721,8 +838,20 @@
       "Non-atomic LocalStorage and IndexedDB authority remains OPEN-CROSS-STORE",
       "Storage denial, missing prior snapshot, compensation interruption and browser download retention remain runtime risks",
       "V387-R removed fixed Edge paths; Chromium browser runtime still NOT_RUN.",
-      "Divergent valid LocalStorage and IndexedDB snapshots still require explicit export-and-select reconciliation."
+      "Divergent valid LocalStorage and IndexedDB snapshots still require explicit export-and-select reconciliation.",
+      "Targeted audit: unbundled custom SVG in portable NRD; DXF round-trip geometry and PDF-image loss; PDF base64 quota risk; DWG conversion resource caps; see RD-IE-01..13."
     ],
     "console_paths": "Existing SVG fallback, DXF safety-limit/save-picker and SVG migration console.warn call sites are potential diagnostics, not observed runtime warnings"
-  }
+  },
+  "audit_reports": [
+    {
+      "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
+      "source_head": "c2fcfa617f942c5ea592e61589b234c11b29ce8c",
+      "release": "V390-R",
+      "status": "OPEN_AUDIT",
+      "findings": 13,
+      "known_limitations": 1,
+      "validation": "NOT_RUN"
+    }
+  ]
 }

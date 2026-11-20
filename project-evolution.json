@@ -8295,6 +8295,114 @@
         "در V390-R فقط نمای موقت fallbackStore ترمیم شد، بدون ذخیره یا حذف دیگری در LocalStorage.",
         "دو سناریوی regression VM ثبت شدند؛ اجرا نشدند."
       ]
+    },
+    {
+      "id": "RD-IMPORT-EXPORT-AUDIT-20261120",
+      "record_type": "static_deep_audit",
+      "module": "import_export_dxf_dwg_pdf_nrd_svg",
+      "source": "User request: موارد بیشتری را مخصوصا در موارد مربوط به ایمپورت و اکسپورت و dxf و dwg مورد بررسی قرار بده",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "c2fcfa617f942c5ea592e61589b234c11b29ce8c",
+      "target_version": "UNSCHEDULED",
+      "current_source_release": "V390-R",
+      "status": "OPEN_AUDIT",
+      "implementation_status": "NOT_STARTED; audit/ documentation only; application source unchanged",
+      "runtime_status": "AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN; USER_ACCEPTANCE=PENDING",
+      "audit_report": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
+      "findings": [
+        {
+          "id": "RD-IE-01",
+          "priority": "P0",
+          "title": "NRD فاقد بسته دارایی‌های SVG محلی",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-02",
+          "priority": "P1",
+          "title": "PDF Base64 و سهمیه ذخیره Primary",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-03",
+          "priority": "P1",
+          "title": "DXF re-export هندسه dxfGeometry را حفظ نمی‌کند",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-04",
+          "priority": "P1",
+          "title": "خروجی DXF تصاویر PDF را با placeholder عوض می‌کند",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-05",
+          "priority": "P1",
+          "title": "نبود hard limit حافظه/اندازه DWG و مغایرت مستندات",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-06",
+          "priority": "P1",
+          "title": "واحد پیش‌فرض DXF بدون تأیید تناسب با INSUNITS",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-07",
+          "priority": "P1",
+          "title": "نبود rollback کامل برای اعمال DXF/PDF",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-08",
+          "priority": "P1",
+          "title": "تجمع حافظه تصاویر صفحه‌ها در import/export PDF",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-09",
+          "priority": "P2",
+          "title": "نبود مدیریت DWGCODEPAGE برای decoding DXF",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-10",
+          "priority": "P2",
+          "title": "محاسبه مجدد انتخاب و clipping در هر pointermove",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-11",
+          "priority": "P2",
+          "title": "اعلام موفقیت download بدون اثبات ذخیره فایل",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-12",
+          "priority": "P2",
+          "title": "عدم اعمال metadata طراح و نسخه در PDF مستقیم",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-13",
+          "priority": "P2",
+          "title": "عدم کالیبراسیون اندازه واقعی تصاویر PDF واردشده",
+          "status": "OPEN_AUDIT"
+        },
+        {
+          "id": "RD-IE-14",
+          "priority": "LIMITATION",
+          "title": "محدودیت رسمی entity fidelity در DXF/DWG و PDF raster",
+          "status": "KNOWN_LIMITATION"
+        }
+      ],
+      "verification_evidence": [
+        "Pinned main V390-R source inspected: index.html, dxf-engine.js, dxf-objects.js, DXF/DWG/PDF importers and DWG worker.",
+        "Test names and coverage read for DXF engine/import, DWG, PDF and NRD validation; suites NOT_RUN.",
+        "Documentation compared: DXF-IMPORT.md, DWG-IMPORT-V347.md, PDF-IMPORT.md, IMPORT-FORMATS.md.",
+        "Individual findings include source lines and proposed future regression cases; neither source remediation nor runtime success is asserted."
+      ]
     }
   ],
   "analyses": [
@@ -9874,6 +9982,20 @@
         "Two new tests NOT_RUN; browser acceptance pending.",
         "OPEN-CROSS-STORE remains unresolved."
       ]
+    },
+    {
+      "id": "RD-IMPORT-EXPORT-DEEP-AUDIT-20261120",
+      "record_id": "RD-IMPORT-EXPORT-AUDIT-20261120",
+      "created_at": "2026-11-20",
+      "module": "import_export_dxf_dwg_pdf_nrd_svg",
+      "problem": "Portability, fidelity, memory/resource limits and rollback safety require a cross-format deep audit before more release work.",
+      "decision": "Record 13 open findings/risk areas plus 1 known limitation; prioritize portable NRD custom SVG, native DXF geometry roundtrip, raster DXF transparency and PDF storage/DRAM budgets. Do not change code or product version during audit.",
+      "remaining_risks": [
+        "Unrun automated/browser/real-file tests; source-based risk is not observed runtime failure.",
+        "OPEN-CROSS-STORE persistence protocol remains unresolved.",
+        "DWG full conversion and PDF physical scale should not be represented as complete CAD fidelity.",
+        "No application source fix has been deployed by this audit."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11303,6 +11425,11 @@
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "N1 · RD-IE-01: ساخت NRD خودبسنده با دارایی SVG محلی و import rollback + round-trip regression",
+      "N2 · RD-IE-03/04: حفظ هندسه dxfGeometry در export DXF و هشدار تصاویر PDF/raster در DXF",
+      "N3 · RD-IE-02/08: محدودیت منابع و ذخیره fail-safe تصاویر PDF و page export",
+      "N4 · RD-IE-05: سقف سخت DWG و همگام‌سازی IMPORT-FORMATS.md",
+      "N5 · RD-IE-06/07: واحد DXF و اعمال تراکنشی DXF/PDF",
       "Verify V390-R in Safari and Chromium with invalid rd_last, confirmed replacement, denied LocalStorage write; the recovery export must retain original raw damaged bytes. Back up first; tests NOT_RUN.",
       "Validate V389-R startup with real browser: valid local/corrupt mirror; corrupt local/valid mirror; no local/valid or corrupt mirror. Export backups first. Cross-store arbitration remains open.",
       "Divergent valid LocalStorage and IndexedDB snapshots need safe explicit export-and-select recovery; preserve both, no automatic authority switch.",

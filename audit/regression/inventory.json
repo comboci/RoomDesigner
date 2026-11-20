@@ -3803,6 +3803,15 @@
       "binary": true
     },
     {
+      "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
+      "blob_sha": "69776034d8d4f9503287c235e32e10e99ff283ff",
+      "mode": "100644",
+      "bytes": 18018,
+      "lines": 151,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/regression/POLICY.md",
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
@@ -3984,10 +3993,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "72efb4fa30e503013a1709d396735f97b8f1f8e5",
+      "blob_sha": "def53b3b24f5556fbb89337c973b5a0336e39783",
       "mode": "100644",
-      "bytes": 757163,
-      "lines": 11320,
+      "bytes": 762963,
+      "lines": 11447,
       "category": "source_or_configuration",
       "binary": false
     },
