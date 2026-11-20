@@ -175,3 +175,7 @@ positions. Restoring older snapshots resets fields they did not contain.
 Undo history prunes older entries at 60 states or a 32 MiB string budget; the
 newest state remains available even if that one document exceeds the budget.
 Large-document/mobile rendering performance still requires device measurements.
+ 
+## DXF source-geometry fidelity (V394-R)
+
+Recognized native CAD objects with `dxfGeometry` now export original normalized vector segments with device rotation/mirroring and the source layer, not a generic symbol. The DXF R12 exporter deliberately omits visible raster/PDF image devices and asks the user to confirm that loss before producing a file. Cancellation leaves the drawing unchanged and does not start a download. Corrupt CAD-native geometry blocks export. DXF entity limitations remain; these source changes have not undergone Node, browser, build or real-CAD acceptance tests.

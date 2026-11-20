@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N_NRD_PORTABLE_SVG_STATIC_REMEDIATION",
+  "execution_source": "USER_CONTINUE_N2_DXF_EXPORT_FIDELITY_SOURCE_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "0fee858715c471de13afefb2f1f304433113a413",
+  "source_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V393-R",
+  "product_release": "V394-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "c53c24050c095e84b89a27a3ce8ae1ad996e8e12",
+  "inventory_blob_sha": "b7ccdabcf7a0dec7c7afd6de310e56967034e355",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V393-R focused static correction of RD-IE-01 P0 portable NRD SVG assets. A versioned export envelope embeds only referenced sanitized SVG artwork (including Revision snapshots), metadata, bounded length and FNV checksum. Import validates and stages assets, remaps collisions, and journals rd_svg_drafts alongside rd_last for rollback; recovered storage is reloaded in-memory on startup. Nine regression scenarios authored and import-validation harness updated, NOT_RUN. Browser and Build NOT_RUN. Cross-store LocalStorage/IndexedDB atomicity remains open.",
+  "coverage_note": "V394-R source-only correction of RD-IE-03/04: export native dxfGeometry with transforms and preserved CAD layer; fail closed on malformed CAD segments. Exclude visible raster/PDF images and require explicit user confirmation before saving a lossy vector-only DXF. Eight regression scenarios authored NOT_RUN. Build/Browser/CAD runtime NOT_RUN; user acceptance PENDING. Remaining deep-audit findings and IndexedDB/LocalStorage cross-store atomicity unresolved.",
   "segments": [
     {
       "path": "index.html",
@@ -483,14 +483,18 @@
       "actual_read_end_line": 680,
       "reviewed_start_line": 591,
       "reviewed_end_line": 680,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD393-NRD-PORTABLE-SVG-ASSETS"
       ],
       "reviewed_at": "2026-11-20T04:05:25.478Z",
       "source_head": "0fee858715c471de13afefb2f1f304433113a413",
       "review_basis": "Complete portable SVG reference/asset helper source authored and statically inspected. This is static candidate inspection; no tests or builds.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
     },
     {
       "path": "index.html",
@@ -499,14 +503,18 @@
       "actual_read_end_line": 2010,
       "reviewed_start_line": 1992,
       "reviewed_end_line": 2010,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD393-NRD-PORTABLE-SVG-ASSETS"
       ],
       "reviewed_at": "2026-11-20T04:05:25.478Z",
       "source_head": "0fee858715c471de13afefb2f1f304433113a413",
       "review_basis": "Format 3 import recovery journal schema expanded for rd_svg_drafts without widening legacy formats. This is static candidate inspection; no tests or builds.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
     },
     {
       "path": "index.html",
@@ -515,14 +523,18 @@
       "actual_read_end_line": 2460,
       "reviewed_start_line": 2310,
       "reviewed_end_line": 2460,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD393-NRD-PORTABLE-SVG-ASSETS"
       ],
       "reviewed_at": "2026-11-20T04:05:25.478Z",
       "source_head": "0fee858715c471de13afefb2f1f304433113a413",
       "review_basis": "Prepared SVG drafts and asset import journal staged before durable import writes; rollback restores live state. This is static candidate inspection; no tests or builds.",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
     },
     {
       "path": "index.html",
@@ -531,13 +543,49 @@
       "actual_read_end_line": 2667,
       "reviewed_start_line": 2628,
       "reviewed_end_line": 2667,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD393-NRD-PORTABLE-SVG-ASSETS"
       ],
       "reviewed_at": "2026-11-20T04:05:25.478Z",
       "source_head": "0fee858715c471de13afefb2f1f304433113a413",
       "review_basis": "Startup checks journal SVG hash and refreshes restored draft data in memory after rollback. This is static candidate inspection; no tests or builds.",
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V394-R changed index.html blob; historical review preserved without claiming current coverage."
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
+      "actual_read_start_line": 2247,
+      "actual_read_end_line": 2258,
+      "reviewed_start_line": 2247,
+      "reviewed_end_line": 2258,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD394-DXF-ROUNDTRIP-RASTER-DISCLOSURE"
+      ],
+      "reviewed_at": "2026-11-20T04:30:00.000Z",
+      "source_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
+      "review_basis": "Focused authored source read statically; no tests/build/browser/CAD execution.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
+      "actual_read_start_line": 2274,
+      "actual_read_end_line": 2282,
+      "reviewed_start_line": 2274,
+      "reviewed_end_line": 2282,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD394-DXF-ROUNDTRIP-RASTER-DISCLOSURE"
+      ],
+      "reviewed_at": "2026-11-20T04:30:00.000Z",
+      "source_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
+      "review_basis": "Focused authored source read statically; no tests/build/browser/CAD execution.",
       "truncated": false
     }
   ],
@@ -802,20 +850,22 @@
     {
       "id": "RD-IE-03",
       "priority": "P1",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "DXF export ignores native dxfGeometry and can substitute generic symbols/rectangles.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V394-R source fix, 8 regression cases authored but NOT_RUN; real CAD and browser/user acceptance PENDING.",
+      "correction": "Export original normalized native dxfGeometry transformed through device rotation and flip as DXF LINE on source DXF layer; malformed geometry blocks export."
     },
     {
       "id": "RD-IE-04",
       "priority": "P1",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "DXF export substitutes placeholder for images imported from PDF and does not preserve raster bytes.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V394-R source fix, 8 regression cases authored but NOT_RUN; real CAD and browser/user acceptance PENDING.",
+      "correction": "DXF R12 skips visible raster/PDF image devices and requires explicit confirmation before writing; never generates imagePlaceholder() vector as a substitute."
     },
     {
       "id": "RD-IE-05",
@@ -930,22 +980,35 @@
       "root_cause": "Legacy .nrd exports preserved custom SVG IDs but not the actual local draft SVG bytes, so reopening in a new browser could silently lose artwork.",
       "correction": "Embed selected SVG data within a versioned portable NRD and validate all references/metadata/checksum/size before write, remap conflicting IDs without overwriting user drafts, and journal rd_svg_drafts with drawing rollback and startup in-memory refresh.",
       "source_recheck": "9 new source regression scenarios plus existing import-validation harness amended. Source and audit only; Node/browser/Build NOT_RUN; recovery across IndexedDB still non-atomic."
+    },
+    {
+      "id": "RD394-DXF-ROUNDTRIP-RASTER-DISCLOSURE",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "priority": "P1",
+      "path": "index.html; tests/dxf-export-fidelity.test.cjs",
+      "related_audit_findings": [
+        "RD-IE-03",
+        "RD-IE-04"
+      ],
+      "root_cause": "Native DXF geometry discarded by exporter and raster PDFs misrepresented as generic SVG placeholders.",
+      "correction": "CAD-native source LINE geometry preserved with transforms/layers, unsafe segments rejected, raster omitted with cancellation guard; 8 tests authored.",
+      "source_recheck": "Source was statically examined; Node/Playwright/Build/real CAD test NOT_RUN."
     }
   ],
   "last_completed_segment": {
     "path": "index.html",
-    "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
-    "start_line": 2628,
-    "end_line": 2667,
+    "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
+    "start_line": 2274,
+    "end_line": 2282,
     "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
+    "blob_sha": "7f6f8dbc6cfe2273a857952bca97f44b8bc737c8",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Index blob updated in V393-R; sequential full-source review remains at first uncovered lines, focused NRD segments do not credit unrelated code."
+    "reason": "Index changed in V394-R, other code is not credited as reviewed by focused CAD patch inspection."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -954,7 +1017,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V393-R source-level NRD resource bundling, import collision/rollback guards and 9 test scenarios authored; no source tests/build executed.",
+    "static_diff": "V394-R source-only fix of native DXF geometry and raster-loss confirmation; eight regressions authored, NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -971,11 +1034,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned main Git tree plus exact draft Git blob metadata; no product/test execution",
-    "baseline_head": "0fee858715c471de13afefb2f1f304433113a413",
-    "entries": 582,
+    "method": "Pinned main Git tree plus exact staged Git blob metadata; no execution",
+    "baseline_head": "74a257f8fe14b6d1489ae4efea6438e56082d3c1",
+    "entries": 583,
     "no_product_execution": true,
-    "notes": "V393-R source, 9 new regression scenarios, compatibility harness, package versions, docs, detailed audit, Project Evolution and checkpoint staged as one atomic Git commit."
+    "notes": "V394-R candidate source, 8 regression cases, version, docs, project-evolution, exact inventory and checkpoint included in one atomic commit."
   },
   "branch_review": {
     "branches": [
