@@ -7,7 +7,7 @@ const vm=require('node:vm');
 const path=require('node:path');
 const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
 const {extractFunction}=require('./source-harness.cjs');
-const source=['validateRoomDocument','prepareRoomImport','applyRoomImport','mirrorChecksum'].map(extractFunction).join('\n')+'\n'+html.slice(html.indexOf("$('fileInput').addEventListener('change',async e=>{"),html.indexOf('let recoveryIncomplete=false;'));
+const source=['validateRoomDocument','prepareRoomImport','applyRoomImport','mirrorChecksum','roomSvgReferenceIds','stagePortableRoomSvg'].map(extractFunction).join('\n')+'\n'+html.slice(html.indexOf("$('fileInput').addEventListener('change',async e=>{"),html.indexOf('let recoveryIncomplete=false;'));
 
 function drawing(name='Current'){
  return {schema:'room-designer/v0.3',id:name,name,date:'2026-10-11',devices:[{id:'d1',name:'A',kind:'custom',x:100,y:100,w:120,h:65,ports:[{id:'p1',name:'LAN',type:'ethernet',side:'right'}]}],cables:[],walls:[],layers:[{id:'main',name:'Main',visible:true}],activeLayer:'main'};
@@ -21,6 +21,9 @@ function harness(){
   $:id=>nodes[id],defaults:{ethernet:{name:'Ethernet',color:'#17b77f'}},
   safeStorage:{getItem:key=>state.stored.get(key)??null,setItem:(key,value)=>{state.writes.push([key,value]);if(state.failStorage)return false;state.stored.set(key,value);return true},removeItem:key=>{state.stored.delete(key);return true}},
   svgArtwork:()=>null,
+  svgDrafts:{symbols:[],assets:{},map:{}},svgReferenceCache:new Map(),
+  svgLibrary:{assets:{}},SvgLibraryBuiltin:{assets:{}},EquipmentCatalogBuiltin:{iconAliases:{}},
+  SvgEngine:{parse:()=>({documentElement:{getAttribute:()=> '0 0 100 100'}})},
   notify:m=>state.messages.push(m),persistenceStatus:ok=>state.saved=ok,
   clearTimeout:id=>state.cancelled.push(id),close:()=>{},
   clearPointerState:()=>{},updateHistoryControls:()=>{},

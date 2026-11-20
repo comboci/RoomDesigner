@@ -46,3 +46,9 @@ node tests/svg-engine.browser.test.cjs
 The Chromium regression is provided for optional manual execution; automatic CI was not enabled because the user requested to perform runtime testing. For a locally installed Chromium-compatible browser, set `BROWSER_EXECUTABLE` to its executable path. Screenshot output can be redirected with `TEST_ARTIFACT_DIR`.
 
 DXF retains the prototype's sampled curve/outline representation; it does not encode full SVG text fonts, gradients, masks or fills. Real CAD round-trip fidelity, iPhone gestures, and printed PDF appearance require device/user acceptance. Bounds use conservative padding and can leave extra space around thick strokes. Local browser drafts are not shared or automatically included in project files; placed artwork snapshots are included. Shared writable backend storage remains outside this release.
+
+## Portable document SVG dependencies (V393-R)
+
+The main NRD export is distinct from the publication bundle: it carries only the sanitized symbol resources referenced by active equipment, catalog entries, original SVG asset references and embedded Revision snapshots. On another browser, the NRD importer validates those resources, stages new local SVG drafts, remaps IDs that conflict with different installed artwork, and journals the asset write with the new current drawing. Existing published assets and unrelated local SVG drafts are not overwritten. Legacy NRD files continue to load without the new envelope; a legacy file missing a custom SVG cannot automatically reconstruct it.
+
+The packaged `checksum` is FNV-1a for accidental corruption detection, not an authentication scheme. Runtime validation is pending; persistence across LocalStorage and IndexedDB is not a single atomic transaction.

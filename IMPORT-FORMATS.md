@@ -1,4 +1,4 @@
-# Import formats — V334
+# Import formats — V393
 
 Source implementation only; runtime acceptance belongs to the user.
 
@@ -38,3 +38,11 @@ compare geometry and scale to its DXF export; crop/confirm/Undo; cancel a second
 conversion; check invalid/unsupported files; confirm PDF page import and existing
 RoomPlan opening still work on desktop and iPhone. No build, tests or runtime
 checks were executed by the assistant.
+
+## Portable NRD resource envelope (V393-R)
+
+NRD exports now use `format: "roomdesigner-portable/v1"` alongside the existing `doc`, `types`, and `catalog` keys, plus `assets.svg[]` for SVG asset IDs actually referenced by the drawing, its embedded revision snapshots, or catalog entries. Each item carries the sanitized SVG, ID, UTF-16 character length, FNV-1a 32-bit checksum, and limited display metadata. This checksum detects accidental damage; it is **not** a cryptographic authenticity signature.
+
+When importing, the SVG package is checked for unique/safe IDs, schema, length, checksum, sanitization, and a bounded total (1,000 items, 250,000 characters per asset, 12,000,000 total characters). Referenced SVG resources missing from a portable package cause a failure **before** writing the drawing. A pre-existing unrelated symbol under the same ID is preserved; the incoming symbol receives a distinct `portable-svg-*` ID and imported drawing/revision/catalog references are remapped. Only changed draft assets are persisted, through the same `rd_pending_import` journal as `rd_last`, with the original `rd_svg_drafts` restored on failed writes/rollback. The old bare document and legacy `{doc,types,catalog}` envelopes remain readable, but cannot recreate any resource that the old file never contained.
+
+Import/export source has been updated, but Node, Playwright, real-file/mobile, cross-store IndexedDB durability and end-user acceptance are still **NOT_RUN / PENDING**. Non-atomic LocalStorage/IndexedDB mirror reconciliation remains a separate open risk.

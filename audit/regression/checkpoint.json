@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N_DXF_COMMIT_BOUNDARY_STATIC_REMEDIATION",
+  "execution_source": "USER_N_NRD_PORTABLE_SVG_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "5d31f11b98a2ad8d09d68515d949e74ea07133e7",
+  "source_head": "0fee858715c471de13afefb2f1f304433113a413",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V392-R",
+  "product_release": "V393-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "e36967237f2d103873762d7ec818300bdf280588",
+  "inventory_blob_sha": "c53c24050c095e84b89a27a3ce8ae1ad996e8e12",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V391-R focused DXF import correction, preserving 13 existing open deep import/export findings. While async onImport is pending, modal close/replacement is now refused. A detached drawing with staged DXF layers/lines/native objects is validated before a guarded editor swap; Undo and autosave follow successful render. Six Node/jsdom regressions authored NOT_RUN. PDF-side RD-IE-07, cross-store atomicity and real-browser acceptance remain open. V392-R follow-up on V391-R: guard live canvas gestures and put render before clearPointerState (which could trigger a premature scheduleSave). Correct staged-failure test injection and add active-gesture rejection regression. All tests/build/browser NOT_RUN; V391 source preservation and 13-item import/export audit retained.",
+  "coverage_note": "V393-R focused static correction of RD-IE-01 P0 portable NRD SVG assets. A versioned export envelope embeds only referenced sanitized SVG artwork (including Revision snapshots), metadata, bounded length and FNV checksum. Import validates and stages assets, remaps collisions, and journals rd_svg_drafts alongside rd_last for rollback; recovered storage is reloaded in-memory on startup. Nine regression scenarios authored and import-validation harness updated, NOT_RUN. Browser and Build NOT_RUN. Cross-store LocalStorage/IndexedDB atomicity remains open.",
   "segments": [
     {
       "path": "index.html",
@@ -463,13 +463,81 @@
       "actual_read_end_line": 2481,
       "reviewed_start_line": 2402,
       "reviewed_end_line": 2481,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD392-DXF-COMMIT-BOUNDARY-HARDENING"
       ],
       "reviewed_at": "2026-11-20T03:49:12.740Z",
       "source_head": "5d31f11b98a2ad8d09d68515d949e74ea07133e7",
       "review_basis": "Focused exact source staging boundary and change; no tests or builds executed",
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V393-R changed source blob; prior focused index review is historical."
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
+      "actual_read_start_line": 591,
+      "actual_read_end_line": 680,
+      "reviewed_start_line": 591,
+      "reviewed_end_line": 680,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD393-NRD-PORTABLE-SVG-ASSETS"
+      ],
+      "reviewed_at": "2026-11-20T04:05:25.478Z",
+      "source_head": "0fee858715c471de13afefb2f1f304433113a413",
+      "review_basis": "Complete portable SVG reference/asset helper source authored and statically inspected. This is static candidate inspection; no tests or builds.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
+      "actual_read_start_line": 1992,
+      "actual_read_end_line": 2010,
+      "reviewed_start_line": 1992,
+      "reviewed_end_line": 2010,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD393-NRD-PORTABLE-SVG-ASSETS"
+      ],
+      "reviewed_at": "2026-11-20T04:05:25.478Z",
+      "source_head": "0fee858715c471de13afefb2f1f304433113a413",
+      "review_basis": "Format 3 import recovery journal schema expanded for rd_svg_drafts without widening legacy formats. This is static candidate inspection; no tests or builds.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
+      "actual_read_start_line": 2310,
+      "actual_read_end_line": 2460,
+      "reviewed_start_line": 2310,
+      "reviewed_end_line": 2460,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD393-NRD-PORTABLE-SVG-ASSETS"
+      ],
+      "reviewed_at": "2026-11-20T04:05:25.478Z",
+      "source_head": "0fee858715c471de13afefb2f1f304433113a413",
+      "review_basis": "Prepared SVG drafts and asset import journal staged before durable import writes; rollback restores live state. This is static candidate inspection; no tests or builds.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
+      "actual_read_start_line": 2628,
+      "actual_read_end_line": 2667,
+      "reviewed_start_line": 2628,
+      "reviewed_end_line": 2667,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD393-NRD-PORTABLE-SVG-ASSETS"
+      ],
+      "reviewed_at": "2026-11-20T04:05:25.478Z",
+      "source_head": "0fee858715c471de13afefb2f1f304433113a413",
+      "review_basis": "Startup checks journal SVG hash and refreshes restored draft data in memory after rollback. This is static candidate inspection; no tests or builds.",
       "truncated": false
     }
   ],
@@ -715,11 +783,12 @@
     {
       "id": "RD-IE-01",
       "priority": "P0",
-      "status": "OPEN_AUDIT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "Portable NRD references local svgDrafts not bundled; custom SVG may be unavailable after cross-device import.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V393-R candidate source statically reviewed, 9 regression scenarios added NOT_RUN; actual cross-browser/cross-device rendering and quota/crash recovery PENDING_USER. Historic audit still retained.",
+      "correction": "NRD v1 envelope with only referenced SVG resources, bounded checksum/schema validation, safe ID collision remapping and coordinated rd_svg_drafts import journal rollback (V393-R)."
     },
     {
       "id": "RD-IE-02",
@@ -849,22 +918,34 @@
       "root_cause": "V391-R clearPointerState was called before a potentially throwing render and may schedule autosave during a live gesture.",
       "correction": "Reject active gestures; render detached DXF candidate before pointer cleanup and scheduling persistence. Refine regression test to fail within staged object creation and add active drag guard case.",
       "source_recheck": "Index candidate inspected and two test source edits authored; no runtime Node, Playwright or build. RD-IE-07 PDF portion and OPEN-CROSS-STORE remain unresolved."
+    },
+    {
+      "id": "RD393-NRD-PORTABLE-SVG-ASSETS",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "priority": "P0",
+      "path": "index.html; tests/nrd-portable-assets.test.cjs",
+      "related_audit_findings": [
+        "RD-IE-01"
+      ],
+      "root_cause": "Legacy .nrd exports preserved custom SVG IDs but not the actual local draft SVG bytes, so reopening in a new browser could silently lose artwork.",
+      "correction": "Embed selected SVG data within a versioned portable NRD and validate all references/metadata/checksum/size before write, remap conflicting IDs without overwriting user drafts, and journal rd_svg_drafts with drawing rollback and startup in-memory refresh.",
+      "source_recheck": "9 new source regression scenarios plus existing import-validation harness amended. Source and audit only; Node/browser/Build NOT_RUN; recovery across IndexedDB still non-atomic."
     }
   ],
   "last_completed_segment": {
     "path": "index.html",
-    "blob_sha": "3ec8cd1a71ee1505d92c4448d57686501c321a8c",
-    "start_line": 2402,
-    "end_line": 2476,
+    "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
+    "start_line": 2628,
+    "end_line": 2667,
     "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "9691687d002d566a3074e17d6dea0e3c8faa65b1",
+    "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Index blob updated in V392-R; broad source audit still starts at first unread range."
+    "reason": "Index blob updated in V393-R; sequential full-source review remains at first uncovered lines, focused NRD segments do not credit unrelated code."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -873,7 +954,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V392-R focused source review of DXF gesture guard and render-before-pointer-cleanup; existing test case corrected and one test authored. NOT_RUN.",
+    "static_diff": "V393-R source-level NRD resource bundling, import collision/rollback guards and 9 test scenarios authored; no source tests/build executed.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -890,11 +971,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Exact Git blob metadata; product code not executed",
-    "baseline_head": "5d31f11b98a2ad8d09d68515d949e74ea07133e7",
-    "entries": 581,
+    "method": "Pinned main Git tree plus exact draft Git blob metadata; no product/test execution",
+    "baseline_head": "0fee858715c471de13afefb2f1f304433113a413",
+    "entries": 582,
     "no_product_execution": true,
-    "notes": "V392-R source, focused regression, version, README, audit report, Project Evolution, inventory and checkpoint updated."
+    "notes": "V393-R source, 9 new regression scenarios, compatibility harness, package versions, docs, detailed audit, Project Evolution and checkpoint staged as one atomic Git commit."
   },
   "branch_review": {
     "branches": [

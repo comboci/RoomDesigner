@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V392-R",
+  "current_source_release": "V393-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1857,6 +1857,12 @@
       "version": "V392-R",
       "date": "2026-11-20",
       "change": "تکمیل ایمنی تراکنش DXF: توقف ورود هنگام gesture فعال، انتقال پاک‌سازی وضعیت ابزارها به بعد از رندر موفق برای جلوگیری از ذخیرهٔ زودرس، تصحیح رگرسیون خطای staging و افزودن آزمون فعال‌بودن gesture؛ بدون اجرا.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V393-R",
+      "date": "2026-11-20",
+      "change": "رفع P0 بخش انتقال SVG در NRD: افزودن بسته نسخه‌دار منابع ارجاع‌شده و Revisionها، کنترل checksum/اندازه و شناسه‌ها، نگه‌داشت نمادهای موجود در مقصد، آماده‌سازی جداگانه و Journal بازیابی برای rd_svg_drafts و نقشه؛ ۹ سناریوی رگرسیون اضافه شد، بدون اجرای تست یا Build.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8328,7 +8334,9 @@
           "id": "RD-IE-01",
           "priority": "P0",
           "title": "NRD فاقد بسته دارایی‌های SVG محلی",
-          "status": "OPEN_AUDIT"
+          "status": "SOURCE_FIXED_RUNTIME_PENDING",
+          "source_release": "V393-R",
+          "runtime_status": "PENDING_USER; TESTS=NOT_RUN; BUILD=NOT_RUN"
         },
         {
           "id": "RD-IE-02",
@@ -8461,6 +8469,32 @@
         "V392-R guard gesture فعال را پیش از تعویض سند اعمال و clearPointerState را پس از render قرار می‌دهد.",
         "پنج سناریوی transaction در فایل منبع و دو سناریوی concurrency در فایل قبلی ثبت‌اند؛ هیچ تستی اجرا نشده است.",
         "خروجی DWG/PDF و RD-IE-01 همچنان باز هستند؛ گزارش ممیزی حفظ شده است."
+      ]
+    },
+    {
+      "id": "RD393-NRD-PORTABLE-SVG-ASSETS",
+      "record_type": "source_remediation",
+      "module": "nrd_export_import_portable_svg",
+      "source": "RD-IE-01 P0 static audit, current main and explicit user N on 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "0fee858715c471de13afefb2f1f304433113a413",
+      "target_version": "V393-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — در مخزن comboci/RoomDesigner آخرین main و ممیزی RD-IE-01 را بخوان. فایل NRD را برای انتقال کامل دارایی‌های SVG سفارشی بین دستگاه‌ها اصلاح کن، import امن و rollback و تست‌های رگرسیون را اضافه کن. طبق POLICY پروژه تست و Build را اجرا نکن. نسخه بعدی را افزایش بده، سوابق ممیزی و Project Evolution را حفظ و همگام کن، Commit و Push کن و نتیجه را اعلام کن.",
+      "assistant_interpretation": "فایل NRD جدید باید وابستگی‌های SVG نقشه و Revisionها را در خود داشته باشد؛ واردسازی باید از نظر شناسه و داده ناامن/خراب ایمن و با Journal قابل بازگردانی باشد.",
+      "implementation_status": "چهار مسیر خروجی NRD به envelope roomdesigner-portable/v1 مجهز شدند و فقط شناسه‌های SVG موردارجاع از سند، Revisionها و کاتالوگ همراه با SVG sanitization، طول و checksum صادر می‌شوند. Prepare Import کتابخانه نسخه موقت ایجاد می‌کند و دارایی‌ها را پیش از mutation اعتبارسنجی می‌کند، در برخورد شناسه asset مقصد را دست‌نخورده نگه می‌دارد و refs واردشده را remap می‌کند. Apply Import نوشتن rd_svg_drafts را در کنار rd_last و سایر داده‌ها در Journal format3 ثبت و rollback می‌کند. بازیابی startup و پاک‌سازی journal، حضور hash دارایی‌ها را کنترل می‌کند. فایل‌های قدیمی همچنان قابل ورود هستند.",
+      "related_audit_findings": [
+        "RD-IE-01"
+      ],
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "در منبع V392-R خروجی‌های NRD صرفاً normalizeSvgReferences({doc,types,catalog}) را سریال می‌کردند و rd_svg_drafts را حمل نمی‌کردند.",
+        "منبع نسخه جدید buildPortableRoomEnvelope، stagePortableRoomSvg و preflight detached drafts را به چهار مسیر خروجی و import اضافه می‌کند؛ CHECKSUM FNV-1a 32-bit برای کشف خرابی تصادفی است و امضای رمزنگاری نیست.",
+        "در applyRoomImport نوشتن دارایی‌های جدید پیش از نقشه انجام می‌شود؛ format3 journal نسخه قبلی rd_svg_drafts را همراه سایر کلیدها ذخیره می‌کند و شکست نوشتن آن را باز می‌گرداند.",
+        "۹ سناریوی رگرسیون تازه و سازگاری source harness تست import قدیمی اضافه شدند؛ هیچ test، Build یا runtime اجرا نشده است.",
+        "OPEN-CROSS-STORE و استقرار مرورگری/تست انتقال بین دو دستگاه همچنان نیازمند راستی‌آزمایی هستند."
       ]
     }
   ],
@@ -10086,6 +10120,22 @@
         "LocalStorage/IndexedDB cross-store atomicity remains open.",
         "Memory cost of detached clone has not been measured on mobile."
       ]
+    },
+    {
+      "id": "RD393-NRD-PORTABILITY-AUDIT",
+      "record_id": "RD393-NRD-PORTABLE-SVG-ASSETS",
+      "created_at": "2026-11-20",
+      "module": "nrd_portable_assets",
+      "problem": "Exports only contained document/catalog references while local SVG draft bytes lived outside NRD in rd_svg_drafts. Opening the same file in a fresh browser could silently lose custom SVG artwork; a naïve import write could overwrite unrelated local assets.",
+      "decision": "Use a v1 portable envelope containing just referenced sanitized SVG resources, hashes and size bounds; stage/validate in a detached draft, remap conflicting SVG IDs, add rd_svg_drafts to existing format3 import rollback journal, and guard mirror/journal completion with asset hashes. Preserve legacy imports.",
+      "remaining_risks": [
+        "Node and browser/device regression tests were authored but not executed; real cross-device rendering fidelity is pending acceptance.",
+        "FNV-1a checksum detects accidental corruption only and is not a tamper-resistant signature.",
+        "LocalStorage and IndexedDB remain separate transactions; crash-conflict resolution is not fully atomic.",
+        "SVG portability is limited to resources referenced directly by active equipment, revisions and catalog; unrelated library defaults are not bundled.",
+        "Large documents may exceed localStorage limits even with a bounded portable SVG envelope; a successful file download is not a durable-storage guarantee.",
+        "Legacy NRD exports that never included the missing SVG bytes cannot be auto-repaired."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11516,21 +11566,27 @@
       "date": "2026-11-20",
       "change": "تکمیل ایمنی تراکنش DXF: توقف ورود هنگام gesture فعال، انتقال پاک‌سازی وضعیت ابزارها به بعد از رندر موفق برای جلوگیری از ذخیرهٔ زودرس، تصحیح رگرسیون خطای staging و افزودن آزمون فعال‌بودن gesture؛ بدون اجرا.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V393-R",
+      "date": "2026-11-20",
+      "change": "رفع P0 بخش انتقال SVG در NRD: افزودن بسته نسخه‌دار منابع ارجاع‌شده و Revisionها، کنترل checksum/اندازه و شناسه‌ها، نگه‌داشت نمادهای موجود در مقصد، آماده‌سازی جداگانه و Journal بازیابی برای rd_svg_drafts و نقشه؛ ۹ سناریوی رگرسیون اضافه شد، بدون اجرای تست یا Build.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V392-R",
+    "release": "V393-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "V392-R hardens DXF commit boundary after V391-R; no tests, Build or browser run. RD-IE-07 DXF-only source mitigation; PDF remains OPEN. RD-IE-01 P0 NRD portability and OPEN-CROSS-STORE remain open."
+    "audit": "RD-IE-01 P0 source mitigation: portable NRD v1 includes referenced SVG assets with checksums; import stages/conflict-remaps and journals rd_svg_drafts with rollback. 9 new tests authored NOT_RUN; Build/browser NOT_RUN. OPEN-CROSS-STORE and other deep audit findings preserved."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
-      "NEXT N: P0 RD-IE-01 — make NRD import/export portable for referenced local SVG assets with backward-compatible envelope, checksums, collision guards and rollback; no tests/build per policy.",
+      "V393-R acceptance pending: export NRD with custom and published SVG referenced by equipment and revisions, import on clean Chromium/iPhone Safari profile, verify exact visible SVG, deliberate duplicate IDs, malformed checksums, quota-denied writes and rollback. Tests NOT_RUN.",
+      "NEXT N: RD-IE-03/04 (P1) — DXF Export must preserve device.dxfGeometry and explicitly disclose raster images that DXF cannot embed; add source regression without running tests/build.",
       "V392-R runtime acceptance needed: test in browser active drag rejected, render fault rolls back and leaves prior document; Node/jsdom tests NOT_RUN.",
       "Verify V391-R staged DXF import with forced validation/render failures, repeated Import and Cancel while callback is pending, 1 Undo and save/reopen on Chromium and iPhone Safari. Six tests currently NOT_RUN.",
-      "N1 · RD-IE-01: ساخت NRD خودبسنده با دارایی SVG محلی و import rollback + round-trip regression",
       "N2 · RD-IE-03/04: حفظ هندسه dxfGeometry در export DXF و هشدار تصاویر PDF/raster در DXF",
       "N3 · RD-IE-02/08: محدودیت منابع و ذخیره fail-safe تصاویر PDF و page export",
       "N4 · RD-IE-05: سقف سخت DWG و همگام‌سازی IMPORT-FORMATS.md",

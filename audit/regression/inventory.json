@@ -78,10 +78,10 @@
     },
     {
       "path": "IMPORT-FORMATS.md",
-      "blob_sha": "45d46327b59fa318cff716a16d1eba104e5995a6",
+      "blob_sha": "74b9b288aa32edafe0a4899a3a37d534ad2f21ba",
       "mode": "100644",
-      "bytes": 2477,
-      "lines": 40,
+      "bytes": 4047,
+      "lines": 48,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -123,19 +123,19 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "e518c11169c9274d441ef7422c009da89f688d9c",
+      "blob_sha": "c38116e1de1ef944b153c9258cc216ad3f2d8064",
       "mode": "100644",
-      "bytes": 14478,
-      "lines": 175,
+      "bytes": 14896,
+      "lines": 177,
       "category": "reference_or_binary",
       "binary": false
     },
     {
       "path": "SVG-ENGINE.md",
-      "blob_sha": "64485ae59c8ea171a49c3932f168862d9a35968f",
+      "blob_sha": "7941932f7f95e7fa933b6abe9c42333082190960",
       "mode": "100644",
-      "bytes": 5261,
-      "lines": 48,
+      "bytes": 6166,
+      "lines": 54,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3804,10 +3804,10 @@
     },
     {
       "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
-      "blob_sha": "08edb6a7c5926a015f94a3951ea183e70c81d76d",
+      "blob_sha": "b509099e6b3eef7df749bf4354471ab2a5fe4ae7",
       "mode": "100644",
-      "bytes": 18946,
-      "lines": 157,
+      "bytes": 19880,
+      "lines": 161,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3948,10 +3948,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "9691687d002d566a3074e17d6dea0e3c8faa65b1",
+      "blob_sha": "d49d82da13ff6b7e70b84ea60e9fcfc3ed927905",
       "mode": "100644",
-      "bytes": 553842,
-      "lines": 3010,
+      "bytes": 561116,
+      "lines": 3103,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "5cab79519e4a40b674006ac78b493dd4959bde83",
+      "blob_sha": "3eb592e6cac785d10e707afbffab9ee94f67dbf7",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3975,7 +3975,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "ec6b0242c59916473202da1da87c1dc8331a8c53",
+      "blob_sha": "55f518dea75e432db229857e6a11703940081a9f",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3993,10 +3993,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "ed64d206ecfa3e40db7d2e0cdeb6ce53cfbb55cc",
+      "blob_sha": "ebf72ec28b041e5741367516b45795142917a6bf",
       "mode": "100644",
-      "bytes": 772983,
-      "lines": 11553,
+      "bytes": 779781,
+      "lines": 11609,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4542,10 +4542,10 @@
     },
     {
       "path": "tests/import-validation.test.cjs",
-      "blob_sha": "032effb31bdcb53f72570635b9b805d7b954e811",
+      "blob_sha": "b9ec0a160995b4178b3add002afce69ebeb99f9d",
       "mode": "100644",
-      "bytes": 7268,
-      "lines": 91,
+      "bytes": 7560,
+      "lines": 94,
       "category": "test_source_static_only",
       "binary": false
     },
@@ -4708,6 +4708,15 @@
       "mode": "100644",
       "bytes": 5028,
       "lines": 24,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/nrd-portable-assets.test.cjs",
+      "blob_sha": "2465b7e3db0cea8032ed1c139c096bc9e8a3b2a3",
+      "mode": "100644",
+      "bytes": 9947,
+      "lines": 149,
       "category": "test_source_static_only",
       "binary": false
     },
