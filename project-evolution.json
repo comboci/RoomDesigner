@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V400",
-    "project_evolution_version": "V400",
+    "software_version": "V401",
+    "project_evolution_version": "V401",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V400-R",
+  "current_source_release": "V401-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1912,6 +1912,12 @@
       "version": "V400-R",
       "date": "2026-11-20",
       "change": "اصلاح اعلان موفقیت کاذب در خروجی اضطراری NRD و لاگ خطا؛ پیام واقعی عملیات ذخیره از file() گرفته می‌شود، دو سناریوی رگرسیون تنها نوشته شدند و ممیزی مرزی V400 به‌صورت محدود ثبت شد. هیچ Test یا Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V401-R",
+      "date": "2026-11-20",
+      "change": "N8: شناسایی اختلاف دو نسخه معتبر نقشه در LocalStorage و IndexedDB هنگام راه‌اندازی و نمایش هشدارِ بدون تخریب؛ خروجی همراه هر دو نسخه، متادیتا و منابع محلی با بررسی تغییرنکردن وضعیت. هیچ نسخه‌ای خودکار جایگزین نمی‌شود. سه رگرسیون سورسی ثبت و اجرا نشدند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8736,6 +8742,32 @@
         "V400 milestone scope review is focused static source only, not a full runtime/codebase audit.",
         "OPEN-CROSS-STORE LocalStorage/IndexedDB consistency unchanged."
       ]
+    },
+    {
+      "id": "RD401-N8-VALID-CROSS-STORE-CONFLICT",
+      "record_type": "source_remediation",
+      "module": "storage_valid_divergence_discovery",
+      "source": "Continuation of RoomDesigner after V400-R; OPEN-CROSS-STORE source audit, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "eb9cecbb2d2db16cd7fe566b3d3ad50248566715",
+      "target_version": "V401-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "ادامه بده",
+      "assistant_interpretation": "N8: بدون دست‌زدن به اولویت قدیمی LocalStorage و ساختار ذخیره، اختلاف میان دو نسخه معتبر را به کاربر نشان بده و اجازه خروجی گرفتن جداگانه از داده خام هر دو مخزن را بده.",
+      "implementation_status": "Startup validates both snapshots and mirror metadata; shows non-destructive conflict notification for two different valid copies; user-initiated export includes raw versions and assets after checking epoch/current storage. No automatic promotion/deletion.",
+      "related_audit_findings": [
+        "OPEN-CROSS-STORE",
+        "RD401-DIVERGENT-VALID"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
+      "verification_evidence": [
+        "V400-R recoverMirrorOnStartup returned immediately on any valid rd_last, without surfacing distinct valid mirror payload.",
+        "V401-R adds divergentValidSnapshots and offerDivergentSnapshotBackup; neither modifies LocalStorage or IndexedDB.",
+        "New source regression cases authored in tests/cross-store-conflict-review.test.cjs, not executed.",
+        "Cross-store atomicity/ordering remains OPEN."
+      ]
     }
   ],
   "analyses": [
@@ -10528,6 +10560,20 @@
         "No tests, Build, Chromium or iPhone Safari acceptance performed.",
         "V400 full source/regression boundary audit remains OPEN; OPEN-CROSS-STORE remains unresolved."
       ]
+    },
+    {
+      "id": "RD401-CROSS-STORE-CONFLICT-AUDIT",
+      "record_id": "RD401-N8-VALID-CROSS-STORE-CONFLICT",
+      "created_at": "2026-11-20",
+      "module": "startup_storage_authority",
+      "problem": "A valid LocalStorage document always takes priority, hiding an independently valid but different IndexedDB mirror until the next overwrite.",
+      "decision": "Offer read-only divergence notice and bounded user-controlled backup with both raw snapshots. Respect legacy local authority; do not auto-select, merge or mutate existing storage formats.",
+      "remaining_risks": [
+        "No atomic transaction across LocalStorage and IndexedDB, no authoritative generation and no automatic merge.",
+        "Actual browser/iOS test, metadata corruption, denial and rapid-edit checks NOT_RUN.",
+        "A dismissed warning is not proof of a durable retained backup; user acknowledgment is required.",
+        "When a snapshot is invalid, existing invalid-data recovery policy takes precedence."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12006,17 +12052,24 @@
       "date": "2026-11-20",
       "change": "اصلاح اعلان موفقیت کاذب در خروجی اضطراری NRD و لاگ خطا؛ پیام واقعی عملیات ذخیره از file() گرفته می‌شود، دو سناریوی رگرسیون تنها نوشته شدند و ممیزی مرزی V400 به‌صورت محدود ثبت شد. هیچ Test یا Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V401-R",
+      "date": "2026-11-20",
+      "change": "N8: شناسایی اختلاف دو نسخه معتبر نقشه در LocalStorage و IndexedDB هنگام راه‌اندازی و نمایش هشدارِ بدون تخریب؛ خروجی همراه هر دو نسخه، متادیتا و منابع محلی با بررسی تغییرنکردن وضعیت. هیچ نسخه‌ای خودکار جایگزین نمی‌شود. سه رگرسیون سورسی ثبت و اجرا نشدند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V400-R",
+    "release": "V401-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "V400 milestone: limited RD-IE-11 static source audit recorded (audit/export-status-v400-2026-11-20.md). Full maintenance/source coverage remains OPEN. Two regression cases authored NOT_RUN; Test/Build/Browser NOT_RUN; OPEN-CROSS-STORE remains open."
+    "audit": "N8 focused read-only valid-divergence warning and dual-snapshot export. Source scenarios NOT_RUN; Test/Build/Browser NOT_RUN; OPEN-CROSS-STORE remains OPEN."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V401-R N8 manual acceptance: use disposable Chromium/iOS profile with independently valid but divergent rd_last / IndexedDB last, check on-screen non-destructive warning, export both raw files and assets; corrupt mirror must not trigger false valid-divergence message; user must verify archive. Tests/Build NOT_RUN. Next: authority/commit protocol design, not blind auto-merge.",
       "V400-R: مرورگر واقعی را با Save Picker موفق/Cancel، دانلود Anchor و ساخت ناموفق NRD اضطراری/لاگ بررسی کنید. کاربر نگهداری واقعی فایل را تأیید کند. Test/Build ممنوع و اجرا نشده؛ OPEN-CROSS-STORE و ممیزی کامل V400 باز هستند.",
       "V399-R N7 acceptance: crash after rd_profiles but before rd_last; same-Revision subsequent autosave, mismatched Revision records, Save As, backup/export and IndexedDB; Tests/Build/Chromium/iOS NOT_RUN.",
       "V398-R acceptance: DXF cp1256/cp1252/UTF-8/BOM unknown encoding, 200k crop dragging; savepicker versus anchor request; direct PDF titleblock/Unicode metadata; two-point page scaling and uncalibrated warning. Node, Build, browser NOT_RUN.",

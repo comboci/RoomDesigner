@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "77db0a5873fbc930b3c5582356e7f5cc0346b88d",
+      "blob_sha": "05fd13c614cd7b8f95843bdd4646d176a4b29059",
       "mode": "100644",
-      "bytes": 16395,
-      "lines": 185,
+      "bytes": 16810,
+      "lines": 187,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3812,6 +3812,15 @@
       "binary": true
     },
     {
+      "path": "audit/cross-store-valid-divergence-v401-2026-11-20.md",
+      "blob_sha": "3d405584cff0e6fcedf7ff61297de5eb793a6e2c",
+      "mode": "100644",
+      "bytes": 2419,
+      "lines": 22,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/export-status-v400-2026-11-20.md",
       "blob_sha": "d11289118684fa458bb498ad2923a2e5505ed8e5",
       "mode": "100644",
@@ -3975,10 +3984,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "b97d1cfa49ee1c0258cfef1e3403338f32619d6c",
+      "blob_sha": "594c174df7b7aa7d72353db4246c062236f43edb",
       "mode": "100644",
-      "bytes": 577368,
-      "lines": 3291,
+      "bytes": 580862,
+      "lines": 3323,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3993,7 +4002,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "5cdeb4a1a74df7f6cab6fc82d2e3d6af7f9b44ad",
+      "blob_sha": "1bbc54233efe4648f9a3609ce2358bdcff4b9e9c",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4002,7 +4011,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "9c7d2a4d2120cb25bbd0552a2eef315f18b31225",
+      "blob_sha": "efe979712f32821841c8cacb64a3915b3ed58f0f",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4020,10 +4029,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "653a375cf1fd44ec4311523bc68d89fb6b719ce1",
+      "blob_sha": "1d8203db9630a9e6af9bd7d2cb52bfeb2798ad63",
       "mode": "100644",
-      "bytes": 817881,
-      "lines": 12050,
+      "bytes": 822160,
+      "lines": 12103,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4312,6 +4321,15 @@
       "mode": "100644",
       "bytes": 5397,
       "lines": 45,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/cross-store-conflict-review.test.cjs",
+      "blob_sha": "d8717468c1e50d74b132ba11c3fbfcce503a462f",
+      "mode": "100644",
+      "bytes": 1977,
+      "lines": 39,
       "category": "test_source_static_only",
       "binary": false
     },
