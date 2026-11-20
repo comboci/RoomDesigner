@@ -181,3 +181,11 @@
 The main DWG dialog now preserves large-file thumbnail preview but blocks full conversion for files over 25 MiB, without user override. Worker guards input size before WASM initialization, output size before its second copy/transfer, and the main thread rejects oversized worker responses before creating File. Both guide and historical preview document are updated.
 
 **RD-IE-05: SOURCE_FIXED_RUNTIME_PENDING.** Native conversion can still allocate excess WASM memory before returning bytes; input/output caps do not impose a hard process-memory limit. Four source regression cases are authored, Node/Playwright/Build/real DWG NOT_RUN, and other open findings remain.
+
+## V397-R — N5 static remediation RD-IE-06 and PDF portion of RD-IE-07 (NOT_RUN)
+
+DXF Import retains centimeter factor 1 as its initial option but requires a separate affirmative scale checkbox before enabling Import for known, mismatched and unknown INSUNITS. Displays source dimensions and converted centimeters, and clears approval when factor/unit changes. Native imported layers carry dxfUnitProvenance and the selected factor is rechecked on entry.
+
+PDF Import retains V395 bounded detached staging, and adds a format-3 rd_pending_import journal scoped to PDF with txId, expected payload checksum, and original rd_last. It persists the image-bearing payload to primary LocalStorage, then a matching rd_import_committed marker, before publishing Undo and scheduling the generation-guarded IndexedDB mirror. Synchronous errors roll back editor, prior bytes and marker where possible. On failed rollback, the journal is retained and writes blocked. Startup treats unmarked staged PDF bytes as uncommitted rather than as proof of success; divergent valid content is preserved for manual review. Later autosaves preserve txId until cleanup.
+
+RD-IE-06: SOURCE_FIXED_RUNTIME_PENDING. RD-IE-07 PDF portion: SOURCE_FIXED_RUNTIME_PENDING. All unit, PDF, quota/failure, Chromium, iOS Safari, Node/Playwright/Build tests NOT_RUN; full cross-store atomicity still OPEN.

@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V396-R",
+  "current_source_release": "V397-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1881,6 +1881,12 @@
       "version": "V396-R",
       "date": "2026-11-20",
       "change": "اعمال سقف سخت ۲۵ MiB ورودی و ۸۰ MiB خروجی در تبدیل DWG، جلوگیری از خواندن کامل DWG بزرگ و حفظ پیش‌نمایش بندانگشتی؛ کنترل مستقل Worker و رابط اصلی، چهار سناریوی تست فقط نوشته شدند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V397-R",
+      "date": "2026-11-20",
+      "change": "الزام تأیید صریح مقیاس DXF و ثبت منشأ واحدها در لایه‌های واردشده؛ تقویت ورود PDF با Journal فرمت ۳ دارای txId و نشانگر Commit، بازگردانی داده و Undo در شکست هم‌زمان، کنترل آینه IndexedDB و بازیابی مشروط در راه‌اندازی؛ سورس و سناریوهای رگرسیون ثبت شد اما Test/Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8594,6 +8600,34 @@
         "چهار رگرسیون سورس تهیه شده‌اند، Test و Build اجرا نشده‌اند.",
         "حافظه پیک داخلی تبدیل WASM پیش از برگشت bytes تضمین نشده است."
       ]
+    },
+    {
+      "id": "RD397-DXF-PDF-TRANSACTION-REMEDIATION",
+      "record_type": "source_remediation",
+      "module": "dxf_explicit_units_and_pdf_import_transaction",
+      "source": "User N5 RoomDesigner deep audit RD-IE-06/07 instruction 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "1e53399a52ab9d31a90b88c48d3245ff6d1aac8c",
+      "target_version": "V397-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — مرحله بعد ممیزی RoomDesigner یعنی RD-IE-06/07 را از آخرین main شروع کن. تأیید صریح واحدهای DXF و تراکنش امن ورود PDF با rollback را اصلاح کن. طبق POLICY تست و Build اجرا نکن. نسخه را افزایش بده، Project Evolution و Checkpoint را ثبت کن، Commit و Push کن.",
+      "assistant_interpretation": "N5: DXF Import باید تأیید آگاهانه و قابل ابطال واحدها داشته باشد و ورود PDF باید پس از آماده‌سازی سند با Journal قابل‌بازیابی، نشانگر Commit و بازگردانی امن یک‌پارچه شود، بدون معرفی IndexedDB به‌عنوان منبع معتبر مستقل.",
+      "implementation_status": "الزام تأیید صریح مقیاس DXF و ثبت منشأ واحدها در لایه‌های واردشده؛ تقویت ورود PDF با Journal فرمت ۳ دارای txId و نشانگر Commit، بازگردانی داده و Undo در شکست هم‌زمان، کنترل آینه IndexedDB و بازیابی مشروط در راه‌اندازی؛ سورس و سناریوهای رگرسیون ثبت شد اما Test/Build اجرا نشد.",
+      "related_audit_findings": [
+        "RD-IE-06",
+        "RD-IE-07"
+      ],
+      "runtime_status": "PENDING_USER; UNIT/REGRESSION_TESTS=NOT_RUN; NODE=NOT_RUN; BROWSER=NOT_RUN; BUILD=NOT_RUN",
+      "verification_evidence": [
+        "V396-R واحد DXF را سانتی‌متر فرض کرده و Import را بدون انتخاب تأیید صریح باز می‌گذاشت؛ V397-R چک‌باکس تأیید، نمایش واحد ثبت‌شده و ابعاد تبدیل‌شده و لغو تأیید در تغییر عامل تبدیل را اضافه می‌کند.",
+        "در plan ورودی DXF فیلد unitConfirmation حمل می‌شود؛ importer صحت ضریب تأییدشده را کنترل و dxfUnitProvenance را در لایه‌های بومی نگه می‌دارد.",
+        "V396-R ورود PDF فقط با نوشتن rd_last و Undo پایان می‌یافت؛ V397-R journal rd_pending_import با scope pdf و txId و marker متناظر rd_import_committed قبل از اعلام commit ثبت می‌کند.",
+        "در شکست نوشتن، تلاش برای restore بایت‌ها و نشانگر قبلی و history انجام می‌شود؛ اگر restore ناموفق شود Journal محفوظ و نوشتن بیشتر مسدود می‌شود.",
+        "Startup recovery برای PDF بدون marker txId معتبر، صرف تطبیق checksum سند آماده را Commit حساب نمی‌کند؛ Mirror async و saveAuto شناسه تراکنش را حفظ می‌کنند.",
+        "تست‌های جدید تأیید واحد، quota/journal/marker، failure injection و رفتار قدیمی به سورس افزوده یا سازگار شدند، اما هیچ‌کدام اجرا نشده‌اند."
+      ]
     }
   ],
   "analyses": [
@@ -10279,6 +10313,22 @@
         "Complex DWG semantic fidelity and 3D/proxy entities are unsupported.",
         "RD-IE-06/07 DXF units and PDF transaction boundaries still require work."
       ]
+    },
+    {
+      "id": "RD397-UNIT-APPROVAL-PDF-JOURNAL-AUDIT",
+      "record_id": "RD397-DXF-PDF-TRANSACTION-REMEDIATION",
+      "created_at": "2026-11-20",
+      "module": "dxf_unit_governance_pdf_recovery",
+      "problem": "DXF scale factor 1 cm could be silently accepted despite mismatched or unknown INSUNITS; PDF import wrote a detached candidate to LocalStorage but lacked durable import intent, commit marker and cross-startup discrimination between staged and committed payload.",
+      "decision": "Require visible affirmative confirmation for all DXF scale choices, revoke after any unit/factor edit, and record approved source/selected scale on imported layers. Reuse existing format-3 import journal with scope pdf, transaction ID, previous bytes and candidate checksum; write matching commit marker, restore prior state on synchronous failure and coordinate mirror completion/marker propagation with startup recovery.",
+      "remaining_risks": [
+        "All tests, build, real CAD DXF/PDF, Chromium and iOS Safari acceptance are NOT_RUN / PENDING_USER.",
+        "LocalStorage and IndexedDB remain separate transactions; a journal protects bounded paths but does not guarantee power-loss atomicity or prevent all cross-store divergence.",
+        "If rollback or mirror restoration fails, recovery journal and local versions require export/manual review; no automatic destructive selection is authorized.",
+        "DXF source INSUNITS may be wrong or absent; explicit user choice is evidence of confirmation, not proof of physical scale.",
+        "Existing legacy direct DXF adapter uses an explicit prompt and is not re-routed into the new modal.",
+        "Persistent SVG normalization, session storage limits and prior large PDF images require separate end-to-end review."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11733,19 +11783,26 @@
       "date": "2026-11-20",
       "change": "اعمال سقف سخت ۲۵ MiB ورودی و ۸۰ MiB خروجی در تبدیل DWG، جلوگیری از خواندن کامل DWG بزرگ و حفظ پیش‌نمایش بندانگشتی؛ کنترل مستقل Worker و رابط اصلی، چهار سناریوی تست فقط نوشته شدند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V397-R",
+      "date": "2026-11-20",
+      "change": "الزام تأیید صریح مقیاس DXF و ثبت منشأ واحدها در لایه‌های واردشده؛ تقویت ورود PDF با Journal فرمت ۳ دارای txId و نشانگر Commit، بازگردانی داده و Undo در شکست هم‌زمان، کنترل آینه IndexedDB و بازیابی مشروط در راه‌اندازی؛ سورس و سناریوهای رگرسیون ثبت شد اما Test/Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V396-R",
+    "release": "V397-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-IE-05 DWG 25/80 MiB hard conversion caps; oversized thumbnail-only preview; test/build NOT_RUN; internal WASM peak memory still unbounded."
+    "audit": "RD-IE-06 explicit DXF scale confirmation plus RD-IE-07 PDF import journal/rollback; tests/build NOT_RUN; LocalStorage/IndexedDB cross-store atomicity remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V397-R acceptance pending: unknown/mm/m DXF unit acknowledgment, changed custom factor reset, layer provenance, PDF failure of journal/rd_last/commit marker, reload before/after marker, Undo and mirror storage on Chromium/iPhone Safari. Node/browser/build NOT_RUN.",
+      "NEXT N6 · RD-IE-09/10/11/12/13 — encoding DXF، کارایی برش، صداقت تأیید دانلود، فرا‌داده PDF و کالیبراسیون، با اولویت‌بندی و بدون Test/Build طبق POLICY.",
       "V396-R browser acceptance: >25 MiB DWG thumbnail only, <=25 MiB conversion, >80 MiB DXF rejection, cancel/retry and diagnostics. Tests authored, NOT_RUN.",
-      "NEXT N5 · RD-IE-06/07: explicit DXF unit confirmation and PDF staged import/rollback; no Test or Build.",
       "V395-R پذیرش اجرا نشده: PDF واردشده با quota-denied، ۱/۱۰/۲۰+ صفحه، کیفیت‌های مختلف، خطای رندر، محاسبه peak memory، ذخیره/بازگشایی و تست Safari/Chromium. Test/Build NOT_RUN.",
       "V395 milestone audit: بررسی کامل source و مرورگر در انتظار است؛ قوانین POLICY همچنان بدون اجرای تست و Build در این چرخه رعایت می‌شود.",
       "V394-R source change pending runtime/user acceptance; eight test scenarios authored NOT_RUN.",

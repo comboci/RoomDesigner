@@ -51,10 +51,10 @@
     },
     {
       "path": "DXF-IMPORT.md",
-      "blob_sha": "6431ffeb06b46190e7e3756d664774ee98554836",
+      "blob_sha": "744b49116cbab2753b1d7cef1f3ba01450ae7b72",
       "mode": "100644",
-      "bytes": 7431,
-      "lines": 44,
+      "bytes": 8402,
+      "lines": 50,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -78,10 +78,10 @@
     },
     {
       "path": "IMPORT-FORMATS.md",
-      "blob_sha": "8c9f7fe616728fbe6a7541ee0b9178be991b5096",
+      "blob_sha": "330228c8bb02cf19950ac309295279a2c48b8c7e",
       "mode": "100644",
-      "bytes": 4981,
-      "lines": 54,
+      "bytes": 5640,
+      "lines": 60,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -96,10 +96,10 @@
     },
     {
       "path": "PDF-IMPORT.md",
-      "blob_sha": "dc9a2aa2a48b62080b1e113a46d370b3fd2af6e2",
+      "blob_sha": "1feeeeda74ba2bcf3010a3c57e85ad3de2a20acf",
       "mode": "100644",
-      "bytes": 4462,
-      "lines": 22,
+      "bytes": 5704,
+      "lines": 30,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -204,10 +204,10 @@
     },
     {
       "path": "assets/dxf-import.js",
-      "blob_sha": "e8598ff56ac279b0af6c55016261ea2437a1b950",
+      "blob_sha": "5c0e89fa72f8e69510ed15bbc214af67b619f9a6",
       "mode": "100644",
-      "bytes": 19662,
-      "lines": 97,
+      "bytes": 21428,
+      "lines": 100,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3804,10 +3804,10 @@
     },
     {
       "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
-      "blob_sha": "9fef2428b732f032230ed5ae98d8dad6605f000d",
+      "blob_sha": "905a9005feceb7bd7b9aabf161c6b9e5a92eac36",
       "mode": "100644",
-      "bytes": 23975,
-      "lines": 183,
+      "bytes": 25341,
+      "lines": 191,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3948,10 +3948,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "04bfaf44e16be35897e1e6ac113ae73dda9aba45",
+      "blob_sha": "072e184593317502cbfbb31fb49989f3c0ece85b",
       "mode": "100644",
-      "bytes": 566942,
-      "lines": 3189,
+      "bytes": 572147,
+      "lines": 3238,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "ecf6df005bb3aaaff342e78dd2526ca9bdd7d0b0",
+      "blob_sha": "b6cb80fe5b6b12cc26c50d750a60180608087fbb",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3975,7 +3975,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "205ee3b304d06d8a1150fbd76e2021a089f8a630",
+      "blob_sha": "206dcab3ee2f885f3689095091224cbef3690b5c",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3993,10 +3993,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "6864fa1ac7131a3f7f544c52cd13809a6c775bc7",
+      "blob_sha": "4a652cbe2b6dbd864d3a65cfd4e915f37627e7b3",
       "mode": "100644",
-      "bytes": 794271,
-      "lines": 11773,
+      "bytes": 801260,
+      "lines": 11830,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4407,10 +4407,10 @@
     },
     {
       "path": "tests/dxf-import-concurrency.test.cjs",
-      "blob_sha": "5d040eebb338b99896793e8e00a0f4421da18281",
+      "blob_sha": "38cb42c0f23c0b7e805c3ca0757c023542115c3a",
       "mode": "100644",
-      "bytes": 2966,
-      "lines": 63,
+      "bytes": 3085,
+      "lines": 64,
       "category": "test_source_static_only",
       "binary": false
     },
@@ -4425,9 +4425,9 @@
     },
     {
       "path": "tests/dxf-import.browser.test.cjs",
-      "blob_sha": "9f7441aa41750956b7c5e222300607dda86baee3",
+      "blob_sha": "0777741f6a0e74bdbdefc889167eb4af1e799795",
       "mode": "100644",
-      "bytes": 12715,
+      "bytes": 12949,
       "lines": 56,
       "category": "test_source_static_only",
       "binary": false
@@ -4443,9 +4443,9 @@
     },
     {
       "path": "tests/dxf-objects.browser.test.cjs",
-      "blob_sha": "7167f2aa70e966401679b919b8f9e44df5e2383c",
+      "blob_sha": "86347d8ce48e28ac985bbf28b44dcb53aa27a0d4",
       "mode": "100644",
-      "bytes": 9175,
+      "bytes": 9283,
       "lines": 31,
       "category": "test_source_static_only",
       "binary": false
@@ -4458,6 +4458,15 @@
       "lines": 10,
       "category": "test_source_static_only",
       "binary": false
+    },
+    {
+      "path": "tests/dxf-unit-confirmation.test.cjs",
+      "mode": "100644",
+      "category": "test_source_static_only",
+      "binary": false,
+      "blob_sha": "6fec7f244d1eb905b913335a86b23d9158dca766",
+      "bytes": 4665,
+      "lines": 80
     },
     {
       "path": "tests/electrical-panel.browser.test.cjs",
@@ -4794,10 +4803,10 @@
     },
     {
       "path": "tests/pdf-resource-budget.test.cjs",
-      "blob_sha": "c3f651d66583fe5c0538e151ae8c35ca905effd1",
+      "blob_sha": "1dc2251b5b797638acbb30479603ce593201bae0",
       "mode": "100644",
-      "bytes": 5045,
-      "lines": 64,
+      "bytes": 8038,
+      "lines": 119,
       "category": "test_source_static_only",
       "binary": false
     },

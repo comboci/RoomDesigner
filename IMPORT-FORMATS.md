@@ -52,3 +52,9 @@ Import/export source has been updated, but Node, Playwright, real-file/mobile, c
 Full DWG-to-DXF conversion is **hard-limited** to a 25 MiB (26,214,400-byte) input and an 80 MiB (83,886,080-byte) returned DXF. The dialog remains available for larger DWG files and reads only the bounded embedded-thumbnail preview; the full conversion button is disabled and its handler refuses a whole-file read. The module Worker also rejects excessive input before WASM initialization, and checks the converted output before allocating the transferable copy. The caller checks returned output again before constructing File. No confirmation bypass exists.
 
 These limits do not constrain the converter's **peak internal WASM memory allocation before return**. Cancel, two-minute timeout and diagnostic behavior are retained. Static source updates and regression tests have been authored; Node, Playwright, build and real DWG conversion are NOT_RUN and user acceptance is PENDING.
+
+## V397-R — DXF scale approval and PDF recovery
+
+DXF requires explicit unit-scale confirmation even if INSUNITS matches the default centimeter factor. The panel displays source/selected factors and before/after dimensions, and any unit edit invalidates prior approval. Imported layers preserve scale provenance.
+
+PDF source import now uses a recovery journal and matching transaction-ID marker before publishing Undo, and writes its IndexedDB mirror asynchronously. Failed writes attempt a prior-snapshot rollback; incomplete recovery is retained for explicit review. Source-only correction; Test/Build/browser NOT_RUN. Cross-store atomicity remains open.

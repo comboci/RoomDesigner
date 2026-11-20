@@ -32,6 +32,7 @@ test('DXF modal cannot close, cancel or be replaced while import callback is pen
   const pending=new Promise(resolve=>release=resolve);
   const handle=await h.w.RoomDXFImport.open(h.file,async()=>{calls++;await pending});
   assert(h.dialog());
+  h.dialog().querySelector('[data-dxf-confirm-unit]').click();
   h.dialog().querySelector('[data-dxf-import]').click();
   assert.equal(calls,1);
   assert.equal(handle.close(),false,'programmatic close blocked while import is busy');
@@ -52,7 +53,7 @@ test('DXF callback failure leaves original modal open and permits controlled ret
   let calls=0;
   await h.w.RoomDXFImport.open(h.file,async()=>{calls++;if(calls===1)throw Error('injected failure')});
   const dialog=h.dialog(),button=dialog.querySelector('[data-dxf-import]');
-  button.click();await settled();
+  dialog.querySelector('[data-dxf-confirm-unit]').click();button.click();await settled();
   assert.equal(h.dialog(),dialog);
   assert.match(dialog.querySelector('[data-dxf-status]').textContent,/injected failure/);
   assert.equal(button.disabled,false);

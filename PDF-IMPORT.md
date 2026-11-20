@@ -20,3 +20,11 @@ RD-278 supersedes the numeric crop UI: percentage fields are removed. Crop-body 
 - خروجی مستقیم PDF صفحات را یک‌به‌یک با canvas.toBlob() تبدیل و پس از رهاکردن Canvas می‌نویسد؛ دیگر JPEG تمام صفحات در آرایه دوم تجمیع نمی‌شود. سقف خروجی مستقیم ۲۰ صفحه و ۳۲ MiB است؛ برای نقشه‌های بیشتر مسیر چاپ توصیه می‌شود.
 - معامله LocalStorage و IndexedDB اتمیک نشده؛ انتقال تصاویر به مخزن binary جداگانه و crash recovery بین مخزن‌ها همچنان کار معماری مستقل است.
 - موارد رگرسیونِ منبع افزوده شده‌اند ولی اجرای Node/Playwright/Build/PDF واقعی/iOS هنوز NOT_RUN و تأیید کاربر PENDING_USER است.
+
+## V397-R — PDF transaction journal and rollback (source only)
+
+PDF raster import builds and validates a detached document and renders it before opening the recovery journal. It uses the existing rd_pending_import journal (format 3, scope pdf) and unique txId with previous rd_last bytes and candidate checksum. After a successful actual LocalStorage rd_last write, the importer persists a matching rd_import_committed marker before final Undo/epoch publication. The IndexedDB mirror runs with generation guards; only a matched committed payload clears the journal. Later autosaves keep the txId in the marker.
+
+Synchronous failures attempt rollback of primary bytes, marker, editor drawing and undo history. Failed restoration retains the journal and blocks unsafe persistence. Startup recovery requires a matching txId and checksum for PDF: staged bytes alone do not prove commit. Exact unmarked staged content is treated as rollback eligible, while ambiguous changed data is preserved for manual recovery.
+
+LocalStorage and IndexedDB are not a joint atomic transaction; this is a protective journal rather than guaranteed crash-consistent storage. Tests, Build, real PDF quota failures and Safari acceptance are NOT_RUN / PENDING_USER.
