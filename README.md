@@ -1,6 +1,8 @@
 # RoomDesigner
 
-Current source release: **V361** (runtime acceptance pending user).
+V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
+
+Current source release: **V385-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

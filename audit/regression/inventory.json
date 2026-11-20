@@ -41,6 +41,15 @@
       "binary": false
     },
     {
+      "path": "DWG-IMPORT-V347.md",
+      "blob_sha": "d750258e2655eb4bf2f7a5f43446269c5f1b93bb",
+      "mode": "100644",
+      "bytes": 2658,
+      "lines": 21,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "DXF-IMPORT.md",
       "blob_sha": "e89d6985d45136363ed51a9fede01d4f0ad0444f",
       "mode": "100644",
@@ -114,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "60ae5ba173595a86e2c7c2f61dab3e82204bc01f",
+      "blob_sha": "dc0824ff1f1c67ae4f42de6e3711e4adf3deb71c",
       "mode": "100644",
-      "bytes": 11337,
-      "lines": 155,
+      "bytes": 12162,
+      "lines": 161,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -149,21 +158,38 @@
       "binary": false
     },
     {
+      "path": "assets/dwg-import.css",
+      "blob_sha": "7568b874dd40e2e32c868877dfcdc20173e5e30e",
+      "mode": "100644",
+      "bytes": 955,
+      "lines": 11,
+      "category": "source_or_configuration",
+      "binary": false
+    },
+    {
       "path": "assets/dwg-import.js",
       "blob_sha": "c087f04474548ee5b52ce35025bb2ca07fccae57",
       "mode": "100644",
-      "category": "source_or_configuration",
-      "binary": false,
       "bytes": 7134,
-      "lines": 65
+      "lines": 65,
+      "category": "source_or_configuration",
+      "binary": false
+    },
+    {
+      "path": "assets/dwg-preview.js",
+      "blob_sha": "8f2cfd6e86eb535169d21f23313c6dbb8deee28d",
+      "mode": "100644",
+      "bytes": 1379,
+      "lines": 24,
+      "category": "source_or_configuration",
+      "binary": false
     },
     {
       "path": "assets/dwg-worker.mjs",
       "blob_sha": "bb819f888736d5a7d8306ecc6105e61e68852b77",
       "mode": "100644",
       "category": "source_or_configuration",
-      "binary": false,
-      "metadata_pending_refresh": true
+      "binary": false
     },
     {
       "path": "assets/dxf-import.css",
@@ -176,9 +202,9 @@
     },
     {
       "path": "assets/dxf-import.js",
-      "blob_sha": "c7468f6b92667073a59bc79cc0bd8468612c3279",
+      "blob_sha": "3028ea091b44985691e157b881aae1b1512cb68d",
       "mode": "100644",
-      "bytes": 19300,
+      "bytes": 19445,
       "lines": 97,
       "category": "source_or_configuration",
       "binary": false
@@ -3779,8 +3805,7 @@
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
       "category": "reference_or_binary",
-      "binary": false,
-      "metadata_pending_refresh": true
+      "binary": false
     },
     {
       "path": "audit/roomdesigner-phase1-open-backlog.md",
@@ -3865,10 +3890,10 @@
     },
     {
       "path": "detail-routing.js",
-      "blob_sha": "6cc71daad181c08c2dbced86249bbb593b5d541a",
+      "blob_sha": "8309da72100d722e4d36501299e8fb36ae972f3e",
       "mode": "100644",
-      "bytes": 1574,
-      "lines": 18,
+      "bytes": 4655,
+      "lines": 105,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3910,12 +3935,12 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "723e1f37a383dd6da3d5840121427c141067b4bb",
+      "blob_sha": "09f8dd62172b61b0ef76c4e180826c793a6032de",
       "mode": "100644",
+      "bytes": 551206,
+      "lines": 2955,
       "category": "source_or_configuration",
-      "binary": false,
-      "bytes": 519780,
-      "lines": 2646
+      "binary": false
     },
     {
       "path": "lighting-model.js",
@@ -3928,20 +3953,21 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "adee3e1ab6e8fb3b0dc209b2650d5c06fe893999",
+      "blob_sha": "7ea21d8afb6916cbb81d3604a569721070c8e642",
       "mode": "100644",
+      "bytes": 21009,
+      "lines": 621,
       "category": "generated_dependency_lock",
-      "binary": false,
-      "metadata_pending_refresh": true
+      "binary": false
     },
     {
       "path": "package.json",
-      "blob_sha": "d86fb478c4b504d7d9fe66e292466a05648be590",
+      "blob_sha": "1f58a13ed51860197a93618cb2968784b89345dd",
       "mode": "100644",
-      "category": "source_or_configuration",
-      "binary": false,
       "bytes": 424,
-      "lines": 19
+      "lines": 19,
+      "category": "source_or_configuration",
+      "binary": false
     },
     {
       "path": "polyline-editor.js",
@@ -3954,12 +3980,12 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "d8b67a0866da1f1ebbc1a3f940a3ccb1a292d53e",
+      "blob_sha": "bedbe4ed065480ab8843bf88af0f6925a3ed459c",
       "mode": "100644",
+      "bytes": 739514,
+      "lines": 11091,
       "category": "source_or_configuration",
-      "binary": false,
-      "bytes": 736743,
-      "lines": 11047
+      "binary": false
     },
     {
       "path": "selection-geometry.js",
@@ -4291,6 +4317,33 @@
       "mode": "100644",
       "bytes": 6500,
       "lines": 32,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/dwg-import.browser.test.cjs",
+      "blob_sha": "b8a7a1652650be58ac759b1cb519c6a094006fff",
+      "mode": "100644",
+      "bytes": 5377,
+      "lines": 18,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/dwg-import.test.cjs",
+      "blob_sha": "4ffdcebb67dc210b8f743ffacc7519c085fd3e8a",
+      "mode": "100644",
+      "bytes": 4458,
+      "lines": 8,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/dwg-preview.test.cjs",
+      "blob_sha": "747f0ad1a3d24ab2fc8394fa76af08194b44dbcb",
+      "mode": "100644",
+      "bytes": 1285,
+      "lines": 5,
       "category": "test_source_static_only",
       "binary": false
     },
@@ -4754,6 +4807,15 @@
       "binary": false
     },
     {
+      "path": "tests/preview-server.test.cjs",
+      "blob_sha": "57daf52262bdf362ccce6dcf61a2ca306ae5116a",
+      "mode": "100644",
+      "bytes": 2105,
+      "lines": 48,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
       "path": "tests/print-font.browser.test.cjs",
       "blob_sha": "adf3b751f047fe81d1817f4de87afe3bc5097354",
       "mode": "100644",
@@ -5088,10 +5150,10 @@
     },
     {
       "path": "work/preview-server.cjs",
-      "blob_sha": "157dbb19d3a76b4a34405fd2243b8cd68297c3b9",
+      "blob_sha": "3f29b6d1fcd7669f50c27f0dbd3f894c4e1431dd",
       "mode": "100644",
-      "bytes": 1325,
-      "lines": 14,
+      "bytes": 1990,
+      "lines": 67,
       "category": "source_or_configuration",
       "binary": false
     }
