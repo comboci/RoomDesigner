@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V392-R (2026-11-20): Follow-up DXF commit-boundary hardening: reject an import while a canvas gesture is active, render the detached candidate before pointer cleanup can schedule autosave, and refine regression coverage for the true staging failure path. One new focused regression case added; no automated tests, build, or browser checks executed.
+
 V391-R (2026-11-20): DXF import now keeps its modal active and prevents a second import while the previous commit is pending. Geometry, layers and native objects are constructed and validated in a detached drawing; a failed staging/render path leaves or restores the earlier drawing and undo/redo state. Six regression cases were added but not executed; runtime acceptance and cross-store atomicity remain open.
 
 V390-R (2026-11-20): When an explicitly confirmed invalid-local-data replacement fails to save, the original raw rd_last is restored in the in-memory read-through view without mutating durable browser storage. This prevents rejected replacement content from contaminating the next recovery export. Two focused regression cases were added but not executed; cross-store atomicity remains open.
@@ -14,7 +16,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V391-R** (runtime acceptance pending user).
+Current source release: **V392-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

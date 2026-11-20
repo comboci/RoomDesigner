@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N_MANUAL_STATIC_REMEDIATION",
+  "execution_source": "USER_N_DXF_COMMIT_BOUNDARY_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
+  "source_head": "5d31f11b98a2ad8d09d68515d949e74ea07133e7",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V391-R",
+  "product_release": "V392-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "10c4f45f33111909861a7214568757b34e5524ae",
+  "inventory_blob_sha": "e36967237f2d103873762d7ec818300bdf280588",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V391-R focused DXF import correction, preserving 13 existing open deep import/export findings. While async onImport is pending, modal close/replacement is now refused. A detached drawing with staged DXF layers/lines/native objects is validated before a guarded editor swap; Undo and autosave follow successful render. Six Node/jsdom regressions authored NOT_RUN. PDF-side RD-IE-07, cross-store atomicity and real-browser acceptance remain open.",
+  "coverage_note": "V391-R focused DXF import correction, preserving 13 existing open deep import/export findings. While async onImport is pending, modal close/replacement is now refused. A detached drawing with staged DXF layers/lines/native objects is validated before a guarded editor swap; Undo and autosave follow successful render. Six Node/jsdom regressions authored NOT_RUN. PDF-side RD-IE-07, cross-store atomicity and real-browser acceptance remain open. V392-R follow-up on V391-R: guard live canvas gestures and put render before clearPointerState (which could trigger a premature scheduleSave). Correct staged-failure test injection and add active-gesture rejection regression. All tests/build/browser NOT_RUN; V391 source preservation and 13-item import/export audit retained.",
   "segments": [
     {
       "path": "index.html",
@@ -443,13 +443,33 @@
       "actual_read_end_line": 2476,
       "reviewed_start_line": 2402,
       "reviewed_end_line": 2476,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD391-DXF-IMPORT-ATOMIC-STAGING"
       ],
       "reviewed_at": "2026-11-20T03:43:51.270Z",
       "source_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
       "review_basis": "Entire candidate DXF transaction source authored and inspected in bounded lines; static only.",
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V392-R source/test blob changed; historical review retained."
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "9691687d002d566a3074e17d6dea0e3c8faa65b1",
+      "actual_read_start_line": 2402,
+      "actual_read_end_line": 2481,
+      "reviewed_start_line": 2402,
+      "reviewed_end_line": 2481,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD392-DXF-COMMIT-BOUNDARY-HARDENING"
+      ],
+      "reviewed_at": "2026-11-20T03:49:12.740Z",
+      "source_head": "5d31f11b98a2ad8d09d68515d949e74ea07133e7",
+      "review_basis": "Focused exact source staging boundary and change; no tests or builds executed",
       "truncated": false
     }
   ],
@@ -749,11 +769,11 @@
     {
       "id": "RD-IE-07",
       "priority": "P1",
-      "status": "OPEN_AUDIT",
+      "status": "PARTIAL_SOURCE_FIXED_RUNTIME_PENDING",
       "path": "index.html",
       "root_cause": "Native DXF/PDF import commit paths lack complete model rollback after partial mutation errors.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
-      "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+      "source_assessment": "V391/V392 source mitigates DXF staging and concurrency; PDF portion still OPEN. Node/Playwright/browser NOT_RUN."
     },
     {
       "id": "RD-IE-08",
@@ -820,6 +840,15 @@
       "root_cause": "DXF modal could close while async import still active and geometry was pushed to live document/history before all objects and rendering succeeded.",
       "correction": "Guard busy modal and stage all DXF geometry in detached structuredClone before validating/switching editor; restore view/doc/history on render failure, schedule one save only after success.",
       "source_recheck": "Four Node VM transaction cases and two jsdom modal cases authored NOT_RUN. RD-IE-07 PDF half remains OPEN; cross-store atomicity unresolved."
+    },
+    {
+      "id": "RD392-DXF-COMMIT-BOUNDARY-HARDENING",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "priority": "P1",
+      "root_cause": "V391-R clearPointerState was called before a potentially throwing render and may schedule autosave during a live gesture.",
+      "correction": "Reject active gestures; render detached DXF candidate before pointer cleanup and scheduling persistence. Refine regression test to fail within staged object creation and add active drag guard case.",
+      "source_recheck": "Index candidate inspected and two test source edits authored; no runtime Node, Playwright or build. RD-IE-07 PDF portion and OPEN-CROSS-STORE remain unresolved."
     }
   ],
   "last_completed_segment": {
@@ -831,11 +860,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "3ec8cd1a71ee1505d92c4448d57686501c321a8c",
+    "blob_sha": "9691687d002d566a3074e17d6dea0e3c8faa65b1",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Sequential index review remains at first uncovered lines; focused V391 DXF review is not full coverage."
+    "reason": "Index blob updated in V392-R; broad source audit still starts at first unread range."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -844,7 +873,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V391-R DXF modality and source transaction remediation; six Node/jsdom cases authored, NOT_RUN.",
+    "static_diff": "V392-R focused source review of DXF gesture guard and render-before-pointer-cleanup; existing test case corrected and one test authored. NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -861,11 +890,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned source Git blobs and draft tree metadata; no source/test execution",
-    "baseline_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
+    "method": "Exact Git blob metadata; product code not executed",
+    "baseline_head": "5d31f11b98a2ad8d09d68515d949e74ea07133e7",
     "entries": 581,
     "no_product_execution": true,
-    "notes": "New deep-import/export audit entries retained; source, tests, release and checkpoint synchronized in V391-R."
+    "notes": "V392-R source, focused regression, version, README, audit report, Project Evolution, inventory and checkpoint updated."
   },
   "branch_review": {
     "branches": [

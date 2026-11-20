@@ -23,7 +23,7 @@ function harness({failRender=false,failBoundsAt=0,failValidation=false}={}){
  const scope=vm.createContext({
   doc:original,view:oldView,selection:oldSelection,multiSelection:null,
   history:oldHistory,redoHistory:oldRedo,documentEpoch:7,drawingChangedSinceStartup:false,
-  persistTimer:null,drag:null,wireDrag:null,wallGesture:null,polyPreview:null,cableGesture:null,
+  persistTimer:null,drag:null,wireDrag:null,wallGesture:null,polyPreview:null,cableGesture:null,pinch:null,
   svg:{getBoundingClientRect:()=>({width:960,height:680})},
   window:{
    RoomDXF:{bounds(lines){count.bounds++;if(failBoundsAt===count.bounds)throw Error('injected bounds failure');
@@ -65,7 +65,7 @@ test('DXF prevalidation error never touches live document, history or autosave',
  assert.equal(h.count.render,0);
 });
 test('DXF object conversion failing during staging never modifies live document',()=>{
- const h=harness({failBoundsAt:2});
+ const h=harness({failBoundsAt:4});
  const plan=fixture();plan.objects=[
   {kind:'door',indices:[0,1],rotation:0},{kind:'table',indices:[2,3],rotation:0}
  ];
@@ -78,6 +78,14 @@ test('DXF render failure restores old document, selection, view and undo/redo',(
  assert.throws(()=>h.scope.applyRoomDXFGeometry(fixture()),/injected render failure/);
  assertUnchanged(h);
  assert.equal(h.count.render,2,'failed next render and best-effort old render');
+});
+test('ongoing canvas gesture rejects DXF without touching document or autosave',()=>{
+ const h=harness(),drag={kind:'line-node',moved:true};
+ h.scope.drag=drag;
+ assert.throws(()=>h.scope.applyRoomDXFGeometry(fixture()),/ابتدا حرکت یا ویرایش جاری/);
+ assertUnchanged(h);
+ assert.equal(h.scope.drag,drag);
+ assert.equal(h.count.render,0);
 });
 test('successful DXF conversion commits once, appends one undo and schedules one save',()=>{
  const h=harness();const plan=fixture();

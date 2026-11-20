@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V391-R",
+  "current_source_release": "V392-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1851,6 +1851,12 @@
       "version": "V391-R",
       "date": "2026-11-20",
       "change": "رفع خطای هم‌زمانی و تغییر نیمه‌کاره ورود DXF: نگهداری پنجره هنگام ثبت، آماده‌سازی/اعتبارسنجی هندسه در سند جدا، rollback نقشه و تاریخچه هنگام شکست رندر و افزودن ۶ رگرسیون بدون اجرای تست یا Build.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V392-R",
+      "date": "2026-11-20",
+      "change": "تکمیل ایمنی تراکنش DXF: توقف ورود هنگام gesture فعال، انتقال پاک‌سازی وضعیت ابزارها به بعد از رندر موفق برای جلوگیری از ذخیرهٔ زودرس، تصحیح رگرسیون خطای staging و افزودن آزمون فعال‌بودن gesture؛ بدون اجرا.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8358,7 +8364,8 @@
           "id": "RD-IE-07",
           "priority": "P1",
           "title": "نبود rollback کامل برای اعمال DXF/PDF",
-          "status": "OPEN_AUDIT"
+          "status": "PARTIAL_SOURCE_FIXED_RUNTIME_PENDING",
+          "note": "DXF portion V391/V392 source hardened; PDF branch OPEN; runtime tests NOT_RUN."
         },
         {
           "id": "RD-IE-08",
@@ -8433,6 +8440,27 @@
         "Old applyRoomDXFGeometry called checkpoint() and pushed live arrays before completing all object conversion; new source validates staged clone before replacing doc.",
         "Four Node VM transaction regressions and two jsdom modal regressions authored, NOT_RUN. No test/build/browser execution.",
         "Current audit file remains a historical pinned static source report; other 12 open findings and PDF half of RD-IE-07 are not claimed fixed."
+      ]
+    },
+    {
+      "id": "RD392-DXF-COMMIT-BOUNDARY-HARDENING",
+      "record_type": "source_remediation",
+      "module": "dxf_import_commit_boundary",
+      "source": "Focused V391 code review after a concurrent V391-R commit; explicit user N DXF import safety, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "target_version": "V392-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — DXF ورود هم‌زمان و نیمه‌کاره را با حفظ داده‌ها ایمن کن، بدون Build/Test کامیت و Push کن.",
+      "assistant_interpretation": "ایمن‌سازی تکمیلی مرز Commit: اعمال جلوگیری از gesture فعال و پرهیز از autosave زودهنگام پیش از رندر موفق.",
+      "implementation_status": "در index.html ورود هنگام drag/wireDrag/wallGesture/cableGesture/pinch فعال رد می‌شود؛ render() پیش از clearPointerState() اجرا می‌شود. آزمون خطای دوم object-bounds عمداً در staging و نه prevalidation تزریق می‌شود؛ یک آزمون جدید برای gesture فعال افزوده شد. تغییرات هم‌زمان V391 حفظ شدند.",
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "V391-R commit 5d31f11 pre-render clearPointerState داشت و clearPointerState می‌تواند scheduleSave اجرا کند؛ در صورت شکست render خطر early-save وجود داشت.",
+        "V392-R guard gesture فعال را پیش از تعویض سند اعمال و clearPointerState را پس از render قرار می‌دهد.",
+        "پنج سناریوی transaction در فایل منبع و دو سناریوی concurrency در فایل قبلی ثبت‌اند؛ هیچ تستی اجرا نشده است.",
+        "خروجی DWG/PDF و RD-IE-01 همچنان باز هستند؛ گزارش ممیزی حفظ شده است."
       ]
     }
   ],
@@ -10043,6 +10071,21 @@
         "PDF import's partial apply remains open under RD-IE-07; unit confusion remains RD-IE-06.",
         "Independent open finding RD-IE-01 (portable SVG assets in .nrd) remains P0."
       ]
+    },
+    {
+      "id": "RD392-DXF-COMMIT-BOUNDARY-ANALYSIS",
+      "record_id": "RD392-DXF-COMMIT-BOUNDARY-HARDENING",
+      "created_at": "2026-11-20",
+      "module": "dxf_import_commit_boundary",
+      "problem": "clearPointerState can scheduleSave when canceling a moved canvas gesture, so calling it before a potentially throwing render() undermines fail-closed DXF staging.",
+      "decision": "Reject staged import during active gesture. After validated document swap, render first, then clear pointer state and schedule persistence. Retain best-effort rollback on errors.",
+      "remaining_risks": [
+        "Node tests/browser runtime NOT_RUN.",
+        "DOM recovery still best-effort after render exceptions.",
+        "PDF direct import not yet transactional.",
+        "LocalStorage/IndexedDB cross-store atomicity remains open.",
+        "Memory cost of detached clone has not been measured on mobile."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11467,17 +11510,25 @@
       "date": "2026-11-20",
       "change": "رفع خطای هم‌زمانی و تغییر نیمه‌کاره ورود DXF: نگهداری پنجره هنگام ثبت، آماده‌سازی/اعتبارسنجی هندسه در سند جدا، rollback نقشه و تاریخچه هنگام شکست رندر و افزودن ۶ رگرسیون بدون اجرای تست یا Build.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V392-R",
+      "date": "2026-11-20",
+      "change": "تکمیل ایمنی تراکنش DXF: توقف ورود هنگام gesture فعال، انتقال پاک‌سازی وضعیت ابزارها به بعد از رندر موفق برای جلوگیری از ذخیرهٔ زودرس، تصحیح رگرسیون خطای staging و افزودن آزمون فعال‌بودن gesture؛ بدون اجرا.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V391-R",
+    "release": "V392-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Source correction addresses DXF concurrency/partial geometry branch of RD-IE-07, not PDF. 6 Node/jsdom cases added but NOT_RUN; tests, Build, Playwright NOT_RUN. Deep audit's other open findings retained."
+    "audit": "V392-R hardens DXF commit boundary after V391-R; no tests, Build or browser run. RD-IE-07 DXF-only source mitigation; PDF remains OPEN. RD-IE-01 P0 NRD portability and OPEN-CROSS-STORE remain open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "NEXT N: P0 RD-IE-01 — make NRD import/export portable for referenced local SVG assets with backward-compatible envelope, checksums, collision guards and rollback; no tests/build per policy.",
+      "V392-R runtime acceptance needed: test in browser active drag rejected, render fault rolls back and leaves prior document; Node/jsdom tests NOT_RUN.",
       "Verify V391-R staged DXF import with forced validation/render failures, repeated Import and Cancel while callback is pending, 1 Undo and save/reopen on Chromium and iPhone Safari. Six tests currently NOT_RUN.",
       "N1 · RD-IE-01: ساخت NRD خودبسنده با دارایی SVG محلی و import rollback + round-trip regression",
       "N2 · RD-IE-03/04: حفظ هندسه dxfGeometry در export DXF و هشدار تصاویر PDF/raster در DXF",
