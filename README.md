@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V391-R (2026-11-20): DXF import now keeps its modal active and prevents a second import while the previous commit is pending. Geometry, layers and native objects are constructed and validated in a detached drawing; a failed staging/render path leaves or restores the earlier drawing and undo/redo state. Six regression cases were added but not executed; runtime acceptance and cross-store atomicity remain open.
+
 V390-R (2026-11-20): When an explicitly confirmed invalid-local-data replacement fails to save, the original raw rd_last is restored in the in-memory read-through view without mutating durable browser storage. This prevents rejected replacement content from contaminating the next recovery export. Two focused regression cases were added but not executed; cross-store atomicity remains open.
 
 V389-R (2026-11-20): Startup mirror recovery checks LocalStorage authority before validating IndexedDB metadata. An intact local drawing no longer receives a misleading corrupt-mirror/import warning; malformed-but-present local data remains protected. Four focused regression scenarios were added but not executed; cross-store atomicity remains open.
@@ -12,7 +14,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V390-R** (runtime acceptance pending user).
+Current source release: **V391-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

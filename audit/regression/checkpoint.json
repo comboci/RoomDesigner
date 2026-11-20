@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_REQUESTED_STATIC_IMPORT_EXPORT_AUDIT",
+  "execution_source": "USER_N_MANUAL_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "c2fcfa617f942c5ea592e61589b234c11b29ce8c",
+  "source_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V390-R",
+  "product_release": "V391-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "31ac94595c1599a37aed46a5259732059d933e47",
+  "inventory_blob_sha": "10c4f45f33111909861a7214568757b34e5524ae",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V390-R focused static review of resolveInvalidLast failed-save branch. Rejected rd_last writes shadow the intact malformed source in safeStorage's volatile view. Restore captured raw bytes only in read-through memory after failure; retain the recovery block and editor original. Two VM regression scenarios added but NOT_RUN. No broad review or actual runtime acceptance credited. Follow-up 2026-11-20 targeted static import/export/DXF/DWG/PDF/SVG audit documented 13 open findings and one known limitation at audit/import-export-dxf-dwg-deep-audit-2026-11-20.md. No sequential source coverage credited; no tests/build/browser run; no product source changes or release increment.",
+  "coverage_note": "V391-R focused DXF import correction, preserving 13 existing open deep import/export findings. While async onImport is pending, modal close/replacement is now refused. A detached drawing with staged DXF layers/lines/native objects is validated before a guarded editor swap; Undo and autosave follow successful render. Six Node/jsdom regressions authored NOT_RUN. PDF-side RD-IE-07, cross-store atomicity and real-browser acceptance remain open.",
   "segments": [
     {
       "path": "index.html",
@@ -407,13 +407,49 @@
       "actual_read_end_line": 376,
       "reviewed_start_line": 350,
       "reviewed_end_line": 376,
-      "status": "REVIEWED_WITH_FINDING",
+      "status": "STALE_BLOB",
       "findings": [
         "RD390-INVALID-LAST-ROLLBACK"
       ],
       "reviewed_at": "2026-11-20T03:13:34.246Z",
       "source_head": "bac80b09b5e73a6b2cc34d58583f5ad3a1d034a2",
       "review_basis": "Exact bounded candidate read of resolveInvalidLast; no truncation, tests/build NOT_RUN.",
+      "truncated": false,
+      "historical_status": "REVIEWED_WITH_FINDING",
+      "stale": true,
+      "coverage_valid": false,
+      "invalidation_reason": "V391-R new exact blob; historical review retained."
+    },
+    {
+      "path": "assets/dxf-import.js",
+      "blob_sha": "e8598ff56ac279b0af6c55016261ea2437a1b950",
+      "actual_read_start_line": 1,
+      "actual_read_end_line": 97,
+      "reviewed_start_line": 1,
+      "reviewed_end_line": 97,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD391-DXF-IMPORT-ATOMIC-STAGING"
+      ],
+      "reviewed_at": "2026-11-20T03:43:51.270Z",
+      "source_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
+      "review_basis": "Full original and complete exact drafted modal source statically inspected; no tests/build executed.",
+      "truncated": false
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "3ec8cd1a71ee1505d92c4448d57686501c321a8c",
+      "actual_read_start_line": 2402,
+      "actual_read_end_line": 2476,
+      "reviewed_start_line": 2402,
+      "reviewed_end_line": 2476,
+      "status": "REVIEWED_WITH_FINDING",
+      "findings": [
+        "RD391-DXF-IMPORT-ATOMIC-STAGING"
+      ],
+      "reviewed_at": "2026-11-20T03:43:51.270Z",
+      "source_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
+      "review_basis": "Entire candidate DXF transaction source authored and inspected in bounded lines; static only.",
       "truncated": false
     }
   ],
@@ -772,22 +808,34 @@
       "root_cause": "Raster PDF imports use arbitrary 480-unit width without physical plan calibration.",
       "detail": "See audit/import-export-dxf-dwg-deep-audit-2026-11-20.md for exact pinned source line references, impact and proposed regression coverage.",
       "source_assessment": "STATIC_AUDIT_ONLY; NOT_RUN; no source change"
+    },
+    {
+      "id": "RD391-DXF-IMPORT-ATOMIC-STAGING",
+      "priority": "P1",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "assets/dxf-import.js; index.html",
+      "related_audit_findings": [
+        "RD-IE-07"
+      ],
+      "root_cause": "DXF modal could close while async import still active and geometry was pushed to live document/history before all objects and rendering succeeded.",
+      "correction": "Guard busy modal and stage all DXF geometry in detached structuredClone before validating/switching editor; restore view/doc/history on render failure, schedule one save only after success.",
+      "source_recheck": "Four Node VM transaction cases and two jsdom modal cases authored NOT_RUN. RD-IE-07 PDF half remains OPEN; cross-store atomicity unresolved."
     }
   ],
   "last_completed_segment": {
-    "path": "storage-safety.js",
-    "blob_sha": "cdbbcb8d85c7f6c7023253578afe6d6bda320545",
-    "start_line": 1,
-    "end_line": 30,
-    "status": "REVIEWED_NO_FINDING"
+    "path": "index.html",
+    "blob_sha": "3ec8cd1a71ee1505d92c4448d57686501c321a8c",
+    "start_line": 2402,
+    "end_line": 2476,
+    "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "fc2e5faa8152842dfb2144c7655a4af900621f8e",
+    "blob_sha": "3ec8cd1a71ee1505d92c4448d57686501c321a8c",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Index changed in V390-R; full sequential source audit coverage still starts at first uncovered line."
+    "reason": "Sequential index review remains at first uncovered lines; focused V391 DXF review is not full coverage."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -796,7 +844,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "Import/export/DXF/DWG/PDF/SVG source audit only; report and metadata, no product code modifications or runtime checks.",
+    "static_diff": "V391-R DXF modality and source transaction remediation; six Node/jsdom cases authored, NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -813,11 +861,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned Git tree + new Git blobs, no product execution",
-    "baseline_head": "c2fcfa617f942c5ea592e61589b234c11b29ce8c",
-    "entries": 579,
+    "method": "Pinned source Git blobs and draft tree metadata; no source/test execution",
+    "baseline_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
+    "entries": 581,
     "no_product_execution": true,
-    "notes": "Report and Project Evolution audit records added only; product V390-R unchanged, 13 open findings plus known limitation."
+    "notes": "New deep-import/export audit entries retained; source, tests, release and checkpoint synchronized in V391-R."
   },
   "branch_review": {
     "branches": [

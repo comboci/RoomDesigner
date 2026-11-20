@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "4c323bc211796d38eb240ed294d276ca57554868",
+      "blob_sha": "8f320f5a260c6b72b09d623a624a7f381b669741",
       "mode": "100644",
-      "bytes": 13711,
-      "lines": 171,
+      "bytes": 14126,
+      "lines": 173,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -204,9 +204,9 @@
     },
     {
       "path": "assets/dxf-import.js",
-      "blob_sha": "3028ea091b44985691e157b881aae1b1512cb68d",
+      "blob_sha": "e8598ff56ac279b0af6c55016261ea2437a1b950",
       "mode": "100644",
-      "bytes": 19445,
+      "bytes": 19662,
       "lines": 97,
       "category": "source_or_configuration",
       "binary": false
@@ -3948,10 +3948,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "fc2e5faa8152842dfb2144c7655a4af900621f8e",
+      "blob_sha": "3ec8cd1a71ee1505d92c4448d57686501c321a8c",
       "mode": "100644",
-      "bytes": 552191,
-      "lines": 2971,
+      "bytes": 553522,
+      "lines": 3007,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3966,7 +3966,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "080debad987e8e9005a5430c704b7e97941da4e8",
+      "blob_sha": "afb5f3d2e47e4adc103d2719bddc403f54f25aad",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3975,7 +3975,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "edd9c33d6a001517e52a4c3f569e75bd5cd106d0",
+      "blob_sha": "d11bc023c0ddfaa37292fb5827bb448138f7c6c5",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -3993,10 +3993,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "def53b3b24f5556fbb89337c973b5a0336e39783",
+      "blob_sha": "9efcb2c98d8eacce1135a7b0471526e855fda524",
       "mode": "100644",
-      "bytes": 762963,
-      "lines": 11447,
+      "bytes": 768488,
+      "lines": 11502,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4384,6 +4384,24 @@
       "mode": "100644",
       "bytes": 5831,
       "lines": 25,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/dxf-import-concurrency.test.cjs",
+      "blob_sha": "5d040eebb338b99896793e8e00a0f4421da18281",
+      "mode": "100644",
+      "bytes": 2966,
+      "lines": 63,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/dxf-import-transaction.test.cjs",
+      "blob_sha": "5b89a6462a786a38bf11301dfadf2a44c0da60f4",
+      "mode": "100644",
+      "bytes": 4748,
+      "lines": 97,
       "category": "test_source_static_only",
       "binary": false
     },

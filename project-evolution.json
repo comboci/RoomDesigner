@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V390-R",
+  "current_source_release": "V391-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1845,6 +1845,12 @@
       "version": "V390-R",
       "date": "2026-11-20",
       "change": "پس از شکست ذخیره جایگزینی دستی rd_last نامعتبر، نمای موقت به بایت‌های اولیه بازمی‌گردد تا خروجی بازیابی محتوای ردشده را به‌جای نسخه اصلی صادر نکند؛ دو آزمون رگرسیون منبع اضافه شد (اجرا نشده).",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V391-R",
+      "date": "2026-11-20",
+      "change": "رفع خطای هم‌زمانی و تغییر نیمه‌کاره ورود DXF: نگهداری پنجره هنگام ثبت، آماده‌سازی/اعتبارسنجی هندسه در سند جدا، rollback نقشه و تاریخچه هنگام شکست رندر و افزودن ۶ رگرسیون بدون اجرای تست یا Build.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8403,6 +8409,31 @@
         "Documentation compared: DXF-IMPORT.md, DWG-IMPORT-V347.md, PDF-IMPORT.md, IMPORT-FORMATS.md.",
         "Individual findings include source lines and proposed future regression cases; neither source remediation nor runtime success is asserted."
       ]
+    },
+    {
+      "id": "RD391-DXF-IMPORT-ATOMIC-STAGING",
+      "record_type": "source_remediation",
+      "module": "dxf_import_concurrency_and_transaction",
+      "source": "Explicit user N and RD-IE-07 P1, static audit of RoomDesigner DXF import, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "d93543ab965cae354f5b74b7fb6c11253a920cea",
+      "target_version": "V391-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — اصلاح نخستین مورد بحرانی ممیزی DXF/DWG در RoomDesigner را شروع کن. آخرین main را بخوان، ورود DXF را در برابر اجرای همزمان و خطای نیمه‌کاره با حفظ داده‌ها ایمن کن، تست‌های رگرسیون را به سورس اضافه کن، مطابق سیاست ممیزی پروژه بدون اجرای تست و Build نسخه را افزایش بده، Commit و Push کن و مرحله بعدی N را ارائه بده.",
+      "assistant_interpretation": "محافظت از عملیات DXF با قفل وضعیت busy و جلوگیری از تغییر جزئی نقشه و Undo پس از شکست آماده‌سازی/رندر.",
+      "implementation_status": "assets/dxf-import.js مودال را هنگام onImport نمی‌بندد یا جایگزین نمی‌کند. applyRoomDXFGeometry هندسه و لایه‌ها و آبجکت‌ها را در structuredClone جداگانه تولید و validate می‌کند، سپس پس از رندر موفق یک Undo snapshot و یک autosave ثبت می‌کند؛ شکست رندر باعث بازگشت سند/نما/تاریخچه می‌شود. ۶ رگرسیون جدید در دو فایل Node/jsdom افزوده شده است.",
+      "related_audit_findings": [
+        "RD-IE-07 (DXF branch source remediation only; PDF branch still OPEN_AUDIT)"
+      ],
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "Pinned V390-R import script unconditionally called active.close() even when an async import callback was running; changed to a close guard with busy check.",
+        "Old applyRoomDXFGeometry called checkpoint() and pushed live arrays before completing all object conversion; new source validates staged clone before replacing doc.",
+        "Four Node VM transaction regressions and two jsdom modal regressions authored, NOT_RUN. No test/build/browser execution.",
+        "Current audit file remains a historical pinned static source report; other 12 open findings and PDF half of RD-IE-07 are not claimed fixed."
+      ]
     }
   ],
   "analyses": [
@@ -9996,6 +10027,22 @@
         "DWG full conversion and PDF physical scale should not be represented as complete CAD fidelity.",
         "No application source fix has been deployed by this audit."
       ]
+    },
+    {
+      "id": "RD391-DXF-IMPORT-AUDIT",
+      "record_id": "RD391-DXF-IMPORT-ATOMIC-STAGING",
+      "created_at": "2026-11-20",
+      "module": "dxf_import_concurrency_and_transaction",
+      "problem": "DXF modal close/new-open ignored busy onImport; direct mutations to doc.laye​rs, walls and devices during applyRoomDXFGeometry risk partial geometry, incorrect history and pending autosave if late object construction or render fails.",
+      "decision": "Refuse modal close or replacement while busy; stage geometry and native devices in a detached structuredClone and validate it. Commit to editor only through a guarded render with rollback and delay history/autosave until success. Keep the 13-finding deep audit and PDF counterpart of RD-IE-07 open.",
+      "remaining_risks": [
+        "Six added Node/jsdom scenarios and existing browser suites were NOT_RUN; real browser acceptance pending.",
+        "Rendering DOM rollback is best-effort if an underlying renderer itself throws persistently.",
+        "StructuredClone staging memory consumption needs real-device measurements for worst-case 20k-line imports.",
+        "The partial DXF-source fix does not provide LocalStorage/IndexedDB transactional storage atomicity.",
+        "PDF import's partial apply remains open under RD-IE-07; unit confusion remains RD-IE-06.",
+        "Independent open finding RD-IE-01 (portable SVG assets in .nrd) remains P0."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11414,17 +11461,24 @@
       "date": "2026-11-20",
       "change": "پس از شکست ذخیره جایگزینی دستی rd_last نامعتبر، نمای موقت به بایت‌های اولیه بازمی‌گردد تا خروجی بازیابی محتوای ردشده را به‌جای نسخه اصلی صادر نکند؛ دو آزمون رگرسیون منبع اضافه شد (اجرا نشده).",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V391-R",
+      "date": "2026-11-20",
+      "change": "رفع خطای هم‌زمانی و تغییر نیمه‌کاره ورود DXF: نگهداری پنجره هنگام ثبت، آماده‌سازی/اعتبارسنجی هندسه در سند جدا، rollback نقشه و تاریخچه هنگام شکست رندر و افزودن ۶ رگرسیون بدون اجرای تست یا Build.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V390-R",
+    "release": "V391-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "V390-R fixes read-through view contamination after rejected invalid rd_last replacement; two regression cases added, NOT_RUN. Tests/build/browser runtime NOT_RUN; OPEN-CROSS-STORE still open."
+    "audit": "Source correction addresses DXF concurrency/partial geometry branch of RD-IE-07, not PDF. 6 Node/jsdom cases added but NOT_RUN; tests, Build, Playwright NOT_RUN. Deep audit's other open findings retained."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "Verify V391-R staged DXF import with forced validation/render failures, repeated Import and Cancel while callback is pending, 1 Undo and save/reopen on Chromium and iPhone Safari. Six tests currently NOT_RUN.",
       "N1 · RD-IE-01: ساخت NRD خودبسنده با دارایی SVG محلی و import rollback + round-trip regression",
       "N2 · RD-IE-03/04: حفظ هندسه dxfGeometry در export DXF و هشدار تصاویر PDF/raster در DXF",
       "N3 · RD-IE-02/08: محدودیت منابع و ذخیره fail-safe تصاویر PDF و page export",
@@ -11438,7 +11492,8 @@
       "User acceptance: crop drag, Auto Trim, port rotation/flip/resize, save/reopen, mobile Safari and SVG/DXF/PDF exports.",
       "V140 source audit boundary.",
       "Shared writable backend remains deferred.",
-      "Verify RD-154 quota-denied localStorage write/remove behavior in Safari; runtime acceptance pending."
+      "Verify RD-154 quota-denied localStorage write/remove behavior in Safari; runtime acceptance pending.",
+      "After the higher-priority deep-audit items, address RD-IE-06: DXF $INSUNITS may silently fall back to centimeters without explicit confirmation."
     ],
     "source_of_truth": "project-evolution.json",
     "svg_engine": "Implemented in V139; see SVG-ENGINE.md",
