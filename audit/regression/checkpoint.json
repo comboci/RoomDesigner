@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N6_DXF_ENCODING_CROP_PDF_EXPORT_CALIBRATION_STATIC",
+  "execution_source": "USER_N7_REVISION_CRASH_RECOVERY_STATIC_SOURCE_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
+  "source_head": "f9dbd999495a10fa8428f1b37e7ac331cff7f791",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V398-R",
+  "product_release": "V399-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "b259ae9837f90bb0c25b6605c21f828e5bb46c47",
+  "inventory_blob_sha": "56bae9d6fb7c1a5f9d6513a935c383c643397497",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V398-R N6 focused RD-IE-09–13 corrections: explicit DXF encoding via HEADER $DWGCODEPAGE/BOM and fatal decode; crop pointermove overlay only; confirmed file writing versus unverified downloads; direct PDF title/author/revision/date and Info; manual two-point per-page raster calibration. 21 test scenarios authored, NOT_RUN; browser and build NOT_RUN. OPEN-CROSS-STORE unresolved.",
+  "coverage_note": "V399-R N7: committed Revision recovery must be evidenced by exact expected checksums of both stores or same doc ID + Revision number + identical unique Revision record after a later autosave. A matching profile and merely valid rd_last no longer clear the journal. 6 regression source scenarios authored, NOT_RUN. Build/Browser NOT_RUN. OPEN-CROSS-STORE remains open.",
   "segments": [
     {
       "path": "index.html",
@@ -1337,6 +1337,18 @@
       "root_cause": "Legacy DXF names, slow crop drag, misleading download result, PDF direct metadata parity and uncalibrated raster width.",
       "correction": "See five corrected RD-IE-09 through RD-IE-13 findings and V398-R audit report.",
       "source_recheck": "Static source authoring and focused review only. Node, Playwright, build, physical files and mobile acceptance NOT_RUN."
+    },
+    {
+      "id": "RD399-N7-REVISION-JOURNAL-CONTINUITY",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "priority": "P1",
+      "path": "index.html; tests/revision-journal-startup.test.cjs; audit/revision-journal-n7-2026-11-20.md",
+      "related_audit_findings": [
+        "RD-ST-REV-01"
+      ],
+      "root_cause": "A matching profile checksum plus merely valid older rd_last was treated as evidence of a completed Revision, clearing pending journal after a crash between profile and primary snapshot writes.",
+      "correction": "Use exact journal checksums for both writes or same current/profile document identity, revision number and identical unique revision record after an autosave. Preserve journal on ambiguous state.",
+      "source_recheck": "Static source-only; six regression scenarios authored NOT_RUN. No build, browser, real crash or user acceptance."
     }
   ],
   "last_completed_segment": {
@@ -1348,11 +1360,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "63d22a13467ca58fb19a9401a7211e7dee203373",
+    "blob_sha": "cf46bd8453d0a42c8f068a2fab7dc47988e53eda",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Changed index blob in V398-R; no full sequential index credit was inferred from targeted patches."
+    "reason": "Changed index blob in V399-R; only focused static patch inspection, no full sequential index coverage credited."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1361,7 +1373,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V398-R source-only N6 remedial changes, 21 new authored test scenarios, one existing DXF test harness adapted. Node/Playwright/Build/CAD/PDF/iOS NOT_RUN; cross-store atomicity still open.",
+    "static_diff": "V399-R N7 source correction and regression cases authored; no source execution. Cross-store architecture pending.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1378,11 +1390,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned Git base HEAD plus exact staged blob metadata; no product/test code execution",
-    "baseline_head": "6f621c8de3396a5ed916d3342a83fd5239da52c7",
-    "entries": 591,
+    "method": "GitHub candidate tree blobs and metadata, same deterministic category/Unicode path order as tools/regression-inventory.py; no product, test or build execution",
+    "baseline_head": "f9dbd999495a10fa8428f1b37e7ac331cff7f791",
+    "entries": 593,
     "no_product_execution": true,
-    "notes": "V398-R N6 source, 21 authored regression scenarios, HTML/package, docs, Project Evolution and exact inventory/checkpoint delivered as one fast-forward commit."
+    "notes": "Seven source/document/ledger blobs plus manifest and checkpoint delivered in one non-force fast-forward commit. Candidate metadata uses returned exact Git blob SHA, byte and line lengths."
   },
   "branch_review": {
     "branches": [
@@ -1404,7 +1416,8 @@
       "Storage denial, missing prior snapshot, compensation interruption and browser download retention remain runtime risks",
       "V387-R removed fixed Edge paths; Chromium browser runtime still NOT_RUN.",
       "Divergent valid LocalStorage and IndexedDB snapshots still require explicit export-and-select reconciliation.",
-      "Targeted audit: unbundled custom SVG in portable NRD; DXF round-trip geometry and PDF-image loss; PDF base64 quota risk; DWG conversion resource caps; see RD-IE-01..13."
+      "Targeted audit: unbundled custom SVG in portable NRD; DXF round-trip geometry and PDF-image loss; PDF base64 quota risk; DWG conversion resource caps; see RD-IE-01..13.",
+      "V399-R Revision Journal ambiguity intentionally retains older valid snapshots for manual export; cross-store atomicity not solved."
     ],
     "console_paths": "Existing SVG fallback, DXF safety-limit/save-picker and SVG migration console.warn call sites are potential diagnostics, not observed runtime warnings"
   },
@@ -1416,6 +1429,14 @@
       "status": "OPEN_AUDIT",
       "findings": 13,
       "known_limitations": 1,
+      "validation": "NOT_RUN"
+    },
+    {
+      "path": "audit/revision-journal-n7-2026-11-20.md",
+      "source_head": "f9dbd999495a10fa8428f1b37e7ac331cff7f791",
+      "release": "V399-R",
+      "status": "SOURCE_MITIGATION_RUNTIME_PENDING",
+      "findings": 1,
       "validation": "NOT_RUN"
     }
   ]

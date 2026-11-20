@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V358",
-    "project_evolution_version": "V358",
+    "software_version": "V399",
+    "project_evolution_version": "V399",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V398-R",
+  "current_source_release": "V399-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1893,6 +1893,12 @@
       "version": "V398-R",
       "date": "2026-11-20",
       "change": "N6: خواندن DXF با تشخیص DWGCODEPAGE/UTF-8 BOM و انتخاب دستی و شکست امن decoding، حذف محاسبه برش در هر pointermove، تفکیک درخواست دانلود از ذخیره قطعی، افزودن Title Block و متادیتای UTF-16BE به PDF مستقیم، و کالیبراسیون دو نقطه‌ای سانتی‌متری برای هر صفحه PDF؛ ۲۱ رگرسیون سورسی اضافه شد ولی تست/Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V399-R",
+      "date": "2026-11-20",
+      "change": "N7: جلوگیری از پاک‌شدن زودهنگام Journal بازیابی Revision در فاصله ذخیره پروفایل تا سند؛ افزودن احراز تداوم شناسه، نسخه و رکورد Revision. حالت مبهم و داده‌های بازیابی حفظ می‌شوند. آزمون‌ها و Build اجرا نشد؛ تراکنش دو مخزن همچنان اتمیک نیست.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8665,6 +8671,31 @@
         "PDF Import کالیبراسیون دو نقطه‌ای و فاصله واقعی per-page را در pdfSource ذخیره می‌کند؛ بدون کالیبراسیون width=480 صرفاً مرجع بصری است.",
         "۲۱ سناریوی جدید و سازگاری harness قدیمی نوشته شده ولی هیچ Test یا Build یا پذیرش مرورگر اجرا نشده است."
       ]
+    },
+    {
+      "id": "RD399-N7-REVISION-JOURNAL-CONTINUITY",
+      "record_type": "source_remediation",
+      "module": "revision_startup_recovery",
+      "source": "User RoomDesigner continuation after N6 on 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "f9dbd999495a10fa8428f1b37e7ac331cff7f791",
+      "target_version": "V399-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "ادامه چت (RoomDesigner) رو تنجام بده با دقت",
+      "assistant_interpretation": "N7: ممیزی و اصلاح خطر حذف زودهنگام Journal Revision پس از ذخیره پروفایل و پیش از ذخیره سند؛ تست و Build ممنوع.",
+      "implementation_status": "پاک‌سازی Journal در راه‌اندازی فقط با checksum دو فایل موردانتظار یا تداوم قابل‌اثبات همان سند با همان Revision و رکورد Revision یکسان ممکن است. در ابهام داده‌ها و Journal حفظ می‌شوند.",
+      "related_audit_findings": [
+        "RD-ST-REV-01"
+      ],
+      "runtime_status": "PENDING_USER",
+      "verification_evidence": "Only static source work and 6 authored regression source scenarios. Tests/Build/Chromium/iOS NOT_RUN.",
+      "remaining_risks": [
+        "LocalStorage و IndexedDB اتمیک نیستند",
+        "پذیرش مرورگر و crash recovery اجرا نشده",
+        "وضعیت مبهم نیازمند export و بررسی دستی است"
+      ]
     }
   ],
   "analyses": [
@@ -10431,6 +10462,19 @@
         "Source tests/Build/Playwright/real device acceptance NOT_RUN.",
         "OPEN-CROSS-STORE LocalStorage/IndexedDB atomicity is not addressed in this release."
       ]
+    },
+    {
+      "id": "RD399-REVISION-CRASH-BOUNDARY",
+      "record_id": "RD399-N7-REVISION-JOURNAL-CONTINUITY",
+      "created_at": "2026-11-20",
+      "module": "revision_startup_recovery",
+      "problem": "saveLocal persists rd_profiles before rd_last. A crash can leave a new profile and an old valid rd_last. Startup erroneously treated profileExpected && currentValid as committed and cleared the recovery journal.",
+      "decision": "Use either exact two-key expected checksums or continuity of same doc ID, safe integer Revision and exactly one equal Revision record across current document and matching profile. Preserve journal if ambiguous.",
+      "remaining_risks": [
+        "Independent async IndexedDB mirror, no atomic multi-store transaction",
+        "Ambiguous pending journal needs user-mediated export/review",
+        "Node/Browser/Build tests NOT_RUN"
+      ]
     }
   ],
   "deferred_scope": [
@@ -11897,17 +11941,24 @@
       "date": "2026-11-20",
       "change": "N6: خواندن DXF با تشخیص DWGCODEPAGE/UTF-8 BOM و انتخاب دستی و شکست امن decoding، حذف محاسبه برش در هر pointermove، تفکیک درخواست دانلود از ذخیره قطعی، افزودن Title Block و متادیتای UTF-16BE به PDF مستقیم، و کالیبراسیون دو نقطه‌ای سانتی‌متری برای هر صفحه PDF؛ ۲۱ رگرسیون سورسی اضافه شد ولی تست/Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V399-R",
+      "date": "2026-11-20",
+      "change": "N7: جلوگیری از پاک‌شدن زودهنگام Journal بازیابی Revision در فاصله ذخیره پروفایل تا سند؛ افزودن احراز تداوم شناسه، نسخه و رکورد Revision. حالت مبهم و داده‌های بازیابی حفظ می‌شوند. آزمون‌ها و Build اجرا نشد؛ تراکنش دو مخزن همچنان اتمیک نیست.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V398-R",
+    "release": "V399-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-IE-09–13 source remediation; decoding, crop responsiveness, download status, PDF direct title/Info, two-point raster calibration. 21 tests authored NOT_RUN, Build NOT_RUN; OPEN-CROSS-STORE remains open."
+    "audit": "N7 static Revision recovery correction. Six authored test source scenarios NOT_RUN, Build NOT_RUN; OPEN-CROSS-STORE remains open; V400 milestone audit due."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V399-R N7 acceptance: crash after rd_profiles but before rd_last; same-Revision subsequent autosave, mismatched Revision records, Save As, backup/export and IndexedDB; Tests/Build/Chromium/iOS NOT_RUN.",
       "V398-R acceptance: DXF cp1256/cp1252/UTF-8/BOM unknown encoding, 200k crop dragging; savepicker versus anchor request; direct PDF titleblock/Unicode metadata; two-point page scaling and uncalibrated warning. Node, Build, browser NOT_RUN.",
       "NEXT: ممیزی معماری OPEN-CROSS-STORE و تست پذیرش واقعی DXF/PDF/DWG در Chromium/Safari؛ اجرای تست/Build فقط با مجوز تغییر POLICY.",
       "V397-R acceptance pending: unknown/mm/m DXF unit acknowledgment, changed custom factor reset, layer provenance, PDF failure of journal/rd_last/commit marker, reload before/after marker, Undo and mirror storage on Chromium/iPhone Safari. Node/browser/build NOT_RUN.",

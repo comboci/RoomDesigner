@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "d7c42664fac93f655c0cc3ce089f741e008fbc85",
+      "blob_sha": "bc970426552b4771417a87545959bd2e117b75bb",
       "mode": "100644",
-      "bytes": 15486,
-      "lines": 181,
+      "bytes": 15912,
+      "lines": 183,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3830,6 +3830,15 @@
       "binary": false
     },
     {
+      "path": "audit/revision-journal-n7-2026-11-20.md",
+      "blob_sha": "289c914e2442cc7ffa5873079b12b1d512f03a5d",
+      "mode": "100644",
+      "bytes": 1337,
+      "lines": 14,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/roomdesigner-phase1-open-backlog.md",
       "blob_sha": "a91378e2db5971f103452d694d077e78ac3d6963",
       "mode": "100644",
@@ -3957,10 +3966,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "63d22a13467ca58fb19a9401a7211e7dee203373",
+      "blob_sha": "cf46bd8453d0a42c8f068a2fab7dc47988e53eda",
       "mode": "100644",
-      "bytes": 576251,
-      "lines": 3273,
+      "bytes": 577384,
+      "lines": 3292,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3975,16 +3984,16 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "7fe5c01e40d5afa80c8e6ba96975ed64755ddbce",
+      "blob_sha": "321f8de04061193e8229f3302333aabb6bcbf05a",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
-      "category": "generated_dependency_lock",
+      "category": "source_or_configuration",
       "binary": false
     },
     {
       "path": "package.json",
-      "blob_sha": "d5d67b08590940f13d689f81ff54d0f040ba5087",
+      "blob_sha": "bc92bf9f1808eb8703d23ff88ae69ae16e98f90e",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4002,10 +4011,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "50e98b661aff6b187202c3ed0ef9b5573f320c43",
+      "blob_sha": "14cd9d3c2c08327a30ff1eef4326bc3480d37d79",
       "mode": "100644",
-      "bytes": 809682,
-      "lines": 11939,
+      "bytes": 813423,
+      "lines": 11990,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -5059,6 +5068,15 @@
       "mode": "100644",
       "bytes": 5853,
       "lines": 29,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/revision-journal-startup.test.cjs",
+      "blob_sha": "3e34e5c05ce8b418b0113c8a970dfce18e8d5fd8",
+      "mode": "100644",
+      "bytes": 1906,
+      "lines": 17,
       "category": "test_source_static_only",
       "binary": false
     },
