@@ -33,3 +33,18 @@ test('PDF download and DXF messages distinguish confirmed files from requests',(
  assert.match(index,/result===true\?'فایل DXF/);
 });
 
+
+test('emergency backup awaits the picker or browser-download request without premature success',()=>{
+ const source=fs.readFileSync('index.html','utf8');
+ const backup=source.match(/\$\('backupNow'\)\.onclick=async\(\)=>\{([\s\S]*?)\};\$\('selectTool'\)/);
+ assert.ok(backup,'emergency backup handler must be asynchronous');
+ assert.match(backup[1],/await file\(/);
+ assert.doesNotMatch(backup[1],/فایل خروجی نقشه آماده شد/);
+});
+test('error log export relies on file result messages instead of treating requested as saved',()=>{
+ const source=fs.readFileSync('index.html','utf8');
+ const body=source.match(/async function exportErrorLog\(\)\{([\s\S]*?)\n\}/);
+ assert.ok(body);
+ assert.match(body[1],/await file\(/);
+ assert.doesNotMatch(body[1],/فایل لاگ خطاها آماده شد/);
+});

@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V400-R (2026-11-20): Emergency NRD export and error-log download no longer claim a saved file before the file() outcome. The backup handler now awaits file() and reports any envelope-construction failure; 'requested' remains an unconfirmed browser download. Two regression source cases authored NOT_RUN. V400 milestone: focused static source and governance review recorded, full regression/device audit still OPEN; Test/Build/Browser NOT_RUN. OPEN-CROSS-STORE remains unresolved.
+
 V399-R (2026-11-20): N7 prevents premature startup clearance of a Revision recovery journal. A saved profile plus any valid current document no longer proves commit; clearance needs the two exact journal checksums or the same document ID, Revision number and exact saved Revision record after a later autosave. Ambiguity retains recovery options. Regression scenarios authored, NOT_RUN; cross-store atomicity remains open.
 
 V393-R (2026-11-20): NRD documents now embed versioned SVG resources referenced by equipment, the catalog and revision snapshots, with bounded length/checksum validation. Import stages and remaps conflicting SVG IDs, writes the SVG draft storage within the existing import journal, and rolls back on failed writes. Nine new regression cases authored (NOT_RUN); cross-store atomicity and browser acceptance pending.
@@ -20,7 +22,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V399-R** (runtime acceptance pending user).
+Current source release: **V400-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

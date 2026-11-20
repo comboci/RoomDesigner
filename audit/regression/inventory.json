@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "bc970426552b4771417a87545959bd2e117b75bb",
+      "blob_sha": "77db0a5873fbc930b3c5582356e7f5cc0346b88d",
       "mode": "100644",
-      "bytes": 15912,
-      "lines": 183,
+      "bytes": 16395,
+      "lines": 185,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3812,6 +3812,15 @@
       "binary": true
     },
     {
+      "path": "audit/export-status-v400-2026-11-20.md",
+      "blob_sha": "d11289118684fa458bb498ad2923a2e5505ed8e5",
+      "mode": "100644",
+      "bytes": 2253,
+      "lines": 25,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/import-export-dxf-dwg-deep-audit-2026-11-20.md",
       "blob_sha": "2a405ef5592209fe7a9fec8b119ffd047b3519e0",
       "mode": "100644",
@@ -3966,10 +3975,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "cf46bd8453d0a42c8f068a2fab7dc47988e53eda",
+      "blob_sha": "b97d1cfa49ee1c0258cfef1e3403338f32619d6c",
       "mode": "100644",
-      "bytes": 577384,
-      "lines": 3292,
+      "bytes": 577368,
+      "lines": 3291,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -3984,7 +3993,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "321f8de04061193e8229f3302333aabb6bcbf05a",
+      "blob_sha": "5cdeb4a1a74df7f6cab6fc82d2e3d6af7f9b44ad",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -3993,7 +4002,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "bc92bf9f1808eb8703d23ff88ae69ae16e98f90e",
+      "blob_sha": "9c7d2a4d2120cb25bbd0552a2eef315f18b31225",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4011,10 +4020,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "14cd9d3c2c08327a30ff1eef4326bc3480d37d79",
+      "blob_sha": "653a375cf1fd44ec4311523bc68d89fb6b719ce1",
       "mode": "100644",
-      "bytes": 813423,
-      "lines": 11990,
+      "bytes": 817881,
+      "lines": 12050,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -5103,9 +5112,9 @@
       "mode": "100644",
       "category": "test_source_static_only",
       "binary": false,
-      "blob_sha": "d040212839d454b3c17ddbd1a37a6bb43ebc282b",
-      "bytes": 1896,
-      "lines": 35
+      "blob_sha": "09dc1837be7353554ead714c8f843d432ede2c74",
+      "bytes": 2715,
+      "lines": 50
     },
     {
       "path": "tests/selection-geometry.test.cjs",

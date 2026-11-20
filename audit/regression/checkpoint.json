@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_N7_REVISION_CRASH_RECOVERY_STATIC_SOURCE_REMEDIATION",
+  "execution_source": "USER_POST_N7_V400_EXPORT_NOTICE_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "f9dbd999495a10fa8428f1b37e7ac331cff7f791",
+  "source_head": "7fa984e60274da546201472f465c2e633b2a3b89",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V399-R",
+  "product_release": "V400-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "56bae9d6fb7c1a5f9d6513a935c383c643397497",
+  "inventory_blob_sha": "9a5da57a590d8ac47f0693f905a646b9b1ce4ef6",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "V399-R N7: committed Revision recovery must be evidenced by exact expected checksums of both stores or same doc ID + Revision number + identical unique Revision record after a later autosave. A matching profile and merely valid rd_last no longer clear the journal. 6 regression source scenarios authored, NOT_RUN. Build/Browser NOT_RUN. OPEN-CROSS-STORE remains open.",
+  "coverage_note": "V400-R focused RD-IE-11 source issue: emergency NRD backup and error log export no longer claim physical persistence on an unconfirmed request. Two source regression cases authored but NOT_RUN. V400 milestone focused audit recorded; full audit OPEN. OPEN-CROSS-STORE unresolved.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history.",
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD.",
       "stale": true
     },
     {
@@ -426,7 +426,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "assets/dxf-import.js",
@@ -466,7 +466,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -486,7 +486,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -506,7 +506,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -526,7 +526,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -546,7 +546,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -566,7 +566,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -586,7 +586,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -606,7 +606,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "assets/pdf-import.js",
@@ -646,7 +646,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -666,7 +666,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "tests/pdf-resource-budget.test.cjs",
@@ -758,7 +758,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -778,7 +778,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -798,7 +798,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "index.html",
@@ -818,7 +818,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V398-R changed exact file blob; old focused review retained as history."
+      "invalidation_reason": "V400-R changed file blob; historical review retained, new blob UNREAD."
     },
     {
       "path": "assets/dxf-encoding.js",
@@ -1349,6 +1349,14 @@
       "root_cause": "A matching profile checksum plus merely valid older rd_last was treated as evidence of a completed Revision, clearing pending journal after a crash between profile and primary snapshot writes.",
       "correction": "Use exact journal checksums for both writes or same current/profile document identity, revision number and identical unique revision record after an autosave. Preserve journal on ambiguous state.",
       "source_recheck": "Static source-only; six regression scenarios authored NOT_RUN. No build, browser, real crash or user acceptance."
+    },
+    {
+      "id": "RD400-EXPORT-NOTICE",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Unawaited emergency backup and truthy 'requested' error log result showed false completion messages.",
+      "correction": "Await file() and rely on its distinct confirmed-save/requested-download/canceled results; handle emergency envelope construction failure.",
+      "verification": "Source-only; two new regression contracts authored NOT_RUN; browser/manual acceptance pending."
     }
   ],
   "last_completed_segment": {
@@ -1360,11 +1368,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "cf46bd8453d0a42c8f068a2fab7dc47988e53eda",
+    "blob_sha": "b97d1cfa49ee1c0258cfef1e3403338f32619d6c",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Changed index blob in V399-R; only focused static patch inspection, no full sequential index coverage credited."
+    "reason": "V400-R changed index blob; focused export audit does not qualify for full sequential line-review credit."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1373,7 +1381,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V399-R N7 source correction and regression cases authored; no source execution. Cross-store architecture pending.",
+    "static_diff": "V400-R focused source-only correction; two test cases authored, NOT_RUN. V400 full milestone audit OPEN. Data-store internals unchanged.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1390,11 +1398,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "GitHub candidate tree blobs and metadata, same deterministic category/Unicode path order as tools/regression-inventory.py; no product, test or build execution",
-    "baseline_head": "f9dbd999495a10fa8428f1b37e7ac331cff7f791",
-    "entries": 593,
+    "method": "Pinned Git base HEAD and authored new Git blobs, no product/test execution",
+    "baseline_head": "7fa984e60274da546201472f465c2e633b2a3b89",
+    "entries": 594,
     "no_product_execution": true,
-    "notes": "Seven source/document/ledger blobs plus manifest and checkpoint delivered in one non-force fast-forward commit. Candidate metadata uses returned exact Git blob SHA, byte and line lengths."
+    "notes": "V400-R export notice correction, focused audit, matching inventory and checkpoint in one tree."
   },
   "branch_review": {
     "branches": [
@@ -1437,6 +1445,13 @@
       "release": "V399-R",
       "status": "SOURCE_MITIGATION_RUNTIME_PENDING",
       "findings": 1,
+      "validation": "NOT_RUN"
+    },
+    {
+      "path": "audit/export-status-v400-2026-11-20.md",
+      "source_head": "7fa984e60274da546201472f465c2e633b2a3b89",
+      "release": "V400-R",
+      "status": "FOCUSED_STATIC_AUDIT_COMPLETE_FULL_AUDIT_OPEN",
       "validation": "NOT_RUN"
     }
   ]

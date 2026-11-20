@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V399",
-    "project_evolution_version": "V399",
+    "software_version": "V400",
+    "project_evolution_version": "V400",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -38,8 +38,15 @@
     "status": "adopted_for_future_releases",
     "multiple_of_five_release_gate": true,
     "rule": "At V10, V15, V20... record applicable source maintenance and audit evidence; no claim of successful runtime test without user confirmation.",
-    "next_due_boundary": "V340-R; historical audit evidence remains pending reconciliation",
-    "historical_reconciliation_status": "OPEN; stale V290 future-boundary label superseded in V332-R; no historical audit credited by this correction"
+    "next_due_boundary": "V405-R",
+    "historical_reconciliation_status": "OPEN; stale V290 future-boundary label superseded in V332-R; no historical audit credited by this correction",
+    "last_boundary": {
+      "release": "V400-R",
+      "source_audit": "FOCUSED_STATIC_ONLY",
+      "full_source_audit": "OPEN",
+      "runtime": "PENDING_USER",
+      "test_and_build": "NOT_RUN"
+    }
   },
   "_file_documentation": {
     "title": "RoomDesigner Project Evolution",
@@ -62,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V399-R",
+  "current_source_release": "V400-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1899,6 +1906,12 @@
       "version": "V399-R",
       "date": "2026-11-20",
       "change": "N7: جلوگیری از پاک‌شدن زودهنگام Journal بازیابی Revision در فاصله ذخیره پروفایل تا سند؛ افزودن احراز تداوم شناسه، نسخه و رکورد Revision. حالت مبهم و داده‌های بازیابی حفظ می‌شوند. آزمون‌ها و Build اجرا نشد؛ تراکنش دو مخزن همچنان اتمیک نیست.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V400-R",
+      "date": "2026-11-20",
+      "change": "اصلاح اعلان موفقیت کاذب در خروجی اضطراری NRD و لاگ خطا؛ پیام واقعی عملیات ذخیره از file() گرفته می‌شود، دو سناریوی رگرسیون تنها نوشته شدند و ممیزی مرزی V400 به‌صورت محدود ثبت شد. هیچ Test یا Build اجرا نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8696,6 +8709,33 @@
         "پذیرش مرورگر و crash recovery اجرا نشده",
         "وضعیت مبهم نیازمند export و بررسی دستی است"
       ]
+    },
+    {
+      "id": "RD400-EMERGENCY-EXPORT-STATUS",
+      "record_type": "source_remediation",
+      "module": "emergency_nrd_backup_and_error_log_export",
+      "source": "User continuation and follow-up status request after N6/N7; static review of main 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "source_head": "7fa984e60274da546201472f465c2e633b2a3b89",
+      "target_version": "V400-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "ادامه چت (RoomDesigner) رو تنجام بده با دقت؛ چی شد",
+      "assistant_interpretation": "پس از N7، اصلاح مستقل پیام‌های گمراه‌کننده ذخیره در خروجی اضطراری و فایل لاگ، بدون لمس منطق ذخیره داده.",
+      "implementation_status": "دکمه خروجی اضطراری اکنون منتظر نتیجه file() می‌ماند و خطای ساخت بسته را گزارش می‌کند؛ خروجی لاگ پیام ثانویه موفقیت برای درخواست دانلود نشان نمی‌دهد.",
+      "related_audit_findings": [
+        "RD-IE-11",
+        "RD400-EXPORT-NOTICE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
+      "verification_evidence": [
+        "index.html: backupNow called asynchronous file() without await and immediately displayed success; corrected with await and error handling.",
+        "index.html: exportErrorLog previously treated both true and 'requested' as a saved file; false success notice removed.",
+        "tests/save-outcome.test.cjs: two static source contract cases authored, not executed.",
+        "V400 milestone scope review is focused static source only, not a full runtime/codebase audit.",
+        "OPEN-CROSS-STORE LocalStorage/IndexedDB consistency unchanged."
+      ]
     }
   ],
   "analyses": [
@@ -10475,6 +10515,19 @@
         "Ambiguous pending journal needs user-mediated export/review",
         "Node/Browser/Build tests NOT_RUN"
       ]
+    },
+    {
+      "id": "RD400-EXPORT-NOTICE-AND-MILESTONE-AUDIT",
+      "record_id": "RD400-EMERGENCY-EXPORT-STATUS",
+      "created_at": "2026-11-20",
+      "module": "file_export_result_governance",
+      "problem": "Emergency backup's premature success notice and error log's truthy check could falsely imply physical persistence after cancellation or mere download request.",
+      "decision": "Use file() as the single outcome reporter; avoid duplicate or premature notifications, retain emergency output visibility and fail visibly on envelope construction; register the V400 release-boundary focused source audit with full coverage still OPEN.",
+      "remaining_risks": [
+        "A browser-initiated download is only 'requested' until the user checks the saved file.",
+        "No tests, Build, Chromium or iPhone Safari acceptance performed.",
+        "V400 full source/regression boundary audit remains OPEN; OPEN-CROSS-STORE remains unresolved."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11947,17 +12000,24 @@
       "date": "2026-11-20",
       "change": "N7: جلوگیری از پاک‌شدن زودهنگام Journal بازیابی Revision در فاصله ذخیره پروفایل تا سند؛ افزودن احراز تداوم شناسه، نسخه و رکورد Revision. حالت مبهم و داده‌های بازیابی حفظ می‌شوند. آزمون‌ها و Build اجرا نشد؛ تراکنش دو مخزن همچنان اتمیک نیست.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V400-R",
+      "date": "2026-11-20",
+      "change": "اصلاح اعلان موفقیت کاذب در خروجی اضطراری NRD و لاگ خطا؛ پیام واقعی عملیات ذخیره از file() گرفته می‌شود، دو سناریوی رگرسیون تنها نوشته شدند و ممیزی مرزی V400 به‌صورت محدود ثبت شد. هیچ Test یا Build اجرا نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V399-R",
+    "release": "V400-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "N7 static Revision recovery correction. Six authored test source scenarios NOT_RUN, Build NOT_RUN; OPEN-CROSS-STORE remains open; V400 milestone audit due."
+    "audit": "V400 milestone: limited RD-IE-11 static source audit recorded (audit/export-status-v400-2026-11-20.md). Full maintenance/source coverage remains OPEN. Two regression cases authored NOT_RUN; Test/Build/Browser NOT_RUN; OPEN-CROSS-STORE remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V400-R: مرورگر واقعی را با Save Picker موفق/Cancel، دانلود Anchor و ساخت ناموفق NRD اضطراری/لاگ بررسی کنید. کاربر نگهداری واقعی فایل را تأیید کند. Test/Build ممنوع و اجرا نشده؛ OPEN-CROSS-STORE و ممیزی کامل V400 باز هستند.",
       "V399-R N7 acceptance: crash after rd_profiles but before rd_last; same-Revision subsequent autosave, mismatched Revision records, Save As, backup/export and IndexedDB; Tests/Build/Chromium/iOS NOT_RUN.",
       "V398-R acceptance: DXF cp1256/cp1252/UTF-8/BOM unknown encoding, 200k crop dragging; savepicker versus anchor request; direct PDF titleblock/Unicode metadata; two-point page scaling and uncalibrated warning. Node, Build, browser NOT_RUN.",
       "NEXT: ممیزی معماری OPEN-CROSS-STORE و تست پذیرش واقعی DXF/PDF/DWG در Chromium/Safari؛ اجرای تست/Build فقط با مجوز تغییر POLICY.",
