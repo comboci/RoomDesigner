@@ -1,8 +1,10 @@
 # RoomDesigner
 
+V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scripts to match the current async application startup. Added a static selector contract test. Browser launch portability and actual test execution remain pending.
+
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V385-R** (runtime acceptance pending user).
+Current source release: **V386-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

@@ -62,7 +62,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V385-R",
+  "current_source_release": "V386-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1815,6 +1815,12 @@
       "version": "V385-R",
       "date": "2026-11-20",
       "change": "رفع مشکل بارگذاری چهار فایل جاوااسکریپت سرور پیش‌نمایش و افزودن تست HTTP، همراه با یکسان‌سازی متادیتای نسخه.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V386-R",
+      "date": "2026-11-20",
+      "change": "رفع شناسه راه‌اندازی منسوخ در ۸۷ تست مرورگری، افزودن کنترل ایستای سازگاری و ثبت نسخه و ممیزی؛ بدون ادعای اجرای تست.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8165,6 +8171,26 @@
         "بازبینی ایستای تمام src/href های اسکریپت و CSS نسبت به allowlist جدید",
         "اجرای آزمون HTTP و پذیرش مرورگری طبق سیاست ممیزی هنوز انجام نشده است"
       ]
+    },
+    {
+      "id": "RD386-BROWSER-BOOTSTRAP",
+      "record_type": "source_remediation",
+      "module": "browser_regression_harness",
+      "source": "RoomDesigner source audit and user N in this conversation, 2026-11-20",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-20",
+      "target_version": "V386-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — اصلاح مورد بعدی ممیزی RoomDesigner",
+      "assistant_interpretation": "همگام‌سازی ۸۷ تست مرورگری دارای bootstrap selector قدیمی با IIFE ناهمگام فعلی برنامه؛ حفظ سناریوهای هر تست.",
+      "implementation_status": "اصلاح ۸۷ فایل tests/*.browser.test.cjs، بدون تغییر assertion و سناریو؛ افزودن تست ایستای قرارداد bootstrap؛ همگام‌سازی نسخه V386-R در HTML، README، package، lockfile و Project Evolution.",
+      "runtime_status": "PENDING_USER; AUTOMATED_TESTS=NOT_RUN; BUILD_VALIDATION=NOT_RUN; BROWSER_RUNTIME=NOT_RUN",
+      "verification_evidence": [
+        "بازبینی مستقیم ۹۳ فایل تست مرورگری در main پایه؛ دقیقاً ۸۷ فایل دارای الگوی قدیمی بودند و در درخت پیشنهادی تغییر کردند.",
+        "درخت پیشنهادی فقط marker فعلی `(async()=>{'use strict';` را در ۸۷ فایل جایگزین نشان می‌دهد؛ اجرای واقعی آزمون مرورگر انجام نشده است.",
+        "مسیر Edge در تعدادی از تست‌ها هنوز hard-code است و جداگانه نیازمند اصلاح است."
+      ]
     }
   ],
   "analyses": [
@@ -9678,6 +9704,19 @@
         "Legacy browser harness still matches obsolete bootstrap and often hardcodes Edge",
         "User device acceptance is pending"
       ]
+    },
+    {
+      "id": "RD386-BOOTSTRAP-AUDIT",
+      "record_id": "RD386-BROWSER-BOOTSTRAP",
+      "created_at": "2026-11-20",
+      "module": "browser_regression_harness",
+      "problem": "87 browser test files search for the removed synchronous application bootstrap and cannot inject their audit adapters into the current async main script.",
+      "decision": "Replace the exact outdated selector with the current async initializer without changing test semantics or browser launch configuration. Add a static contract test guarding the selector.",
+      "remaining_risks": [
+        "Browser suites were not run.",
+        "Many suites still hardcode a Windows Edge executable path; cross-platform Playwright support remains a separate follow-up.",
+        "Even after fixing bootstrap extraction, assertions may expose additional outdated expectations or product regressions."
+      ]
     }
   ],
   "deferred_scope": [
@@ -11066,18 +11105,24 @@
       "date": "2026-11-20",
       "change": "رفع مشکل بارگذاری چهار فایل جاوااسکریپت سرور پیش‌نمایش و افزودن تست HTTP، همراه با یکسان‌سازی متادیتای نسخه.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V386-R",
+      "date": "2026-11-20",
+      "change": "رفع شناسه راه‌اندازی منسوخ در ۸۷ تست مرورگری، افزودن کنترل ایستای سازگاری و ثبت نسخه و ممیزی؛ بدون ادعای اجرای تست.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V385-R",
+    "release": "V386-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "V385 multiple-of-five release: static preview fix and test source reviewed; automated tests/build/browser NOT_RUN. Existing wider audit and historical release reconciliation remain open."
+    "audit": "Static change: 87/93 browser-test source selectors updated and compatibility contract added; TESTS/BUILD/BROWSER NOT_RUN. Previous multiple-of-five audit boundary V385 remains without runtime signoff."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
-      "Repair legacy browser-test selectors and hardcoded Windows Edge paths; browser validation pending.",
+      "Next: remove hardcoded Windows Edge executable paths from browser tests and run full regression only when testing is authorized.",
       "Verify RD-074 mobile startup on iPhone Safari and storage-restricted previews; runtime acceptance pending.",
       "User acceptance: crop drag, Auto Trim, port rotation/flip/resize, save/reopen, mobile Safari and SVG/DXF/PDF exports.",
       "V140 source audit boundary.",

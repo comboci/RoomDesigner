@@ -4,14 +4,14 @@
   "branch": "main",
   "execution_source": "USER_N_MANUAL_STATIC_REMEDIATION",
   "execution_timestamp": "2026-11-20",
-  "source_head": "8d5f7261855b55059214a61cd6f5872fb1db15f6",
+  "source_head": "4745fdac1fc73c82c8373baead9936d994778bc8",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V385-R",
+  "product_release": "V386-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "33ad048c8f75f0bcd5529b1a53fbeb82c3d7bfb3",
+  "inventory_blob_sha": "86b2f5d17848298231e36935c0ee293f005c35c0",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "Manifest refreshed from pinned main baseline and exact draft V385-R Git blobs. No unit tests, builds, browser tests or runtime acceptance performed. Historical source segments remain credited only if their SHA still matches; other/unread material remains UNREAD.",
+  "coverage_note": "V386-R: focused static review of 87 outdated browser-test bootstrap markers; each replaced with the current async initializer. A source-only contract regression was staged but not run. No complete browser, build, unit or application audit coverage claimed; unchanged exact-blob historical segments remain historical and unread portions UNREAD.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -108,7 +108,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -160,7 +160,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source."
+      "invalidation_reason": "Exact blob differs from current V386-R candidate"
     },
     {
       "path": "index.html",
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source.",
+      "invalidation_reason": "Exact blob differs from current V386-R candidate",
       "stale": true
     },
     {
@@ -300,7 +300,7 @@
       "coverage_valid": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "stale": true,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source."
+      "invalidation_reason": "Exact blob differs from current V386-R candidate"
     },
     {
       "path": "assets/pdf-import.css",
@@ -349,7 +349,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source."
+      "invalidation_reason": "Exact blob differs from current V386-R candidate"
     },
     {
       "path": "assets/dwg-worker.mjs",
@@ -366,7 +366,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source."
+      "invalidation_reason": "Exact blob differs from current V386-R candidate"
     },
     {
       "path": "storage-safety.js",
@@ -385,7 +385,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "Current V385-R file SHA differs from reviewed historical source."
+      "invalidation_reason": "Exact blob differs from current V386-R candidate"
     },
     {
       "path": "storage-safety.js",
@@ -599,6 +599,14 @@
       "root_cause": "Local preview server returned 404 for four top-level JavaScript files referenced by index.html.",
       "correction": "Add missing root scripts to allowlist; preserve path validation and add HTTP regression test of declared dependencies.",
       "source_recheck": "Static script/styles dependency check completed. Tests, browser and user runtime acceptance NOT_RUN."
+    },
+    {
+      "id": "RD386-BROWSER-BOOTSTRAP",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "tests/*.browser.test.cjs",
+      "root_cause": "87 browser regression scripts still searched for the removed synchronous IIFE prefix, causing failed test source extraction before browser assertions could run.",
+      "correction": "Replace the 87 obsolete search markers with the current async bootstrap prefix without changing test logic; add a non-browser static contract test.",
+      "source_recheck": "Draft tree shows 87 one-marker-only replacements (+5 bytes each); no unit, browser, build or device tests executed. Windows Edge hard-coded launch paths remain open."
     }
   ],
   "last_completed_segment": {
@@ -610,11 +618,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "09f8dd62172b61b0ef76c4e180826c793a6032de",
+    "blob_sha": "d323a853ba113548bf096e696c69b645a7aced2c",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "Index was modified for V385-R and requires a complete bounded new-blob review."
+    "reason": "V386-R version marker changes invalidated earlier index blob coverage; segmented full source review remains pending."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -623,7 +631,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V385-R targeted static check of all index script/css dependencies and preview allowlist; new HTTP test was added but NOT_RUN.",
+    "static_diff": "87 current-bootstrap source references corrected; one static regression source added; actual execution NOT_RUN.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -640,11 +648,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned Git tree and exact text-blob metadata; without code execution",
-    "baseline_head": "8d5f7261855b55059214a61cd6f5872fb1db15f6",
-    "entries": 573,
+    "method": "Deterministic pinned Git tree and blob bytes; no product execution",
+    "baseline_head": "4745fdac1fc73c82c8373baead9936d994778bc8",
+    "entries": 574,
     "no_product_execution": true,
-    "notes": "Includes six previously unindexed files and one new preview HTTP test."
+    "notes": "Manifest refreshed with 87 edited browser tests, one new static contract test, and synchronized release files."
   },
   "branch_review": {
     "branches": [
@@ -663,7 +671,8 @@
     "log_inventory": "No committed .log/warning/error-named artifacts in pinned tree",
     "potential_static": [
       "Non-atomic LocalStorage and IndexedDB authority remains OPEN-CROSS-STORE",
-      "Storage denial, missing prior snapshot, compensation interruption and browser download retention remain runtime risks"
+      "Storage denial, missing prior snapshot, compensation interruption and browser download retention remain runtime risks",
+      "Hard-coded Windows Edge executable paths remain in many browser-test launch configurations; NOT_RUN and not included in V386-R scope."
     ],
     "console_paths": "Existing SVG fallback, DXF safety-limit/save-picker and SVG migration console.warn call sites are potential diagnostics, not observed runtime warnings"
   }

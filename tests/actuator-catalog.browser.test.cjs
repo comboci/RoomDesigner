@@ -3,7 +3,7 @@ const fs=require('fs'),path=require('path'),assert=require('node:assert/strict')
  const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
  try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
- let html=fs.readFileSync('index.html','utf8');const match=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].find(m=>m[1].includes("(()=>{'use strict';"));
+ let html=fs.readFileSync('index.html','utf8');const match=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].find(m=>m[1].includes("(async()=>{'use strict';"));
  const main=match[1],at=main.lastIndexOf('})();');html=html.replace(main,main.slice(0,at)+"window.actuatorAudit={get catalog(){return catalog},get doc(){return doc},addDevice,deviceArtwork};"+main.slice(at));
  await page.route('https://roomdesigner.test/**',route=>{const relative=decodeURIComponent(new URL(route.request().url()).pathname).slice(1);if(!relative||relative==='index.html')return route.fulfill({contentType:'text/html',body:html});const file=path.resolve(relative);if(!file.startsWith(process.cwd()+path.sep)||!fs.existsSync(file))return route.fulfill({status:404,body:''});return route.fulfill({contentType:relative.endsWith('.js')?'application/javascript':relative.endsWith('.json')?'application/json':'image/svg+xml',body:fs.readFileSync(file)});});
  const c={};for(const f of ['data/svg-library-builtin.js','data/equipment-catalog-builtin.js','cable-routing.js','connection-model.js','equipment-release.js'])vm.runInNewContext(fs.readFileSync(f,'utf8'),c);
