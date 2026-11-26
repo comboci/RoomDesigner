@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V401",
-    "project_evolution_version": "V401",
+    "software_version": "V402",
+    "project_evolution_version": "V402",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V401-R",
+  "current_source_release": "V402-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1918,6 +1918,12 @@
       "version": "V401-R",
       "date": "2026-11-20",
       "change": "N8: شناسایی اختلاف دو نسخه معتبر نقشه در LocalStorage و IndexedDB هنگام راه‌اندازی و نمایش هشدارِ بدون تخریب؛ خروجی همراه هر دو نسخه، متادیتا و منابع محلی با بررسی تغییرنکردن وضعیت. هیچ نسخه‌ای خودکار جایگزین نمی‌شود. سه رگرسیون سورسی ثبت و اجرا نشدند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V402-R",
+      "date": "2026-11-26",
+      "change": "RD-A02: توقف ویرایش و نوشتن داده پروژه پیش از اولین Render در صورت وجود دو نسخه معتبر و متفاوت؛ ادامه با نسخه محلی فقط پس از خروجی هر دو نسخه و تأیید صریح کاربر. بدون تغییر مرجع یا فرمت ذخیره؛ تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8768,6 +8774,27 @@
         "New source regression cases authored in tests/cross-store-conflict-review.test.cjs, not executed.",
         "Cross-store atomicity/ordering remains OPEN."
       ]
+    },
+    {
+      "id": "RD402-A02-DIVERGENCE-WRITE-GATE",
+      "record_type": "source_remediation",
+      "module": "startup_storage_conflict",
+      "source": "Professional audit RD-A02",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-26",
+      "source_head": "c28dc740a8b5ee0e50c806218527520990733598",
+      "target_version": "V402-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "شروع به حل مشکلات کن",
+      "assistant_interpretation": "حفاظت از دو نسخه معتبر پیش از ویرایش و بازنویسی؛ حفظ سیاست فعلی ذخیره و عدم انتخاب خودکار آینه.",
+      "implementation_status": "Pre-render startup gate; storage guards for rd_* and last mirror; explicit dual-copy external export and acknowledgment, with recheck after export.",
+      "related_audit_findings": [
+        "RD-A02",
+        "OPEN-CROSS-STORE",
+        "RD401-DIVERGENT-VALID"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
     }
   ],
   "analyses": [
@@ -10574,6 +10601,20 @@
         "A dismissed warning is not proof of a durable retained backup; user acknowledgment is required.",
         "When a snapshot is invalid, existing invalid-data recovery policy takes precedence."
       ]
+    },
+    {
+      "id": "RD402-A02-STARTUP-GATE-AUDIT",
+      "record_id": "RD402-A02-DIVERGENCE-WRITE-GATE",
+      "created_at": "2026-11-26",
+      "module": "startup_storage_conflict",
+      "problem": "V401 warning does not prevent subsequent autosave and first render can schedule normalization autosave before conflict discovery.",
+      "decision": "Protect valid divergence before first render; require user-confirmed external backup and explicit local continuation. Guard local project writes and last mirror while pending.",
+      "remaining_risks": [
+        "OPEN-CROSS-STORE authority and cross-store atomicity remain open.",
+        "Startup legacy migration and pending journal reconciliation occur before this focused gate; separate audit required.",
+        "Unreadable/unavailable IndexedDB follows existing behavior; detected valid divergence only.",
+        "Browser download retention requires user confirmation; Chromium/iOS and storage failure tests NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12058,17 +12099,24 @@
       "date": "2026-11-20",
       "change": "N8: شناسایی اختلاف دو نسخه معتبر نقشه در LocalStorage و IndexedDB هنگام راه‌اندازی و نمایش هشدارِ بدون تخریب؛ خروجی همراه هر دو نسخه، متادیتا و منابع محلی با بررسی تغییرنکردن وضعیت. هیچ نسخه‌ای خودکار جایگزین نمی‌شود. سه رگرسیون سورسی ثبت و اجرا نشدند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V402-R",
+      "date": "2026-11-26",
+      "change": "RD-A02: توقف ویرایش و نوشتن داده پروژه پیش از اولین Render در صورت وجود دو نسخه معتبر و متفاوت؛ ادامه با نسخه محلی فقط پس از خروجی هر دو نسخه و تأیید صریح کاربر. بدون تغییر مرجع یا فرمت ذخیره؛ تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V401-R",
+    "release": "V402-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "N8 focused read-only valid-divergence warning and dual-snapshot export. Source scenarios NOT_RUN; Test/Build/Browser NOT_RUN; OPEN-CROSS-STORE remains OPEN."
+    "audit": "RD-A02 focused static source fix; pre-render conflict gate and dual-copy export confirmation. No tests/build/browser run. OPEN-CROSS-STORE remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V402-R RD-A02 acceptance: disposable browser profile with two valid divergent snapshots; verify no autosave/import/revision before explicit backup confirmation, canceled/failed export keeps gate, same snapshots continue with local only after user acknowledgment; verify equal snapshots and absent local recovery. Next RD-A01 authority protocol and RD-A03 migration archives. Test/Build NOT_RUN.",
       "V401-R N8 manual acceptance: use disposable Chromium/iOS profile with independently valid but divergent rd_last / IndexedDB last, check on-screen non-destructive warning, export both raw files and assets; corrupt mirror must not trigger false valid-divergence message; user must verify archive. Tests/Build NOT_RUN. Next: authority/commit protocol design, not blind auto-merge.",
       "V400-R: مرورگر واقعی را با Save Picker موفق/Cancel، دانلود Anchor و ساخت ناموفق NRD اضطراری/لاگ بررسی کنید. کاربر نگهداری واقعی فایل را تأیید کند. Test/Build ممنوع و اجرا نشده؛ OPEN-CROSS-STORE و ممیزی کامل V400 باز هستند.",
       "V399-R N7 acceptance: crash after rd_profiles but before rd_last; same-Revision subsequent autosave, mismatched Revision records, Save As, backup/export and IndexedDB; Tests/Build/Chromium/iOS NOT_RUN.",

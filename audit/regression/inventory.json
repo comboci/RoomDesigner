@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "05fd13c614cd7b8f95843bdd4646d176a4b29059",
+      "blob_sha": "aca29339ddad8b200ff745f8c6a74c8a98601298",
       "mode": "100644",
-      "bytes": 16810,
-      "lines": 187,
+      "bytes": 17311,
+      "lines": 189,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3839,6 +3839,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/rd-a02-v402-2026-11-26.md",
+      "blob_sha": "64058071e2cf71456c2b5303cc24f237150581b9",
+      "mode": "100644",
+      "bytes": 2380,
+      "lines": 13,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/regression/POLICY.md",
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
@@ -3984,10 +3993,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "594c174df7b7aa7d72353db4246c062236f43edb",
+      "blob_sha": "cd1d8063f93b6b484241d40e9dae46db9e216b75",
       "mode": "100644",
-      "bytes": 580862,
-      "lines": 3323,
+      "bytes": 584694,
+      "lines": 3365,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4002,7 +4011,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "1bbc54233efe4648f9a3609ce2358bdcff4b9e9c",
+      "blob_sha": "60b40f3762c9552e79ea5e565077ea7e5c979e9e",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4011,7 +4020,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "efe979712f32821841c8cacb64a3915b3ed58f0f",
+      "blob_sha": "768114ec3ef244ef55f71b62a9df60aac549fb1e",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4029,10 +4038,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "1d8203db9630a9e6af9bd7d2cb52bfeb2798ad63",
+      "blob_sha": "2a2cca8fcc545c076afd49e73ccae2aba950fd24",
       "mode": "100644",
-      "bytes": 822160,
-      "lines": 12103,
+      "bytes": 825664,
+      "lines": 12151,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4330,6 +4339,15 @@
       "mode": "100644",
       "bytes": 1977,
       "lines": 39,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/cross-store-write-gate.test.cjs",
+      "blob_sha": "bf23431e0c688d58647564b54de4a1c2acf6e144",
+      "mode": "100644",
+      "bytes": 1781,
+      "lines": 25,
       "category": "test_source_static_only",
       "binary": false
     },
