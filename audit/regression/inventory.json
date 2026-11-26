@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "26c80f4ee593fa9cfada67ff05c4035d58fcf19e",
+      "blob_sha": "a81f4b8af6968c3b81fe8d148f6a84127ce58638",
       "mode": "100644",
-      "bytes": 17796,
-      "lines": 191,
+      "bytes": 18269,
+      "lines": 193,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3848,6 +3848,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/rd-a01-a03-v404-2026-11-26.md",
+      "blob_sha": "1123977a42521fdf6304acfeb3485dab1b1f7dd2",
+      "mode": "100644",
+      "bytes": 3157,
+      "lines": 17,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/professional-audit/rd-a02-v402-2026-11-26.md",
       "blob_sha": "64058071e2cf71456c2b5303cc24f237150581b9",
       "mode": "100644",
@@ -4002,10 +4011,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "57c3024a5943d95dbf034338fa2a97316b3b8630",
+      "blob_sha": "0723b5e0375b94de906cbccc292f2736aa55b4fc",
       "mode": "100644",
-      "bytes": 586840,
-      "lines": 3386,
+      "bytes": 594311,
+      "lines": 3516,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4020,7 +4029,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "0bc80b402ef36fd153d1f9723fa91b4e0cdedea4",
+      "blob_sha": "041e9779c67d2ee2d91f5d1864cdb716c13ea54c",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4029,7 +4038,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "4a939951ea7145e4872ee95237a94d78f99d340d",
+      "blob_sha": "a6cf403407a099127c88e9218758b454983deb78",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4047,10 +4056,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "fe30ced1c17e08c6aaf7c1fd680ee313b19b2cf1",
+      "blob_sha": "23babe33e1fe624781490dee2286b854fd86904d",
       "mode": "100644",
-      "bytes": 829596,
-      "lines": 12200,
+      "bytes": 833893,
+      "lines": 12249,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4353,10 +4362,10 @@
     },
     {
       "path": "tests/cross-store-write-gate.test.cjs",
-      "blob_sha": "fecc89e3c0b690862aaeade5718cf7ac3868d78e",
+      "blob_sha": "82f2de608e85f49b9756d60207ab8259751257b2",
       "mode": "100644",
-      "bytes": 2731,
-      "lines": 41,
+      "bytes": 4688,
+      "lines": 62,
       "category": "test_source_static_only",
       "binary": false
     },
@@ -5082,10 +5091,10 @@
     },
     {
       "path": "tests/recovery-archive.test.cjs",
-      "blob_sha": "90576e631623ae8eda6ff383f4ec34b48fb7c161",
+      "blob_sha": "c44b584d51ecbf16231c87f488fcaf77d7c5a408",
       "mode": "100644",
-      "bytes": 1826,
-      "lines": 12,
+      "bytes": 4595,
+      "lines": 47,
       "category": "test_source_static_only",
       "binary": false
     },

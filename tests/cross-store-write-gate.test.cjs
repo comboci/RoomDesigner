@@ -36,6 +36,27 @@ test('read error and failed absent-local recovery do not silently enable fresh e
 test('migration archive export includes each raw retained snapshot',()=>{
  const code=extractFunction('offerMigrationArchive');
  assert.match(code,/RoomStorageSafety\.migrationArchiveEntries/);
- assert.match(code,/JSON\.stringify\(\{format:1,local,preservedMirror,archives\}/);
+ assert.match(code,/JSON\.stringify\(\{format:1,local,preservedMirror,archives,mirrorArchives,localArchivesReadFailed,mirrorArchivesReadFailed\}/);
  assert.doesNotMatch(code,/button\.remove\(/);
+});
+
+test('migration and journal preflight protects mirror bytes before startup mutations',()=>{
+ const marker=html.indexOf("if(migrationRequired||pending)");
+ assert.ok(marker>=0&&html.indexOf("await preserveMirrorForMigration(undefined,pending?",marker)<html.indexOf("RoomEquipment.migrateStorage(migrationStorage)",marker));
+ assert.match(html,/else if\(startupHadProjectData&&typeof indexedDB!=='undefined'\)throw Error/);
+ assert.match(html,/if\(startupHadProjectData&&migrationStorage&&safeStorage\.getItem\('rd_connection_model'\)!==RoomConnections.version\)RoomStorageSafety.preserveMigration/);
+ const recovery=extractFunction('recoverMirrorOnStartup');
+ assert.ok(recovery.indexOf("await preserveMirrorForMigration(snapshot,'mirror-document-migration')")<recovery.indexOf('RoomConnections.resetDocument(recovered)'));
+ assert.ok(recovery.indexOf("await preserveMirrorForMigration(snapshot,'mirror-document-migration')")<recovery.indexOf('RoomEquipment.cleanDocument(recovered,catalog)'));
+ assert.match(extractFunction('protectCrossStoreStartup'),/await preserveMirrorForMigration\(snapshot,'unclassified-startup-mirror'\)/);
+});
+test('mirror-only migration archives can be exported and incomplete reads are disclosed',()=>{
+ const code=extractFunction('offerMigrationArchive');
+ assert.match(code,/hasMirror=await hasMirrorMigrationArchives\(\)/);
+ assert.match(extractFunction('hasMirrorMigrationArchives'),/\.openKeyCursor\(\)/);
+ assert.match(extractFunction('protectCrossStoreStartup'),/preserveMirrorForMigration\(snapshot,'orphan-mirror-metadata'\)/);
+ assert.match(code,/mirrorArchivesReadFailed=mirrorArchives===null/);
+ assert.match(code,/if\(\(localArchivesReadFailed\|\|mirrorArchivesReadFailed\)&&!confirm/);
+ assert.match(extractFunction('preserveMirrorForMigration'),/store\.add\(/);
+ assert.doesNotMatch(extractFunction('preserveMirrorForMigration'),/store\.put\(/);
 });

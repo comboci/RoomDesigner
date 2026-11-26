@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V403",
-    "project_evolution_version": "V403",
+    "software_version": "V404",
+    "project_evolution_version": "V404",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V403-R",
+  "current_source_release": "V404-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1930,6 +1930,12 @@
       "version": "V403-R",
       "date": "2026-11-26",
       "change": "RD-A01: بازیابی آینه در نبود نسخه محلی پیش از Render، توقف در خطای خواندن IndexedDB و حفاظت داده خام در بازیابی ناموفق. RD-A03: آرشیو مستقل و تغییرناپذیر هر وضعیت متفاوت قبل از مهاجرت، حذف تکرار بایت‌به‌بایت و خروجی همه آرشیوها. مرجع اصلی ذخیره تغییر نکرده؛ تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V404-R",
+      "date": "2026-11-26",
+      "change": "RD-A01/A03: حفاظت از آینه پیش از مهاجرت و بازیابی Journal؛ آرشیو تراکنشی و تغییرناپذیر جفت سند و متادیتای IndexedDB برای هر وضعیت متفاوت؛ حفاظت قبل از تبدیل سند قدیمی و خروجی مشترک آرشیوهای دو مخزن با هشدار خروجی ناقص. مرجع اصلی تغییر نکرده و تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8822,6 +8828,27 @@
         "OPEN-CROSS-STORE"
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
+    },
+    {
+      "id": "RD404-A01-A03-MIRROR-MIGRATION-ARCHIVES",
+      "record_type": "source_remediation",
+      "module": "indexeddb_migration_archive_and_startup_preflight",
+      "source": "Professional audit RD-A01 and RD-A03",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-26",
+      "source_head": "8176de971f2af4d43b59a09f5459b479fbc61b5a",
+      "target_version": "V404-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — ادامه تکمیل RD-A01 و RD-A03، اصلاح موارد باز ذخیره‌سازی و بازیابی، انتشار V404-R و Commit و Push",
+      "assistant_interpretation": "حفاظت از آینه و متادیتا پیش از مهاجرت‌های مخرب احتمالی، بدون تغییر مرجع اصلی یا حذف سازگاری نسخه‌های قبلی.",
+      "implementation_status": "IndexedDB append-only distinct pair archives committed in a readwrite transaction; preflight before legacy startup mutations; expected-pair validation before transforming mirror; retention of malformed/orphan mirror data; explicit combined archive export and incomplete-read disclosure; key-cursor discovery.",
+      "related_audit_findings": [
+        "RD-A01",
+        "RD-A03",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
     }
   ],
   "analyses": [
@@ -10657,6 +10684,21 @@
         "Multiple local archives increase quota pressure; fail closed, no automatic pruning.",
         "Runtime and browser verification NOT_RUN."
       ]
+    },
+    {
+      "id": "RD404-A01-A03-STATIC-AUDIT",
+      "record_id": "RD404-A01-A03-MIRROR-MIGRATION-ARCHIVES",
+      "created_at": "2026-11-26",
+      "module": "indexeddb_migration_archive_and_startup_preflight",
+      "problem": "The fixed legacy IDB archive key cannot preserve different later migration states; startup migrations and pending-journal processing could precede mirror protection. V403 export focused on local archives.",
+      "decision": "Append distinct mirror+metadata pairs transactionally without overwriting legacy archives; refuse stale expected snapshots; preflight before legacy startup mutation when DB is available; include both stores in export; avoid eagerly loading all archive bodies on startup.",
+      "remaining_risks": [
+        "OPEN-CROSS-STORE: authority and cross-store atomicity not implemented.",
+        "Full controlled archive restore/import and quota/retention management remain open.",
+        "If IndexedDB is unavailable, prior local-only compatibility remains where safe; existing project migration with supported but inaccessible DB is blocked.",
+        "Archive export may be incomplete on storage read failure and can be memory-intensive for large retained archives.",
+        "All automated/browser/runtime checks NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12153,17 +12195,24 @@
       "date": "2026-11-26",
       "change": "RD-A01: بازیابی آینه در نبود نسخه محلی پیش از Render، توقف در خطای خواندن IndexedDB و حفاظت داده خام در بازیابی ناموفق. RD-A03: آرشیو مستقل و تغییرناپذیر هر وضعیت متفاوت قبل از مهاجرت، حذف تکرار بایت‌به‌بایت و خروجی همه آرشیوها. مرجع اصلی ذخیره تغییر نکرده؛ تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V404-R",
+      "date": "2026-11-26",
+      "change": "RD-A01/A03: حفاظت از آینه پیش از مهاجرت و بازیابی Journal؛ آرشیو تراکنشی و تغییرناپذیر جفت سند و متادیتای IndexedDB برای هر وضعیت متفاوت؛ حفاظت قبل از تبدیل سند قدیمی و خروجی مشترک آرشیوهای دو مخزن با هشدار خروجی ناقص. مرجع اصلی تغییر نکرده و تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V403-R",
+    "release": "V404-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-A01/A03 partial static source fixes; absent-local pre-render recovery, failed-read guard, per-distinct-state local migration archives. Tests/Build/Browser NOT_RUN. OPEN-CROSS-STORE remains open."
+    "audit": "RD-A01/A03 partial source fixes: transactional immutable mirror migration archives, pre-migration/journal protection, guarded legacy mirror transform and combined archive export. Test/Build/Browser NOT_RUN. OPEN-CROSS-STORE remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V404-R acceptance: isolated profile with distinct mirror pairs, stale expected mirror, abort/closed DB, multiple migrations, pending journal, legacy mirror transform, orphan metadata and combined export/read failure. Next design and implement durable authority/commit protocol and controlled archive restore/quota retention. Test/Build NOT_RUN.",
       "V403-R acceptance: absent local with valid/corrupt/empty mirror, failed read with open IndexedDB, canceled/confirmed raw backup, independent consecutive migrations, identical retry, quota failure, export all archives. Next RD-A01 durable authority design and RD-A03 mirror archives/restore. Test/Build NOT_RUN.",
       "V402-R RD-A02 acceptance: disposable browser profile with two valid divergent snapshots; verify no autosave/import/revision before explicit backup confirmation, canceled/failed export keeps gate, same snapshots continue with local only after user acknowledgment; verify equal snapshots and absent local recovery. Next RD-A01 authority protocol and RD-A03 migration archives. Test/Build NOT_RUN.",
       "V401-R N8 manual acceptance: use disposable Chromium/iOS profile with independently valid but divergent rd_last / IndexedDB last, check on-screen non-destructive warning, export both raw files and assets; corrupt mirror must not trigger false valid-divergence message; user must verify archive. Tests/Build NOT_RUN. Next: authority/commit protocol design, not blind auto-merge.",
