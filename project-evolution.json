@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V404",
-    "project_evolution_version": "V404",
+    "software_version": "V405",
+    "project_evolution_version": "V405",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V404-R",
+  "current_source_release": "V405-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1936,6 +1936,12 @@
       "version": "V404-R",
       "date": "2026-11-26",
       "change": "RD-A01/A03: حفاظت از آینه پیش از مهاجرت و بازیابی Journal؛ آرشیو تراکنشی و تغییرناپذیر جفت سند و متادیتای IndexedDB برای هر وضعیت متفاوت؛ حفاظت قبل از تبدیل سند قدیمی و خروجی مشترک آرشیوهای دو مخزن با هشدار خروجی ناقص. مرجع اصلی تغییر نکرده و تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V405-R",
+      "date": "2026-11-26",
+      "change": "RD-A01: رسید نسخه‌بندی‌شده ذخیره در همان تراکنش IndexedDB با مشاهده مستقیم داده پایدار محلی، حفاظت از آینه معتبر متفاوت پیش از بررسی تعارض و توقف تراکنش در خطا. RD-A03: پیش‌نمایش و خروجی NRD آرشیو انتخابی و بازیابی کنترل‌شده با شناسه جدید، پشتیبان خارجی و تأیید کاربر و کنترل تغییر هم‌زمان. مرجع واحد و Restore کل مخازن همچنان باز؛ تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8849,6 +8855,28 @@
         "OPEN-CROSS-STORE"
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
+    },
+    {
+      "id": "RD405-A01-A03-STORAGE-RECEIPT-CONTROLLED-RESTORE",
+      "record_type": "source_remediation",
+      "module": "storage_authority_receipt_archive_restore",
+      "source": "Professional audit RD-A01 and RD-A03",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-26",
+      "source_head": "b871bbc28ac7227cf5f90905d3806e298993db72",
+      "target_version": "V405-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — ادامه RD-A01 و RD-A03، تکمیل پروتکل مرجع ذخیره‌سازی و Restore کنترل‌شده، انتشار V405-R و Commit و Push",
+      "assistant_interpretation": "ثبت شواهد واقعی ذخیره پایدار و حل تعارض با انتخاب صریح؛ بازیابی سند از آرشیو به‌عنوان کپی مستقل از مسیر موجود Import و حفظ نسخه قبلی.",
+      "implementation_status": "Flat versioned receipt in last-meta, atomic with last; direct durable primary observation, bounded exact bytes for divergence, no auto-ranking; preserve valid conflicting mirror where possible and maintain external export fallback. Archive selection, validation, portable export and journaled controlled restore with acknowledged backup, state/mirror/source rechecks and new document identity.",
+      "related_audit_findings": [
+        "RD-A01",
+        "RD-A02",
+        "RD-A03",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
     }
   ],
   "analyses": [
@@ -10699,6 +10727,22 @@
         "Archive export may be incomplete on storage read failure and can be memory-intensive for large retained archives.",
         "All automated/browser/runtime checks NOT_RUN."
       ]
+    },
+    {
+      "id": "RD405-A01-A03-STATIC-AUDIT",
+      "record_id": "RD405-A01-A03-STORAGE-RECEIPT-CONTROLLED-RESTORE",
+      "created_at": "2026-11-26",
+      "module": "storage_authority_receipt_archive_restore",
+      "problem": "Generation sidecars do not show actual durable primary observations; valid divergent mirror could be overwritten after external backup; retained archives had no controlled drawing restore workflow.",
+      "decision": "Keep existing LocalStorage authority for compatibility; receipt records observed durable bytes inside the mirror commit, classifies evidence but cannot prove chronology. Protect alternative mirror before conflict review where possible. Restore a selected current drawing as a new ID using validated NRD and existing import journal after verified user-retained backup and freshness rechecks.",
+      "remaining_risks": [
+        "OPEN-CROSS-STORE: single canonical transaction authority and cross-store atomicity not implemented; receipt is evidence, not a proof of recency.",
+        "Restore covers archived rd_last/current mirror drawing, not all profiles, shortcuts, settings or raw storage; existing Import may change global catalog/types, explicitly disclosed.",
+        "Historical resources may be missing; current available library fallback and legacy transformation are disclosed; missing referenced SVG blocks export/restore.",
+        "Receipt may add up to 3.2 million characters of observed primary bytes for divergent writes, increasing IDB quota and archive size.",
+        "Restore requires readable IndexedDB/current stable local state; raw export remains available where readable. No auto pruning or complete archive management.",
+        "Eight new regression scenarios authored, all NOT_RUN; browser/device validation pending."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12201,17 +12245,24 @@
       "date": "2026-11-26",
       "change": "RD-A01/A03: حفاظت از آینه پیش از مهاجرت و بازیابی Journal؛ آرشیو تراکنشی و تغییرناپذیر جفت سند و متادیتای IndexedDB برای هر وضعیت متفاوت؛ حفاظت قبل از تبدیل سند قدیمی و خروجی مشترک آرشیوهای دو مخزن با هشدار خروجی ناقص. مرجع اصلی تغییر نکرده و تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V405-R",
+      "date": "2026-11-26",
+      "change": "RD-A01: رسید نسخه‌بندی‌شده ذخیره در همان تراکنش IndexedDB با مشاهده مستقیم داده پایدار محلی، حفاظت از آینه معتبر متفاوت پیش از بررسی تعارض و توقف تراکنش در خطا. RD-A03: پیش‌نمایش و خروجی NRD آرشیو انتخابی و بازیابی کنترل‌شده با شناسه جدید، پشتیبان خارجی و تأیید کاربر و کنترل تغییر هم‌زمان. مرجع واحد و Restore کل مخازن همچنان باز؛ تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V404-R",
+    "release": "V405-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-A01/A03 partial source fixes: transactional immutable mirror migration archives, pre-migration/journal protection, guarded legacy mirror transform and combined archive export. Test/Build/Browser NOT_RUN. OPEN-CROSS-STORE remains open."
+    "audit": "RD-A01/A03 partial source fixes: versioned durable-primary observation receipt, atomic IDB write abort guard, conflict archive protection, selected archive preview/export and controlled current-drawing restore. Test/Build/Browser NOT_RUN. OPEN-CROSS-STORE and whole-store restore remain open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V405-R acceptance: matching/different/absent/denied primary observations, failed IDB transaction, valid divergence and archive failure fallback, selected local/IDB archive preview and NRD export, cancelled/declined backup, changed mirror, quota failure and confirmed new-ID restore. Next canonical storage authority migration design/implementation, whole-store restore and quota retention; test only with owner approval.",
       "V404-R acceptance: isolated profile with distinct mirror pairs, stale expected mirror, abort/closed DB, multiple migrations, pending journal, legacy mirror transform, orphan metadata and combined export/read failure. Next design and implement durable authority/commit protocol and controlled archive restore/quota retention. Test/Build NOT_RUN.",
       "V403-R acceptance: absent local with valid/corrupt/empty mirror, failed read with open IndexedDB, canceled/confirmed raw backup, independent consecutive migrations, identical retry, quota failure, export all archives. Next RD-A01 durable authority design and RD-A03 mirror archives/restore. Test/Build NOT_RUN.",
       "V402-R RD-A02 acceptance: disposable browser profile with two valid divergent snapshots; verify no autosave/import/revision before explicit backup confirmation, canceled/failed export keeps gate, same snapshots continue with local only after user acknowledgment; verify equal snapshots and absent local recovery. Next RD-A01 authority protocol and RD-A03 migration archives. Test/Build NOT_RUN.",

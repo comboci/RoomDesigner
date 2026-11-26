@@ -288,8 +288,8 @@ body.desktop-layout header .shared-view-tools{order:1!important;display:inline-f
 body.desktop-layout header .desktop-clipboard{order:2!important}
 body.desktop-layout header #mobileLockAll,
 body.desktop-layout header #mobileGroupAll{display:none!important}
-</style></head><body><header><button id="menuBtn" aria-label="منو">☰</button><div class="brand">ROOM DESIGNER<small>Powered by NSP · V404</small></div><div class="grow"><div class="project-title" id="title">نقشه بدون نام</div><button id="backupNow" title="ذخیره محلی ناموفق؛ خروجی فوری بگیرید" style="display:none;background:#963d43;color:white;padding:4px;font-size:11px;min-height:25px">⚠ ذخیره‌نشده · خروجی</button></div><button id="historyBtn" title="تاریخچه عملیات" aria-label="تاریخچه عملیات"><span class="mobile-glyph">☷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 3"/></svg></span></button><span id="sharedViewTools" class="shared-view-tools" aria-label="نمایش و حساب کاربری"><button id="headerColorMode" class="shared-header-command" type="button" title="نمایش رنگی / سیاه‌وسفید" aria-label="نمایش رنگی / سیاه‌وسفید" aria-pressed="false">◐</button><button id="headerDetails" class="shared-header-command" type="button" title="نمایش جزئیات محصول" aria-label="نمایش جزئیات محصول" aria-pressed="false">▤</button><button id="headerPorts" class="shared-header-command" type="button" title="نمایش پورت‌ها" aria-label="نمایش پورت‌ها" aria-pressed="false">⦿</button><button id="mobileLockAll" class="shared-header-command" type="button" title="قفل همه آبجکت‌ها" aria-label="قفل همه آبجکت‌ها" aria-pressed="false">🔒</button><button id="mobileGroupAll" class="shared-header-command" type="button" title="گروه‌بندی همه آبجکت‌ها" aria-label="گروه‌بندی همه آبجکت‌ها">⊞</button></span><button id="redoBtn" title="انجام مجدد" aria-label="Redo"><span class="mobile-glyph">↷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5l5 5-5 5M21 10H10a6 6 0 0 0 0 12"/></svg></span></button><button id="undoBtn" title="بازگشت" aria-label="Undo"><span class="mobile-glyph">↶</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5L3 10l5 5M3 10h11a6 6 0 0 1 0 12"/></svg></span></button><button id="zoomBtn" title="بازنشانی نمایش">⌗</button></header><aside class="desk-pane desk-left" id="deskLeft"><div class="desk-heading"><strong>Toolbox · ابزارها</strong><span class="desk-head-actions"><button data-desk-all="left" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="left" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><div class="tool-search"><input type="search" id="deskToolSearch" placeholder="جستجوی ابزار، مستطیل، کابل..." aria-label="جستجوی ابزار Toolbox"></div><button data-desk-act="select">↖ انتخاب</button><details open><summary>▱ معماری</summary><button data-desk-arch="line">╱ خط صاف</button><button data-desk-arch="rectangle">▭ مستطیل</button><button data-desk-arch="square">□ مربع</button><details><summary>نمادهای معماری</summary><div id="deskArchSymbols"></div></details></details><details open><summary>⌁ کابل‌کشی</summary><button data-desk-cable="direct">↗ کابل مستقیم</button><button data-desk-cable="broken">⌁ کابل شکسته آزاد</button><button data-desk-cable="orthogonal">└ کابل شکسته قائم</button></details><details open><summary>⊕ تجهیزات</summary><div id="deskDeviceItems"></div><button data-desk-act="create">＋ تعریف تجهیز جدید</button><div id="deskSymbolItems"></div></details><details open><summary>⌘ دستورات و History</summary><button data-desk-act="undo">↶ Undo</button><button data-desk-act="redo">↷ Redo</button><button data-desk-act="history">☷ تاریخچه عملیات</button><button data-desk-act="save">ذخیره نقشه</button><label class="checkbox"><input id="deskGridSnap" type="checkbox" checked> چسبندگی به گرید ۲۰ واحدی</label></details></div><div class="desk-grip" data-resize="left"></div></aside><aside class="desk-pane desk-right" id="deskRight"><div class="desk-heading"><strong>Properties · Project Explorer</strong><span class="desk-head-actions"><button data-desk-all="right" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="right" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><details open><summary>ویژگی‌های انتخاب</summary><div id="deskProperties" class="desk-muted">یک آبجکت را انتخاب کنید.</div><button data-desk-act="properties">بازکردن جزئیات و ویرایش</button></details><details open><summary>ساختار پروژه</summary><div id="deskExplorer" class="desk-muted"></div><button data-desk-act="history">تاریخچه عملیات</button></details></div><div class="desk-grip" data-resize="right"></div></aside><main><svg id="canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#bfcdd5" stroke-width=".7"/></pattern></defs><g id="pageBackground" pointer-events="none"><rect id="paperRect" fill="#fff"/><rect id="canvasGrid" fill="url(#grid)"/><path id="pageDividers" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1" stroke-dasharray="6 5"/><rect id="pageOutline" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1"/></g><g id="drawing"></g></svg><button type="button" id="zoomIndicator" aria-label="بازنشانی زوم به صد درصد" title="بازگشت به زوم ۱۰۰ درصد">100%</button><div id="hint">از «افزودن» یک تجهیز انتخاب کن؛ برای کابل روی پورت‌های رنگی بزن.</div></main><footer><button id="selectTool" class="active">↖<br>انتخاب</button><button id="addBtn">⊕<br>افزودن</button><button id="cableBtn">⌁<br>کابل</button><button id="resizeBtn" style="display:none">⤢<br>اندازه</button><button id="propsBtn">☷<br>ویژگی‌ها</button></footer><div id="quickDock" class="quickdock"><button id="quickToggle" class="quicktoggle" aria-label="دسترسی سریع"><svg class="dockface" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#f5d768" stroke="#c38933" stroke-width="1.8"/><ellipse cx="16.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><ellipse cx="31.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><path class="dockmouth" d="M13 29 Q24 39 35 29" fill="none" stroke="#243247" stroke-width="3.2" stroke-linecap="round"/><circle cx="11" cy="26" r="3" fill="#f0a68e" opacity=".7"/><circle cx="37" cy="26" r="3" fill="#f0a68e" opacity=".7"/></svg></button><div id="quickActions" class="quickactions"><button data-quick="undo" title="بازگشت (Undo)" aria-label="بازگشت">↶</button><button data-quick="redo" title="انجام مجدد (Redo)" aria-label="انجام مجدد">↷</button><button data-quick="left" title="چرخش ۹۰ درجه به چپ" aria-label="چرخش ۹۰ درجه به چپ"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10 6 A15 15 0 0 0 5 24 M5 24l-1-7 M5 24l7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="right" title="چرخش ۹۰ درجه به راست" aria-label="چرخش ۹۰ درجه به راست"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 6 A15 15 0 0 1 27 24 M27 24l1-7 M27 24l-7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="group" title="گروه‌بندی انتخاب‌ها" aria-label="گروه‌بندی">⊞</button><button data-quick="ungroup" title="لغو گروه" aria-label="لغو گروه">⊟</button><button data-quick="properties" title="ویژگی‌ها" aria-label="ویژگی‌ها"><svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true" fill="none" stroke="#e7f2ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><path d="M5 7h22M5 16h22M5 25h22"/><circle cx="12" cy="7" r="3.2" fill="#152337"/><circle cx="22" cy="16" r="3.2" fill="#152337"/><circle cx="13" cy="25" r="3.2" fill="#152337"/></svg></button></div></div><div class="overlay" id="overlay"></div><div class="sheet" id="sheet"><div class="row"><h2 id="sheetTitle" style="margin:0;flex:1"></h2><button id="closeSheet">✕</button></div><div id="sheetContent"></div></div><div class="toast" id="toast"></div><input type="file" id="fileInput" accept=".nrd,.roomplan,.json,.dxf,application/json" hidden><script>
-const APP_VERSION='V404';document.title='Room Designer · NSP · '+APP_VERSION;
+</style></head><body><header><button id="menuBtn" aria-label="منو">☰</button><div class="brand">ROOM DESIGNER<small>Powered by NSP · V405</small></div><div class="grow"><div class="project-title" id="title">نقشه بدون نام</div><button id="backupNow" title="ذخیره محلی ناموفق؛ خروجی فوری بگیرید" style="display:none;background:#963d43;color:white;padding:4px;font-size:11px;min-height:25px">⚠ ذخیره‌نشده · خروجی</button></div><button id="historyBtn" title="تاریخچه عملیات" aria-label="تاریخچه عملیات"><span class="mobile-glyph">☷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 3"/></svg></span></button><span id="sharedViewTools" class="shared-view-tools" aria-label="نمایش و حساب کاربری"><button id="headerColorMode" class="shared-header-command" type="button" title="نمایش رنگی / سیاه‌وسفید" aria-label="نمایش رنگی / سیاه‌وسفید" aria-pressed="false">◐</button><button id="headerDetails" class="shared-header-command" type="button" title="نمایش جزئیات محصول" aria-label="نمایش جزئیات محصول" aria-pressed="false">▤</button><button id="headerPorts" class="shared-header-command" type="button" title="نمایش پورت‌ها" aria-label="نمایش پورت‌ها" aria-pressed="false">⦿</button><button id="mobileLockAll" class="shared-header-command" type="button" title="قفل همه آبجکت‌ها" aria-label="قفل همه آبجکت‌ها" aria-pressed="false">🔒</button><button id="mobileGroupAll" class="shared-header-command" type="button" title="گروه‌بندی همه آبجکت‌ها" aria-label="گروه‌بندی همه آبجکت‌ها">⊞</button></span><button id="redoBtn" title="انجام مجدد" aria-label="Redo"><span class="mobile-glyph">↷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5l5 5-5 5M21 10H10a6 6 0 0 0 0 12"/></svg></span></button><button id="undoBtn" title="بازگشت" aria-label="Undo"><span class="mobile-glyph">↶</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5L3 10l5 5M3 10h11a6 6 0 0 1 0 12"/></svg></span></button><button id="zoomBtn" title="بازنشانی نمایش">⌗</button></header><aside class="desk-pane desk-left" id="deskLeft"><div class="desk-heading"><strong>Toolbox · ابزارها</strong><span class="desk-head-actions"><button data-desk-all="left" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="left" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><div class="tool-search"><input type="search" id="deskToolSearch" placeholder="جستجوی ابزار، مستطیل، کابل..." aria-label="جستجوی ابزار Toolbox"></div><button data-desk-act="select">↖ انتخاب</button><details open><summary>▱ معماری</summary><button data-desk-arch="line">╱ خط صاف</button><button data-desk-arch="rectangle">▭ مستطیل</button><button data-desk-arch="square">□ مربع</button><details><summary>نمادهای معماری</summary><div id="deskArchSymbols"></div></details></details><details open><summary>⌁ کابل‌کشی</summary><button data-desk-cable="direct">↗ کابل مستقیم</button><button data-desk-cable="broken">⌁ کابل شکسته آزاد</button><button data-desk-cable="orthogonal">└ کابل شکسته قائم</button></details><details open><summary>⊕ تجهیزات</summary><div id="deskDeviceItems"></div><button data-desk-act="create">＋ تعریف تجهیز جدید</button><div id="deskSymbolItems"></div></details><details open><summary>⌘ دستورات و History</summary><button data-desk-act="undo">↶ Undo</button><button data-desk-act="redo">↷ Redo</button><button data-desk-act="history">☷ تاریخچه عملیات</button><button data-desk-act="save">ذخیره نقشه</button><label class="checkbox"><input id="deskGridSnap" type="checkbox" checked> چسبندگی به گرید ۲۰ واحدی</label></details></div><div class="desk-grip" data-resize="left"></div></aside><aside class="desk-pane desk-right" id="deskRight"><div class="desk-heading"><strong>Properties · Project Explorer</strong><span class="desk-head-actions"><button data-desk-all="right" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="right" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><details open><summary>ویژگی‌های انتخاب</summary><div id="deskProperties" class="desk-muted">یک آبجکت را انتخاب کنید.</div><button data-desk-act="properties">بازکردن جزئیات و ویرایش</button></details><details open><summary>ساختار پروژه</summary><div id="deskExplorer" class="desk-muted"></div><button data-desk-act="history">تاریخچه عملیات</button></details></div><div class="desk-grip" data-resize="right"></div></aside><main><svg id="canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#bfcdd5" stroke-width=".7"/></pattern></defs><g id="pageBackground" pointer-events="none"><rect id="paperRect" fill="#fff"/><rect id="canvasGrid" fill="url(#grid)"/><path id="pageDividers" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1" stroke-dasharray="6 5"/><rect id="pageOutline" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1"/></g><g id="drawing"></g></svg><button type="button" id="zoomIndicator" aria-label="بازنشانی زوم به صد درصد" title="بازگشت به زوم ۱۰۰ درصد">100%</button><div id="hint">از «افزودن» یک تجهیز انتخاب کن؛ برای کابل روی پورت‌های رنگی بزن.</div></main><footer><button id="selectTool" class="active">↖<br>انتخاب</button><button id="addBtn">⊕<br>افزودن</button><button id="cableBtn">⌁<br>کابل</button><button id="resizeBtn" style="display:none">⤢<br>اندازه</button><button id="propsBtn">☷<br>ویژگی‌ها</button></footer><div id="quickDock" class="quickdock"><button id="quickToggle" class="quicktoggle" aria-label="دسترسی سریع"><svg class="dockface" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#f5d768" stroke="#c38933" stroke-width="1.8"/><ellipse cx="16.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><ellipse cx="31.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><path class="dockmouth" d="M13 29 Q24 39 35 29" fill="none" stroke="#243247" stroke-width="3.2" stroke-linecap="round"/><circle cx="11" cy="26" r="3" fill="#f0a68e" opacity=".7"/><circle cx="37" cy="26" r="3" fill="#f0a68e" opacity=".7"/></svg></button><div id="quickActions" class="quickactions"><button data-quick="undo" title="بازگشت (Undo)" aria-label="بازگشت">↶</button><button data-quick="redo" title="انجام مجدد (Redo)" aria-label="انجام مجدد">↷</button><button data-quick="left" title="چرخش ۹۰ درجه به چپ" aria-label="چرخش ۹۰ درجه به چپ"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10 6 A15 15 0 0 0 5 24 M5 24l-1-7 M5 24l7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="right" title="چرخش ۹۰ درجه به راست" aria-label="چرخش ۹۰ درجه به راست"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 6 A15 15 0 0 1 27 24 M27 24l1-7 M27 24l-7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="group" title="گروه‌بندی انتخاب‌ها" aria-label="گروه‌بندی">⊞</button><button data-quick="ungroup" title="لغو گروه" aria-label="لغو گروه">⊟</button><button data-quick="properties" title="ویژگی‌ها" aria-label="ویژگی‌ها"><svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true" fill="none" stroke="#e7f2ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><path d="M5 7h22M5 16h22M5 25h22"/><circle cx="12" cy="7" r="3.2" fill="#152337"/><circle cx="22" cy="16" r="3.2" fill="#152337"/><circle cx="13" cy="25" r="3.2" fill="#152337"/></svg></button></div></div><div class="overlay" id="overlay"></div><div class="sheet" id="sheet"><div class="row"><h2 id="sheetTitle" style="margin:0;flex:1"></h2><button id="closeSheet">✕</button></div><div id="sheetContent"></div></div><div class="toast" id="toast"></div><input type="file" id="fileInput" accept=".nrd,.roomplan,.json,.dxf,application/json" hidden><script>
+const APP_VERSION='V405';document.title='Room Designer · NSP · '+APP_VERSION;
 window.__roomEarlyErrors=window.__roomEarlyErrors||[];
 window.addEventListener('error',function(e){
  const earlyMessage=e.target&&e.target!==window&&e.target.tagName==='SCRIPT'?'فایل برنامه بارگذاری نشد: '+(e.target.getAttribute('src')||''):'خطای اجرا: '+(e.message||'نامشخص');
@@ -537,16 +537,41 @@ async function readMirrorMigrationArchives(){
  })
 }
 // Pre-migration recovery snapshots are retained until explicitly exported/reviewed.
-async function mirrorOperation(mode,value,key='last',snapshotGeneration=null){const db=await mirrorDb;if(!db||(mode==='readwrite'&&key==='last'&&safeStorage.crossStoreWriteBlocked))return null;return new Promise(resolve=>{
+// A receipt records observed durable primary bytes, never volatile fallback or presumed ordering.
+// Flat fields are compatible with old format-2 metadata and exact archive-pair comparisons.
+function buildMirrorCommitMeta(payload,generation,readPrimary){
+ const meta={format:2,checksum:mirrorChecksum(payload),length:payload.length,savedAt:Date.now(),generation,receiptVersion:1,primaryObservation:'unreadable'};
  try{
-  const tx=db.transaction('backups',mode),store=tx.objectStore('backups'),req=mode==='readonly'?store.get(key):store.put(value,key);
-  // Keep the legacy raw JSON at "last"; the sidecar shares the same IDB transaction.
-  if(mode==='readwrite'&&key==='last'&&typeof value==='string'){
-   store.put({format:2,checksum:mirrorChecksum(value),length:value.length,savedAt:Date.now(),generation:snapshotGeneration},'last-meta')
+  const raw=readPrimary();
+  if(raw===null)meta.primaryObservation='absent';
+  else if(raw===payload)meta.primaryObservation='matched';
+  else if(typeof raw==='string'){
+   meta.primaryObservation='different';meta.primaryObservedLength=raw.length;meta.primaryObservedChecksum=mirrorChecksum(raw);
+   // Exact evidence only when bounded. A checksum alone must never authorize replacement.
+   if(raw.length<=3200000)meta.primaryObservedRaw=raw;
   }
+ }catch(_){}
+ return meta
+}
+function classifyStorageReceipt(localRaw,mirrorRaw,meta){
+ if(typeof mirrorRaw!=='string'||meta==null||meta.format!==2||meta.length!==mirrorRaw.length||meta.checksum!==mirrorChecksum(mirrorRaw))return 'unverified';
+ if(localRaw===mirrorRaw)return 'aligned';
+ if(meta.receiptVersion!==1)return 'legacy-divergent';
+ if(meta.primaryObservation==='different'&&typeof localRaw==='string'&&typeof meta.primaryObservedRaw==='string'&&meta.primaryObservedRaw===localRaw&&meta.primaryObservedLength===localRaw.length&&meta.primaryObservedChecksum===mirrorChecksum(localRaw))return 'mirror-committed-with-this-primary';
+ if(meta.primaryObservation==='absent'&&localRaw===null)return 'mirror-committed-without-primary';
+ return 'unresolved'
+}
+async function mirrorOperation(mode,value,key='last',snapshotGeneration=null){const db=await mirrorDb;if(!db||(mode==='readwrite'&&key==='last'&&safeStorage.crossStoreWriteBlocked))return null;return new Promise(resolve=>{
+ let tx;
+ try{
+  // Compute receipt before opening the transaction. No exception may leave a new last with old metadata.
+  const commitMeta=mode==='readwrite'&&key==='last'&&typeof value==='string'?buildMirrorCommitMeta(value,snapshotGeneration,()=>window.localStorage.getItem('rd_last')):null;
+  tx=db.transaction('backups',mode);const store=tx.objectStore('backups');
+  tx.onerror=()=>resolve(null);tx.onabort=()=>resolve(null);
+  const req=mode==='readonly'?store.get(key):store.put(value,key);
+  if(commitMeta)store.put(commitMeta,'last-meta');
   let result=null;req.onsuccess=()=>{result=req.result};tx.oncomplete=()=>resolve(mode==='readonly'?result:true);
-  tx.onerror=()=>resolve(null);tx.onabort=()=>resolve(null)
- }catch(_){resolve(null)}
+ }catch(_){try{tx?.abort()}catch(_){}resolve(null)}
 })}
 async function readMirrorSnapshot(){const db=await mirrorDb;if(!db)return null;return new Promise(resolve=>{try{const tx=db.transaction('backups','readonly'),store=tx.objectStore('backups');const data=store.get('last'),meta=store.get('last-meta');let value=null,metadata=null;data.onsuccess=()=>{value=data.result};meta.onsuccess=()=>{metadata=meta.result};tx.oncomplete=()=>resolve({mirror:value,mirrorMeta:metadata});tx.onerror=()=>resolve(null);tx.onabort=()=>resolve(null)}catch(_){resolve(null)}})}
 function persistenceStatus(ok){const backup=$('backupNow');if(!backup)return;const durable=ok||(!mirrorPending&&mirrorSaveOk);
@@ -637,7 +662,10 @@ async function protectCrossStoreStartup(){
   if(!snapshot){manualSaveFailed=true;persistenceStatus(false);notify('⚠ نسخه آینه در این نشست در دسترس نیست؛ برای حفاظت از نقشه خروجی NRD تهیه کنید')}
   const localRaw=safeStorage.getItem('rd_last'),stored=snapshot?.mirror,meta=snapshot?.mirrorMeta;
   if(divergentValidSnapshots(localRaw,stored,meta)){
-   status.textContent='دو نقشه معتبر اما متفاوت وجود دارند. تا تهیه و تأیید بسته هر دو نسخه، ویرایش و ذخیره متوقف است.';
+   const receipt=classifyStorageReceipt(localRaw,stored,meta);
+   // Preserve the alternative in IDB even if the user later overwrites last.
+   const archived=await preserveMirrorForMigration(snapshot,'valid-conflict-before-review');
+   status.textContent='دو نقشه معتبر اما متفاوت وجود دارند. '+(receipt==='mirror-committed-with-this-primary'?'رسید ذخیره نشان می‌دهد آینه در حضور همین داده محلی ثبت شده است؛ تقدم قطعی اثبات نشده. ':'مرجع جدیدتر از شواهد موجود قطعی نیست. ')+'تا تأیید بسته هر دو نسخه، ویرایش متوقف است. '+(archived?'آینه محفوظ از بخش بازیابی آرشیو قابل انتخاب است.':'آرشیو داخلی آینه تأیید نشد؛ بسته خارجی را حتماً نگه دارید.');
    await offerDivergentSnapshotBackup(localRaw,stored,meta,gate);
   }else if(localRaw!==null&&!rdLastBlocked&&snapshot&&(stored!=null&&stored!==localRaw||stored==null&&meta!=null)){
    // Unclassified/corrupt mirror bytes may still contain recovery material.
@@ -678,7 +706,7 @@ function offerDivergentSnapshotBackup(localRaw,mirrorRaw,mirrorMeta,gate,selecti
     }
     const keys=['rd_profiles','rd_types','rd_catalog','rd_svg_drafts','rd_shortcuts','rd_save_generation','rd_import_committed','rd_pending_import','rd_pending_revision'];
     const related=Object.fromEntries(keys.map(key=>[key,safeStorage.getItem(key)]));
-    const bundle={format:'roomdesigner-cross-store-review/v1',exportedAt:new Date().toISOString(),local:localRaw,mirror:mirrorRaw,mirrorMeta,related,selectedForDisplay:selectionMode,autoReconciled:false};
+    const bundle={format:'roomdesigner-cross-store-review/v1',exportedAt:new Date().toISOString(),local:localRaw,mirror:mirrorRaw,mirrorMeta,storageReceipt:classifyStorageReceipt(localRaw,mirrorRaw,mirrorMeta),related,selectedForDisplay:selectionMode,autoReconciled:false};
     const outcome=await file(JSON.stringify(bundle,null,2),'roomdesigner-cross-store-review-'+Date.now()+'.json');
     if(outcome!==true&&outcome!=='requested'){message.textContent='ذخیره یا دانلود بسته تأیید نشد؛ ویرایش همچنان متوقف است.';return}
     if(!confirm(selectionMode==='fresh'?'آیا بسته داده خام آینه را واقعاً خارج از مرورگر ذخیره و بررسی کرده‌اید و می‌خواهید با نقشه تازه ادامه دهید؟ ذخیره بعدی ممکن است آینه را جایگزین کند.':'آیا فایل بسته هر دو نسخه را واقعاً خارج از مرورگر ذخیره و بررسی کرده‌اید و می‌خواهید با نسخه محلی ادامه دهید؟ ذخیره‌های بعدی ممکن است آینه فعلی را جایگزین کنند.')){message.textContent='ادامه کار تأیید نشد؛ هر دو نسخه محفوظ مانده‌اند.';return}
@@ -3115,6 +3143,138 @@ try{
  roomShortcuts.splice(0,roomShortcuts.length,...readLocalJSON('rd_shortcuts',[],Array.isArray));
 }catch(error){sheet('تغییر مدل ارتباطات متوقف شد',`<p>داده‌های قبلی حفظ شدند. ${clean(error.message)}</p>`);return}
 // Keep the original migration bundle available without deleting it after export.
+// Archive restore is a new drawing copy using the existing validated, journaled NRD import.
+function decodeArchiveRestore(entry){
+ const object=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+ const parseRaw=(raw,label)=>{
+  if(typeof raw!=='string'||raw.length>80*1024*1024)throw Error(label+' موجود نیست یا بیش از سقف امن بازیابی است');
+  return JSON.parse(raw)
+ };
+ let raw,meta=null,archivedTypes=null,archivedCatalog=null,archivedDrafts=null;
+ if(entry.store==='local'){
+  const bundle=parseRaw(entry.raw,'آرشیو محلی');
+  if(!object(bundle)||bundle.format!==1||!object(bundle.values))throw Error('ساختار آرشیو محلی معتبر نیست');
+  raw=bundle.values.rd_last;
+  if(bundle.values.rd_types!=null){archivedTypes=parseRaw(bundle.values.rd_types,'انواع ارتباط');if(!object(archivedTypes))throw Error('انواع ارتباط آرشیو نامعتبر است')}
+  if(bundle.values.rd_catalog!=null){archivedCatalog=parseRaw(bundle.values.rd_catalog,'کاتالوگ');if(!Array.isArray(archivedCatalog))throw Error('کاتالوگ آرشیو نامعتبر است')}
+  if(bundle.values.rd_svg_drafts!=null){archivedDrafts=parseRaw(bundle.values.rd_svg_drafts,'کتابخانه SVG');if(!object(archivedDrafts)||!object(archivedDrafts.assets))throw Error('کتابخانه SVG آرشیو نامعتبر است')}
+ }else if(entry.store==='mirror'){
+  const v=entry.value;
+  if(typeof v==='string')raw=v;
+  else if(object(v)){raw=v.mirror;meta=v.mirrorMeta??null}
+  else throw Error('آرشیو آینه نقشه ندارد');
+  if(meta!=null&&(typeof raw!=='string'||!object(meta)||meta.length!==raw.length||meta.checksum!==mirrorChecksum(raw)))throw Error('طول یا checksum نسخه آینه معتبر نیست');
+ }else throw Error('منبع آرشیو نامعتبر است');
+ const drawing=validateRoomDocument(parseRaw(raw,'نقشه آرشیو'));
+ if(drawing.revisions!=null&&(!Array.isArray(drawing.revisions)||drawing.revisions.some(r=>!object(r)||!object(r.snapshot)||r.snapshot.revisions!=null)))throw Error('تاریخچه آرشیو نامعتبر است');
+ return {drawing,raw,archivedTypes,archivedCatalog,archivedDrafts,hasHistoricalResources:entry.store==='local'&&!!archivedTypes&&!!archivedCatalog&&!!archivedDrafts}
+}
+function packRecoveryDrawing(drawing,drawingTypes,drawingCatalog,resolveAsset){
+ const payload={doc:structuredClone(drawing),types:structuredClone(drawingTypes),catalog:structuredClone(drawingCatalog)};
+ const ids=[...roomSvgReferenceIds(payload.doc,payload.catalog)].sort(),svg=[];let total=0;
+ if(ids.length>1000)throw Error('تعداد نمادهای آرشیو از سقف امن بیشتر است');
+ for(const id of ids){
+  if(!/^[a-zA-Z0-9_-]{1,128}$/.test(id))throw Error('شناسه نماد آرشیو نامعتبر است: '+id);
+  const safe=svgArtwork(resolveAsset(id));
+  if(!safe)throw Error('نماد موردنیاز آرشیو پیدا نشد یا ناامن است: '+id);
+  total+=safe.length;if(total>12000000)throw Error('حجم مجموع SVG آرشیو بیش از سقف امن است');
+  svg.push({id,svg:safe,length:safe.length,checksum:mirrorChecksum(safe),name:id.slice(0,80),category:'custom'})
+ }
+ return {format:'roomdesigner-portable/v1',...payload,assets:{svg}}
+}
+function archiveRestoreEnvelope(entry,decoded){
+ const resolve=id=>{
+  const key=EquipmentCatalogBuiltin.iconAliases?.[id]||id;
+  if(decoded.archivedDrafts&&Object.hasOwn(decoded.archivedDrafts.assets,key))return decoded.archivedDrafts.assets[key];
+  // A local historical library is not silently replaced by a current custom symbol of the same ID.
+  if(entry.store==='local'&&decoded.archivedDrafts)return svgLibrary.assets[key]||SvgLibraryBuiltin.assets[key];
+  return libraryAsset(id)
+ };
+ return packRecoveryDrawing(decoded.drawing,decoded.archivedTypes??types,decoded.archivedCatalog??catalog,resolve)
+}
+function archiveRestoreReady(){
+ return !safeStorage.crossStoreWriteBlocked&&!rdLastBlocked&&!recoveryWritesBlocked&&!recoveryJournalPending()&&!mirrorPending&&persistTimer===null&&!drag&&!wireDrag&&!wallGesture&&!cableGesture&&!pinch&&!wallStart&&!start&&!polyPreview
+}
+function captureArchiveRestoreState(){
+ if(!archiveRestoreReady())throw Error('ذخیره یا بازیابی دیگری در جریان است؛ ابتدا وضعیت فعلی را تعیین‌تکلیف کنید');
+ const keys=['rd_last','rd_profiles','rd_types','rd_catalog','rd_svg_drafts','rd_shortcuts','rd_save_generation','rd_import_committed','rd_pending_import','rd_pending_revision'];
+ const local=Object.fromEntries(keys.map(k=>[k,window.localStorage.getItem(k)]));
+ if(keys.some(k=>volatileStorageKeys.has(k)||safeStorage.getItem(k)!==local[k]))throw Error('ذخیره محلی پایدار نیست؛ ابتدا از نقشه خروجی بگیرید');
+ return {document:doc,epoch:documentEpoch,raw:JSON.stringify(doc),typesRaw:JSON.stringify(types),catalogRaw:JSON.stringify(catalog),draftsRaw:JSON.stringify(svgDrafts),library:svgLibrary,queue:mirrorQueue,local}
+}
+function archiveRestoreStateUnchanged(state){
+ if(!archiveRestoreReady()||doc!==state.document||documentEpoch!==state.epoch||mirrorQueue!==state.queue||svgLibrary!==state.library||JSON.stringify(doc)!==state.raw||JSON.stringify(types)!==state.typesRaw||JSON.stringify(catalog)!==state.catalogRaw||JSON.stringify(svgDrafts)!==state.draftsRaw)return false;
+ try{return Object.entries(state.local).every(([k,v])=>!volatileStorageKeys.has(k)&&safeStorage.getItem(k)===v&&window.localStorage.getItem(k)===v)}catch(_){return false}
+}
+async function archiveEntryUnchanged(entry){
+ try{
+  if(entry.store==='local')return RoomStorageSafety.migrationArchiveEntries(window.localStorage).some(e=>e.key===entry.key&&e.raw===entry.raw);
+  if(entry.store==='mirror'&&mirrorMigrationArchiveKey(entry.key)){const current=await mirrorOperation('readonly',undefined,entry.key);return current!=null&&JSON.stringify(current)===JSON.stringify(entry.value)}
+ }catch(_){}
+ return false
+}
+async function restoreSelectedArchive(entry){
+ try{
+  const state=captureArchiveRestoreState();
+  const snapshot=await state.queue.catch(()=>{}).then(()=>readMirrorSnapshot());
+  if(!snapshot||!archiveRestoreStateUnchanged(state)||!await archiveEntryUnchanged(entry))throw Error('خواندن آینه یا تطبیق وضعیت اولیه ناموفق بود');
+  const decoded=decodeArchiveRestore(entry),input=archiveRestoreEnvelope(entry,decoded);
+  const candidate=prepareRoomImport(input);
+  const before=decoded.drawing,after=candidate.doc;
+  const summary='نقشه: '+String(before.name||before.id||'بدون نام')+'\nتجهیزات: '+before.devices.length+' → '+after.devices.length+' | کابل‌ها: '+before.cables.length+' → '+after.cables.length+'\nنسخه بازیابی با شناسه جدید باز می‌شود؛ نقشه‌ها و Revisionهای ذخیره‌شده دیگر حذف نمی‌شوند. کاتالوگ و انواع ارتباط ممکن است طبق Import جایگزین شوند.';
+  const limitation=decoded.hasHistoricalResources?'نمادهای موجود در آرشیو و کتابخانه منتشرشده بررسی می‌شوند.':'آرشیو همه منابع تاریخی را ندارد؛ برای بخشی از اطلاعات از کتابخانه یا تنظیمات فعلی استفاده می‌شود. تطابق تاریخی تضمین نمی‌شود.';
+  if(!confirm(summary+'\n'+limitation+(candidate.legacyCleaned?'\nهشدار: تبدیل مدل قدیمی ممکن است بعضی تجهیزات یا کابل‌ها را حذف کند؛ آرشیو خام حفظ می‌شود.':'')+'\nابتدا نسخه پشتیبان نقشه فعلی صادر شود؟'))return;
+  // Backup is itself a normal portable NRD; raw prior storage and mirror are additional recovery evidence.
+  const backup=packRecoveryDrawing(JSON.parse(state.raw),JSON.parse(state.typesRaw),JSON.parse(state.catalogRaw),libraryAsset);
+  backup.recoveryBeforeRestore={format:1,local:state.local,mirror:snapshot.mirror,mirrorMeta:snapshot.mirrorMeta,svgDrafts:state.draftsRaw,source:{store:entry.store,key:entry.key}};
+  if(!archiveRestoreStateUnchanged(state))throw Error('نقشه در زمان آماده‌سازی پشتیبان تغییر کرد');
+  const outcome=await file(JSON.stringify(backup,null,2),'roomdesigner-before-archive-restore-'+Date.now()+'.nrd');
+  if(outcome!==true&&outcome!=='requested')return;
+  if(!confirm('آیا فایل پشتیبان نقشه فعلی را واقعاً خارج از مرورگر ذخیره و بررسی کرده‌اید؟ فقط در صورت تأیید، نسخه بازیابی باز می‌شود.'))return;
+  const current=await readMirrorSnapshot();
+  if(!current||!sameMirrorPair(snapshot,current)||!await archiveEntryUnchanged(entry)||!archiveRestoreStateUnchanged(state))throw Error('اطلاعات پس از تهیه پشتیبان تغییر کردند؛ بازیابی متوقف شد');
+  if(!await preserveMirrorForMigration(current,'before-controlled-restore'))throw Error('حفاظت آینه فعلی پیش از بازیابی ناموفق بود');
+  const finalMirror=await readMirrorSnapshot();
+  if(!finalMirror||!sameMirrorPair(current,finalMirror)||!archiveRestoreStateUnchanged(state))throw Error('وضعیت ذخیره تغییر کرد؛ بازیابی متوقف شد');
+  candidate.doc.id=uid();candidate.doc.name=String(candidate.doc.name||'نقشه')+' — بازیابی';
+  // No raw storage assignment or journal bypass; existing importer owns outcome and rollback.
+  applyRoomImport(candidate);
+ }catch(error){notify('بازیابی آرشیو انجام نشد: '+String(error?.message||error))}
+}
+async function showArchiveRestore(){
+ try{
+  let local=null;try{local=RoomStorageSafety.migrationArchiveEntries(window.localStorage)}catch(_){}
+  const mirror=await readMirrorMigrationArchives();
+  const entries=[...(local||[]).map(e=>({...e,store:'local'})),...(mirror||[]).map(e=>({...e,store:'mirror'}))];
+  sheet('بازیابی کنترل‌شده آرشیو','<p>نسخه‌ای را برای بررسی و بازیابی به‌عنوان نقشه مستقل انتخاب کنید. پیش از جایگزینی نقشه فعال، تهیه پشتیبان الزامی است.</p><select id="rdArchiveRestoreChoice" style="width:100%"></select><p id="rdArchiveRestoreInfo" style="white-space:pre-wrap"></p><button id="rdArchiveRestoreExport" type="button">خروجی NRD نسخه انتخابی</button><button id="rdArchiveRestoreApply" type="button">بررسی و بازیابی نسخه انتخابی</button>');
+  const select=$('rdArchiveRestoreChoice'),info=$('rdArchiveRestoreInfo'),action=$('rdArchiveRestoreApply'),exportAction=$('rdArchiveRestoreExport');
+  if(!entries.length){info.textContent='آرشیو قابل خواندن پیدا نشد.';action.disabled=true;exportAction.disabled=true;return}
+  entries.forEach((entry,i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=(entry.store==='local'?'LocalStorage — ':'IndexedDB — ')+entry.key;select.append(option)});
+  const preview=()=>{
+   try{
+    const d=decodeArchiveRestore(entries[Number(select.value)]);
+    info.textContent=String(d.drawing.name||d.drawing.id||'بدون نام')+'\nتجهیز: '+d.drawing.devices.length+' | کابل: '+d.drawing.cables.length+' | Revision: '+(d.drawing.revisions?.length||0)+(d.hasHistoricalResources?'':'\nمنابع تاریخی کامل نیست؛ بررسی قبل از بازیابی لازم است.')+(local===null||mirror===null?'\nخواندن یکی از مخازن آرشیو ناموفق بود.':'');
+    action.disabled=false;exportAction.disabled=false;
+   }catch(error){info.textContent='این نسخه قابل بازیابی مستقیم نیست: '+String(error?.message||error);action.disabled=true;exportAction.disabled=true}
+  };
+  select.onchange=preview;
+  exportAction.onclick=async()=>{
+   if(exportAction.disabled)return;
+   const entry=entries[Number(select.value)];select.disabled=true;action.disabled=true;exportAction.disabled=true;
+   try{
+    if(!await archiveEntryUnchanged(entry))throw Error('آرشیو تغییر کرده؛ فهرست را دوباره باز کنید');
+    const decoded=decodeArchiveRestore(entry),envelope=archiveRestoreEnvelope(entry,decoded);
+    const candidate=prepareRoomImport(structuredClone(envelope));
+    if(!confirm('نسخه انتخابی به‌صورت NRD صادر شود؟ '+(decoded.hasHistoricalResources?'منابع موجود بررسی شدند.':'همه منابع تاریخی در آرشیو موجود نیستند؛ بخشی از کتابخانه فعلی استفاده می‌شود.')+(candidate.legacyCleaned?' بازکردن آن با نسخه فعلی ممکن است مدل قدیمی را تبدیل کند. آرشیو اصلی محفوظ است.':'')))return;
+    if(!await archiveEntryUnchanged(entry))throw Error('آرشیو تغییر کرده است');
+    await file(JSON.stringify(envelope,null,2),'roomdesigner-archive-'+Date.now()+'.nrd');
+   }catch(error){notify('خروجی نسخه آرشیو ناموفق بود: '+String(error?.message||error))}
+   finally{select.disabled=false;if(action.isConnected)preview()}
+  };
+  action.onclick=async()=>{if(action.disabled)return;const entry=entries[Number(select.value)];select.disabled=true;action.disabled=true;exportAction.disabled=true;try{await restoreSelectedArchive(entry)}finally{select.disabled=false;if(action.isConnected)preview()}};
+  preview()
+ }catch(error){notify('خواندن فهرست آرشیو ناموفق بود: '+String(error?.message||error))}
+}
 async function offerMigrationArchive(){
  const readArchives=()=>{try{return RoomStorageSafety.migrationArchiveEntries(window.localStorage)}catch(_){return null}};
  const initialLocal=readArchives(),hasMirror=await hasMirrorMigrationArchives();
@@ -3134,6 +3294,8 @@ async function offerMigrationArchive(){
   }catch(error){notify('خروجی آرشیوهای مهاجرت ناموفق بود: '+String(error?.message||error))}
   finally{button.disabled=false}
  };document.body.append(button);
+ const restoreButton=document.createElement('button');restoreButton.type='button';restoreButton.id='migrationArchiveRestore';restoreButton.textContent='بازیابی از آرشیو';restoreButton.style.cssText='position:fixed;bottom:125px;left:12px;z-index:90;padding:8px';
+ restoreButton.onclick=()=>showArchiveRestore();document.body.append(restoreButton);
 }
 
 const localLast=readLocalJSON('rd_last',null,v=>{try{validateRoomDocument(v);return true}catch(_){return false}});if(localLast)doc=localLast;else if(rdLastBlocked){manualSaveFailed=true;primarySaveOk=false;}if(!recoveryIncomplete&&!await protectCrossStoreStartup())return;render();updateHistoryControls();if(recoveryIncomplete){manualSaveFailed=true;persistenceStatus(false)}showLocalDataWarnings();offerPendingJournalReview();if(!activeUser)setTimeout(()=>userPicker(),100);
