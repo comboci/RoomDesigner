@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V405",
-    "project_evolution_version": "V405",
+    "software_version": "V406",
+    "project_evolution_version": "V406",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V405-R",
+  "current_source_release": "V406-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1942,6 +1942,12 @@
       "version": "V405-R",
       "date": "2026-11-26",
       "change": "RD-A01: رسید نسخه‌بندی‌شده ذخیره در همان تراکنش IndexedDB با مشاهده مستقیم داده پایدار محلی، حفاظت از آینه معتبر متفاوت پیش از بررسی تعارض و توقف تراکنش در خطا. RD-A03: پیش‌نمایش و خروجی NRD آرشیو انتخابی و بازیابی کنترل‌شده با شناسه جدید، پشتیبان خارجی و تأیید کاربر و کنترل تغییر هم‌زمان. مرجع واحد و Restore کل مخازن همچنان باز؛ تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V406-R",
+      "date": "2026-11-26",
+      "change": "RD-A01: مرجع تراکنشی نقاط بازیابی فضای کاری در IndexedDB با ۱۳ کلید مشخص و تطبیق نسخه آینه؛ RD-A03: مرکز Disaster Recovery، خروجی و بازیابی فایل فضای کاری، Journal پایدار و ادامه/برگشت قبل از مهاجرت و Render، تاریخچه و رسید Commit. برآورد ظرفیت، محدودیت حجم و پاک‌سازی فقط آرشیو تاریخی انتخاب‌شده پس از نوشتن قطعی فایل و تأیید. Autosave عادی همچنان معماری قبلی دارد؛ تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8877,6 +8883,27 @@
         "OPEN-CROSS-STORE"
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
+    },
+    {
+      "id": "RD406-A01-A03-WORKSPACE-AUTHORITY-DISASTER-RECOVERY",
+      "record_type": "source_remediation",
+      "module": "workspace_checkpoint_and_disaster_recovery",
+      "source": "Professional audit RD-A01 and RD-A03",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-26",
+      "source_head": "3815b42859ca6e6d4e32343f58bdb794c7abb02a",
+      "target_version": "V406-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — ادامه RD-A01 و RD-A03، تعیین مرجع تراکنشی واحد، تکمیل Disaster Recovery و مدیریت ظرفیت Backup، انتشار V406-R و Commit و Push",
+      "assistant_interpretation": "تعیین IndexedDB به‌عنوان مرجع نقاط بازیابی تراکنشی فضای کاری و پیاده‌سازی Restore قابل ادامه/برگشت با حفظ سازگاری ذخیره عادی؛ مدیریت ظرفیت غیرخودکار.",
+      "implementation_status": "Canonical workspace-commit-v1 record for 13 allowlisted keys, explicit matched-mirror checkpoint, managed workspace recovery package import/export and validated current-schema restore. Stage prior+target IDB intent; durable local marker, exact before/target projection, early boot replay/rollback and atomic final IDB checkpoint+mirror+metadata+receipt+history. Capacity estimates, bounded workspace/history export, selected historical export and optional exact deletion after physically confirmed save; no automatic pruning.",
+      "related_audit_findings": [
+        "RD-A01",
+        "RD-A03",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
     }
   ],
   "analyses": [
@@ -10743,6 +10770,22 @@
         "Restore requires readable IndexedDB/current stable local state; raw export remains available where readable. No auto pruning or complete archive management.",
         "Eight new regression scenarios authored, all NOT_RUN; browser/device validation pending."
       ]
+    },
+    {
+      "id": "RD406-A01-A03-STATIC-AUDIT",
+      "record_id": "RD406-A01-A03-WORKSPACE-AUTHORITY-DISASTER-RECOVERY",
+      "created_at": "2026-11-26",
+      "module": "workspace_checkpoint_and_disaster_recovery",
+      "problem": "The V405 receipt was diagnostic only and selected restore applied to a single drawing; saved projects/settings could not be restored as a consistent workspace; retention lacked selective capacity control.",
+      "decision": "Use a single IDB transaction authority for explicitly committed recovery checkpoints and restore intent/finalization. Keep ordinary editor and legacy autosave unchanged until migration is verified. Stage full before/target bytes in IDB; resume only exact before/target local values and block on any third state. Restrict restore to managed current-schema keys, preserve raw legacy archives and unrelated origin keys. Only selected history may be pruned after confirmed physical file save and user acknowledgment.",
+      "remaining_risks": [
+        "OPEN-CROSS-STORE: ordinary autosave/other editor writes are still legacy LocalStorage+IDB mirror; no automatic canonical authority cutover.",
+        "Restore scope is 13 managed keys and current-schema project data; raw history/journals, other origin data and legacy workspace schemas are not wholesale restored. Exported histories remain separately inspectable.",
+        "Checkpoint must be explicitly created on a stable aligned drawing; it is not a continuous complete workspace backup. Recovery export is limited to stable workspace; existing raw/emergency exports remain available.",
+        "Partial LocalStorage projection is recoverable via persistent intent but not an atomic browser-wide transaction; unsupported older clients may not honor marker, and browser storage deletion can remove all internal backups.",
+        "Large archives and quota failures may block operations; no automatic deletion. Explicit pruning only of workspace history keys; local/legacy archive lifecycle remains open.",
+        "File picker fallback is download requested, not physical save; pruning refuses fallback. Runtime/browser/iOS validation pending, eight scenarios NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12251,17 +12294,24 @@
       "date": "2026-11-26",
       "change": "RD-A01: رسید نسخه‌بندی‌شده ذخیره در همان تراکنش IndexedDB با مشاهده مستقیم داده پایدار محلی، حفاظت از آینه معتبر متفاوت پیش از بررسی تعارض و توقف تراکنش در خطا. RD-A03: پیش‌نمایش و خروجی NRD آرشیو انتخابی و بازیابی کنترل‌شده با شناسه جدید، پشتیبان خارجی و تأیید کاربر و کنترل تغییر هم‌زمان. مرجع واحد و Restore کل مخازن همچنان باز؛ تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V406-R",
+      "date": "2026-11-26",
+      "change": "RD-A01: مرجع تراکنشی نقاط بازیابی فضای کاری در IndexedDB با ۱۳ کلید مشخص و تطبیق نسخه آینه؛ RD-A03: مرکز Disaster Recovery، خروجی و بازیابی فایل فضای کاری، Journal پایدار و ادامه/برگشت قبل از مهاجرت و Render، تاریخچه و رسید Commit. برآورد ظرفیت، محدودیت حجم و پاک‌سازی فقط آرشیو تاریخی انتخاب‌شده پس از نوشتن قطعی فایل و تأیید. Autosave عادی همچنان معماری قبلی دارد؛ تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V405-R",
+    "release": "V406-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-A01/A03 partial source fixes: versioned durable-primary observation receipt, atomic IDB write abort guard, conflict archive protection, selected archive preview/export and controlled current-drawing restore. Test/Build/Browser NOT_RUN. OPEN-CROSS-STORE and whole-store restore remain open."
+    "audit": "RD-A01/A03 focused source changes: explicit IndexedDB recovery checkpoint authority, managed workspace disaster recovery intent/replay/rollback/finalization, capacity limits and guarded selected history pruning. Ordinary editor autosave authority migration and full legacy/origin restore remain open. Test/Build/Browser NOT_RUN."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V406-R acceptance: disposable browser with existing data and new clean origin; stable checkpoint and external backup/restore, profiles/shortcuts/resources/settings, cut before marker/mid projection/final receipt, third-state rejection, denied storage, quota and rollback, history export/confirmed physical save/cancel and exact prune. Next ordinary autosave canonical migration and legacy/full-origin recovery/retention only after owner-approved runtime validation; Test/Build NOT_RUN.",
       "V405-R acceptance: matching/different/absent/denied primary observations, failed IDB transaction, valid divergence and archive failure fallback, selected local/IDB archive preview and NRD export, cancelled/declined backup, changed mirror, quota failure and confirmed new-ID restore. Next canonical storage authority migration design/implementation, whole-store restore and quota retention; test only with owner approval.",
       "V404-R acceptance: isolated profile with distinct mirror pairs, stale expected mirror, abort/closed DB, multiple migrations, pending journal, legacy mirror transform, orphan metadata and combined export/read failure. Next design and implement durable authority/commit protocol and controlled archive restore/quota retention. Test/Build NOT_RUN.",
       "V403-R acceptance: absent local with valid/corrupt/empty mirror, failed read with open IndexedDB, canceled/confirmed raw backup, independent consecutive migrations, identical retry, quota failure, export all archives. Next RD-A01 durable authority design and RD-A03 mirror archives/restore. Test/Build NOT_RUN.",

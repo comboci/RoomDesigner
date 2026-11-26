@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V406-R (2026-11-26): RD-A01 defines IndexedDB workspace-commit-v1 as the canonical transactionally committed recovery checkpoint for 13 managed keys; the ordinary editor/autosave authority remains legacy-compatible. RD-A03 adds Disaster Recovery export/import, explicit workspace checkpoint selection and crash-resumable restore/rollback via an IDB intent before startup projection. Final commit atomically writes the checkpoint, mirror, metadata and completion receipt; previous state retained in history. Capacity reporting, bounded package/history export and explicit single-history pruning after confirmed physical file write; no automatic pruning. Current-schema managed workspace only, not raw full-origin/legacy journal import. Eight regression scenarios authored, Test/Build/Browser NOT_RUN. OPEN-CROSS-STORE ordinary autosave remains OPEN.
+
 V405-R (2026-11-26): RD-A01 adds a versioned commit receipt to the atomic IndexedDB last/last-meta write, recording actual durable LocalStorage observation, never the volatile fallback. Valid divergent mirrors are archived when possible before explicit backup review; no automatic precedence from generation/hash. RD-A03 adds selected archive preview, portable NRD export and controlled restore as a new drawing identity through validated journaled import, with external backup acknowledgment, fresh local/mirror checks and prior mirror archive. Full store authority migration, cross-store atomicity and whole-store restore remain OPEN. Eight regression scenarios authored, Test/Build/Browser NOT_RUN.
 
 V404-R (2026-11-26): RD-A01/RD-A03 add pre-migration and pending-journal mirror protection, immutable distinct IndexedDB snapshot+metadata archives, archive-before-transform for legacy mirror recovery, and export of both stores' retained archives with explicit partial-read warnings. Startup archive discovery uses keys rather than loading all payloads. No automatic authority change or cross-store atomicity; OPEN-CROSS-STORE remains OPEN. Tests/Build/Browser NOT_RUN.
@@ -32,7 +34,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V405-R** (runtime acceptance pending user).
+Current source release: **V406-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

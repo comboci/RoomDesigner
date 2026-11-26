@@ -288,8 +288,8 @@ body.desktop-layout header .shared-view-tools{order:1!important;display:inline-f
 body.desktop-layout header .desktop-clipboard{order:2!important}
 body.desktop-layout header #mobileLockAll,
 body.desktop-layout header #mobileGroupAll{display:none!important}
-</style></head><body><header><button id="menuBtn" aria-label="منو">☰</button><div class="brand">ROOM DESIGNER<small>Powered by NSP · V405</small></div><div class="grow"><div class="project-title" id="title">نقشه بدون نام</div><button id="backupNow" title="ذخیره محلی ناموفق؛ خروجی فوری بگیرید" style="display:none;background:#963d43;color:white;padding:4px;font-size:11px;min-height:25px">⚠ ذخیره‌نشده · خروجی</button></div><button id="historyBtn" title="تاریخچه عملیات" aria-label="تاریخچه عملیات"><span class="mobile-glyph">☷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 3"/></svg></span></button><span id="sharedViewTools" class="shared-view-tools" aria-label="نمایش و حساب کاربری"><button id="headerColorMode" class="shared-header-command" type="button" title="نمایش رنگی / سیاه‌وسفید" aria-label="نمایش رنگی / سیاه‌وسفید" aria-pressed="false">◐</button><button id="headerDetails" class="shared-header-command" type="button" title="نمایش جزئیات محصول" aria-label="نمایش جزئیات محصول" aria-pressed="false">▤</button><button id="headerPorts" class="shared-header-command" type="button" title="نمایش پورت‌ها" aria-label="نمایش پورت‌ها" aria-pressed="false">⦿</button><button id="mobileLockAll" class="shared-header-command" type="button" title="قفل همه آبجکت‌ها" aria-label="قفل همه آبجکت‌ها" aria-pressed="false">🔒</button><button id="mobileGroupAll" class="shared-header-command" type="button" title="گروه‌بندی همه آبجکت‌ها" aria-label="گروه‌بندی همه آبجکت‌ها">⊞</button></span><button id="redoBtn" title="انجام مجدد" aria-label="Redo"><span class="mobile-glyph">↷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5l5 5-5 5M21 10H10a6 6 0 0 0 0 12"/></svg></span></button><button id="undoBtn" title="بازگشت" aria-label="Undo"><span class="mobile-glyph">↶</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5L3 10l5 5M3 10h11a6 6 0 0 1 0 12"/></svg></span></button><button id="zoomBtn" title="بازنشانی نمایش">⌗</button></header><aside class="desk-pane desk-left" id="deskLeft"><div class="desk-heading"><strong>Toolbox · ابزارها</strong><span class="desk-head-actions"><button data-desk-all="left" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="left" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><div class="tool-search"><input type="search" id="deskToolSearch" placeholder="جستجوی ابزار، مستطیل، کابل..." aria-label="جستجوی ابزار Toolbox"></div><button data-desk-act="select">↖ انتخاب</button><details open><summary>▱ معماری</summary><button data-desk-arch="line">╱ خط صاف</button><button data-desk-arch="rectangle">▭ مستطیل</button><button data-desk-arch="square">□ مربع</button><details><summary>نمادهای معماری</summary><div id="deskArchSymbols"></div></details></details><details open><summary>⌁ کابل‌کشی</summary><button data-desk-cable="direct">↗ کابل مستقیم</button><button data-desk-cable="broken">⌁ کابل شکسته آزاد</button><button data-desk-cable="orthogonal">└ کابل شکسته قائم</button></details><details open><summary>⊕ تجهیزات</summary><div id="deskDeviceItems"></div><button data-desk-act="create">＋ تعریف تجهیز جدید</button><div id="deskSymbolItems"></div></details><details open><summary>⌘ دستورات و History</summary><button data-desk-act="undo">↶ Undo</button><button data-desk-act="redo">↷ Redo</button><button data-desk-act="history">☷ تاریخچه عملیات</button><button data-desk-act="save">ذخیره نقشه</button><label class="checkbox"><input id="deskGridSnap" type="checkbox" checked> چسبندگی به گرید ۲۰ واحدی</label></details></div><div class="desk-grip" data-resize="left"></div></aside><aside class="desk-pane desk-right" id="deskRight"><div class="desk-heading"><strong>Properties · Project Explorer</strong><span class="desk-head-actions"><button data-desk-all="right" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="right" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><details open><summary>ویژگی‌های انتخاب</summary><div id="deskProperties" class="desk-muted">یک آبجکت را انتخاب کنید.</div><button data-desk-act="properties">بازکردن جزئیات و ویرایش</button></details><details open><summary>ساختار پروژه</summary><div id="deskExplorer" class="desk-muted"></div><button data-desk-act="history">تاریخچه عملیات</button></details></div><div class="desk-grip" data-resize="right"></div></aside><main><svg id="canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#bfcdd5" stroke-width=".7"/></pattern></defs><g id="pageBackground" pointer-events="none"><rect id="paperRect" fill="#fff"/><rect id="canvasGrid" fill="url(#grid)"/><path id="pageDividers" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1" stroke-dasharray="6 5"/><rect id="pageOutline" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1"/></g><g id="drawing"></g></svg><button type="button" id="zoomIndicator" aria-label="بازنشانی زوم به صد درصد" title="بازگشت به زوم ۱۰۰ درصد">100%</button><div id="hint">از «افزودن» یک تجهیز انتخاب کن؛ برای کابل روی پورت‌های رنگی بزن.</div></main><footer><button id="selectTool" class="active">↖<br>انتخاب</button><button id="addBtn">⊕<br>افزودن</button><button id="cableBtn">⌁<br>کابل</button><button id="resizeBtn" style="display:none">⤢<br>اندازه</button><button id="propsBtn">☷<br>ویژگی‌ها</button></footer><div id="quickDock" class="quickdock"><button id="quickToggle" class="quicktoggle" aria-label="دسترسی سریع"><svg class="dockface" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#f5d768" stroke="#c38933" stroke-width="1.8"/><ellipse cx="16.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><ellipse cx="31.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><path class="dockmouth" d="M13 29 Q24 39 35 29" fill="none" stroke="#243247" stroke-width="3.2" stroke-linecap="round"/><circle cx="11" cy="26" r="3" fill="#f0a68e" opacity=".7"/><circle cx="37" cy="26" r="3" fill="#f0a68e" opacity=".7"/></svg></button><div id="quickActions" class="quickactions"><button data-quick="undo" title="بازگشت (Undo)" aria-label="بازگشت">↶</button><button data-quick="redo" title="انجام مجدد (Redo)" aria-label="انجام مجدد">↷</button><button data-quick="left" title="چرخش ۹۰ درجه به چپ" aria-label="چرخش ۹۰ درجه به چپ"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10 6 A15 15 0 0 0 5 24 M5 24l-1-7 M5 24l7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="right" title="چرخش ۹۰ درجه به راست" aria-label="چرخش ۹۰ درجه به راست"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 6 A15 15 0 0 1 27 24 M27 24l1-7 M27 24l-7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="group" title="گروه‌بندی انتخاب‌ها" aria-label="گروه‌بندی">⊞</button><button data-quick="ungroup" title="لغو گروه" aria-label="لغو گروه">⊟</button><button data-quick="properties" title="ویژگی‌ها" aria-label="ویژگی‌ها"><svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true" fill="none" stroke="#e7f2ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><path d="M5 7h22M5 16h22M5 25h22"/><circle cx="12" cy="7" r="3.2" fill="#152337"/><circle cx="22" cy="16" r="3.2" fill="#152337"/><circle cx="13" cy="25" r="3.2" fill="#152337"/></svg></button></div></div><div class="overlay" id="overlay"></div><div class="sheet" id="sheet"><div class="row"><h2 id="sheetTitle" style="margin:0;flex:1"></h2><button id="closeSheet">✕</button></div><div id="sheetContent"></div></div><div class="toast" id="toast"></div><input type="file" id="fileInput" accept=".nrd,.roomplan,.json,.dxf,application/json" hidden><script>
-const APP_VERSION='V405';document.title='Room Designer · NSP · '+APP_VERSION;
+</style></head><body><header><button id="menuBtn" aria-label="منو">☰</button><div class="brand">ROOM DESIGNER<small>Powered by NSP · V406</small></div><div class="grow"><div class="project-title" id="title">نقشه بدون نام</div><button id="backupNow" title="ذخیره محلی ناموفق؛ خروجی فوری بگیرید" style="display:none;background:#963d43;color:white;padding:4px;font-size:11px;min-height:25px">⚠ ذخیره‌نشده · خروجی</button></div><button id="historyBtn" title="تاریخچه عملیات" aria-label="تاریخچه عملیات"><span class="mobile-glyph">☷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 3"/></svg></span></button><span id="sharedViewTools" class="shared-view-tools" aria-label="نمایش و حساب کاربری"><button id="headerColorMode" class="shared-header-command" type="button" title="نمایش رنگی / سیاه‌وسفید" aria-label="نمایش رنگی / سیاه‌وسفید" aria-pressed="false">◐</button><button id="headerDetails" class="shared-header-command" type="button" title="نمایش جزئیات محصول" aria-label="نمایش جزئیات محصول" aria-pressed="false">▤</button><button id="headerPorts" class="shared-header-command" type="button" title="نمایش پورت‌ها" aria-label="نمایش پورت‌ها" aria-pressed="false">⦿</button><button id="mobileLockAll" class="shared-header-command" type="button" title="قفل همه آبجکت‌ها" aria-label="قفل همه آبجکت‌ها" aria-pressed="false">🔒</button><button id="mobileGroupAll" class="shared-header-command" type="button" title="گروه‌بندی همه آبجکت‌ها" aria-label="گروه‌بندی همه آبجکت‌ها">⊞</button></span><button id="redoBtn" title="انجام مجدد" aria-label="Redo"><span class="mobile-glyph">↷</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5l5 5-5 5M21 10H10a6 6 0 0 0 0 12"/></svg></span></button><button id="undoBtn" title="بازگشت" aria-label="Undo"><span class="mobile-glyph">↶</span><span class="desktop-glyph"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5L3 10l5 5M3 10h11a6 6 0 0 1 0 12"/></svg></span></button><button id="zoomBtn" title="بازنشانی نمایش">⌗</button></header><aside class="desk-pane desk-left" id="deskLeft"><div class="desk-heading"><strong>Toolbox · ابزارها</strong><span class="desk-head-actions"><button data-desk-all="left" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="left" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><div class="tool-search"><input type="search" id="deskToolSearch" placeholder="جستجوی ابزار، مستطیل، کابل..." aria-label="جستجوی ابزار Toolbox"></div><button data-desk-act="select">↖ انتخاب</button><details open><summary>▱ معماری</summary><button data-desk-arch="line">╱ خط صاف</button><button data-desk-arch="rectangle">▭ مستطیل</button><button data-desk-arch="square">□ مربع</button><details><summary>نمادهای معماری</summary><div id="deskArchSymbols"></div></details></details><details open><summary>⌁ کابل‌کشی</summary><button data-desk-cable="direct">↗ کابل مستقیم</button><button data-desk-cable="broken">⌁ کابل شکسته آزاد</button><button data-desk-cable="orthogonal">└ کابل شکسته قائم</button></details><details open><summary>⊕ تجهیزات</summary><div id="deskDeviceItems"></div><button data-desk-act="create">＋ تعریف تجهیز جدید</button><div id="deskSymbolItems"></div></details><details open><summary>⌘ دستورات و History</summary><button data-desk-act="undo">↶ Undo</button><button data-desk-act="redo">↷ Redo</button><button data-desk-act="history">☷ تاریخچه عملیات</button><button data-desk-act="save">ذخیره نقشه</button><label class="checkbox"><input id="deskGridSnap" type="checkbox" checked> چسبندگی به گرید ۲۰ واحدی</label></details></div><div class="desk-grip" data-resize="left"></div></aside><aside class="desk-pane desk-right" id="deskRight"><div class="desk-heading"><strong>Properties · Project Explorer</strong><span class="desk-head-actions"><button data-desk-all="right" title="جمع یا بازکردن همه گروه‌ها">▤</button><button data-desk-pin="right" title="برداشتن پین؛ بازشدن با اشاره ماوس" aria-pressed="true">📌</button></span></div><div class="desk-body"><details open><summary>ویژگی‌های انتخاب</summary><div id="deskProperties" class="desk-muted">یک آبجکت را انتخاب کنید.</div><button data-desk-act="properties">بازکردن جزئیات و ویرایش</button></details><details open><summary>ساختار پروژه</summary><div id="deskExplorer" class="desk-muted"></div><button data-desk-act="history">تاریخچه عملیات</button></details></div><div class="desk-grip" data-resize="right"></div></aside><main><svg id="canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#bfcdd5" stroke-width=".7"/></pattern></defs><g id="pageBackground" pointer-events="none"><rect id="paperRect" fill="#fff"/><rect id="canvasGrid" fill="url(#grid)"/><path id="pageDividers" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1" stroke-dasharray="6 5"/><rect id="pageOutline" vector-effect="non-scaling-stroke" fill="none" stroke="#aeb8c2" stroke-width="1"/></g><g id="drawing"></g></svg><button type="button" id="zoomIndicator" aria-label="بازنشانی زوم به صد درصد" title="بازگشت به زوم ۱۰۰ درصد">100%</button><div id="hint">از «افزودن» یک تجهیز انتخاب کن؛ برای کابل روی پورت‌های رنگی بزن.</div></main><footer><button id="selectTool" class="active">↖<br>انتخاب</button><button id="addBtn">⊕<br>افزودن</button><button id="cableBtn">⌁<br>کابل</button><button id="resizeBtn" style="display:none">⤢<br>اندازه</button><button id="propsBtn">☷<br>ویژگی‌ها</button></footer><div id="quickDock" class="quickdock"><button id="quickToggle" class="quicktoggle" aria-label="دسترسی سریع"><svg class="dockface" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#f5d768" stroke="#c38933" stroke-width="1.8"/><ellipse cx="16.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><ellipse cx="31.5" cy="20" rx="3.1" ry="4.4" fill="#243247"/><path class="dockmouth" d="M13 29 Q24 39 35 29" fill="none" stroke="#243247" stroke-width="3.2" stroke-linecap="round"/><circle cx="11" cy="26" r="3" fill="#f0a68e" opacity=".7"/><circle cx="37" cy="26" r="3" fill="#f0a68e" opacity=".7"/></svg></button><div id="quickActions" class="quickactions"><button data-quick="undo" title="بازگشت (Undo)" aria-label="بازگشت">↶</button><button data-quick="redo" title="انجام مجدد (Redo)" aria-label="انجام مجدد">↷</button><button data-quick="left" title="چرخش ۹۰ درجه به چپ" aria-label="چرخش ۹۰ درجه به چپ"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10 6 A15 15 0 0 0 5 24 M5 24l-1-7 M5 24l7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="right" title="چرخش ۹۰ درجه به راست" aria-label="چرخش ۹۰ درجه به راست"><svg viewBox="0 0 32 32" width="29" height="29" aria-hidden="true"><rect x="11" y="10" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 6 A15 15 0 0 1 27 24 M27 24l1-7 M27 24l-7-2" fill="none" stroke="#50d7b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-quick="group" title="گروه‌بندی انتخاب‌ها" aria-label="گروه‌بندی">⊞</button><button data-quick="ungroup" title="لغو گروه" aria-label="لغو گروه">⊟</button><button data-quick="properties" title="ویژگی‌ها" aria-label="ویژگی‌ها"><svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true" fill="none" stroke="#e7f2ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"><path d="M5 7h22M5 16h22M5 25h22"/><circle cx="12" cy="7" r="3.2" fill="#152337"/><circle cx="22" cy="16" r="3.2" fill="#152337"/><circle cx="13" cy="25" r="3.2" fill="#152337"/></svg></button></div></div><div class="overlay" id="overlay"></div><div class="sheet" id="sheet"><div class="row"><h2 id="sheetTitle" style="margin:0;flex:1"></h2><button id="closeSheet">✕</button></div><div id="sheetContent"></div></div><div class="toast" id="toast"></div><input type="file" id="fileInput" accept=".nrd,.roomplan,.json,.dxf,application/json" hidden><script>
+const APP_VERSION='V406';document.title='Room Designer · NSP · '+APP_VERSION;
 window.__roomEarlyErrors=window.__roomEarlyErrors||[];
 window.addEventListener('error',function(e){
  const earlyMessage=e.target&&e.target!==window&&e.target.tagName==='SCRIPT'?'فایل برنامه بارگذاری نشد: '+(e.target.getAttribute('src')||''):'خطای اجرا: '+(e.message||'نامشخص');
@@ -302,7 +302,7 @@ window.addEventListener('error',function(e){
   w.textContent=window.__roomScriptError+' — لطفاً تصویر این پیام را ارسال کنید.';
  }},0);
 },true);
-</script><script src="./storage-safety.js?v=403"></script><script src="./svg-engine.js?v=336"></script><script src="./data/svg-library-builtin.js?v=336"></script><script src="./data/equipment-catalog-builtin.js?v=336"></script><script src="./cable-routing.js?v=336"></script><script src="./connection-model.js?v=336"></script><script src="./selection-geometry.js?v=336"></script><script src="./polyline-editor.js?v=336"></script><script src="./lighting-model.js?v=336"></script><script src="./equipment-release.js?v=336"></script><script>
+</script><script src="./storage-safety.js?v=406"></script><script src="./svg-engine.js?v=336"></script><script src="./data/svg-library-builtin.js?v=336"></script><script src="./data/equipment-catalog-builtin.js?v=336"></script><script src="./cable-routing.js?v=336"></script><script src="./connection-model.js?v=336"></script><script src="./selection-geometry.js?v=336"></script><script src="./polyline-editor.js?v=336"></script><script src="./lighting-model.js?v=336"></script><script src="./equipment-release.js?v=336"></script><script>
 if(typeof window.SvgLibraryBuiltin==='undefined')window.SvgLibraryBuiltin={manifest:{schemaVersion:1,version:0,symbols:[]},map:{},assets:{}};
 
 (async()=>{'use strict';
@@ -328,6 +328,8 @@ function mirrorChecksum(payload){
 let migrationStorage=null,startupHadProjectData=false;
 try{
  try{migrationStorage=window.localStorage;migrationStorage.getItem('rd_equipment_release')}catch(error){if(error?.name!=='SecurityError')throw error;migrationStorage=null}
+ // Replay a previously confirmed workspace intent before legacy migration or any editor writes.
+ await RoomStorageSafety.resumeWorkspaceRestore(await mirrorDb,migrationStorage);
  if(migrationStorage){
   const migrationRequired=migrationStorage.getItem('rd_equipment_release')!==RoomEquipment.release||migrationStorage.getItem('rd_connection_model')!==RoomConnections.version;
   const pending=['rd_pending_import','rd_pending_revision'].some(key=>migrationStorage.getItem(key)!==null);
@@ -344,7 +346,7 @@ try{
  }
 }catch(error){
  const panel=document.createElement('section');panel.setAttribute('role','alert');panel.className='equipment-migration-block';
- const message=document.createElement('p');message.textContent='جایگزینی تجهیزات متوقف شد؛ داده‌های قبلی حفظ شده‌اند. '+error.message+' — فضای ذخیره‌سازی مرورگر را بررسی کنید، سپس صفحه را باز کنید.';
+ const message=document.createElement('p');message.textContent='راه‌اندازی یا بازیابی فضای کاری متوقف شد؛ ممکن است عملیات نیمه‌کاره باشد. '+error.message+' — داده‌ها را پاک نکنید؛ ابتدا بسته بازیابی را نگه دارید.';
  const exportButton=document.createElement('button');exportButton.textContent='دریافت داده‌های در دسترس برای بازیابی';
  exportButton.onclick=async()=>{
   if(exportButton.disabled)return;exportButton.disabled=true;
@@ -352,12 +354,30 @@ try{
    const values={};let localReadFailed=false;
    try{for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(key?.startsWith('rd_'))values[key]=localStorage.getItem(key)}}catch(_){localReadFailed=true}
    const mirrorSnapshot=await readMirrorSnapshot(),mirrorArchives=await readMirrorMigrationArchives();
-   const raw=JSON.stringify({format:1,values,localReadFailed,mirrorSnapshot,mirrorReadFailed:!mirrorSnapshot,mirrorArchives,mirrorArchivesReadFailed:!mirrorArchives},null,2);
+   let workspaceAuthority=null,workspaceHistory=null;
+   try{workspaceAuthority=await RoomStorageSafety.readWorkspaceAuthority(await mirrorDb)}catch(_){}
+   try{workspaceHistory=await RoomStorageSafety.readWorkspaceHistory(await mirrorDb)}catch(_){}
+   const raw=JSON.stringify({format:1,values,localReadFailed,mirrorSnapshot,mirrorReadFailed:!mirrorSnapshot,mirrorArchives,mirrorArchivesReadFailed:!mirrorArchives,workspaceAuthority,workspaceHistory,workspaceAuthorityReadFailed:!workspaceAuthority,workspaceHistoryReadFailed:!workspaceHistory},null,2);
    const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='roomdesigner-before-migration.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
    message.textContent='درخواست دانلود داده‌های در دسترس ارسال شد. فایل و نشانگرهای خطای خواندن را بررسی کنید؛ داده‌های مرورگر را پاک نکنید.';
   }catch(_){message.textContent='تهیه بسته بازیابی ممکن نشد؛ داده‌های مرورگر را پاک نکنید.'}
   finally{exportButton.disabled=false}
- };panel.append(message,exportButton);document.body.append(panel);return;
+ };panel.append(message,exportButton);
+ const retry=document.createElement('button');retry.type='button';retry.textContent='تلاش دوباره';retry.onclick=()=>location.reload();panel.append(retry);
+ const rollback=document.createElement('button');rollback.type='button';rollback.textContent='برگشت از بازیابی معلق';rollback.hidden=true;
+ rollback.onclick=async()=>{
+  if(rollback.disabled)return;rollback.disabled=true;
+  try{
+   const db=await mirrorDb,control=await RoomStorageSafety.readWorkspaceControl(db);
+   if(!control.intent)throw Error('Journal معلق موجود نیست');
+   if(!confirm('آیا بسته بازیابی را خارج از مرورگر نگه داشته‌اید و می‌خواهید عملیات معلق به وضعیت پیش از بازیابی برگردد؟'))return;
+   await RoomStorageSafety.requestWorkspaceRollback(db,control.intent);location.reload();
+  }catch(e){message.textContent='ثبت درخواست برگشت ناموفق بود: '+String(e?.message||e)}
+  finally{rollback.disabled=false}
+ };
+ panel.append(rollback);document.body.append(panel);
+ try{const control=await RoomStorageSafety.readWorkspaceControl(await mirrorDb);rollback.hidden=!control.intent}catch(_){}
+ return;
 }
 // iOS Files/Quick Look and sandboxed file:// previews may disallow localStorage.
 // Degrade gracefully to volatile in-memory storage instead of aborting initialization.
@@ -525,14 +545,14 @@ async function hasMirrorMigrationArchives(){
   }catch(_){try{tx?.abort()}catch(_){}resolve(null)}
  })
 }
-async function readMirrorMigrationArchives(){
+async function readMirrorMigrationArchives(limit=Infinity){
  const db=await mirrorDb;if(!db)return null;
  return new Promise(resolve=>{
   let tx;
   try{
-   tx=db.transaction('backups','readonly');const result=[],req=tx.objectStore('backups').openCursor();
+   tx=db.transaction('backups','readonly');const result=[],req=tx.objectStore('backups').openCursor();let total=0;
    tx.oncomplete=()=>resolve(result);tx.onabort=()=>resolve(null);tx.onerror=()=>resolve(null);
-   req.onsuccess=()=>{try{const cursor=req.result;if(!cursor)return;if(mirrorMigrationArchiveKey(cursor.key))result.push({key:cursor.key,value:cursor.value});cursor.continue()}catch(_){tx.abort()}};
+   req.onsuccess=()=>{try{const cursor=req.result;if(!cursor)return;if(mirrorMigrationArchiveKey(cursor.key)){const entry={key:cursor.key,value:cursor.value};if(Number.isFinite(limit)){total+=JSON.stringify(entry).length;if(total>limit){tx.abort();return}}result.push(entry)}cursor.continue()}catch(_){tx.abort()}};
   }catch(_){try{tx?.abort()}catch(_){}resolve(null)}
  })
 }
@@ -3275,6 +3295,192 @@ async function showArchiveRestore(){
   preview()
  }catch(error){notify('خواندن فهرست آرشیو ناموفق بود: '+String(error?.message||error))}
 }
+// V406 Recovery Center: one transactional checkpoint for the managed workspace.
+// The legacy editor remains LocalStorage-compatible; only explicitly committed checkpoints/restore intents are authoritative here.
+function captureWorkspaceForRecovery(){
+ const state=captureArchiveRestoreState(),storage=window.localStorage;
+ const values=RoomStorageSafety.captureWorkspace(storage);
+ if(RoomStorageSafety.workspaceKeys.some(k=>volatileStorageKeys.has(k)||safeStorage.getItem(k)!==values[k]))throw Error('اطلاعات موقت یا ذخیره ناموفق وجود دارد؛ ابتدا ذخیره را تکمیل کنید');
+ const hasDrawing=doc.devices.length||doc.cables.length||(doc.walls||[]).length||doc.revisions?.length;
+ if(values.rd_last!==state.raw&&(values.rd_last!==null||hasDrawing))throw Error('نقشه فعال با نسخه پایدار یکسان نیست؛ ابتدا آن را ذخیره کنید');
+ return {state,values,record:RoomStorageSafety.makeWorkspaceRecord(values,uid())}
+}
+function workspaceCaptureUnchanged(capture){
+ if(!archiveRestoreStateUnchanged(capture.state))return false;
+ try{return RoomStorageSafety.workspaceEqual(capture.values,RoomStorageSafety.captureWorkspace(window.localStorage))}catch(_){return false}
+}
+function parseWorkspaceData(raw,fallback,label){
+ if(raw===null)return fallback;
+ try{return JSON.parse(raw,(key,value)=>{if(['__proto__','prototype','constructor'].includes(key))throw Error('unsafe key');return value})}
+ catch(_){throw Error('ساختار داده '+label+' معتبر نیست')}
+}
+function validateWorkspaceRestoreTarget(input){
+ const record=RoomStorageSafety.validateWorkspaceRecord(input),v=record.values;
+ const object=x=>x!==null&&typeof x==='object'&&!Array.isArray(x),bad=m=>{throw Error('بازیابی فضای کاری: '+m)};
+ if(v.rd_connection_model!==RoomConnections.version||v.rd_equipment_release!==RoomEquipment.release)bad('نسخه مدل قدیمی است؛ از بازیابی مستقل نقشه استفاده کنید');
+ const drawing=parseWorkspaceData(v.rd_last,null,'نقشه فعال'),saved=parseWorkspaceData(v.rd_profiles,{},'پروژه‌ها');
+ const archivedTypes=parseWorkspaceData(v.rd_types,defaults,'انواع ارتباط'),archivedCatalog=parseWorkspaceData(v.rd_catalog,[],'کاتالوگ');
+ const drafts=parseWorkspaceData(v.rd_svg_drafts,{symbols:[],assets:{},map:{}},'نمادها');
+ const shortcuts=parseWorkspaceData(v.rd_shortcuts,[],'شورتکات‌ها'),archivedUsers=parseWorkspaceData(v.rd_users,[],'کاربران');
+ const order=parseWorkspaceData(v.rd_toolbox_order_v133,null,'چیدمان ابزارها'),dock=parseWorkspaceData(v.rd_workspace_dock_v1,null,'چیدمان پنل‌ها');
+ if(!object(drawing)||!object(saved)||Object.keys(saved).length>1000||!object(archivedTypes)||!Array.isArray(archivedCatalog)||!Array.isArray(shortcuts)||shortcuts.length>1000||!Array.isArray(archivedUsers)||archivedUsers.some(x=>typeof x!=='string'||x.length>1000))bad('ساختار اصلی نامعتبر است');
+ if(v.rd_active_user!==null&&v.rd_active_user!==''&&!archivedUsers.includes(v.rd_active_user))bad('کاربر فعال در فهرست کاربران نیست');
+ if(v.rd_save_generation!==null&&(!/^\d+$/.test(v.rd_save_generation)||!Number.isSafeInteger(Number(v.rd_save_generation))))bad('نسل ذخیره نامعتبر است');
+ if(order!==null&&(!object(order)||!Array.isArray(order.sections)||order.sections.some(x=>typeof x!=='string')||!object(order.items)||Object.values(order.items).some(x=>!Array.isArray(x)||x.some(y=>typeof y!=='string'))))bad('چیدمان ابزارها نامعتبر است');
+ if(dock!==null&&(!object(dock)||['tools','layers'].some(k=>dock[k]!=null&&!['pinned','auto','closed'].includes(dock[k]))||['width','propertyWidth','split'].some(k=>dock[k]!=null&&!Number.isFinite(dock[k]))))bad('چیدمان پنل‌ها نامعتبر است');
+ if(!object(drafts)||!Array.isArray(drafts.symbols)||!object(drafts.assets)||!object(drafts.map)||drafts.symbols.length>1000||Object.keys(drafts.assets).length>1000)bad('کتابخانه SVG نامعتبر است');
+ const validId=id=>typeof id==='string'&&/^[a-zA-Z0-9_-]{1,128}$/.test(id);
+ const ids=new Set();
+ for(const entry of drafts.symbols){
+  if(!object(entry)||!validId(entry.id)||ids.has(entry.id)||typeof entry.name!=='string'||typeof entry.category!=='string'||!Object.hasOwn(drafts.assets,entry.id)||entry.filePath!=null&&(typeof entry.filePath!=='string'||!/^assets\/svg\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.svg$/.test(entry.filePath)))bad('تعریف نماد نامعتبر است');
+  ids.add(entry.id);
+ }
+ for(const [id,raw] of Object.entries(drafts.assets))if(!validId(id)||typeof raw!=='string'||raw.length>250000||!svgArtwork(raw))bad('SVG نامعتبر: '+id);
+ const resolve=id=>{
+  const key=EquipmentCatalogBuiltin.iconAliases?.[id]||id;
+  return Object.hasOwn(drafts.assets,key)?drafts.assets[key]:svgLibrary.assets[key]||SvgLibraryBuiltin.assets[key]
+ };
+ for(const [type,id] of Object.entries(drafts.map))if(typeof type!=='string'||id!==null&&(!validId(id)||!svgArtwork(resolve(id))))bad('ارجاع کتابخانه SVG نامعتبر است');
+ const inventory=d=>[d.devices.length,d.cables.length,(d.walls||[]).length,...(d.revisions||[]).flatMap(r=>inventory(r.snapshot))].join(',');
+ function validateDrawing(value,checkId){
+  if(!object(value)||value.connectionModel!==RoomConnections.version||checkId&&typeof value.id!=='string')bad('نسخه یا شناسه نقشه معتبر نیست');
+  const inputDoc=structuredClone(value);
+  const candidate=prepareRoomImport({doc:inputDoc,types:structuredClone(archivedTypes),catalog:structuredClone(archivedCatalog)});
+  if(inventory(value)!==inventory(candidate.doc))bad('تبدیل باعث حذف عناصر یا Revisionها می‌شود');
+  // Existing import validates all geometry/revisions; verify historical SVG references separately.
+  for(const id of roomSvgReferenceIds(value,archivedCatalog))if(!validId(id)||!svgArtwork(resolve(id)))bad('منبع SVG تاریخی یافت نشد: '+id);
+  const walk=node=>{
+   if(!node||typeof node!=='object')return;
+   for(const [key,x] of Object.entries(node)){
+    if((key==='svg'||key==='svgOriginal')&&x!=null&&(typeof x!=='string'||x&&!svgArtwork(x)))bad('SVG در نقشه یا کاتالوگ نامعتبر است');
+    if(x&&typeof x==='object')walk(x)
+   }
+  };
+  walk(value);walk(archivedCatalog)
+ }
+ validateDrawing(drawing,true);
+ for(const [id,value] of Object.entries(saved)){if(value?.id!==id)bad('شناسه پروژه ذخیره‌شده ناسازگار است');validateDrawing(value,true)}
+ for(const shortcut of shortcuts){
+  if(!object(shortcut)||typeof shortcut.id!=='string'||typeof shortcut.name!=='string'||!object(shortcut.data))bad('شورتکات نامعتبر است');
+  validateDrawing(shortcut.data,false)
+ }
+ return {record,summary:{name:String(drawing.name||drawing.id||'بدون نام'),profiles:Object.keys(saved).length,shortcuts:shortcuts.length,symbols:drafts.symbols.length,users:archivedUsers.length}}
+}
+async function exportWorkspacePackage(capture,authority,includeHistory=false){
+ const db=await mirrorDb;let history=null,mirrorArchives=null,localArchives=null;
+ if(includeHistory){
+  try{history=await RoomStorageSafety.readWorkspaceHistory(db)}catch(_){}
+  try{mirrorArchives=await readMirrorMigrationArchives(32000000)}catch(_){}
+  try{localArchives=RoomStorageSafety.migrationArchiveEntries(window.localStorage)}catch(_){}
+ }
+ if(!workspaceCaptureUnchanged(capture))throw Error('فضای کاری تغییر کرد؛ خروجی را دوباره تهیه کنید');
+ const body={format:'roomdesigner-disaster-recovery/v1',exportedAt:new Date().toISOString(),workspace:capture.record,authority,history,mirrorArchives,localArchives,historyIncluded:includeHistory,readFailures:{authority:authority===null,history:includeHistory&&history===null,mirrorArchives:includeHistory&&mirrorArchives===null,localArchives:includeHistory&&localArchives===null}};
+ if(Object.values(body.readFailures).some(Boolean)&&!confirm('بعضی بخش‌های پشتیبان قابل خواندن نیستند. خروجی فقط شامل داده‌های در دسترس است. ادامه می‌دهید؟'))return false;
+ const raw=JSON.stringify(body);
+ if(raw.length>64000000)throw Error('حجم بسته از سقف امن بیشتر است؛ آرشیوها را جداگانه صادر کنید');
+ return file(raw,'roomdesigner-workspace-'+Date.now()+'.json')
+}
+async function restoreWorkspaceRecord(input){
+ try{
+  const db=await mirrorDb;if(!db)throw Error('برای بازیابی تراکنشی IndexedDB لازم است');
+  const decoded=validateWorkspaceRestoreTarget(input),capture=captureWorkspaceForRecovery(),authority=await RoomStorageSafety.readWorkspaceAuthority(db);
+  if(authority.intent!==null||!workspaceCaptureUnchanged(capture))throw Error('فضای کاری در حال تغییر یا بازیابی است');
+  const info=decoded.summary;
+  if(!confirm('بازیابی کل فضای کاری انتخابی: '+info.name+'\nپروژه‌ها: '+info.profiles+' | شورتکات‌ها: '+info.shortcuts+' | نمادها: '+info.symbols+' | کاربران: '+info.users+'\n۱۳ کلید مدیریت‌شده فضای کاری جایگزین می‌شوند؛ آرشیوهای قبلی و داده‌های خارج از این دامنه حذف نمی‌شوند. ابتدا پشتیبان وضعیت فعلی صادر شود؟'))return;
+  const outcome=await exportWorkspacePackage(capture,authority,false);
+  if(outcome!==true&&outcome!=='requested')return;
+  if(!confirm('آیا فایل پشتیبان قبلی را واقعاً خارج از مرورگر ذخیره و بررسی کرده‌اید؟ پس از تأیید، بازیابی در راه‌اندازی بعدی انجام می‌شود.'))return;
+  if(!workspaceCaptureUnchanged(capture))throw Error('داده‌ها پس از خروجی تغییر کردند');
+  // Modal interaction and storage guards prevent normal editor writes during durable intent creation.
+  const panel=document.createElement('dialog');panel.style.cssText='padding:20px;background:#26374a;color:white';
+  panel.textContent='ثبت Journal پایدار بازیابی…';panel.addEventListener('cancel',e=>e.preventDefault());
+  const inerted=[];for(const child of document.body.children){if(!child.inert){child.inert=true;inerted.push(child)}}
+  const blockKeys=e=>{e.preventDefault();e.stopImmediatePropagation()};
+  window.addEventListener('keydown',blockKeys,true);
+  document.body.append(panel);safeStorage.crossStoreWriteBlocked=true;
+  let staged=false;
+  try{
+   if(typeof panel.showModal==='function')panel.showModal();else panel.setAttribute('open','');
+   await RoomStorageSafety.stageWorkspaceRestore(db,capture.record,decoded.record,authority,uid());staged=true;
+   location.reload()
+  }finally{
+   if(!staged){safeStorage.crossStoreWriteBlocked=false;window.removeEventListener('keydown',blockKeys,true);panel.remove();for(const child of inerted)child.inert=false}
+  }
+ }catch(error){notify('بازیابی فضای کاری آغاز نشد: '+String(error?.message||error))}
+}
+async function showWorkspaceRecovery(){
+ const db=await mirrorDb;
+ sheet('Disaster Recovery — فضای کاری','<p>مرجع پشتیبان فضای کاری یک رکورد تراکنشی IndexedDB است. ذخیره معمول نقشه در این نسخه همچنان سازگار با LocalStorage است.</p><p id="rdWorkspaceCapacity" style="white-space:pre-wrap"></p><button id="rdWorkspaceCheckpoint" type="button">ثبت نقطه بازیابی تراکنشی</button><button id="rdWorkspaceExport" type="button">خروجی فضای کاری</button><button id="rdWorkspaceExportAll" type="button">خروجی همراه آرشیوها</button><button id="rdWorkspaceRestore" type="button">بازیابی نقطه ثبت‌شده</button><button id="rdWorkspaceImport" type="button">بازیابی فایل پشتیبان</button><button id="rdWorkspaceHistory" type="button">مدیریت آرشیوهای فضای کاری</button><input id="rdWorkspaceFile" type="file" accept=".json,application/json" hidden>');
+ const info=$('rdWorkspaceCapacity'),checkpoint=$('rdWorkspaceCheckpoint'),restore=$('rdWorkspaceRestore'),exportOne=$('rdWorkspaceExport'),exportAll=$('rdWorkspaceExportAll'),importButton=$('rdWorkspaceImport'),historyButton=$('rdWorkspaceHistory'),input=$('rdWorkspaceFile'),buttons=[checkpoint,restore,exportOne,exportAll,importButton,historyButton];
+ let busy=false;
+ const withLock=async fn=>{if(busy)return;busy=true;buttons.forEach(b=>b.disabled=true);try{await fn()}catch(error){notify('عملیات بازیابی: '+String(error?.message||error))}finally{busy=false;if(info.isConnected){buttons.forEach(b=>b.disabled=false);checkpoint.disabled=restore.disabled=importButton.disabled=historyButton.disabled=!db;refresh().catch(()=>{})}}};
+ async function refresh(){
+  let lines=[];
+  try{
+   const storage=window.localStorage;let units=0,archiveUnits=0,count=0;
+   for(let i=0;i<storage.length;i++){const k=storage.key(i),v=storage.getItem(k);if(k?.startsWith('rd_')){const size=2*(k.length+(v?.length||0));units+=size;if(k===RoomStorageSafety.archiveKey||k.startsWith(RoomStorageSafety.archiveKey+':')){archiveUnits+=size;count++}}}
+   lines.push('LocalStorage برنامه (برآورد UTF-16): '+(units/1048576).toFixed(2)+' MiB','آرشیو محلی: '+count+' | '+(archiveUnits/1048576).toFixed(2)+' MiB');
+  }catch(_){lines.push('خواندن ظرفیت محلی ممکن نیست')}
+  try{const est=await navigator.storage?.estimate?.();if(Number.isFinite(est?.usage)&&Number.isFinite(est?.quota)&&est.quota>0)lines.push('مصرف کل Origin: '+(est.usage/1048576).toFixed(1)+' / '+(est.quota/1048576).toFixed(1)+' MiB'+(est.usage/est.quota>=.8?' — هشدار ظرفیت':'') );else lines.push('برآورد ظرفیت Origin در دسترس نیست')}catch(_){lines.push('برآورد ظرفیت Origin در دسترس نیست')}
+  try{const a=await RoomStorageSafety.readWorkspaceAuthority(db);lines.push(a.checkpoint?'آخرین نقطه ثبت‌شده: '+String(a.checkpoint.createdAt):'نقطه تراکنشی هنوز ثبت نشده است',a.intent?'Journal بازیابی معلق است':'Journal فضای کاری معلق نیست')}catch(_){lines.push('مرجع IndexedDB قابل خواندن نیست')}
+  lines.push('سقف داده خام هر نقطه: ۱۲ میلیون کاراکتر؛ سقف بسته خروجی: ۶۴ میلیون کاراکتر. هیچ آرشیوی خودکار حذف نمی‌شود.');
+  info.textContent=lines.join('\n')
+ }
+ checkpoint.disabled=restore.disabled=importButton.disabled=historyButton.disabled=!db;
+ checkpoint.onclick=()=>withLock(async()=>{
+  const capture=captureWorkspaceForRecovery(),authority=await RoomStorageSafety.readWorkspaceAuthority(db);
+  if(!workspaceCaptureUnchanged(capture)||capture.values.rd_last===null||authority.mirror!==capture.values.rd_last)throw Error('نقشه محلی و آینه همسان نیستند؛ ابتدا ذخیره پایدار انجام دهید');
+  validateWorkspaceRestoreTarget(capture.record);
+  await RoomStorageSafety.writeWorkspaceCheckpoint(db,capture.record,authority);
+  if(!workspaceCaptureUnchanged(capture))notify('نقطه نسخه قبلی ثبت شد؛ فضای کاری پس از آن تغییر کرده است');else notify('نقطه تراکنشی فضای کاری ثبت شد')
+ });
+ const runExport=includeHistory=>withLock(async()=>{const capture=captureWorkspaceForRecovery();let authority=null;try{authority=await RoomStorageSafety.readWorkspaceAuthority(db)}catch(_){}await exportWorkspacePackage(capture,authority,includeHistory)});
+ exportOne.onclick=()=>runExport(false);exportAll.onclick=()=>runExport(true);
+ restore.onclick=()=>withLock(async()=>{const authority=await RoomStorageSafety.readWorkspaceAuthority(db);if(!authority.checkpoint)throw Error('نقطه ثبت‌شده وجود ندارد');await restoreWorkspaceRecord(authority.checkpoint)});
+ historyButton.onclick=()=>showWorkspaceHistory().catch(error=>notify('آرشیو فضای کاری: '+String(error?.message||error)));
+ importButton.onclick=()=>input.click();
+ input.onchange=()=>withLock(async()=>{const selected=input.files?.[0];if(!selected)return;try{if(selected.size>128*1024*1024)throw Error('حجم فایل بیش از سقف امن است');const data=JSON.parse(await selected.text());if(data?.format!=='roomdesigner-disaster-recovery/v1')throw Error('فرمت بسته بازیابی معتبر نیست');await restoreWorkspaceRecord(data.workspace)}finally{input.value=''}});
+ await refresh()
+}
+async function showWorkspaceHistory(){
+ const db=await mirrorDb,keys=await RoomStorageSafety.readWorkspaceHistory(db,0,true);
+ sheet('مدیریت آرشیوهای فضای کاری','<p>فقط آرشیو تاریخی انتخابی قابل پاک‌سازی است؛ نقطه جاری و Journal معلق هیچ‌گاه حذف نمی‌شوند.</p><select id="rdWorkspaceHistoryKey" style="width:100%"></select><p id="rdWorkspaceHistoryInfo" style="white-space:pre-wrap"></p><button id="rdWorkspaceHistoryExport" type="button">خروجی آرشیو</button><button id="rdWorkspaceHistoryRestore" type="button">بازیابی نسخه انتخابی</button><select id="rdWorkspaceHistoryPart"><option value="before">نسخه قبل از عملیات / نقطه تاریخی</option><option value="target">هدف عملیات بازیابی</option><option value="priorCheckpoint">نقطه تراکنشی قبلی</option></select><button id="rdWorkspaceHistoryPrune" type="button">خروجی قطعی و آزادسازی همین آرشیو</button><button id="rdWorkspaceHistoryBack" type="button">بازگشت</button>');
+ const select=$('rdWorkspaceHistoryKey'),info=$('rdWorkspaceHistoryInfo'),part=$('rdWorkspaceHistoryPart'),output=$('rdWorkspaceHistoryExport'),restore=$('rdWorkspaceHistoryRestore'),prune=$('rdWorkspaceHistoryPrune'),back=$('rdWorkspaceHistoryBack');
+ const controls=[select,part,output,restore,prune,back];
+ for(const key of keys){const option=document.createElement('option');option.value=key;option.textContent=key;select.append(option)}
+ back.onclick=()=>showWorkspaceRecovery().catch(error=>notify(String(error?.message||error)));
+ if(!keys.length){info.textContent='آرشیو تاریخی موجود نیست.';output.disabled=restore.disabled=prune.disabled=true;return}
+ let busy=false;
+ const run=async action=>{
+  if(busy||!select.value)return;
+  busy=true;controls.forEach(x=>x.disabled=true);
+  try{
+   const key=select.value,value=await RoomStorageSafety.readWorkspaceHistoryEntry(db,key);
+   if(value===null)throw Error('آرشیو دیگر در دسترس نیست');
+   await action(key,value)
+  }catch(error){notify('مدیریت آرشیو: '+String(error?.message||error))}
+  finally{busy=false;controls.forEach(x=>x.disabled=false)}
+ };
+ const preview=()=>run(async(key,value)=>{info.textContent='اندازه تقریبی JSON: '+(JSON.stringify(value).length*2/1048576).toFixed(2)+' MiB (UTF-16)\n'+String(value.createdAt||value.before?.createdAt||'تاریخ ثبت نشده')});
+ select.onchange=preview;
+ const chosenRecord=value=>value.format==='roomdesigner-workspace/v1'?value:value[part.value];
+ const exportRecord=(key,value)=>file(JSON.stringify({format:'roomdesigner-disaster-recovery/v1',exportedAt:new Date().toISOString(),workspace:chosenRecord(value)??null,archivedRecord:{key,value}}),'roomdesigner-history-'+Date.now()+'.json');
+ output.onclick=()=>run(async(key,value)=>{await exportRecord(key,value)});
+ restore.onclick=()=>run(async(key,value)=>{const record=chosenRecord(value);if(!record)throw Error('نسخه انتخابی در این آرشیو وجود ندارد');await restoreWorkspaceRecord(record)});
+ prune.onclick=()=>run(async(key,value)=>{
+  if(!confirm('فقط آرشیو تاریخی '+key+' پس از خروجی قطعی و تأیید شما حذف خواهد شد. ادامه می‌دهید؟'))return;
+  const outcome=await exportRecord(key,value);
+  if(outcome!==true){notify('نوشتن قطعی فایل تأیید نشد؛ آرشیو حذف نشد');return}
+  if(!confirm('آیا فایل آرشیو را در محل امن بررسی و نگهداری کرده‌اید؟ حذف همین آرشیو تاریخی را تأیید می‌کنید؟'))return;
+  await RoomStorageSafety.removeExportedWorkspaceHistory(db,key,value);notify('فقط آرشیو تاریخی انتخاب‌شده پس از خروجی حذف شد');
+  await showWorkspaceHistory()
+ });
+ await preview()
+}
+function offerWorkspaceRecovery(){
+ const button=document.createElement('button');button.type='button';button.id='workspaceRecoveryButton';button.textContent='بازیابی فضای کاری';button.style.cssText='position:fixed;bottom:165px;left:12px;z-index:90;padding:8px';
+ button.onclick=()=>showWorkspaceRecovery().catch(error=>notify('مرکز بازیابی: '+String(error?.message||error)));document.body.append(button)
+}
 async function offerMigrationArchive(){
  const readArchives=()=>{try{return RoomStorageSafety.migrationArchiveEntries(window.localStorage)}catch(_){return null}};
  const initialLocal=readArchives(),hasMirror=await hasMirrorMigrationArchives();
@@ -3673,6 +3879,7 @@ setupDesktopWorkspace();
 positionWorkspaceView(true);render();
 window.__roomStartupReady=true;
 offerMigrationArchive().catch(error=>notify('بررسی آرشیوهای بازیابی ناموفق بود: '+String(error?.message||error)));
+offerWorkspaceRecovery();
 loadPublishedSvgLibrary();
 
 })();</script></body></html>

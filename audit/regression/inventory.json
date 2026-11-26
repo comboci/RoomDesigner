@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "415133c4c06a0cc3f9d989a197c451b6e10daac2",
+      "blob_sha": "13697b52782f81e8c4cf3a1c70921ca1f7a46775",
       "mode": "100644",
-      "bytes": 18974,
-      "lines": 195,
+      "bytes": 19826,
+      "lines": 197,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3866,6 +3866,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/rd-a01-a03-v406-2026-11-26.md",
+      "blob_sha": "4127433ea81a6f3d87a105ee90737c719a2b5392",
+      "mode": "100644",
+      "bytes": 5194,
+      "lines": 27,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/professional-audit/rd-a02-v402-2026-11-26.md",
       "blob_sha": "64058071e2cf71456c2b5303cc24f237150581b9",
       "mode": "100644",
@@ -4020,10 +4029,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "87fd50bb190267ea2747b303c39507e3e710a787",
+      "blob_sha": "f1a4025a074a0b9d39cd4bb2460334a2a69b0146",
       "mode": "100644",
-      "bytes": 610912,
-      "lines": 3678,
+      "bytes": 634073,
+      "lines": 3885,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4038,7 +4047,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "048860be76cd7bd7516fb29725b3a11ceb86c22c",
+      "blob_sha": "0fb33bc7a2bdd8f5df0b107ce7b9d81a66f61505",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4047,7 +4056,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "3f22f8fcc8ebd528c31c9d8a0609a03bf7d5af08",
+      "blob_sha": "0483ff39fe021bcc80e548b6c9b29f45b5715786",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4065,10 +4074,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "aabd0d1fc2bd74ec98ec07182bf322208ef41a3c",
+      "blob_sha": "912c67cc394fb41f0be56a3706c4742dd1fd2928",
       "mode": "100644",
-      "bytes": 839275,
-      "lines": 12300,
+      "bytes": 845313,
+      "lines": 12350,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4083,10 +4092,10 @@
     },
     {
       "path": "storage-safety.js",
-      "blob_sha": "46bc1b389e4d6bdfc27424f36a047134b49af9ea",
+      "blob_sha": "d9020737b52f824ddcf3e99d1f2255e9cda96131",
       "mode": "100644",
-      "bytes": 2907,
-      "lines": 45,
+      "bytes": 17114,
+      "lines": 218,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -5383,6 +5392,15 @@
       "mode": "100644",
       "bytes": 8713,
       "lines": 55,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/workspace-recovery-v406.test.cjs",
+      "blob_sha": "9cd4173c13883feca6a54d5e9a69e4dca32cfdd3",
+      "mode": "100644",
+      "bytes": 8535,
+      "lines": 105,
       "category": "test_source_static_only",
       "binary": false
     },
