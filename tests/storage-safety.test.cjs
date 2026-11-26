@@ -3,12 +3,19 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {extractFunction}=require('./source-harness.cjs');
 const c=vm.createContext({});vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../storage-safety.js'),'utf8'),c);const safety=c.RoomStorageSafety;
 function storage(seed){const values=new Map(Object.entries(seed));return {values,get length(){return values.size},key:i=>[...values.keys()][i],getItem:k=>values.get(k)??null,setItem:(k,v)=>values.set(k,String(v))}}
-test('migration archive preserves every original byte including corrupt data and old backups; retry is immutable',()=>{
+test('migration archives preserve every original byte, retain changed snapshots and deduplicate identical retries',()=>{
  const seed={rd_last:'{broken',rd_profiles:'projects',rd_svg_drafts:'draft',rd_equipment_backup_old:'backup',other:'keep'},s=storage(seed);
  assert.equal(safety.preserveMigration(s,'new','physical'),true);const saved=s.getItem(safety.archiveKey),bundle=JSON.parse(saved);
  for(const [key,value]of Object.entries(seed))assert.equal(s.getItem(key),value);
  assert.deepEqual(bundle.values,{rd_last:'{broken',rd_profiles:'projects',rd_svg_drafts:'draft',rd_equipment_backup_old:'backup'});
- s.setItem('rd_last','migrated');assert.equal(safety.preserveMigration(s,'new','physical'),false);assert.equal(s.getItem(safety.archiveKey),saved);
+ assert.equal(safety.preserveMigration(s,'new','physical'),false);
+ s.setItem('rd_last','migrated');assert.equal(safety.preserveMigration(s,'new','physical'),true);assert.equal(s.getItem(safety.archiveKey),saved);
+ const archives=safety.migrationArchiveEntries(s);assert.equal(archives.length,2);
+ const next=JSON.parse(archives[1].raw);assert.equal(next.values.rd_last,'migrated');
+ assert.equal(Object.keys(next.values).some(k=>k.startsWith(safety.archiveKey)),false);
+ assert.equal(safety.preserveMigration(s,'new','physical'),false);
+ s.setItem('rd_last','later');assert.equal(safety.preserveMigration(s,'next','physical'),true);
+ assert.equal(safety.migrationArchiveEntries(s).length,3);assert.equal(s.getItem(safety.archiveKey),saved);
 });
 test('quota failure occurs before legacy values or version markers change',()=>{
  const s=storage({rd_last:'drawing'});s.setItem=()=>{throw Error('quota')};assert.throws(()=>safety.preserveMigration(s,'new','physical'),/quota/);assert.deepEqual([...s.values],[['rd_last','drawing']]);
@@ -31,4 +38,12 @@ test('revision captures and restores page layout, display flags and independent 
 });
 test('Undo retains the newest state while pruning memory-heavy older entries',()=>{
  const trim=vm.runInNewContext(extractFunction('trimHistory')+';trimHistory');const stack=Array.from({length:40},()=> 'x'.repeat(1024*1024));trim(stack);assert.equal(stack.length,16);const newest=stack.at(-1);assert.equal(newest.length,1024*1024);
+});
+
+test('quota failure during a subsequent migration retains both original archive and current data',()=>{
+ const s=storage({rd_last:'initial'});safety.preserveMigration(s,'new','physical');const old=s.getItem(safety.archiveKey);
+ s.setItem('rd_last','current');s.setItem=()=>{throw Error('quota')};
+ assert.throws(()=>safety.preserveMigration(s,'next','physical'),/quota/);
+ assert.equal(s.getItem(safety.archiveKey),old);assert.equal(s.getItem('rd_last'),'current');
+ assert.equal(safety.migrationArchiveEntries(s).length,1);
 });

@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_RD_A02_PROFESSIONAL_AUDIT_SOURCE_REMEDIATION",
+  "execution_source": "USER_RD_A01_A03_PROFESSIONAL_AUDIT_SOURCE_REMEDIATION",
   "execution_timestamp": "2026-11-26",
-  "source_head": "c28dc740a8b5ee0e50c806218527520990733598",
+  "source_head": "6b71755d96ef2f7e9cae78cb5a60d01db944d4cf",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V402-R",
+  "product_release": "V403-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "427bcd7be477f4d02dd2f99a9c87bad6fd126e8a",
+  "inventory_blob_sha": "d721a710b24f19b83a3e0dbd2bd7861e28d08f74",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "RD-A02 focused static source fix; pre-render gate and external backup acknowledgment. Test/Build/Browser NOT_RUN. Full cross-store authority remains OPEN; no full sequential coverage credit.",
+  "coverage_note": "RD-A01/A03 partial focused static fixes: absent-local recovery before render, read-failure guard, per-distinct-state immutable migration archives. Five new regression scenarios authored NOT_RUN; OPEN-CROSS-STORE remains open; no sequential coverage credit.",
   "segments": [
     {
       "path": "index.html",
@@ -30,7 +30,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -48,7 +48,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -70,7 +70,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -90,7 +90,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -108,7 +108,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_NO_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -142,7 +142,7 @@
       "truncated": false,
       "historical_status": "REVIEWED_WITH_FINDING",
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -160,7 +160,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -179,7 +179,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -201,7 +201,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -223,7 +223,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -246,7 +246,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -266,7 +266,7 @@
       "truncated": false,
       "coverage_valid": false,
       "historical_status": "REVIEWED_WITH_FINDING",
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage.",
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage.",
       "stale": true
     },
     {
@@ -393,7 +393,7 @@
       "truncated": false,
       "coverage_valid": false,
       "stale": true,
-      "invalidation_reason": "V389-R current blob mismatch; old review remains historical."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "storage-safety.js",
@@ -402,11 +402,15 @@
       "actual_read_end_line": 30,
       "reviewed_start_line": 1,
       "reviewed_end_line": 30,
-      "status": "REVIEWED_NO_FINDING",
+      "status": "STALE_BLOB",
       "findings": [],
       "reviewed_at": "2026-11-09T04:14:59Z",
       "source_head": "b3a07a9373981774c142878340891d20c6512273",
-      "truncated": false
+      "truncated": false,
+      "historical_status": "REVIEWED_NO_FINDING",
+      "coverage_valid": false,
+      "stale": true,
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -426,7 +430,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "assets/dxf-import.js",
@@ -466,7 +470,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -486,7 +490,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -506,7 +510,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -526,7 +530,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -546,7 +550,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -566,7 +570,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -586,7 +590,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -606,7 +610,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "assets/pdf-import.js",
@@ -646,7 +650,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -666,7 +670,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "tests/pdf-resource-budget.test.cjs",
@@ -758,7 +762,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -778,7 +782,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -798,7 +802,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "index.html",
@@ -818,7 +822,7 @@
       "historical_status": "REVIEWED_WITH_FINDING",
       "stale": true,
       "coverage_valid": false,
-      "invalidation_reason": "V402-R changed blob; current blob UNREAD for sequential coverage."
+      "invalidation_reason": "V403-R changed blob; current blob UNREAD for sequential coverage."
     },
     {
       "path": "assets/dxf-encoding.js",
@@ -1373,6 +1377,22 @@
       "root_cause": "V401 valid-divergence warning was nonblocking and scheduled after render; autosave could overwrite the unreviewed mirror.",
       "correction": "Pre-render startup gate, local/mirror write guards, dual-copy export and explicit local continuation with fresh checks.",
       "verification": "Three static source regression contracts authored NOT_RUN. No tests/build/browser execution. OPEN-CROSS-STORE remains open."
+    },
+    {
+      "id": "RD403-A01-STARTUP-RECOVERY-RACE",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html; tests/mirror-startup-precedence.test.cjs; tests/cross-store-write-gate.test.cjs",
+      "root_cause": "Absent local document recovery happened asynchronously after first render, which may schedule autosave before recovery finishes.",
+      "correction": "Await mirror recovery before first render; distinguish failed read with open DB; require explicit raw backup and acknowledgment before continuing fresh after failed recovery.",
+      "verification": "Source only, regression scenarios NOT_RUN; OPEN-CROSS-STORE remains open."
+    },
+    {
+      "id": "RD403-A03-MIGRATION-ARCHIVE-RETENTION",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "storage-safety.js; index.html; tests/storage-safety.test.cjs",
+      "root_cause": "Existing first migration archive prevented archiving different later pre-migration bytes.",
+      "correction": "Immutable additional archives for distinct key/value snapshots, exact retry deduplication and all-archive export; quota failure stops migration.",
+      "verification": "Source only, regression scenarios NOT_RUN; IDB archive retention and complete restore workflow remain open."
     }
   ],
   "last_completed_segment": {
@@ -1384,11 +1404,11 @@
   },
   "next_segment": {
     "path": "index.html",
-    "blob_sha": "cd1d8063f93b6b484241d40e9dae46db9e216b75",
+    "blob_sha": "57c3024a5943d95dbf034338fa2a97316b3b8630",
     "start_line": 1,
     "end_line": 200,
     "status": "UNREAD",
-    "reason": "V402-R changed index blob; focused remediation not credited as sequential coverage."
+    "reason": "V403-R changed index blob; focused remediation not credited as sequential coverage."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1397,7 +1417,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "RD-A02 focused source remediation; three static contracts authored NOT_RUN; OPEN-CROSS-STORE unresolved.",
+    "static_diff": "Partial RD-A01/A03 source corrections, five new scenarios authored NOT_RUN, OPEN-CROSS-STORE unresolved.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1414,11 +1434,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned Git base inventory plus exact newly created Git blobs; no product/test code execution",
-    "baseline_head": "c28dc740a8b5ee0e50c806218527520990733598",
-    "entries": 598,
+    "method": "Pinned Git base inventory plus exact new Git blobs; no product/test execution",
+    "baseline_head": "6b71755d96ef2f7e9cae78cb5a60d01db944d4cf",
+    "entries": 599,
     "no_product_execution": true,
-    "notes": "V402-R source, regression contracts, audit, release ledger, manifest and checkpoint in one tree."
+    "notes": "V403-R source, regression contracts, audit, ledger, manifest and checkpoint in one tree."
   },
   "branch_review": {
     "branches": [
@@ -1476,6 +1496,14 @@
       "release": "V402-R",
       "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "findings": 1,
+      "validation": "NOT_RUN"
+    },
+    {
+      "path": "audit/professional-audit/rd-a01-a03-v403-2026-11-26.md",
+      "source_head": "6b71755d96ef2f7e9cae78cb5a60d01db944d4cf",
+      "release": "V403-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "findings": 2,
       "validation": "NOT_RUN"
     }
   ]

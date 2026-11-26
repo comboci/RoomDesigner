@@ -61,3 +61,15 @@ test('absent LocalStorage cannot promote a checksum-invalid mirror',async()=>{
  assert.match(h.notices.join(' '),/نسخه پشتیبان قابل بازیابی نیست/);
  assert.deepEqual(h.writes,[]);
 });
+
+test('startup gate recovers absent local mirror before any render or write',async()=>{
+ const h=harness(null,{format:2,length:mirrorRaw.length,checksum:'good-checksum'});
+ const snapshot={mirror:mirrorRaw,mirrorMeta:{format:2,length:mirrorRaw.length,checksum:'good-checksum'}};
+ assert.equal(await h.scope.recoverMirrorOnStartup(snapshot,false),true);
+ assert.equal(h.scope.doc.id,'mirror');assert.deepEqual(h.events,[]);assert.deepEqual(h.writes,[]);
+});
+test('invalid mirror returns a blocked result before any render',async()=>{
+ const h=harness(null,{format:2,length:999,checksum:'wrong'});
+ assert.equal(await h.scope.recoverMirrorOnStartup({mirror:mirrorRaw,mirrorMeta:{format:2,length:999,checksum:'wrong'}},false),false);
+ assert.equal(h.scope.doc,h.original);assert.deepEqual(h.events,[]);assert.deepEqual(h.writes,[]);
+});

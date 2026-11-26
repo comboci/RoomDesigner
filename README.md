@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V403-R (2026-11-26): RD-A01 startup resolves absent-local mirror recovery before first drawing render; failed recovery requires explicit raw-backup acknowledgment before continuing with a fresh drawing. Failed IDB read with an open database blocks startup. RD-A03 keeps distinct pre-migration LocalStorage archives immutable, deduplicates exact retries and exports all retained raw archives. No authority/schema migration; OPEN-CROSS-STORE remains OPEN. Test/Build/Browser NOT_RUN.
+
 V402-R (2026-11-26): RD-A02 guards valid divergent LocalStorage/IndexedDB snapshots before the first editor render. Editing and project storage writes remain blocked until the user exports both snapshots and explicitly confirms retaining the file and continuing with the local copy. Cancellation, failed export and changed snapshots keep the gate closed. No automatic selection, merge or storage schema change; OPEN-CROSS-STORE remains open. Test/Build/Browser NOT_RUN; runtime acceptance pending.
 
 V401-R (2026-11-20): N8 adds read-only conflict detection when valid LocalStorage and IndexedDB document snapshots differ on startup. A visible notice offers a bundled export of both raw snapshots, mirror metadata and related local assets; stale state cancels export and no data is replaced or deleted. Three regression scenarios authored NOT_RUN; Test/Build/Browser NOT_RUN; cross-store atomicity remains OPEN.
@@ -26,7 +28,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V402-R** (runtime acceptance pending user).
+Current source release: **V403-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 
