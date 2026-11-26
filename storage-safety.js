@@ -113,6 +113,18 @@
    store.add(intent,workspaceIntentKey);return intent
   })
  }
+ // The pre-stage marker closes the V406 gap between durable IDB intent and the first local projection.
+ function workspacePrepareMarker(id){return 'prepare:'+id}
+ function isWorkspacePrepareMarker(marker){return typeof marker==='string'&&/^prepare:[a-zA-Z0-9_-]{1,128}$/.test(marker)}
+ async function beginWorkspaceRestore(db,storage,beforeRecord,targetRecord,expected,id){
+  const before=validateWorkspaceRecord(beforeRecord),target=validateWorkspaceRecord(targetRecord);
+  if(!db||!storage||target.values.rd_last===null||typeof id!=='string'||!/^[a-zA-Z0-9_-]{1,128}$/.test(id))throw Error('آماده‌سازی بازیابی ممکن نیست');
+  if(!workspaceEqual(captureWorkspace(storage),before.values))throw Error('داده محلی قبل از آماده‌سازی تغییر کرد');
+  const marker=workspacePrepareMarker(id);
+  if(storage.setItem(workspaceMarker,marker)===false||storage.getItem(workspaceMarker)!==marker)throw Error('نشانگر اولیه بازیابی ثبت نشد');
+  // On any uncertain failure retain the marker; startup will inspect the durable IDB intent.
+  return stageWorkspaceRestore(db,before,target,expected,id)
+ }
  function validateWorkspaceIntent(intent){
   if(!object(intent)||intent.format!==1||typeof intent.id!=='string'||!/^[a-zA-Z0-9_-]{1,128}$/.test(intent.id)||!['restore','rollback'].includes(intent.direction))throw Error('Journal فضای کاری معتبر نیست');
   validateWorkspaceRecord(intent.before);const target=validateWorkspaceRecord(intent.target);
@@ -123,7 +135,7 @@
   validateWorkspaceIntent(intent);
   if(['rd_pending_import','rd_pending_revision'].some(k=>storage.getItem(k)!==null))throw Error('Journal قدیمی با بازیابی فضای کاری تداخل دارد');
   const marker=storage.getItem(workspaceMarker);
-  if(marker!==null&&marker!==intent.id)throw Error('شناسه بازیابی محلی متفاوت است');
+  if(marker!==null&&marker!==intent.id&&marker!==workspacePrepareMarker(intent.id))throw Error('شناسه بازیابی محلی متفاوت است');
   for(const key of workspaceKeys){const value=storage.getItem(key);if(value!==intent.before.values[key]&&value!==intent.target.values[key])throw Error('داده خارج از عملیات بازیابی تغییر کرده: '+key)}
   if(storage.setItem(workspaceMarker,intent.id)===false||storage.getItem(workspaceMarker)!==intent.id)throw Error('ثبت نشانگر بازیابی محلی ناموفق بود');
   const chosen=(intent.direction==='rollback'?intent.before:intent.target).values;
@@ -158,14 +170,46 @@
    return true
   })
  }
+ function clearWorkspaceMarker(storage,expected){
+  if(storage.getItem(workspaceMarker)!==expected)throw Error('نشانگر بازیابی تغییر کرد');
+  if(storage.removeItem(workspaceMarker)===false||storage.getItem(workspaceMarker)!==null)throw Error('پاک‌سازی نشانگر بازیابی ناموفق بود')
+ }
+ // A receipt ID alone cannot prove that the projected workspace remains the committed one.
+ function verifyCompletedWorkspaceRestore(db,storage,marker){
+  const historyKey='workspace-restore-history-v406:'+marker;
+  return workspaceTransaction(db,'readonly',[workspaceIntentKey,workspaceReceiptKey,historyKey,workspaceCommitKey,'last','last-meta'],d=>{
+   const receipt=d[workspaceReceiptKey],intent=d[historyKey];
+   if(d[workspaceIntentKey]!==null||!receipt||receipt.format!==1||receipt.id!==marker||!intent||intent.id!==marker||receipt.direction!==intent.direction)throw Error('رسید و آرشیو نهایی بازیابی قابل تطبیق نیست');
+   validateWorkspaceIntent(intent);
+   const chosen=(intent.direction==='rollback'?intent.before:intent.target).values;
+   if(storage.getItem(workspaceMarker)!==marker||['rd_pending_import','rd_pending_revision'].some(k=>storage.getItem(k)!==null)||!workspaceKeys.every(k=>storage.getItem(k)===chosen[k]))throw Error('داده محلی پس از Commit بازیابی تغییر کرده است');
+   if(intent.direction==='rollback'){
+    if(!exactJson(d[workspaceCommitKey],intent.priorCheckpoint)||!exactJson(d.last,intent.priorMirror)||!exactJson(d['last-meta'],intent.priorMirrorMeta))throw Error('مرجع قبلی بازیابی قابل تطبیق نیست')
+   }else{
+    const meta=d['last-meta'],raw=intent.target.values.rd_last;
+    if(!exactJson(d[workspaceCommitKey],intent.target)||d.last!==raw||meta?.workspaceRestoreId!==marker||meta.format!==2||meta.length!==raw.length||meta.checksum!==workspaceChecksum(raw))throw Error('مرجع نهایی بازیابی قابل تطبیق نیست')
+   }
+   return chosen
+  })
+ }
  async function resumeWorkspaceRestore(db,storage){
   const marker=storage?storage.getItem(workspaceMarker):null;
   if(!db){if(marker!==null)throw Error('IndexedDB برای تکمیل بازیابی فضای کاری در دسترس نیست');return false}
-  const {intent,receipt}=await readWorkspaceControl(db);
+  const {intent}=await readWorkspaceControl(db);
   if(intent===null){
    if(marker!==null){
-    if(!receipt||receipt.format!==1||receipt.id!==marker||!['restore','rollback'].includes(receipt.direction))throw Error('رسید نهایی بازیابی پیدا نشد');
-    if(storage.removeItem(workspaceMarker)===false||storage.getItem(workspaceMarker)!==null)throw Error('پاک‌سازی نشانگر بازیابی ناموفق بود')
+    if(isWorkspacePrepareMarker(marker)){
+     // Only an uncommitted prepare marker can be cleared without a final receipt.
+     // The projection always replaces prepare:ID with ID before changing managed keys.
+     await workspaceTransaction(db,'readonly',[workspaceIntentKey,workspaceReceiptKey],d=>{
+      if(d[workspaceIntentKey]!==null||d[workspaceReceiptKey]?.id===marker.slice(8)||['rd_pending_import','rd_pending_revision'].some(k=>storage.getItem(k)!==null))throw Error('وضعیت آماده‌سازی بازیابی نامشخص است');
+      clearWorkspaceMarker(storage,marker);return true
+     })
+    }else{
+     const chosen=await verifyCompletedWorkspaceRestore(db,storage,marker);
+     if(!workspaceKeys.every(k=>storage.getItem(k)===chosen[k]))throw Error('داده محلی پیش از پاک‌سازی نشانگر تغییر کرد');
+     clearWorkspaceMarker(storage,marker)
+    }
    }
    return false
   }
@@ -173,7 +217,9 @@
   validateWorkspaceIntent(intent);
   applyWorkspaceProjection(storage,intent);
   await finishWorkspaceRestore(db,intent,storage);
-  if(storage.removeItem(workspaceMarker)===false||storage.getItem(workspaceMarker)!==null)throw Error('پاک‌سازی نشانگر بازیابی ناموفق بود');
+  const chosen=await verifyCompletedWorkspaceRestore(db,storage,intent.id);
+  if(!workspaceKeys.every(k=>storage.getItem(k)===chosen[k]))throw Error('داده محلی پیش از پاک‌سازی نشانگر تغییر کرد');
+  clearWorkspaceMarker(storage,intent.id);
   return true
  }
  function requestWorkspaceRollback(db,expected){
@@ -209,10 +255,12 @@
  }
  function removeExportedWorkspaceHistory(db,key,expected){
   if(!workspaceHistoryKey(key)||expected==null)return Promise.reject(Error('آرشیو قابل پاک‌سازی نیست'));
-  return workspaceTransaction(db,'readwrite',[key,workspaceIntentKey],(d,store)=>{
+  return workspaceTransaction(db,'readwrite',[key,workspaceIntentKey,workspaceReceiptKey],(d,store)=>{
    if(d[workspaceIntentKey]!==null||d[key]===null||!exactJson(d[key],expected))throw Error('بازیابی معلق است یا آرشیو تغییر کرده است');
+   // Keep the last receipt's proof while it may still be needed for crash recovery.
+   if(d[workspaceReceiptKey]&&key==='workspace-restore-history-v406:'+d[workspaceReceiptKey].id)throw Error('آرشیو آخرین رسید بازیابی محافظت شده است');
    store.delete(key);return true
   })
  }
- global.RoomStorageSafety=Object.freeze({acquireWriter,preserveMigration,migrationArchiveEntries,archiveKey,workspaceKeys,workspaceMarker,workspaceCharLimit,workspaceChecksum,captureWorkspace,makeWorkspaceRecord,validateWorkspaceRecord,workspaceEqual,readWorkspaceControl,readWorkspaceAuthority,writeWorkspaceCheckpoint,stageWorkspaceRestore,applyWorkspaceProjection,resumeWorkspaceRestore,requestWorkspaceRollback,readWorkspaceHistory,readWorkspaceHistoryEntry,removeExportedWorkspaceHistory});
+ global.RoomStorageSafety=Object.freeze({acquireWriter,preserveMigration,migrationArchiveEntries,archiveKey,workspaceKeys,workspaceMarker,workspaceCharLimit,workspaceChecksum,captureWorkspace,makeWorkspaceRecord,validateWorkspaceRecord,workspaceEqual,readWorkspaceControl,readWorkspaceAuthority,writeWorkspaceCheckpoint,stageWorkspaceRestore,beginWorkspaceRestore,applyWorkspaceProjection,resumeWorkspaceRestore,requestWorkspaceRollback,readWorkspaceHistory,readWorkspaceHistoryEntry,removeExportedWorkspaceHistory});
 })(globalThis);

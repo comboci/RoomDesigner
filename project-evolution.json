@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V406",
-    "project_evolution_version": "V406",
+    "software_version": "V407",
+    "project_evolution_version": "V407",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V406-R",
+  "current_source_release": "V407-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1948,6 +1948,12 @@
       "version": "V406-R",
       "date": "2026-11-26",
       "change": "RD-A01: مرجع تراکنشی نقاط بازیابی فضای کاری در IndexedDB با ۱۳ کلید مشخص و تطبیق نسخه آینه؛ RD-A03: مرکز Disaster Recovery، خروجی و بازیابی فایل فضای کاری، Journal پایدار و ادامه/برگشت قبل از مهاجرت و Render، تاریخچه و رسید Commit. برآورد ظرفیت، محدودیت حجم و پاک‌سازی فقط آرشیو تاریخی انتخاب‌شده پس از نوشتن قطعی فایل و تأیید. Autosave عادی همچنان معماری قبلی دارد؛ تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V407-R",
+      "date": "2026-11-26",
+      "change": "ممیزی مجدد V402 تا V406: ثبت نشانگر آماده‌سازی محلی قبل از Journal بازیابی، توقف نوشتن در وضعیت نامشخص، تطبیق کامل رسید و آرشیو و داده محلی/آینه پیش از پاک‌سازی نشانگر، حفاظت از آرشیو آخرین رسید، تکمیل بسته بررسی Journal قدیمی و بازخوانی اجباری قبل از ذخیره. مسیرهای مستقل Autosave شناسایی و طرح مهاجرت مستند شد؛ انتقال مرجع عادی فعال نشده و تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8904,6 +8910,28 @@
         "OPEN-CROSS-STORE"
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
+    },
+    {
+      "id": "RD407-A01-A03-RECOVERY-BOUNDARY-REAUDIT",
+      "record_type": "source_remediation",
+      "module": "workspace_restore_boundary_legacy_journal_review",
+      "source": "Professional re-audit of V402–V406",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-26",
+      "source_head": "714cecabbb51d14cf9a5a43ea3e80177fbbd152a",
+      "target_version": "V407-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — ممیزی مجدد اصلاحات V402 تا V406، رفع اشکالات باقی‌مانده RD-A01 و RD-A03، بررسی مهاجرت نهایی Autosave و انتشار V407-R همراه Commit و Push",
+      "assistant_interpretation": "رفع شکاف‌های اثبات‌شده در روند بازیابی و تعیین تکلیف امن Journal؛ بررسی مسیرهای نوشتن برای مهاجرت نهایی Autosave بدون فعال‌سازی آزمایش‌نشده.",
+      "implementation_status": "Local prepare marker precedes IDB intent; absent-intent prepare marker resolved only after IDB read; completed marker requires retained history and exact before/target durable values, canonical checkpoint and mirror proof. Protect latest receipt history. Legacy journal review exports current editor and dependencies, verifies unchanged mirror and local/editor state, requires reload before any further writes; shortcut commands respect recovery guard. Documented Autosave migration gates; no cutover.",
+      "related_audit_findings": [
+        "RD-A01",
+        "RD-A03",
+        "OPEN-CROSS-STORE",
+        "RD406-A03-RESUMABLE-DISASTER-RECOVERY"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
     }
   ],
   "analyses": [
@@ -10786,6 +10814,21 @@
         "Large archives and quota failures may block operations; no automatic deletion. Explicit pruning only of workspace history keys; local/legacy archive lifecycle remains open.",
         "File picker fallback is download requested, not physical save; pruning refuses fallback. Runtime/browser/iOS validation pending, eight scenarios NOT_RUN."
       ]
+    },
+    {
+      "id": "RD407-A01-A03-STATIC-REAUDIT",
+      "record_id": "RD407-A01-A03-RECOVERY-BOUNDARY-REAUDIT",
+      "created_at": "2026-11-26",
+      "module": "workspace_restore_boundary_legacy_journal_review",
+      "problem": "V406 IDB intent could exist without a local marker if browser exited before projection; marker cleanup checked only receipt ID; legacy journal acknowledgement could reopen ordinary saving in a session that skipped conflict gate.",
+      "decision": "Write prepare marker before durable stage; fail closed on uncertainty. Match final receipt to history, managed keys and canonical mirror; retain last receipt history. Legacy journal acknowledgement requires full available mirror evidence, fresh exact rechecks, current editor backup and mandatory restart. Keep ordinary Autosave authority unchanged until all writers can participate in one verified transactional pipeline.",
+      "remaining_risks": [
+        "Ordinary Autosave and independent settings/profile/catalog writes still use LocalStorage plus mirror; canonical cutover not enabled.",
+        "Legacy V406 intent without marker could be inaccessible when IDB unavailable. Older clients may ignore new prepare marker. No cross-store atomicity claim.",
+        "Restore is for managed current-schema workspace; full-origin and raw legacy archive repopulation remain open.",
+        "Latest receipt history retained, which uses capacity; no automatic pruning. V406 large archives and blocked startup need external backups.",
+        "No full sequential audit coverage credit. Five new regression scenarios authored, all NOT_RUN; browser/runtime validation pending."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12300,17 +12343,24 @@
       "date": "2026-11-26",
       "change": "RD-A01: مرجع تراکنشی نقاط بازیابی فضای کاری در IndexedDB با ۱۳ کلید مشخص و تطبیق نسخه آینه؛ RD-A03: مرکز Disaster Recovery، خروجی و بازیابی فایل فضای کاری، Journal پایدار و ادامه/برگشت قبل از مهاجرت و Render، تاریخچه و رسید Commit. برآورد ظرفیت، محدودیت حجم و پاک‌سازی فقط آرشیو تاریخی انتخاب‌شده پس از نوشتن قطعی فایل و تأیید. Autosave عادی همچنان معماری قبلی دارد؛ تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V407-R",
+      "date": "2026-11-26",
+      "change": "ممیزی مجدد V402 تا V406: ثبت نشانگر آماده‌سازی محلی قبل از Journal بازیابی، توقف نوشتن در وضعیت نامشخص، تطبیق کامل رسید و آرشیو و داده محلی/آینه پیش از پاک‌سازی نشانگر، حفاظت از آرشیو آخرین رسید، تکمیل بسته بررسی Journal قدیمی و بازخوانی اجباری قبل از ذخیره. مسیرهای مستقل Autosave شناسایی و طرح مهاجرت مستند شد؛ انتقال مرجع عادی فعال نشده و تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V406-R",
+    "release": "V407-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "RD-A01/A03 focused source changes: explicit IndexedDB recovery checkpoint authority, managed workspace disaster recovery intent/replay/rollback/finalization, capacity limits and guarded selected history pruning. Ordinary editor autosave authority migration and full legacy/origin restore remain open. Test/Build/Browser NOT_RUN."
+    "audit": "Focused re-audit V402–V406: prepare marker, exact completed receipt verification, latest receipt history retention, legacy journal export/recheck/reload guard. Autosave cutover analysis documented; not enabled. Test/Build/Browser NOT_RUN; OPEN-CROSS-STORE remains open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V407-R acceptance: stage before projection, inaccessible IDB, failed optimistic stage, stale local after final receipt, protected latest receipt history, legacy journal mirror unavailable or changed, editor mutation during export, mandatory reload and shortcut guard. Review AUTOSAVE-AUTHORITY migration plan; do not activate cutover until isolated browser failure-injection validation is authorized.",
       "V406-R acceptance: disposable browser with existing data and new clean origin; stable checkpoint and external backup/restore, profiles/shortcuts/resources/settings, cut before marker/mid projection/final receipt, third-state rejection, denied storage, quota and rollback, history export/confirmed physical save/cancel and exact prune. Next ordinary autosave canonical migration and legacy/full-origin recovery/retention only after owner-approved runtime validation; Test/Build NOT_RUN.",
       "V405-R acceptance: matching/different/absent/denied primary observations, failed IDB transaction, valid divergence and archive failure fallback, selected local/IDB archive preview and NRD export, cancelled/declined backup, changed mirror, quota failure and confirmed new-ID restore. Next canonical storage authority migration design/implementation, whole-store restore and quota retention; test only with owner approval.",
       "V404-R acceptance: isolated profile with distinct mirror pairs, stale expected mirror, abort/closed DB, multiple migrations, pending journal, legacy mirror transform, orphan metadata and combined export/read failure. Next design and implement durable authority/commit protocol and controlled archive restore/quota retention. Test/Build NOT_RUN.",

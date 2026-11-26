@@ -94,7 +94,7 @@ test('startup replay precedes legacy migration and UI restore stages only after 
  const early=html.indexOf('await RoomStorageSafety.resumeWorkspaceRestore(await mirrorDb,migrationStorage)');
  assert.ok(early>=0&&early<html.indexOf('RoomEquipment.migrateStorage(migrationStorage)',early));
  const code=extractFunction('restoreWorkspaceRecord');
- assert.ok(code.indexOf('await exportWorkspacePackage')<code.indexOf('stageWorkspaceRestore'));
+ assert.ok(code.indexOf('await exportWorkspacePackage')<code.indexOf('beginWorkspaceRestore'));
  assert.match(code,/outcome!==true&&outcome!=='requested'/);
  assert.match(code,/workspaceCaptureUnchanged\(capture\)/);
  assert.match(code,/safeStorage\.crossStoreWriteBlocked=true/);
@@ -102,4 +102,51 @@ test('startup replay precedes legacy migration and UI restore stages only after 
  const history=extractFunction('showWorkspaceHistory');
  assert.ok(history.indexOf('if(outcome!==true)')<history.indexOf('removeExportedWorkspaceHistory'));
  assert.match(history,/await exportRecord/);
+});
+
+test('pre-stage marker survives an inaccessible database and permits exact startup replay',async()=>{
+ const api=harness(),db=await dbOpen(),s=store({rd_last:'A'});await seedMirror(db,'A');
+ const before=api.makeWorkspaceRecord(api.captureWorkspace(s),'before'),target=record(api,'target',{rd_last:'B'});
+ await api.beginWorkspaceRestore(db,s,before,target,await api.readWorkspaceAuthority(db),'prepare1');
+ assert.equal(s.getItem(api.workspaceMarker),'prepare:prepare1');
+ await assert.rejects(api.resumeWorkspaceRestore(null,s));
+ assert.equal(s.getItem('rd_last'),'A');
+ assert.equal(await api.resumeWorkspaceRestore(db,s),true);
+ assert.equal(s.getItem('rd_last'),'B');assert.equal(s.getItem(api.workspaceMarker),null);db.close()
+});
+test('failed optimistic staging leaves only a prepare marker, cleared after confirming no intent',async()=>{
+ const api=harness(),db=await dbOpen(),s=store({rd_last:'A'});await seedMirror(db,'A');
+ const before=api.makeWorkspaceRecord(api.captureWorkspace(s),'before'),target=record(api,'target',{rd_last:'B'}),expected=await api.readWorkspaceAuthority(db);
+ await seedMirror(db,'changed');
+ await assert.rejects(api.beginWorkspaceRestore(db,s,before,target,expected,'prepare2'));
+ assert.equal(s.getItem(api.workspaceMarker),'prepare:prepare2');
+ assert.equal(s.getItem('rd_last'),'A');
+ assert.equal(await api.resumeWorkspaceRestore(db,s),false);assert.equal(s.getItem(api.workspaceMarker),null);assert.equal(s.getItem('rd_last'),'A');db.close()
+});
+test('completed receipt cannot clear a marker after an unexpected local change',async()=>{
+ const api=harness(),db=await dbOpen(),s=store({rd_last:'A'});await seedMirror(db,'A');
+ const before=api.makeWorkspaceRecord(api.captureWorkspace(s),'before'),target=record(api,'target',{rd_last:'B'});
+ await api.beginWorkspaceRestore(db,s,before,target,await api.readWorkspaceAuthority(db),'receipt1');
+ const remove=s.removeItem;s.removeItem=k=>{if(k===api.workspaceMarker)throw Error('cleanup denied');return remove(k)};
+ await assert.rejects(api.resumeWorkspaceRestore(db,s));s.removeItem=remove;
+ s.setItem('rd_last','third');await assert.rejects(api.resumeWorkspaceRestore(db,s));
+ assert.equal(s.getItem(api.workspaceMarker),'receipt1');assert.equal(s.getItem('rd_last'),'third');
+ s.setItem('rd_last','B');assert.equal(await api.resumeWorkspaceRestore(db,s),false);assert.equal(s.getItem(api.workspaceMarker),null);db.close()
+});
+test('latest recovery receipt history is protected from pruning',async()=>{
+ const api=harness(),db=await dbOpen(),s=store({rd_last:'A'});await seedMirror(db,'A');
+ const before=api.makeWorkspaceRecord(api.captureWorkspace(s),'before'),target=record(api,'target',{rd_last:'B'});
+ await api.beginWorkspaceRestore(db,s,before,target,await api.readWorkspaceAuthority(db),'receipt2');
+ await api.resumeWorkspaceRestore(db,s);
+ const key='workspace-restore-history-v406:receipt2',value=await api.readWorkspaceHistoryEntry(db,key);
+ await assert.rejects(api.removeExportedWorkspaceHistory(db,key,value));assert.ok(await api.readWorkspaceHistoryEntry(db,key));db.close()
+});
+test('uncertain stage and old journal acknowledgment require a fresh startup before saving',()=>{
+ const stage=extractFunction('restoreWorkspaceRecord'),review=extractFunction('offerPendingJournalReview');
+ assert.match(stage,/beginWorkspaceRestore\(db,window\.localStorage/);
+ assert.match(stage,/getItem\(RoomStorageSafety\.workspaceMarker\)!==null/);
+ assert.match(review,/if\(!mirrorSnapshot\)\{notify\(/);
+ assert.match(review,/sameMirrorPair\(mirrorSnapshot,latestMirror\)/);
+ assert.match(review,/safeStorage\.crossStoreWriteBlocked=true/);
+ assert.match(review,/rd_svg_drafts/);
 });

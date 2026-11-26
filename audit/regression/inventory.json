@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "13697b52782f81e8c4cf3a1c70921ca1f7a46775",
+      "blob_sha": "24b16aaa49ae2fe9c942fd7b10c38f1008d13332",
       "mode": "100644",
-      "bytes": 19826,
-      "lines": 197,
+      "bytes": 20562,
+      "lines": 199,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3839,6 +3839,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/AUTOSAVE-AUTHORITY-MIGRATION-FA.md",
+      "blob_sha": "3a28d16eaa1042854cd8ed7b2467dbf318b435d7",
+      "mode": "100644",
+      "bytes": 5896,
+      "lines": 35,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/professional-audit/rd-a01-a03-v403-2026-11-26.md",
       "blob_sha": "33f86c17023374978099feb1d931e33fae7157f3",
       "mode": "100644",
@@ -3871,6 +3880,15 @@
       "mode": "100644",
       "bytes": 5194,
       "lines": 27,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
+      "path": "audit/professional-audit/rd-a01-a03-v407-2026-11-26.md",
+      "blob_sha": "b22301e7911990aaafdce148b08c41fb881c85d3",
+      "mode": "100644",
+      "bytes": 3380,
+      "lines": 19,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -4029,10 +4047,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "f1a4025a074a0b9d39cd4bb2460334a2a69b0146",
+      "blob_sha": "967431f2fba5e8430c5798a54a4473977a642816",
       "mode": "100644",
-      "bytes": 634073,
-      "lines": 3885,
+      "bytes": 637515,
+      "lines": 3915,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4047,7 +4065,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "0fb33bc7a2bdd8f5df0b107ce7b9d81a66f61505",
+      "blob_sha": "ab79c325df0b8ecf250fc76f2132f370d542a3ae",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4056,7 +4074,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "0483ff39fe021bcc80e548b6c9b29f45b5715786",
+      "blob_sha": "59f6be8373f9223bfbe19a77cf4a8c1012620a01",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4074,10 +4092,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "912c67cc394fb41f0be56a3706c4742dd1fd2928",
+      "blob_sha": "f447a891df4b45c1e402256df5288703139d8009",
       "mode": "100644",
-      "bytes": 845313,
-      "lines": 12350,
+      "bytes": 850654,
+      "lines": 12400,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4092,10 +4110,10 @@
     },
     {
       "path": "storage-safety.js",
-      "blob_sha": "d9020737b52f824ddcf3e99d1f2255e9cda96131",
+      "blob_sha": "a49439a397473d9bbe0aca06728dc8a581efd0c3",
       "mode": "100644",
-      "bytes": 17114,
-      "lines": 218,
+      "bytes": 21326,
+      "lines": 266,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -5397,10 +5415,10 @@
     },
     {
       "path": "tests/workspace-recovery-v406.test.cjs",
-      "blob_sha": "9cd4173c13883feca6a54d5e9a69e4dca32cfdd3",
+      "blob_sha": "edcb88cceaf39ccd15e3dc294f8d14c62de253ac",
       "mode": "100644",
-      "bytes": 8535,
-      "lines": 105,
+      "bytes": 12215,
+      "lines": 152,
       "category": "test_source_static_only",
       "binary": false
     },
