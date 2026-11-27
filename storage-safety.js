@@ -266,5 +266,63 @@
    store.delete(key);return true
   })
  }
- global.RoomStorageSafety=Object.freeze({acquireWriter,preserveMigration,migrationArchiveEntries,archiveKey,workspaceKeys,workspaceMarker,workspaceCharLimit,workspaceChecksum,captureWorkspace,makeWorkspaceRecord,validateWorkspaceRecord,workspaceEqual,readWorkspaceControl,readWorkspaceAuthority,writeWorkspaceCheckpoint,stageWorkspaceRestore,beginWorkspaceRestore,applyWorkspaceProjection,resumeWorkspaceRestore,requestWorkspaceRollback,readWorkspaceHistory,readWorkspaceHistoryEntry,removeExportedWorkspaceHistory});
+ // V411: independent read-only recovery access, including before editor initialization.
+ function openExistingRecoveryDb(idb){
+  if(!idb)return Promise.resolve(null);
+  return new Promise(resolve=>{
+   let settled=false;
+   const finish=db=>{if(settled){db?.close();return}settled=true;resolve(db)};
+   try{
+    const req=idb.open('room-designer-recovery');
+    // An absent database must not be created just to export raw recovery data.
+    req.onupgradeneeded=()=>{try{req.transaction.abort()}catch(_){}finish(null)};
+    req.onerror=()=>finish(null);req.onblocked=()=>finish(null);
+    req.onsuccess=()=>{const db=req.result;if(!db.objectStoreNames.contains('backups')){db.close();finish(null);return}finish(db)};
+   }catch(_){finish(null)}
+  })
+ }
+ async function listRawRecoveryRecords(storage,db){
+  const records=[];let localReadFailed=!storage,indexedReadFailed=!db;
+  if(storage)try{
+   for(let i=0;i<storage.length;i++){const key=storage.key(i);if(typeof key==='string'&&key.startsWith('rd_'))records.push({store:'local',key})}
+  }catch(_){localReadFailed=true}
+  if(db)try{
+   const keys=await new Promise((resolve,reject)=>{
+    try{
+     const tx=db.transaction('backups','readonly'),out=[],req=tx.objectStore('backups').openKeyCursor();
+     tx.oncomplete=()=>resolve(out);tx.onabort=()=>reject(tx.error||Error('خواندن فهرست ناموفق بود'));tx.onerror=()=>{};
+     req.onsuccess=()=>{try{const cursor=req.result;if(!cursor)return;if(typeof cursor.key==='string')out.push(cursor.key);cursor.continue()}catch(error){try{tx.abort()}catch(_){}reject(error)}};
+    }catch(error){reject(error)}
+   });
+   for(const key of keys)records.push({store:'mirror',key})
+  }catch(_){indexedReadFailed=true}
+  records.sort((a,b)=>a.store===b.store?(a.key<b.key?-1:a.key>b.key?1:0):a.store<b.store?-1:1);
+  return {records,localReadFailed,indexedReadFailed}
+ }
+ function readRawRecoveryRecord(storage,db,descriptor){
+  if(!descriptor||typeof descriptor.key!=='string'||!descriptor.key)return Promise.reject(Error('شناسه داده بازیابی نامعتبر است'));
+  const {store,key}=descriptor;
+  if(store==='local'&&key.startsWith('rd_')){
+   try{if(!storage)throw Error('LocalStorage در دسترس نیست');const value=storage.getItem(key);if(value===null)throw Error('رکورد دیگر موجود نیست');return Promise.resolve({store,key,value})}catch(error){return Promise.reject(error)}
+  }
+  if(store!=='mirror'||!db)return Promise.reject(Error('منبع داده در دسترس نیست'));
+  return new Promise((resolve,reject)=>{
+   try{
+    const tx=db.transaction('backups','readonly'),req=tx.objectStore('backups').get(key);let value;
+    req.onsuccess=()=>{value=req.result};
+    tx.oncomplete=()=>value===undefined?reject(Error('رکورد دیگر موجود نیست')):resolve({store,key,value});
+    tx.onabort=()=>reject(tx.error||Error('خواندن داده خام ناموفق بود'));tx.onerror=()=>{};
+   }catch(error){reject(error)}
+  })
+ }
+ // Refuse lossy JSON conversion of unexpected structured-clone values.
+ function serializeRawRecoveryRecord(record){
+  return JSON.stringify(record,function(key,value){
+   const original=this[key],kind=typeof original;
+   if(original===null||kind==='string'||kind==='boolean'||kind==='number'&&Number.isFinite(original))return value;
+   if(kind==='object'&&(Array.isArray(original)||Object.prototype.toString.call(original)==='[object Object]'))return value;
+   throw Error('نوع داده خام با JSON بدون اتلاف قابل خروجی نیست')
+  })
+ }
+ global.RoomStorageSafety=Object.freeze({serializeRawRecoveryRecord,openExistingRecoveryDb,listRawRecoveryRecords,readRawRecoveryRecord,acquireWriter,preserveMigration,migrationArchiveEntries,archiveKey,workspaceKeys,workspaceMarker,workspaceCharLimit,workspaceChecksum,captureWorkspace,makeWorkspaceRecord,validateWorkspaceRecord,workspaceEqual,readWorkspaceControl,readWorkspaceAuthority,writeWorkspaceCheckpoint,stageWorkspaceRestore,beginWorkspaceRestore,applyWorkspaceProjection,resumeWorkspaceRestore,requestWorkspaceRollback,readWorkspaceHistory,readWorkspaceHistoryEntry,removeExportedWorkspaceHistory});
 })(globalThis);

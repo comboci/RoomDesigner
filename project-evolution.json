@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V410",
-    "project_evolution_version": "V410",
+    "software_version": "V411",
+    "project_evolution_version": "V411",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -71,7 +71,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V410-R",
+  "current_source_release": "V411-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1974,6 +1974,12 @@
       "version": "V410-R",
       "date": "2026-11-27",
       "change": "ممیزی دوره‌ای متمرکز V406 تا V409: حفاظت محتوای SVG صریح در Revisionهای جدید، نگهداری محتوای inline تاریخی در Import، کنترل بودجه حجم و آماده‌سازی کاندید Revision قبل از تغییر تاریخچه، بررسی دقیق تازگی داده پس از خروجی آرشیو؛ فهرست آرشیوهای قدیمی بر اساس کلید و خواندن تک‌به‌تک، خروجی خام و محدودیت خواندن گروهی بدون حذف خودکار. هشت سناریوی جدید و اصلاح یک harness؛ هیچ تست اجرایی انجام نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V411-R",
+      "date": "2026-11-27",
+      "change": "حفاظت نمای SVG تولیدشده و کاتالوگ در Revision جدید با manifest مستقل و نمایش/خروجی فقط‌خواندنی؛ دسترسی خام تک‌رکوردی به مخازن در Startup مسدود بدون نوشتن؛ اتصال تأیید بازیابی rd_last به داده و آینه دقیق، جلوگیری از بازنویسی آینه هنگام شکست ذخیره اصلی و حفاظت رکوردهای اصلی نامعتبر. هشت سناریوی جدید و دو قرارداد قبلی به‌روز شد؛ تست اجرایی انجام نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -9022,6 +9028,30 @@
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
       "verification_evidence": "audit/professional-audit/rd-milestone-v410-2026-11-27.md"
+    },
+    {
+      "id": "RD411-A03-A05-GENERATED-ARTWORK-RAW-RECOVERY",
+      "record_type": "source_remediation",
+      "module": "revision_generated_artwork_blocked_startup_recovery",
+      "source": "User requested V411 continuation from V410",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-27",
+      "source_head": "5d7f5734f90c48faecbe1dfe188d7257d561f8cb",
+      "target_version": "V411-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — ادامه اصلاحات RoomDesigner از V410-R؛ تکمیل حفاظت SVGهای تولیدشده و منابع کاتالوگ، دسترسی به آرشیوها در وضعیت Startup مسدود، بررسی بازیابی داده‌های آسیب‌دیده، کنترل رگرسیون سورس، انتشار V411-R و Commit و Push مطابق POLICY.",
+      "assistant_interpretation": "Capture effective generated/current catalog artwork as historical evidence, read-only raw recovery under startup blocks, exact damaged-data approval and failed-primary protection; no frozen live renderer or ordinary Autosave cutover.",
+      "implementation_status": "حفاظت نمای SVG تولیدشده و کاتالوگ در Revision جدید با manifest مستقل و نمایش/خروجی فقط‌خواندنی؛ دسترسی خام تک‌رکوردی به مخازن در Startup مسدود بدون نوشتن؛ اتصال تأیید بازیابی rd_last به داده و آینه دقیق، جلوگیری از بازنویسی آینه هنگام شکست ذخیره اصلی و حفاظت رکوردهای اصلی نامعتبر. هشت سناریوی جدید و دو قرارداد قبلی به‌روز شد؛ تست اجرایی انجام نشد.",
+      "related_audit_findings": [
+        "RD-A01",
+        "RD-A03",
+        "RD-A04",
+        "RD-A05",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
+      "verification_evidence": "audit/professional-audit/rd-a03-a05-v411-2026-11-27.md"
     }
   ],
   "analyses": [
@@ -10962,6 +10992,20 @@
         "Ordinary Autosave non-atomic and legacy full-origin recovery not implemented.",
         "Full sequential audit V405/V410 open. Eight authored scenarios and existing harness update, all NOT_RUN."
       ]
+    },
+    {
+      "id": "RD411-FOCUSED-STATIC",
+      "record_id": "RD411-A03-A05-GENERATED-ARTWORK-RAW-RECOVERY",
+      "created_at": "2026-11-27",
+      "module": "revision_generated_artwork_blocked_startup_recovery",
+      "problem": "Generated and implicit catalog SVGs were not captured independently; blocked startup lacked a safe single-record export; invalid-last confirmation could become stale and failed primary recovery could overwrite mirror.",
+      "decision": "Capture bounded historical SVG manifest and read-only preview/export; validate archived data without mutation; raw key-only access with existing DB and readonly transactions; exact backup evidence and successful-primary condition for explicit recovery; guard damaged managed keys.",
+      "remaining_risks": [
+        "Old changed artwork and lost records cannot be reconstructed; full canvas rendering and future alternate editable modes not frozen.",
+        "Actual browser file retention, NRD round-trip, quota and peak heap unverified; arbitrary non-JSON IndexedDB values refused.",
+        "Full-origin recovery and ordinary Autosave atomic authority not implemented. Full sequential audit remains open.",
+        "Eight new source scenarios, two existing contracts/harnesses updated; all NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12500,17 +12544,24 @@
       "date": "2026-11-27",
       "change": "ممیزی دوره‌ای متمرکز V406 تا V409: حفاظت محتوای SVG صریح در Revisionهای جدید، نگهداری محتوای inline تاریخی در Import، کنترل بودجه حجم و آماده‌سازی کاندید Revision قبل از تغییر تاریخچه، بررسی دقیق تازگی داده پس از خروجی آرشیو؛ فهرست آرشیوهای قدیمی بر اساس کلید و خواندن تک‌به‌تک، خروجی خام و محدودیت خواندن گروهی بدون حذف خودکار. هشت سناریوی جدید و اصلاح یک harness؛ هیچ تست اجرایی انجام نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V411-R",
+      "date": "2026-11-27",
+      "change": "حفاظت نمای SVG تولیدشده و کاتالوگ در Revision جدید با manifest مستقل و نمایش/خروجی فقط‌خواندنی؛ دسترسی خام تک‌رکوردی به مخازن در Startup مسدود بدون نوشتن؛ اتصال تأیید بازیابی rd_last به داده و آینه دقیق، جلوگیری از بازنویسی آینه هنگام شکست ذخیره اصلی و حفاظت رکوردهای اصلی نامعتبر. هشت سناریوی جدید و دو قرارداد قبلی به‌روز شد؛ تست اجرایی انجام نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V410-R",
+    "release": "V411-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Focused milestone V406–V409, explicit historical SVG and archive capacity; full sequential audit OPEN; Test/Build/Browser NOT_RUN; next boundary V415-R."
+    "audit": "Focused RD-A01/A03/A05 generated artwork and blocked/damaged recovery; full sequential audit OPEN; Test/Build/Browser NOT_RUN."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V411-R acceptance: isolated Chromium/Safari with generated panels and product detail, changed catalog, NRD round-trip and archive preview, blocked writer/migration/divergence, malformed managed keys, stale backup evidence, denied primary recovery and read-only raw export; verify actual files and quota. Test/Build/Browser NOT_RUN. Remaining whole-store recovery and ordinary Autosave cutover require authorized runtime; full sequential audit open.",
       "V410-R acceptance: synthetic and real NRD revisions with explicit SVGs and originals, published-library change, missing/oversized asset, 20-Revision archive and concurrent edits, large/invalid migration archives with raw export, workspace restore/receipt protections and browser quota/heap. Test/Build/Browser NOT_RUN. Next: complete remaining generated/catalog artwork fidelity, bounded legacy archive access in blocked startup, and authorized cutover validation; full-source audit remains open.",
       "V409-R acceptance: disposable Chromium/Safari profile with retired equipment, legacy cable/ports, inline and referenced SVGs, override collisions and rejected draft writes; verify archived records, source-only legacy restore, local copy-on-write/assignment and NRD round-trip. V410-R milestone focused audit; full-source audit and runtime remain open under POLICY.",
       "V408-R acceptance: disposable Chromium/Safari profile, save Revision then Undo/Redo/selected history and save again; Save As and failure; forward/rollback storage denial and retained migration marker; compare all archived data; test and build NOT_RUN. Next: SVG migration failure/retired-history fidelity and ordinary Autosave cutover only with authorized runtime validation.",

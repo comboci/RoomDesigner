@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_V410_PERIODIC_MILESTONE_V406_V409_FOCUSED_STATIC_REAUDIT",
+  "execution_source": "USER_V411_GENERATED_ARTWORK_BLOCKED_STARTUP_DAMAGED_RECOVERY_FOCUSED_STATIC",
   "execution_timestamp": "2026-11-27",
-  "source_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
+  "source_head": "5d7f5734f90c48faecbe1dfe188d7257d561f8cb",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V410-R",
+  "product_release": "V411-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "30282595284fac791d14ac7f2f404a6ef94a1cd4",
+  "inventory_blob_sha": "8c1ab21fdda13bf175df364254b30e9a2b79a480",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "Focused five-release milestone re-audit V406–V409 reports and source paths: explicit historical SVG pinning, candidate Revision capacity/freshness, key-only archive discovery and selected raw export, bounded bulk reads. Eight new test scenarios and existing snapshot test harness updated; NOT_RUN. No sequential/full-source coverage credit. OPEN-CROSS-STORE remains open.",
+  "coverage_note": "Focused RD-A01/A03/A05 source remediation: historical effective generated/catalog SVG manifest and preview/export; independent blocked-startup raw single-record read; damaged critical record guard, exact backup evidence and primary-success gate for explicit invalid-last recovery. Eight new scenarios authored, two existing source contracts/harnesses updated; NOT_RUN. No full/sequential coverage credit; OPEN-CROSS-STORE remains open.",
   "segments": [
     {
       "path": "index.html",
@@ -1569,6 +1569,30 @@
       "root_cause": "Legacy archive selector loaded all payloads; bulk cursor read unrelated values.",
       "correction": "Key-only list and matching reads, selected raw export, bounded bulk reads and count reporting; no auto deletion.",
       "verification": "NOT_RUN; very large individual entry and blocked-startup access remain open."
+    },
+    {
+      "id": "RD411-A05-GENERATED-ARTWORK",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Explicit SVG pinning did not independently preserve generated/implicit catalog faces and requested product-detail artwork.",
+      "correction": "Capture bounded deduplicated sanitized effective artwork in detached new Revision; read-only historical preview/export; validate historical manifests and cloned snapshots during import.",
+      "verification": "NOT_RUN; no reconstruction of old lost art or freeze of live editable renderer."
+    },
+    {
+      "id": "RD411-A03-BLOCKED-RAW-ACCESS",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html / storage-safety.js",
+      "root_cause": "Startup blocked by writer, migration or divergence lacked independent selected raw recovery access.",
+      "correction": "Independent read-only UI, local and existing dedicated DB key listing, single record read/export, explicit partial reads, no creation or record writes.",
+      "verification": "NOT_RUN; physical downloads, very large records and non-JSON types remain limited."
+    },
+    {
+      "id": "RD411-A01-A03-DAMAGED-DATA",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Damaged managed key fallback could overwrite raw data; invalid-last backup consent could become stale and failed primary replacement could enqueue mirror write.",
+      "correction": "Block writes to detected invalid critical keys and block startup; exact durable local/editor/mirror evidence and fresh confirmation; require primary success for explicit invalid-last recovery before mirror scheduling.",
+      "verification": "NOT_RUN; nested schema coverage and ordinary Autosave atomicity remain open."
     }
   ],
   "last_completed_segment": {
@@ -1593,7 +1617,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V410-R focused five-release milestone V406–V409; eight scenarios authored, existing snapshot harness updated; NOT_RUN. Full sequential audit remains OPEN; no Autosave cutover.",
+    "static_diff": "V411-R focused generated/catalog historical artwork, independent raw access and damaged-data recovery; eight scenarios authored and two existing test sources updated; NOT_RUN. Full sequential audit OPEN, no Autosave cutover.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1611,10 +1635,10 @@
   },
   "inventory_refresh": {
     "method": "Pinned Git base inventory plus exact newly created Git blobs; no product execution",
-    "baseline_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
-    "entries": 612,
+    "baseline_head": "5d7f5734f90c48faecbe1dfe188d7257d561f8cb",
+    "entries": 614,
     "no_product_execution": true,
-    "notes": "V410-R source, regression contracts, milestone report, ledger, inventory and checkpoint in one tree."
+    "notes": "V411-R source, new regression contracts, audit report, ledger, inventory and checkpoint in one tree."
   },
   "branch_review": {
     "branches": [
@@ -1742,6 +1766,15 @@
       "path": "audit/professional-audit/rd-milestone-v410-2026-11-27.md",
       "source_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
       "release": "V410-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "findings": 3,
+      "validation": "NOT_RUN",
+      "scope": "FOCUSED_STATIC_ONLY"
+    },
+    {
+      "path": "audit/professional-audit/rd-a03-a05-v411-2026-11-27.md",
+      "source_head": "5d7f5734f90c48faecbe1dfe188d7257d561f8cb",
+      "release": "V411-R",
       "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "findings": 3,
       "validation": "NOT_RUN",

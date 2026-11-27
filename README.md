@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V411-R (2026-11-27): capture and deduplicate effective generated/catalog SVG faces and requested product-detail views in new Revision records; independent historical preview/export, immutable import validation; read-only single-record recovery in blocked startup; exact backup acknowledgment, primary-only gate for damaged rd_last replacement and preservation of malformed managed records. Eight new scenarios authored, two existing contracts/harnesses updated; Test/Build/Browser NOT_RUN. Ordinary Autosave cutover, full-source audit and runtime acceptance remain open.
+
 V410-R (2026-11-27): five-release milestone, focused V406–V409 re-audit. Pin explicit SVG artwork in new Revision snapshots; preserve historical inline data during import, stage candidate and check capacity/freshness before live history update. Legacy archive selection reads one entry, bounded bulk reads and raw export; no automatic pruning. Eight new scenarios authored, existing test harness updated; tests/build/runtime NOT_RUN. Full-source audit and remaining cross-store/legacy rendering acceptance open.
 
 V409-R (2026-11-27): preserve historical Revision content during equipment/connection migration; stage SVG resource conversion and local symbol versions before publication; clone and warn before legacy Revision restore; defer direct startup document rewrites. Seven regression scenarios authored; prior migration assertions now protect history. Test/Build/Browser NOT_RUN. Existing legacy asset fidelity and cross-store authority remain open.
@@ -42,7 +44,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V410-R** (runtime acceptance pending user).
+Current source release: **V411-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

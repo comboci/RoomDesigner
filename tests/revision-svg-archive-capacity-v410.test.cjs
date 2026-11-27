@@ -6,7 +6,7 @@ const A='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width
 const B='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3"/></svg>';
 function pinHarness(){
  const assets={shared:A,original:B};
- const ctx=vm.createContext({libraryAsset:id=>assets[id],svgArtwork:raw=>typeof raw==='string'&&raw.startsWith('<svg ')?raw:null,RoomEquipment:{release:'current'},RoomConnections:{version:'current'},structuredClone});
+ const ctx=vm.createContext({libraryAsset:id=>assets[id],effectiveArtwork:d=>d.svg||assets[d.svgAssetId]||null,LightingModel:{isSwitch:()=>false},svgArtwork:raw=>typeof raw==='string'&&raw.startsWith('<svg ')?raw:null,RoomEquipment:{release:'current'},RoomConnections:{version:'current'},structuredClone});
  vm.runInContext(['pinRevisionSvgArtwork','snapshot','roomSvgReferenceIds'].map(extractFunction).join('\n'),ctx);
  return {ctx,assets};
 }
