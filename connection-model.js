@@ -59,7 +59,7 @@
  function resetDocument(input,inheritedCurrent=false){
   const d=JSON.parse(JSON.stringify(input));
   if(!Array.isArray(d.devices)||!Array.isArray(d.cables))throw Error('Invalid connection document');
-  // An explicit legacy revision marker overrides the parent's current version.
+  // Legacy callers may supply an inherited model marker for an active copy.
   const current=d.connectionModel===version||(inheritedCurrent&&d.connectionModel==null);
   if(!current){
    for(const v of d.devices)v.ports=global.RoomEquipment.isArchitecture(v)||global.RoomEquipment.definitionFor(v)?[]:(v.category==='loads'?(consumers().find(t=>t.kind===v.kind)?.ports||loadPorts()):equipmentPorts()).map((p,i)=>({...p,id:v.id+'-connection-'+i}));
@@ -67,7 +67,7 @@
   }
   d.connectionModel=version;
   normalizeDocumentTypes(d,false);ensureRelayPorts(d);upgradeFieldDevices(d);
-  if(Array.isArray(d.revisions))for(const r of d.revisions)r.snapshot=resetDocument(r.snapshot,current);
+  // V409-R: retain historical ports/cables and the original model marker; only migrate the active copy.
   return d;
  }
  function resetCatalog(items){

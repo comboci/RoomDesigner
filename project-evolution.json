@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V408",
-    "project_evolution_version": "V408",
+    "software_version": "V409",
+    "project_evolution_version": "V409",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V408-R",
+  "current_source_release": "V409-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1960,6 +1960,12 @@
       "version": "V408-R",
       "date": "2026-11-27",
       "change": "اصلاح متمرکز RD-A04 و RD-A05: کنترل نتیجه واقعی نوشتن و Rollback مهاجرت تجهیزات و ارتباطات، حفظ نشانگر قبلی و اعلام کلیدهای بازیابی‌نشده؛ جداسازی Undo/Redo و بازگشت انتخابی از دفتر Revision و ایزوله‌کردن History پس از Save As. هشت سناریوی رگرسیون نوشته شده اما اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V409-R",
+      "date": "2026-11-27",
+      "change": "حفاظت Revisionهای تاریخی در مهاجرت تجهیزات/ارتباطات، بازیابی از کپی مستقل همراه هشدار تبدیل و ثبت منابع SVG، جلوگیری از ارجاع اشتباه در صورت override و نوشتن تأییدنشده، نسخه‌بندی مستقل نماد محلی و تخصیص پیش‌فرض آینده؛ حذف بازنویسی مستقیم رکوردهای ذخیره‌شده در شروع. هفت سناریوی رگرسیون جدید و اصلاح قرارداد دو تست قبلی؛ تست اجرا نشده.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8962,6 +8968,28 @@
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
       "verification_evidence": "audit/professional-audit/rd-a04-a05-v408-2026-11-27.md"
+    },
+    {
+      "id": "RD409-A04-A05-HISTORICAL-SVG-MIGRATION",
+      "record_type": "source_remediation",
+      "module": "migration_history_svg",
+      "source": "Continuation of professional audit from V408-R",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-27",
+      "source_head": "d15494a015de7ccf334efe486a161bf585fac3ba",
+      "target_version": "V409-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — ادامه اصلاحات RoomDesigner از V408-R؛ تکمیل RD-A04 و RD-A05، حفاظت از Revisionهای قدیمی، اصلاح مهاجرت SVG، کنترل رگرسیون در سطح سورس، انتشار V409-R و Commit و Push مطابق POLICY.",
+      "assistant_interpretation": "Preserve historical evidence; stage SVG updates and avoid eager direct rewrites. Keep compatibility conversion on explicit restore, not original archived records.",
+      "implementation_status": "حفاظت Revisionهای تاریخی در مهاجرت تجهیزات/ارتباطات، بازیابی از کپی مستقل همراه هشدار تبدیل و ثبت منابع SVG، جلوگیری از ارجاع اشتباه در صورت override و نوشتن تأییدنشده، نسخه‌بندی مستقل نماد محلی و تخصیص پیش‌فرض آینده؛ حذف بازنویسی مستقیم رکوردهای ذخیره‌شده در شروع. هفت سناریوی رگرسیون جدید و اصلاح قرارداد دو تست قبلی؛ تست اجرا نشده.",
+      "related_audit_findings": [
+        "RD-A04",
+        "RD-A05",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
+      "verification_evidence": "audit/professional-audit/rd-a04-a05-v409-2026-11-27.md"
     }
   ],
   "analyses": [
@@ -10873,6 +10901,21 @@
         "Migration remains non-atomic and requires crash/denial runtime tests.",
         "No sequential coverage credit. Eight regression scenarios authored, NOT_RUN."
       ]
+    },
+    {
+      "id": "RD409-A04-A05-STATIC",
+      "record_id": "RD409-A04-A05-HISTORICAL-SVG-MIGRATION",
+      "created_at": "2026-11-27",
+      "module": "migration_history_svg",
+      "problem": "Destructive historical migration; SVG ID shadow/cache, unverified registry persistence, in-place library edits, direct startup rewrites and restore ignoring staged registry.",
+      "decision": "Preserve records; normalize only active copies by default, stage exact effective SVG references and commit before replacement, copy-on-write local version with default remap; explicit legacy restore operates on copy.",
+      "remaining_risks": [
+        "Previously lost or changed history cannot be reconstructed automatically.",
+        "Old references may already point to altered symbols; upstream library/catalog updates are not globally version-pinned.",
+        "Legacy compatibility conversion may still remove retired objects from the restored editable copy; original preserved.",
+        "Capacity/crash/cross-store acceptance open; no canonical Autosave cutover.",
+        "Seven new tests authored, prior migration expectations corrected; all NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12399,17 +12442,24 @@
       "date": "2026-11-27",
       "change": "اصلاح متمرکز RD-A04 و RD-A05: کنترل نتیجه واقعی نوشتن و Rollback مهاجرت تجهیزات و ارتباطات، حفظ نشانگر قبلی و اعلام کلیدهای بازیابی‌نشده؛ جداسازی Undo/Redo و بازگشت انتخابی از دفتر Revision و ایزوله‌کردن History پس از Save As. هشت سناریوی رگرسیون نوشته شده اما اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V409-R",
+      "date": "2026-11-27",
+      "change": "حفاظت Revisionهای تاریخی در مهاجرت تجهیزات/ارتباطات، بازیابی از کپی مستقل همراه هشدار تبدیل و ثبت منابع SVG، جلوگیری از ارجاع اشتباه در صورت override و نوشتن تأییدنشده، نسخه‌بندی مستقل نماد محلی و تخصیص پیش‌فرض آینده؛ حذف بازنویسی مستقیم رکوردهای ذخیره‌شده در شروع. هفت سناریوی رگرسیون جدید و اصلاح قرارداد دو تست قبلی؛ تست اجرا نشده.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V408-R",
+    "release": "V409-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Focused RD-A04/A05; migration rollback and history ledger corrections. Test/Build/Browser NOT_RUN; all cross-store and migration acceptance gates open."
+    "audit": "Focused RD-A04/A05; historical content and SVG migration corrections. Test/Build/Browser NOT_RUN; cross-store and historical fidelity acceptance open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V409-R acceptance: disposable Chromium/Safari profile with retired equipment, legacy cable/ports, inline and referenced SVGs, override collisions and rejected draft writes; verify archived records, source-only legacy restore, local copy-on-write/assignment and NRD round-trip. V410-R milestone focused audit; full-source audit and runtime remain open under POLICY.",
       "V408-R acceptance: disposable Chromium/Safari profile, save Revision then Undo/Redo/selected history and save again; Save As and failure; forward/rollback storage denial and retained migration marker; compare all archived data; test and build NOT_RUN. Next: SVG migration failure/retired-history fidelity and ordinary Autosave cutover only with authorized runtime validation.",
       "V407-R acceptance: stage before projection, inaccessible IDB, failed optimistic stage, stale local after final receipt, protected latest receipt history, legacy journal mirror unavailable or changed, editor mutation during export, mandatory reload and shortcut guard. Review AUTOSAVE-AUTHORITY migration plan; do not activate cutover until isolated browser failure-injection validation is authorized.",
       "V406-R acceptance: disposable browser with existing data and new clean origin; stable checkpoint and external backup/restore, profiles/shortcuts/resources/settings, cut before marker/mid projection/final receipt, third-state rejection, denied storage, quota and rollback, history export/confirmed physical save/cancel and exact prune. Next ordinary autosave canonical migration and legacy/full-origin recovery/retention only after owner-approved runtime validation; Test/Build NOT_RUN.",

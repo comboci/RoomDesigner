@@ -1,5 +1,7 @@
 # RoomDesigner
 
+V409-R (2026-11-27): preserve historical Revision content during equipment/connection migration; stage SVG resource conversion and local symbol versions before publication; clone and warn before legacy Revision restore; defer direct startup document rewrites. Seven regression scenarios authored; prior migration assertions now protect history. Test/Build/Browser NOT_RUN. Existing legacy asset fidelity and cross-store authority remain open.
+
 V408-R (2026-11-27): RD-A04/RD-A05 focused source fixes: migration rollback verifies exact original bytes and reports failed keys; Undo/Redo and selected history preserve saved Revision ledger and Save As isolates editing history. Eight regression scenarios authored, NOT_RUN. Cross-store migration and runtime acceptance remain open.
 
 V407-R (2026-11-26): focused re-audit V402-V406. Workspace restore now writes a prepare:ID local marker before staging IDB intent and keeps writes blocked if staging is uncertain. Completed recovery marker cleanup verifies exact local values, retained intent history, canonical checkpoint and mirror metadata; latest receipt history is protected from pruning. Legacy journal acknowledgment includes current editor and related SVG/shortcuts, requires successful unchanged mirror read, and forces startup re-review before writes. Shortcut commands honor recovery guard. Autosave cutover plan documented, not enabled; OPEN-CROSS-STORE remains OPEN for ordinary edits. Five new regression scenarios authored, Test/Build/Browser NOT_RUN.
@@ -38,7 +40,7 @@ V386-R (2026-11-20): Corrected bootstrap selection in 87 browser regression scri
 
 V385-R (2026-11-20): Correct local preview dependency allowlist and add an isolated HTTP regression test. The four previously blocked JavaScript files are now allowed; directory traversal protection is preserved. Test execution and browser/device acceptance remain pending.
 
-Current source release: **V408-R** (runtime acceptance pending user).
+Current source release: **V409-R** (runtime acceptance pending user).
 
 V272: [physical connections, equipment and field devices](./CONNECTION-MODEL.md).
 

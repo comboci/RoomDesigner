@@ -25,7 +25,7 @@ test('five separate physical connection types; published catalog equals offline 
  const old=legacy(),seed={rd_last:JSON.stringify(old),rd_profiles:JSON.stringify({saved:old}),rd_shortcuts:JSON.stringify([{id:'s',data:old}]),rd_catalog:'[]'},s=storage(seed);
  assert.equal(model.migrateStorage(s),true);
  for(const doc of [JSON.parse(s.getItem('rd_last')),JSON.parse(s.getItem('rd_profiles')).saved,JSON.parse(s.getItem('rd_shortcuts'))[0].data]){
-  assert.equal(doc.connectionModel,model.version);assert.equal(doc.cables.length,0);assert.deepEqual(doc.walls,old.walls);assert.deepEqual(doc.layers,old.layers);assert.equal(doc.devices[0].name,'Edited main');assert.equal(doc.devices[0].x,150);assert.equal(doc.devices[0].ports[0].type,'rs485');assert.equal(doc.devices[1].ports.length,0);
+  assert.equal(doc.connectionModel,model.version);assert.equal(doc.cables.length,0);assert.deepEqual(doc.walls,old.walls);assert.deepEqual(doc.layers,old.layers);assert.equal(doc.devices[0].name,'Edited main');assert.equal(doc.devices[0].x,150);assert.equal(doc.devices[0].ports[0].type,'rs485');assert.equal(doc.devices[1].ports.length,0);assert.deepEqual(doc.revisions,old.revisions);
  }
  const after=JSON.stringify([...s.data]);assert.equal(model.migrateStorage(s),false);assert.equal(JSON.stringify([...s.data]),after);
 });

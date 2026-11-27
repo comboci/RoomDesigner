@@ -16,7 +16,15 @@
    s.devices=s.devices.filter(x=>isArchitecture(x)||architectureNames.has(x.name)&&x.kind==='custom'||x.equipmentRelease===release);
    const ids=new Set(s.devices.map(x=>x.id));s.cables=s.cables.filter(c=>ids.has(c.a?.dev)&&ids.has(c.b?.dev));
    s.equipmentRelease=release;
-   if(s.revisions!=null){if(!Array.isArray(s.revisions))throw Error('Revision نامعتبر است');for(const r of s.revisions)clean(r.snapshot)}
+   if(s.revisions!=null){
+    // Historical records are evidence, not active equipment. Validate shape without rewriting them.
+    const checkHistory=entry=>{
+     if(!entry||!Array.isArray(entry.devices)||!Array.isArray(entry.cables))throw Error('Revision نامعتبر است');
+     if(entry.revisions!=null){if(!Array.isArray(entry.revisions))throw Error('Revision نامعتبر است');for(const r of entry.revisions)checkHistory(r?.snapshot)}
+    };
+    if(!Array.isArray(s.revisions))throw Error('Revision نامعتبر است');
+    for(const r of s.revisions)checkHistory(r?.snapshot);
+   }
   }
   clean(d);return d;
  }

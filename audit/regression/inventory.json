@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "8d6e3b569434caca846f932ed692653654021c15",
+      "blob_sha": "458b1b4ae1f9dd3a3d5b22714359ec6a61dab183",
       "mode": "100644",
-      "bytes": 20900,
-      "lines": 201,
+      "bytes": 21346,
+      "lines": 203,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3911,6 +3911,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/rd-a04-a05-v409-2026-11-27.md",
+      "blob_sha": "3e46c3d948e0653c07ac73224e3209c3ecdb3a36",
+      "mode": "100644",
+      "bytes": 3833,
+      "lines": 9,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/regression/POLICY.md",
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
@@ -3948,9 +3957,9 @@
     },
     {
       "path": "connection-model.js",
-      "blob_sha": "5606817dc58e05646abc65520734b169eb080a62",
+      "blob_sha": "3cb251c52c4764f8130cb66ca413ee017cb0e47b",
       "mode": "100644",
-      "bytes": 9692,
+      "bytes": 9689,
       "lines": 103,
       "category": "source_or_configuration",
       "binary": false
@@ -4038,10 +4047,10 @@
     },
     {
       "path": "equipment-release.js",
-      "blob_sha": "e45552f225533790cd21d6d54d48d001509c9404",
+      "blob_sha": "f07439c9085858c41d02b954dc197a4daefe872f",
       "mode": "100644",
-      "bytes": 19807,
-      "lines": 87,
+      "bytes": 20271,
+      "lines": 95,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4056,10 +4065,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "250f89309dc4e7707aaaf1024f66d07a1a3d21e5",
+      "blob_sha": "fa06455ee301978dadbb99325e43df184bff4e27",
       "mode": "100644",
-      "bytes": 638171,
-      "lines": 3927,
+      "bytes": 641893,
+      "lines": 3960,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4074,7 +4083,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "722bd66069a3f4b8fb4afce7c4cf2ff59414f55c",
+      "blob_sha": "5559f9a8ef7fabb304aa29b582387f5f25ca9d84",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4083,7 +4092,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "dca73cad1ea45cc149de0fab8c454288bfb1b0c9",
+      "blob_sha": "3c505599714ed949ff2bb1d0e3d317c6d76be87c",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4101,10 +4110,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "db2be632cdef655386799f0c93b3f86b70236a57",
+      "blob_sha": "7153dc481df744cc845553d0a2af8006d5676583",
       "mode": "100644",
-      "bytes": 854481,
-      "lines": 12451,
+      "bytes": 859351,
+      "lines": 12501,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4389,9 +4398,9 @@
     },
     {
       "path": "tests/connection-model.test.cjs",
-      "blob_sha": "7f8a28ae5ad686d411597a65ac913eea6cdb826a",
+      "blob_sha": "75ae1d4090a57a7171ffc7e6742c43ea41d62b5d",
       "mode": "100644",
-      "bytes": 5397,
+      "bytes": 5443,
       "lines": 45,
       "category": "test_source_static_only",
       "binary": false
@@ -4632,9 +4641,9 @@
     },
     {
       "path": "tests/equipment-release.test.cjs",
-      "blob_sha": "44869a01fff83c2d83e307049b681bafddeb62f4",
+      "blob_sha": "ebcc06dfb62d6fbb20b61376659062cc8d041f31",
       "mode": "100644",
-      "bytes": 4516,
+      "bytes": 4596,
       "lines": 19,
       "category": "test_source_static_only",
       "binary": false
@@ -5374,6 +5383,15 @@
       "mode": "100644",
       "bytes": 1703,
       "lines": 10,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/svg-revision-migration-v409.test.cjs",
+      "blob_sha": "99571b9b796fcbfd06d9304738eb0665ce1192b6",
+      "mode": "100644",
+      "bytes": 5152,
+      "lines": 63,
       "category": "test_source_static_only",
       "binary": false
     },

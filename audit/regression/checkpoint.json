@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_CONTINUE_ROOMDESIGNER_RD_A04_A05_V408_SOURCE_REMEDIATION",
+  "execution_source": "USER_CONTINUE_ROOMDESIGNER_RD_A04_A05_V409_SOURCE_REMEDIATION",
   "execution_timestamp": "2026-11-27",
-  "source_head": "43150166ebd06537ae3968c7009f9cead1d0fc3d",
+  "source_head": "d15494a015de7ccf334efe486a161bf585fac3ba",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V408-R",
+  "product_release": "V409-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "206ef193777fb934d81c5bf8279e8bf62858080e",
+  "inventory_blob_sha": "b09cbceedf12404114d563e2480165455eea7fd3",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "Focused source remediation RD-A04/A05: verified migration rollback result, retained prior release marker and diagnostic keys; preserved Revision ledger during history navigation and isolated Save As. Eight scenarios authored NOT_RUN. No sequential coverage credit; OPEN-CROSS-STORE remains open.",
+  "coverage_note": "Focused source remediation RD-A04/A05: historical record fidelity, SVG effective resolution and staged persistence, local copy-on-write symbol versions, explicit revision restore clone and legacy warning, no direct startup document rewrites. Seven new test scenarios and two existing migration test files updated, NOT_RUN. No sequential coverage credit; OPEN-CROSS-STORE remains open.",
   "segments": [
     {
       "path": "index.html",
@@ -1513,6 +1513,38 @@
       "root_cause": "Rollback failures hidden and equipment release marker removed rather than restored.",
       "correction": "Verify write/remove returns and readback; retain previous marker; report exact uncertain keys.",
       "verification": "NOT_RUN; partial migration across browser crash remains open."
+    },
+    {
+      "id": "RD409-A04-A05-HISTORICAL-CONTENT",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "connection-model.js / equipment-release.js / index.html",
+      "root_cause": "Recursive legacy migrations destructively modified historical Revision snapshots; restore passed snapshot data by reference and ignored staged SVG registry.",
+      "correction": "Keep original historical records, clone explicit restore, warn about legacy conversion, persist staged resources.",
+      "verification": "Source scenarios authored NOT_RUN; original legacy renderer not guaranteed."
+    },
+    {
+      "id": "RD409-A04-SVG-RESOLUTION",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Published ID could resolve to local override; stale cache, unverified draft write and malformed registry overwrite.",
+      "correction": "Effective resolution, isolated staging and cache, verified persistence before rewriting references; preserve invalid raw data and portable import ordering.",
+      "verification": "NOT_RUN."
+    },
+    {
+      "id": "RD409-A05-SVG-VERSION",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Local library edits mutated artwork at IDs referenced by older drawings and revisions.",
+      "correction": "Copy-on-write symbol ID, retained previous art, staged future default mapping.",
+      "verification": "NOT_RUN; previously changed references and upstream changes remain open."
+    },
+    {
+      "id": "RD409-A04-SVG-STARTUP",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Eager direct persistent SVG reference migration outside normal save boundaries.",
+      "correction": "Lazy normalization of active copies, no direct startup document rewrites.",
+      "verification": "NOT_RUN; cross-store atomicity remains open."
     }
   ],
   "last_completed_segment": {
@@ -1524,11 +1556,11 @@
   },
   "next_segment": {
     "path": "connection-model.js",
-    "blob_sha": "5606817dc58e05646abc65520734b169eb080a62",
+    "blob_sha": "3cb251c52c4764f8130cb66ca413ee017cb0e47b",
     "start_line": 1,
     "end_line": 103,
     "status": "UNREAD",
-    "reason": "V408-R changed connection-model.js; earlier changed eligible blob than prior cursor; focused work not credited as sequential coverage."
+    "reason": "V409-R changed connection-model.js; prior sequential cursor remains at this file, focused work not credited as sequential coverage."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1537,7 +1569,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V408-R focused RD-A04/A05; eight regression scenarios authored NOT_RUN. No canonical Autosave cutover.",
+    "static_diff": "V409-R focused historical content and SVG migration; seven scenarios authored, existing migration tests updated, NOT_RUN. No canonical Autosave cutover.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1555,10 +1587,10 @@
   },
   "inventory_refresh": {
     "method": "Pinned Git base inventory plus exact newly created Git blobs; no product execution",
-    "baseline_head": "43150166ebd06537ae3968c7009f9cead1d0fc3d",
-    "entries": 608,
+    "baseline_head": "d15494a015de7ccf334efe486a161bf585fac3ba",
+    "entries": 610,
     "no_product_execution": true,
-    "notes": "V408-R source, regression contracts, report, ledger, inventory and checkpoint in one tree."
+    "notes": "V409-R source, test contracts, report, ledger, inventory and checkpoint in one tree."
   },
   "branch_review": {
     "branches": [
@@ -1672,6 +1704,14 @@
       "release": "V408-R",
       "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "findings": 2,
+      "validation": "NOT_RUN"
+    },
+    {
+      "path": "audit/professional-audit/rd-a04-a05-v409-2026-11-27.md",
+      "source_head": "d15494a015de7ccf334efe486a161bf585fac3ba",
+      "release": "V409-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "findings": 4,
       "validation": "NOT_RUN"
     }
   ]
