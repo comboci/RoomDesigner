@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "458b1b4ae1f9dd3a3d5b22714359ec6a61dab183",
+      "blob_sha": "7a49402100ffb33719ce77dd989d38293e1955f3",
       "mode": "100644",
-      "bytes": 21346,
-      "lines": 203,
+      "bytes": 21863,
+      "lines": 205,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3920,6 +3920,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/rd-milestone-v410-2026-11-27.md",
+      "blob_sha": "70dee8a1782ad272cb98bbbb421a3e0587ab7c4f",
+      "mode": "100644",
+      "bytes": 4423,
+      "lines": 10,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/regression/POLICY.md",
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
@@ -4065,10 +4074,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "fa06455ee301978dadbb99325e43df184bff4e27",
+      "blob_sha": "a832f006cb8cf1dca76c9ab5dab160aa745410b3",
       "mode": "100644",
-      "bytes": 641893,
-      "lines": 3960,
+      "bytes": 647726,
+      "lines": 4031,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4083,7 +4092,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "5559f9a8ef7fabb304aa29b582387f5f25ca9d84",
+      "blob_sha": "3784a6d447c52d6c7eb0ce79ad26a73b00261aae",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4092,7 +4101,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "3c505599714ed949ff2bb1d0e3d317c6d76be87c",
+      "blob_sha": "971d34b7bf12d1142f86f5cd0bb7bbfb10909eb5",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4110,10 +4119,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "7153dc481df744cc845553d0a2af8006d5676583",
+      "blob_sha": "4c2787f018e04e440fcd9adff84b4d3146715aa8",
       "mode": "100644",
-      "bytes": 859351,
-      "lines": 12501,
+      "bytes": 864785,
+      "lines": 12554,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4128,10 +4137,10 @@
     },
     {
       "path": "storage-safety.js",
-      "blob_sha": "a49439a397473d9bbe0aca06728dc8a581efd0c3",
+      "blob_sha": "46fa0cbd0df30a7af6fddeb08e6309187c097c01",
       "mode": "100644",
-      "bytes": 21326,
-      "lines": 266,
+      "bytes": 21461,
+      "lines": 270,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -5207,6 +5216,15 @@
       "binary": false
     },
     {
+      "path": "tests/revision-svg-archive-capacity-v410.test.cjs",
+      "blob_sha": "c0d0bba12efd0cff9ac6e3aa70ba9e70143e6a32",
+      "mode": "100644",
+      "bytes": 6093,
+      "lines": 69,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
       "path": "tests/rotation-and-cable-mode.browser.test.cjs",
       "blob_sha": "d8adaf92fb9565ea9b350175ac61850866db2af5",
       "mode": "100644",
@@ -5334,9 +5352,9 @@
     },
     {
       "path": "tests/storage-safety.test.cjs",
-      "blob_sha": "7ac677c3048db9110744423287ddc90f9e85ae13",
+      "blob_sha": "6cd09e1a3767015e61ee7be652c491ce61dd04b0",
       "mode": "100644",
-      "bytes": 4886,
+      "bytes": 4933,
       "lines": 49,
       "category": "test_source_static_only",
       "binary": false

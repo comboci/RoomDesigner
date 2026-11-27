@@ -235,14 +235,18 @@
   return new Promise((resolve,reject)=>{
    let tx;
    try{
-    tx=db.transaction('backups','readonly');const entries=[],store=tx.objectStore('backups'),req=keysOnly?store.openKeyCursor():store.openCursor();let total=0;
+    tx=db.transaction('backups','readonly');const entries=[],store=tx.objectStore('backups'),req=store.openKeyCursor();let total=0;
     tx.oncomplete=()=>resolve(entries);tx.onabort=()=>reject(tx.error||Error('خواندن آرشیو ناموفق بود'));tx.onerror=()=>{};
     req.onsuccess=()=>{try{
      const cursor=req.result;if(!cursor)return;
      if(workspaceHistoryKey(cursor.key)){
       if(entries.length>=10000)throw Error('تعداد آرشیوها بیش از سقف امن است');
       if(keysOnly)entries.push(cursor.key);
-      else{const entry={key:cursor.key,value:cursor.value};total+=JSON.stringify(entry).length;if(total>limit)throw Error('حجم مجموع آرشیوها بیش از سقف امن است؛ هر مورد را جداگانه صادر کنید');entries.push(entry)}
+      else{
+       const key=cursor.key,read=store.get(key);
+       read.onsuccess=()=>{try{const entry={key,value:read.result};total+=JSON.stringify(entry).length;if(total>limit)throw Error('حجم مجموع آرشیوها بیش از سقف امن است؛ هر مورد را جداگانه صادر کنید');entries.push(entry);cursor.continue()}catch(error){try{tx.abort()}catch(_){}reject(error)}};
+       return
+      }
      }
      cursor.continue()
     }catch(error){try{tx.abort()}catch(_){}reject(error)}};

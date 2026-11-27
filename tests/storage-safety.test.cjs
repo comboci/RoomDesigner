@@ -30,7 +30,7 @@ test('one origin admits one writer, reopening after release works and unsupporte
  assert.equal((await safety.acquireWriter({request(){throw Error('denied')}})).ok,false);
 });
 test('revision captures and restores page layout, display flags and independent detail positions; old versions reset absent view fields',()=>{
- const scope=vm.createContext({normalizeSvgReferences:()=>{},RoomConnections:{version:'test'},structuredClone});vm.runInContext(extractFunction('snapshot')+'\n'+extractFunction('applyRevisionViewState'),scope);
+ const scope=vm.createContext({RoomConnections:{version:'test'},RoomEquipment:{release:'test'},structuredClone});vm.runInContext(extractFunction('pinRevisionSvgArtwork')+'\n'+extractFunction('snapshot')+'\n'+extractFunction('applyRevisionViewState'),scope);
  const d={name:'x',devices:[],cables:[],walls:[],pageLayout:{version:1,originX:0,originY:12},canvasColorMode:true,showAllProductDetails:true,productDetailPositions:{a:{x:5,y:10}}};
  const snap=scope.snapshot(d);d.pageLayout.originY=99;d.productDetailPositions.a.x=99;scope.applyRevisionViewState(d,snap);
  assert.equal(d.pageLayout.originY,12);assert.equal(d.productDetailPositions.a.x,5);assert.equal(d.canvasColorMode,true);assert.equal(d.showAllProductDetails,true);d.productDetailPositions.a.x=77;assert.equal(snap.productDetailPositions.a.x,5);

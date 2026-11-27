@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_CONTINUE_ROOMDESIGNER_RD_A04_A05_V409_SOURCE_REMEDIATION",
+  "execution_source": "USER_V410_PERIODIC_MILESTONE_V406_V409_FOCUSED_STATIC_REAUDIT",
   "execution_timestamp": "2026-11-27",
-  "source_head": "d15494a015de7ccf334efe486a161bf585fac3ba",
+  "source_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V409-R",
+  "product_release": "V410-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "b09cbceedf12404114d563e2480165455eea7fd3",
+  "inventory_blob_sha": "30282595284fac791d14ac7f2f404a6ef94a1cd4",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "Focused source remediation RD-A04/A05: historical record fidelity, SVG effective resolution and staged persistence, local copy-on-write symbol versions, explicit revision restore clone and legacy warning, no direct startup document rewrites. Seven new test scenarios and two existing migration test files updated, NOT_RUN. No sequential coverage credit; OPEN-CROSS-STORE remains open.",
+  "coverage_note": "Focused five-release milestone re-audit V406–V409 reports and source paths: explicit historical SVG pinning, candidate Revision capacity/freshness, key-only archive discovery and selected raw export, bounded bulk reads. Eight new test scenarios and existing snapshot test harness updated; NOT_RUN. No sequential/full-source coverage credit. OPEN-CROSS-STORE remains open.",
   "segments": [
     {
       "path": "index.html",
@@ -1545,6 +1545,30 @@
       "root_cause": "Eager direct persistent SVG reference migration outside normal save boundaries.",
       "correction": "Lazy normalization of active copies, no direct startup document rewrites.",
       "verification": "NOT_RUN; cross-store atomicity remains open."
+    },
+    {
+      "id": "RD410-A05-HISTORICAL-SVG",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "New Revision snapshots retained mutable explicit SVG IDs; staged import normalized archived inline art.",
+      "correction": "Pin observed sanitized explicit artwork in detached new Revision; skip archived inline normalization; remap only effective ID references.",
+      "verification": "NOT_RUN; generated/catalog art and previously changed IDs remain open."
+    },
+    {
+      "id": "RD410-A05-REVISION-CAPACITY",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Revision preparation mutated the live document before the new snapshot could be bounded; archive export freshness omitted exact editor and registry bytes.",
+      "correction": "Prepare detached candidate, validate SVG and serialized document budgets before live mutation, exact freshness and separate local save vs NRD export outcomes.",
+      "verification": "NOT_RUN; physical quota and peak heap require runtime."
+    },
+    {
+      "id": "RD410-A03-ARCHIVE-READ",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html / storage-safety.js",
+      "root_cause": "Legacy archive selector loaded all payloads; bulk cursor read unrelated values.",
+      "correction": "Key-only list and matching reads, selected raw export, bounded bulk reads and count reporting; no auto deletion.",
+      "verification": "NOT_RUN; very large individual entry and blocked-startup access remain open."
     }
   ],
   "last_completed_segment": {
@@ -1569,7 +1593,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V409-R focused historical content and SVG migration; seven scenarios authored, existing migration tests updated, NOT_RUN. No canonical Autosave cutover.",
+    "static_diff": "V410-R focused five-release milestone V406–V409; eight scenarios authored, existing snapshot harness updated; NOT_RUN. Full sequential audit remains OPEN; no Autosave cutover.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1587,10 +1611,10 @@
   },
   "inventory_refresh": {
     "method": "Pinned Git base inventory plus exact newly created Git blobs; no product execution",
-    "baseline_head": "d15494a015de7ccf334efe486a161bf585fac3ba",
-    "entries": 610,
+    "baseline_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
+    "entries": 612,
     "no_product_execution": true,
-    "notes": "V409-R source, test contracts, report, ledger, inventory and checkpoint in one tree."
+    "notes": "V410-R source, regression contracts, milestone report, ledger, inventory and checkpoint in one tree."
   },
   "branch_review": {
     "branches": [
@@ -1713,6 +1737,15 @@
       "status": "SOURCE_FIXED_RUNTIME_PENDING",
       "findings": 4,
       "validation": "NOT_RUN"
+    },
+    {
+      "path": "audit/professional-audit/rd-milestone-v410-2026-11-27.md",
+      "source_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
+      "release": "V410-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "findings": 3,
+      "validation": "NOT_RUN",
+      "scope": "FOCUSED_STATIC_ONLY"
     }
   ]
 }

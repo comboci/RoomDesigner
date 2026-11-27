@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V409",
-    "project_evolution_version": "V409",
+    "software_version": "V410",
+    "project_evolution_version": "V410",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -38,14 +38,16 @@
     "status": "adopted_for_future_releases",
     "multiple_of_five_release_gate": true,
     "rule": "At V10, V15, V20... record applicable source maintenance and audit evidence; no claim of successful runtime test without user confirmation.",
-    "next_due_boundary": "V405-R",
+    "next_due_boundary": "V415-R",
     "historical_reconciliation_status": "OPEN; stale V290 future-boundary label superseded in V332-R; no historical audit credited by this correction",
     "last_boundary": {
-      "release": "V400-R",
+      "release": "V410-R",
       "source_audit": "FOCUSED_STATIC_ONLY",
       "full_source_audit": "OPEN",
       "runtime": "PENDING_USER",
-      "test_and_build": "NOT_RUN"
+      "test_and_build": "NOT_RUN",
+      "evidence": "audit/professional-audit/rd-milestone-v410-2026-11-27.md",
+      "prior_v405_full_audit": "OPEN"
     }
   },
   "_file_documentation": {
@@ -69,7 +71,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V409-R",
+  "current_source_release": "V410-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1966,6 +1968,12 @@
       "version": "V409-R",
       "date": "2026-11-27",
       "change": "حفاظت Revisionهای تاریخی در مهاجرت تجهیزات/ارتباطات، بازیابی از کپی مستقل همراه هشدار تبدیل و ثبت منابع SVG، جلوگیری از ارجاع اشتباه در صورت override و نوشتن تأییدنشده، نسخه‌بندی مستقل نماد محلی و تخصیص پیش‌فرض آینده؛ حذف بازنویسی مستقیم رکوردهای ذخیره‌شده در شروع. هفت سناریوی رگرسیون جدید و اصلاح قرارداد دو تست قبلی؛ تست اجرا نشده.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V410-R",
+      "date": "2026-11-27",
+      "change": "ممیزی دوره‌ای متمرکز V406 تا V409: حفاظت محتوای SVG صریح در Revisionهای جدید، نگهداری محتوای inline تاریخی در Import، کنترل بودجه حجم و آماده‌سازی کاندید Revision قبل از تغییر تاریخچه، بررسی دقیق تازگی داده پس از خروجی آرشیو؛ فهرست آرشیوهای قدیمی بر اساس کلید و خواندن تک‌به‌تک، خروجی خام و محدودیت خواندن گروهی بدون حذف خودکار. هشت سناریوی جدید و اصلاح یک harness؛ هیچ تست اجرایی انجام نشد.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8990,6 +8998,30 @@
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
       "verification_evidence": "audit/professional-audit/rd-a04-a05-v409-2026-11-27.md"
+    },
+    {
+      "id": "RD410-MILESTONE-V406-V409-REAUDIT",
+      "record_type": "source_remediation",
+      "module": "periodic_audit_revision_svg_archive_capacity",
+      "source": "User requested V410 milestone review of V406–V409",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-27",
+      "source_head": "12e5a3a9a4790714775bfa67704c39192dbac293",
+      "target_version": "V410-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "N — شروع ممیزی دوره‌ای V410-R در RoomDesigner؛ بررسی مجدد V406 تا V409، تکمیل حفاظت منابع تاریخی SVG، مدیریت ظرفیت حافظه و آرشیوها، رفع رگرسیون‌های تأییدشده، مستندسازی، افزایش نسخه، Commit و Push مطابق POLICY.",
+      "assistant_interpretation": "Focused milestone remediation with explicit SVG pinning, bounded archive reads and off-document candidate; no whole-source audit or runtime claim.",
+      "implementation_status": "ممیزی دوره‌ای متمرکز V406 تا V409: حفاظت محتوای SVG صریح در Revisionهای جدید، نگهداری محتوای inline تاریخی در Import، کنترل بودجه حجم و آماده‌سازی کاندید Revision قبل از تغییر تاریخچه، بررسی دقیق تازگی داده پس از خروجی آرشیو؛ فهرست آرشیوهای قدیمی بر اساس کلید و خواندن تک‌به‌تک، خروجی خام و محدودیت خواندن گروهی بدون حذف خودکار. هشت سناریوی جدید و اصلاح یک harness؛ هیچ تست اجرایی انجام نشد.",
+      "related_audit_findings": [
+        "RD-A01",
+        "RD-A03",
+        "RD-A04",
+        "RD-A05",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
+      "verification_evidence": "audit/professional-audit/rd-milestone-v410-2026-11-27.md"
     }
   ],
   "analyses": [
@@ -10916,6 +10948,20 @@
         "Capacity/crash/cross-store acceptance open; no canonical Autosave cutover.",
         "Seven new tests authored, prior migration expectations corrected; all NOT_RUN."
       ]
+    },
+    {
+      "id": "RD410-MILESTONE-STATIC",
+      "record_id": "RD410-MILESTONE-V406-V409-REAUDIT",
+      "created_at": "2026-11-27",
+      "module": "periodic_audit_revision_svg_archive_capacity",
+      "problem": "Mutable published SVG references in newly saved Revision, legacy archive selector and cursors materialize many/unrelated payloads, insufficient Revision capacity/freshness handling.",
+      "decision": "Pin observed sanitized explicit SVG inline in detached snapshot, retain historical inline on import, bound candidate and reads; selected raw export, no auto deletion; keep V406/V407 recovery authority separate from normal Autosave.",
+      "remaining_risks": [
+        "Historical IDs already changed cannot be reconstructed; generated/catalog/implicit artwork not fully pinned.",
+        "Real quota, peak heap, latency and mobile acceptance unmeasured; one huge archive may still consume memory.",
+        "Ordinary Autosave non-atomic and legacy full-origin recovery not implemented.",
+        "Full sequential audit V405/V410 open. Eight authored scenarios and existing harness update, all NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12448,17 +12494,24 @@
       "date": "2026-11-27",
       "change": "حفاظت Revisionهای تاریخی در مهاجرت تجهیزات/ارتباطات، بازیابی از کپی مستقل همراه هشدار تبدیل و ثبت منابع SVG، جلوگیری از ارجاع اشتباه در صورت override و نوشتن تأییدنشده، نسخه‌بندی مستقل نماد محلی و تخصیص پیش‌فرض آینده؛ حذف بازنویسی مستقیم رکوردهای ذخیره‌شده در شروع. هفت سناریوی رگرسیون جدید و اصلاح قرارداد دو تست قبلی؛ تست اجرا نشده.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V410-R",
+      "date": "2026-11-27",
+      "change": "ممیزی دوره‌ای متمرکز V406 تا V409: حفاظت محتوای SVG صریح در Revisionهای جدید، نگهداری محتوای inline تاریخی در Import، کنترل بودجه حجم و آماده‌سازی کاندید Revision قبل از تغییر تاریخچه، بررسی دقیق تازگی داده پس از خروجی آرشیو؛ فهرست آرشیوهای قدیمی بر اساس کلید و خواندن تک‌به‌تک، خروجی خام و محدودیت خواندن گروهی بدون حذف خودکار. هشت سناریوی جدید و اصلاح یک harness؛ هیچ تست اجرایی انجام نشد.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V409-R",
+    "release": "V410-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Focused RD-A04/A05; historical content and SVG migration corrections. Test/Build/Browser NOT_RUN; cross-store and historical fidelity acceptance open."
+    "audit": "Focused milestone V406–V409, explicit historical SVG and archive capacity; full sequential audit OPEN; Test/Build/Browser NOT_RUN; next boundary V415-R."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V410-R acceptance: synthetic and real NRD revisions with explicit SVGs and originals, published-library change, missing/oversized asset, 20-Revision archive and concurrent edits, large/invalid migration archives with raw export, workspace restore/receipt protections and browser quota/heap. Test/Build/Browser NOT_RUN. Next: complete remaining generated/catalog artwork fidelity, bounded legacy archive access in blocked startup, and authorized cutover validation; full-source audit remains open.",
       "V409-R acceptance: disposable Chromium/Safari profile with retired equipment, legacy cable/ports, inline and referenced SVGs, override collisions and rejected draft writes; verify archived records, source-only legacy restore, local copy-on-write/assignment and NRD round-trip. V410-R milestone focused audit; full-source audit and runtime remain open under POLICY.",
       "V408-R acceptance: disposable Chromium/Safari profile, save Revision then Undo/Redo/selected history and save again; Save As and failure; forward/rollback storage denial and retained migration marker; compare all archived data; test and build NOT_RUN. Next: SVG migration failure/retired-history fidelity and ordinary Autosave cutover only with authorized runtime validation.",
       "V407-R acceptance: stage before projection, inaccessible IDB, failed optimistic stage, stale local after final receipt, protected latest receipt history, legacy journal mirror unavailable or changed, editor mutation during export, mandatory reload and shortcut guard. Review AUTOSAVE-AUTHORITY migration plan; do not activate cutover until isolated browser failure-injection validation is authorized.",
