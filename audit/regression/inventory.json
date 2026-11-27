@@ -123,10 +123,10 @@
     },
     {
       "path": "README.md",
-      "blob_sha": "24b16aaa49ae2fe9c942fd7b10c38f1008d13332",
+      "blob_sha": "8d6e3b569434caca846f932ed692653654021c15",
       "mode": "100644",
-      "bytes": 20562,
-      "lines": 199,
+      "bytes": 20900,
+      "lines": 201,
       "category": "reference_or_binary",
       "binary": false
     },
@@ -3902,6 +3902,15 @@
       "binary": false
     },
     {
+      "path": "audit/professional-audit/rd-a04-a05-v408-2026-11-27.md",
+      "blob_sha": "f7d10fd3a15a90cd50a4d5eba36f86856c1560d8",
+      "mode": "100644",
+      "bytes": 2028,
+      "lines": 8,
+      "category": "reference_or_binary",
+      "binary": false
+    },
+    {
       "path": "audit/regression/POLICY.md",
       "blob_sha": "bfa6b65204edaf5ff9588ebf6d8f359bcd0e437d",
       "mode": "100644",
@@ -3939,10 +3948,10 @@
     },
     {
       "path": "connection-model.js",
-      "blob_sha": "132cd1be7042eea860781c36579e7e470a1e730a",
+      "blob_sha": "5606817dc58e05646abc65520734b169eb080a62",
       "mode": "100644",
-      "bytes": 9515,
-      "lines": 96,
+      "bytes": 9692,
+      "lines": 103,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4029,10 +4038,10 @@
     },
     {
       "path": "equipment-release.js",
-      "blob_sha": "1ac7d339ff393f7445a98ca42d9fa04d781baa66",
+      "blob_sha": "e45552f225533790cd21d6d54d48d001509c9404",
       "mode": "100644",
-      "bytes": 19756,
-      "lines": 77,
+      "bytes": 19807,
+      "lines": 87,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4047,10 +4056,10 @@
     },
     {
       "path": "index.html",
-      "blob_sha": "967431f2fba5e8430c5798a54a4473977a642816",
+      "blob_sha": "250f89309dc4e7707aaaf1024f66d07a1a3d21e5",
       "mode": "100644",
-      "bytes": 637515,
-      "lines": 3915,
+      "bytes": 638171,
+      "lines": 3927,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4065,7 +4074,7 @@
     },
     {
       "path": "package-lock.json",
-      "blob_sha": "ab79c325df0b8ecf250fc76f2132f370d542a3ae",
+      "blob_sha": "722bd66069a3f4b8fb4afce7c4cf2ff59414f55c",
       "mode": "100644",
       "bytes": 21009,
       "lines": 621,
@@ -4074,7 +4083,7 @@
     },
     {
       "path": "package.json",
-      "blob_sha": "59f6be8373f9223bfbe19a77cf4a8c1012620a01",
+      "blob_sha": "dca73cad1ea45cc149de0fab8c454288bfb1b0c9",
       "mode": "100644",
       "bytes": 424,
       "lines": 19,
@@ -4092,10 +4101,10 @@
     },
     {
       "path": "project-evolution.json",
-      "blob_sha": "f447a891df4b45c1e402256df5288703139d8009",
+      "blob_sha": "db2be632cdef655386799f0c93b3f86b70236a57",
       "mode": "100644",
-      "bytes": 850654,
-      "lines": 12400,
+      "bytes": 854481,
+      "lines": 12451,
       "category": "source_or_configuration",
       "binary": false
     },
@@ -4825,6 +4834,15 @@
       "mode": "100644",
       "bytes": 4873,
       "lines": 18,
+      "category": "test_source_static_only",
+      "binary": false
+    },
+    {
+      "path": "tests/migration-revision-v408.test.cjs",
+      "blob_sha": "76f2332b0d90a6e7aa5f5dbc429c5061f31c1e8c",
+      "mode": "100644",
+      "bytes": 3975,
+      "lines": 51,
       "category": "test_source_static_only",
       "binary": false
     },

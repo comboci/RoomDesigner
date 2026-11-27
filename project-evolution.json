@@ -8,8 +8,8 @@
     "provenance": "Adapted from NSP Office Project Evolution V129-updated artifact (2026-09-13); independent project record, NOT a copy of NSP Office source/history."
   },
   "_project_evolution_identity": {
-    "software_version": "V407",
-    "project_evolution_version": "V407",
+    "software_version": "V408",
+    "project_evolution_version": "V408",
     "version_alignment_required": true,
     "version_alignment_rule": "Each RoomDesigner source release increments by one integer; Project Evolution version must match the released UI version.",
     "applies_to": "RoomDesigner"
@@ -69,7 +69,7 @@
   },
   "project": "RoomDesigner",
   "created_at": "2026-10-09",
-  "current_source_release": "V407-R",
+  "current_source_release": "V408-R",
   "project_identity_and_technical_profile": {
     "product_name": "Room Designer — Powered by NSP",
     "record_scope": "standalone, framework-independent roadmap",
@@ -1954,6 +1954,12 @@
       "version": "V407-R",
       "date": "2026-11-26",
       "change": "ممیزی مجدد V402 تا V406: ثبت نشانگر آماده‌سازی محلی قبل از Journal بازیابی، توقف نوشتن در وضعیت نامشخص، تطبیق کامل رسید و آرشیو و داده محلی/آینه پیش از پاک‌سازی نشانگر، حفاظت از آرشیو آخرین رسید، تکمیل بسته بررسی Journal قدیمی و بازخوانی اجباری قبل از ذخیره. مسیرهای مستقل Autosave شناسایی و طرح مهاجرت مستند شد؛ انتقال مرجع عادی فعال نشده و تست‌ها اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V408-R",
+      "date": "2026-11-27",
+      "change": "اصلاح متمرکز RD-A04 و RD-A05: کنترل نتیجه واقعی نوشتن و Rollback مهاجرت تجهیزات و ارتباطات، حفظ نشانگر قبلی و اعلام کلیدهای بازیابی‌نشده؛ جداسازی Undo/Redo و بازگشت انتخابی از دفتر Revision و ایزوله‌کردن History پس از Save As. هشت سناریوی رگرسیون نوشته شده اما اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
@@ -8932,6 +8938,30 @@
         "RD406-A03-RESUMABLE-DISASTER-RECOVERY"
       ],
       "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN"
+    },
+    {
+      "id": "RD408-A04-A05-MIGRATION-REVISION",
+      "record_type": "source_remediation",
+      "module": "migration_history_revision",
+      "source": "Continuation of professional audit from V407-R",
+      "source_actor": "user",
+      "recorded_by": "ChatGPT",
+      "created_at": "2026-11-27",
+      "source_head": "43150166ebd06537ae3968c7009f9cead1d0fc3d",
+      "target_version": "V408-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "user_statement": "چت (ممیزی حرفه‌ای سیستم) را بررسی کن و ادامه بده",
+      "assistant_interpretation": "Continue next source remediation RD-A04 and RD-A05; retain existing no-test policy and do not activate unvalidated cutover.",
+      "implementation_status": "اصلاح متمرکز RD-A04 و RD-A05: کنترل نتیجه واقعی نوشتن و Rollback مهاجرت تجهیزات و ارتباطات، حفظ نشانگر قبلی و اعلام کلیدهای بازیابی‌نشده؛ جداسازی Undo/Redo و بازگشت انتخابی از دفتر Revision و ایزوله‌کردن History پس از Save As. هشت سناریوی رگرسیون نوشته شده اما اجرا نشده‌اند.",
+      "related_audit_findings": [
+        "RD-A04",
+        "RD-A05",
+        "RD-A01",
+        "RD-A03",
+        "OPEN-CROSS-STORE"
+      ],
+      "runtime_status": "PENDING_USER; TEST=NOT_RUN; BUILD=NOT_RUN; BROWSER=NOT_RUN",
+      "verification_evidence": "audit/professional-audit/rd-a04-a05-v408-2026-11-27.md"
     }
   ],
   "analyses": [
@@ -10829,6 +10859,20 @@
         "Latest receipt history retained, which uses capacity; no automatic pruning. V406 large archives and blocked startup need external backups.",
         "No full sequential audit coverage credit. Five new regression scenarios authored, all NOT_RUN; browser/runtime validation pending."
       ]
+    },
+    {
+      "id": "RD408-A04-A05-STATIC",
+      "record_id": "RD408-A04-A05-MIGRATION-REVISION",
+      "created_at": "2026-11-27",
+      "module": "migration_history_revision",
+      "problem": "Editing history replaced saved Revision ledger; migration rollback ignored failures or removed previous marker.",
+      "decision": "Keep current Revision metadata in history navigation, isolate Save As stacks, verify exact rollback and surface uncertain keys.",
+      "remaining_risks": [
+        "Cross-store ordinary Autosave cutover blocked pending authorized runtime.",
+        "Existing lost revisions not automatically repaired; preserve alternatives.",
+        "Migration remains non-atomic and requires crash/denial runtime tests.",
+        "No sequential coverage credit. Eight regression scenarios authored, NOT_RUN."
+      ]
     }
   ],
   "deferred_scope": [
@@ -12349,17 +12393,24 @@
       "date": "2026-11-26",
       "change": "ممیزی مجدد V402 تا V406: ثبت نشانگر آماده‌سازی محلی قبل از Journal بازیابی، توقف نوشتن در وضعیت نامشخص، تطبیق کامل رسید و آرشیو و داده محلی/آینه پیش از پاک‌سازی نشانگر، حفاظت از آرشیو آخرین رسید، تکمیل بسته بررسی Journal قدیمی و بازخوانی اجباری قبل از ذخیره. مسیرهای مستقل Autosave شناسایی و طرح مهاجرت مستند شد؛ انتقال مرجع عادی فعال نشده و تست‌ها اجرا نشده‌اند.",
       "status": "SOURCE_FIXED_RUNTIME_PENDING"
+    },
+    {
+      "version": "V408-R",
+      "date": "2026-11-27",
+      "change": "اصلاح متمرکز RD-A04 و RD-A05: کنترل نتیجه واقعی نوشتن و Rollback مهاجرت تجهیزات و ارتباطات، حفظ نشانگر قبلی و اعلام کلیدهای بازیابی‌نشده؛ جداسازی Undo/Redo و بازگشت انتخابی از دفتر Revision و ایزوله‌کردن History پس از Save As. هشت سناریوی رگرسیون نوشته شده اما اجرا نشده‌اند.",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING"
     }
   ],
   "current_release_gate": {
-    "release": "V407-R",
+    "release": "V408-R",
     "source_status": "SOURCE_FIXED_RUNTIME_PENDING",
     "runtime_status": "PENDING_USER",
-    "audit": "Focused re-audit V402–V406: prepare marker, exact completed receipt verification, latest receipt history retention, legacy journal export/recheck/reload guard. Autosave cutover analysis documented; not enabled. Test/Build/Browser NOT_RUN; OPEN-CROSS-STORE remains open."
+    "audit": "Focused RD-A04/A05; migration rollback and history ledger corrections. Test/Build/Browser NOT_RUN; all cross-store and migration acceptance gates open."
   },
   "handoff": {
     "target": "Continue UX and SVG work on RoomDesigner; do not change NSPOffice or add IIS server storage yet.",
     "known_next_items": [
+      "V408-R acceptance: disposable Chromium/Safari profile, save Revision then Undo/Redo/selected history and save again; Save As and failure; forward/rollback storage denial and retained migration marker; compare all archived data; test and build NOT_RUN. Next: SVG migration failure/retired-history fidelity and ordinary Autosave cutover only with authorized runtime validation.",
       "V407-R acceptance: stage before projection, inaccessible IDB, failed optimistic stage, stale local after final receipt, protected latest receipt history, legacy journal mirror unavailable or changed, editor mutation during export, mandatory reload and shortcut guard. Review AUTOSAVE-AUTHORITY migration plan; do not activate cutover until isolated browser failure-injection validation is authorized.",
       "V406-R acceptance: disposable browser with existing data and new clean origin; stable checkpoint and external backup/restore, profiles/shortcuts/resources/settings, cut before marker/mid projection/final receipt, third-state rejection, denied storage, quota and rollback, history export/confirmed physical save/cancel and exact prune. Next ordinary autosave canonical migration and legacy/full-origin recovery/retention only after owner-approved runtime validation; Test/Build NOT_RUN.",
       "V405-R acceptance: matching/different/absent/denied primary observations, failed IDB transaction, valid divergence and archive failure fallback, selected local/IDB archive preview and NRD export, cancelled/declined backup, changed mirror, quota failure and confirmed new-ID restore. Next canonical storage authority migration design/implementation, whole-store restore and quota retention; test only with owner approval.",

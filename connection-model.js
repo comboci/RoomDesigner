@@ -86,10 +86,17 @@
   if(original.rd_last!==null)writes.set('rd_last',JSON.stringify(resetDocument(parse('rd_last'))));
   if(original.rd_profiles!==null){const profiles=parse('rd_profiles');for(const id of Object.keys(profiles))profiles[id]=resetDocument(profiles[id]);writes.set('rd_profiles',JSON.stringify(profiles))}
   if(original.rd_shortcuts!==null)writes.set('rd_shortcuts',JSON.stringify(parse('rd_shortcuts').map(t=>({...t,data:resetDocument(t.data)}))));
-  const write=(key,value)=>{if(storage.setItem(key,value)===false||storage.getItem(key)!==value)throw Error('Connection model could not be saved')};
+  const write=(key,value)=>{
+   const ok=value===null?storage.removeItem(key):storage.setItem(key,value);
+   if(ok===false||storage.getItem(key)!==value)throw Error('Connection model could not be saved: '+key);
+  };
   const applied=[];
-  try{for(const [key,value]of writes){applied.push(key);write(key,value)}write('rd_connection_model',version)}
-  catch(error){for(const key of [...applied,'rd_connection_model'].reverse()){try{if(original[key]===null)storage.removeItem(key);else storage.setItem(key,original[key])}catch{}}throw error}
+  try{for(const [key,value]of writes){applied.push(key);write(key,value)}applied.push('rd_connection_model');write('rd_connection_model',version)}
+  catch(error){
+   const failed=[];
+   for(const key of applied.reverse()){try{write(key,original[key])}catch{failed.push(key)}}
+   throw Error(error.message+(failed.length?'؛ بازیابی از پشتیبان لازم است: '+failed.join(', '):''))
+  }
   return true;
  }
  global.RoomConnections={normalizeTypes,normalizeDocumentTypes,version,resetKey,resetBrowserData,recoveryReset:Promise.resolve(true),colors,types,equipmentPorts,ensureRelayPorts,upgradeFieldDevices,consumers,resetDocument,resetCatalog,migrateStorage};

@@ -23,7 +23,7 @@
  function migrationState(storage){const keys=['rd_last','rd_profiles','rd_catalog','rd_shortcuts','rd_svg_drafts','rd_toolbox_order_v133','rd_types','rd_users','rd_active_user'];return Object.fromEntries(keys.map(k=>[k,storage.getItem(k)]))}
  function migrateStorage(storage){
   if(storage.getItem('rd_equipment_release')===release)return false;
-  const original=migrationState(storage),parse=(key,fallback)=>original[key]===null?fallback:JSON.parse(original[key]);
+  const originalRelease=storage.getItem('rd_equipment_release'),original=migrationState(storage),parse=(key,fallback)=>original[key]===null?fallback:JSON.parse(original[key]);
   const oldCatalog=parse('rd_catalog',[]);if(!Array.isArray(oldCatalog))throw Error('کتابخانه محلی نامعتبر است');
   const writes=new Map([['rd_catalog',JSON.stringify(cleanCatalog(oldCatalog))]]);
   if(original.rd_last!==null)writes.set('rd_last',JSON.stringify(cleanDocument(parse('rd_last'),oldCatalog)));
@@ -31,9 +31,19 @@
   if(original.rd_shortcuts!==null){const shortcuts=parse('rd_shortcuts');if(!Array.isArray(shortcuts))throw Error('شورتکات‌ها نامعتبرند');const next=shortcuts.map(x=>({...x,data:cleanDocument(x.data,oldCatalog)})).filter(x=>x.data.devices.length||(x.data.walls||[]).length||x.data.cables.length);writes.set('rd_shortcuts',JSON.stringify(next))}
   if(original.rd_toolbox_order_v133!==null){let order;try{order=parse('rd_toolbox_order_v133')}catch{}if(order&&typeof order==='object'&&!Array.isArray(order)&&order.items&&typeof order.items==='object'&&!Array.isArray(order.items)){delete order.items.equipment;writes.set('rd_toolbox_order_v133',JSON.stringify(order))}}
   const applied=[];
-  try{for(const [key,value]of writes){applied.push(key);storage.setItem(key,value);if(storage.getItem(key)!==value)throw Error('ذخیره مهاجرت ناموفق بود')}
-   storage.setItem('rd_equipment_release',release);if(storage.getItem('rd_equipment_release')!==release)throw Error('ثبت نسخه مهاجرت ناموفق بود');
-  }catch(error){const failed=[];for(const key of applied.reverse()){try{if(original[key]===null)storage.removeItem(key);else storage.setItem(key,original[key])}catch{failed.push(key)}}try{storage.removeItem('rd_equipment_release')}catch{}throw Error(error.message+(failed.length?'؛ بازیابی از پشتیبان لازم است: '+failed.join(', '):''))}
+  const write=(key,value)=>{
+   const ok=value===null?storage.removeItem(key):storage.setItem(key,value);
+   if(ok===false||storage.getItem(key)!==value)throw Error('ذخیره مهاجرت ناموفق بود: '+key);
+  };
+  try{for(const [key,value]of writes){applied.push(key);write(key,value)}
+   applied.push('rd_equipment_release');write('rd_equipment_release',release);
+  }catch(error){
+   const failed=[];
+   for(const key of applied.reverse()){
+    try{write(key,key==='rd_equipment_release'?originalRelease:original[key])}catch{failed.push(key)}
+   }
+   throw Error(error.message+(failed.length?'؛ بازیابی از پشتیبان لازم است: '+failed.join(', '):''))
+  }
   return Object.values(original).some(x=>x!==null);
  }
  function validateCatalog(catalog,assets){

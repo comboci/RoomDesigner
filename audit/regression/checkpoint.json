@@ -2,16 +2,16 @@
   "format": 1,
   "repository": "comboci/RoomDesigner",
   "branch": "main",
-  "execution_source": "USER_RD_A01_A03_V407_FOCUSED_REAUDIT_SOURCE_REMEDIATION",
-  "execution_timestamp": "2026-11-26",
-  "source_head": "714cecabbb51d14cf9a5a43ea3e80177fbbd152a",
+  "execution_source": "USER_CONTINUE_ROOMDESIGNER_RD_A04_A05_V408_SOURCE_REMEDIATION",
+  "execution_timestamp": "2026-11-27",
+  "source_head": "43150166ebd06537ae3968c7009f9cead1d0fc3d",
   "delivery_commit": "Git commit containing this checkpoint (not self-referential)",
-  "product_release": "V407-R",
+  "product_release": "V408-R",
   "inventory_path": "audit/regression/inventory.json",
-  "inventory_blob_sha": "34ee09489d172c96c752e0ba9279e442c6e977b9",
+  "inventory_blob_sha": "206ef193777fb934d81c5bf8279e8bf62858080e",
   "policy_path": "audit/regression/POLICY.md",
   "default_review_status": "UNREAD unless an exact-blob segment below covers that line",
-  "coverage_note": "Focused source re-audit V402–V406: pre-stage marker, exact final receipt/local/IDB proof, latest receipt history protection, old journal export/freshness/reload guard and shortcut recovery guard. Autosave cutover plan DESIGN_ONLY/BLOCKED_PENDING_RUNTIME_VALIDATION. Five new regression scenarios NOT_RUN. OPEN-CROSS-STORE ordinary autosave remains open. No sequential coverage credit.",
+  "coverage_note": "Focused source remediation RD-A04/A05: verified migration rollback result, retained prior release marker and diagnostic keys; preserved Revision ledger during history navigation and isolated Save As. Eight scenarios authored NOT_RUN. No sequential coverage credit; OPEN-CROSS-STORE remains open.",
   "segments": [
     {
       "path": "index.html",
@@ -1497,6 +1497,22 @@
       "root_cause": "Ordinary editor and independent writers still use LocalStorage and asynchronous mirror, not one canonical active workspace transaction.",
       "correction": "Cutover design and acceptance gates documented; activation BLOCKED_PENDING_RUNTIME_VALIDATION under existing no-test policy.",
       "verification": "Design only; no cutover activated; OPEN-CROSS-STORE remains open."
+    },
+    {
+      "id": "RD408-A05-UNDO-LEDGER",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "index.html",
+      "root_cause": "Historical full document snapshots also contain older saved Revision metadata.",
+      "correction": "Validate identity and preserve current ledger; Save As isolates old history.",
+      "verification": "Eight new regression scenarios authored across both findings; NOT_RUN."
+    },
+    {
+      "id": "RD408-A04-MIGRATION-ROLLBACK",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "path": "connection-model.js / equipment-release.js",
+      "root_cause": "Rollback failures hidden and equipment release marker removed rather than restored.",
+      "correction": "Verify write/remove returns and readback; retain previous marker; report exact uncertain keys.",
+      "verification": "NOT_RUN; partial migration across browser crash remains open."
     }
   ],
   "last_completed_segment": {
@@ -1507,12 +1523,12 @@
     "status": "REVIEWED_WITH_FINDING"
   },
   "next_segment": {
-    "path": "index.html",
-    "blob_sha": "967431f2fba5e8430c5798a54a4473977a642816",
+    "path": "connection-model.js",
+    "blob_sha": "5606817dc58e05646abc65520734b169eb080a62",
     "start_line": 1,
-    "end_line": 200,
+    "end_line": 103,
     "status": "UNREAD",
-    "reason": "V407-R changed index blob; focused remediation not credited as sequential coverage."
+    "reason": "V408-R changed connection-model.js; earlier changed eligible blob than prior cursor; focused work not credited as sequential coverage."
   },
   "validation": {
     "automated_tests": "NOT_RUN",
@@ -1521,7 +1537,7 @@
     "browser_runtime": "NOT_RUN",
     "runtime_acceptance": "PENDING_USER",
     "testing_owner": "USER",
-    "static_diff": "V402–V406 focused recovery re-audit; five new regression scenarios NOT_RUN. Ordinary autosave cutover design only; OPEN-CROSS-STORE remains open.",
+    "static_diff": "V408-R focused RD-A04/A05; eight regression scenarios authored NOT_RUN. No canonical Autosave cutover.",
     "build_validation": "NOT_RUN",
     "runtime_review": "PENDING_USER"
   },
@@ -1538,11 +1554,11 @@
     "limitation": "No independent old Work process liveness record; explicit user exception is authority. No future automatic takeover authorized."
   },
   "inventory_refresh": {
-    "method": "Pinned Git base inventory plus exact new Git blobs; no product/test execution",
-    "baseline_head": "714cecabbb51d14cf9a5a43ea3e80177fbbd152a",
-    "entries": 606,
+    "method": "Pinned Git base inventory plus exact newly created Git blobs; no product execution",
+    "baseline_head": "43150166ebd06537ae3968c7009f9cead1d0fc3d",
+    "entries": 608,
     "no_product_execution": true,
-    "notes": "V407-R source, regression contracts, audit and cutover design, ledger, manifest and checkpoint in one tree."
+    "notes": "V408-R source, regression contracts, report, ledger, inventory and checkpoint in one tree."
   },
   "branch_review": {
     "branches": [
@@ -1648,6 +1664,14 @@
       "release": "V407-R",
       "status": "DESIGN_ONLY",
       "findings": 1,
+      "validation": "NOT_RUN"
+    },
+    {
+      "path": "audit/professional-audit/rd-a04-a05-v408-2026-11-27.md",
+      "source_head": "43150166ebd06537ae3968c7009f9cead1d0fc3d",
+      "release": "V408-R",
+      "status": "SOURCE_FIXED_RUNTIME_PENDING",
+      "findings": 2,
       "validation": "NOT_RUN"
     }
   ]
